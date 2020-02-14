@@ -545,6 +545,8 @@ Route::post('/adddepartment','HrController@adddepartment');
 Route::post('/importemployee','HrController@importemployee');
 Route::get('/registeremployee','HrController@registeremployee');
 Route::post('/saveemployeedetails','HrController@saveemployeedetails');
+Route::post('/ajaxgetdept','HrController@ajaxgetdept');
+Route::post('/updatedepartment','HrController@updatedepartment');
 });
 
 

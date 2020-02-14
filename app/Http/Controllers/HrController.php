@@ -26,6 +26,33 @@ use Excel;
 class HrController extends Controller
 {
   //-------------PMS HR ------------//
+public function updatedepartment(Request $request){
+$id=$request->depid;
+$departments=department::find($id);
+$departments->departmentname=$request->departmentname;
+$departments->save();
+designation::where('deptartment_id',$id)->delete();
+  $count=count($request->designationname);
+  if($count>0){
+    for($i=0;$i<$count;$i++){
+      if($request->designationname[$i]!=''){
+        $designation=new designation();
+        $designation->deptartment_id=$id;
+        $designation->designationname=$request->designationname[$i];
+        $designation->save();
+      }
+    }
+  }
+  return back();
+}
+public function ajaxgetdept(Request $request){
+ $departments=department::find($request->depid);
+ $designations=designation::select('designationname')
+                ->where('deptartment_id',$request->depid)
+                ->get();
+
+ return response()->json(compact('departments','designations'));
+}
 public function saveemployeedetails(Request $request){
       $check=employeedetail::where('email',$request->email)
             ->orWhere('phone',$request->phone)->count();
