@@ -27,7 +27,8 @@
      </ul>
     </div>
 @endif
-      <div class="box-body">
+      <div class="box-body table-responsive">
+
         <table class="table table-bordered table-striped datatable1">
         <thead>
           <tr class="bg-navy">

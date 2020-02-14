@@ -6,8 +6,8 @@
 			<button type="button" class="btn  btn-success btn-flat" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Department</button>
 
 		</div>
-	    <div class="box-body">
-	    	<table class="table table-bordered table-striped datatable">
+	    <div class="box-body table-responsive">
+	    	<table class="table table-bordered table-striped datatable table-respnsive">
 			  <thead>
 			    <tr class="bg-navy">
 			      <td>Sl. No</td>
