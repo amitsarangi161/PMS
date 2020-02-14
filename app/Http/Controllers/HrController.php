@@ -18,16 +18,180 @@ use App\notice;
 use App\document;
 use App\department; 
 use App\designation; 
-
+use App\employeedetail;
+use App\employeecompanydetail;
+use App\employeebankaccountsdetail;
+use App\employeedocument;
 use Excel;
 class HrController extends Controller
 {
   //-------------PMS HR ------------//
-public function importemployee(Request $request){
+public function saveemployeedetails(Request $request){
+      $check=employeedetail::where('email',$request->email)
+            ->orWhere('phone',$request->phone)->count();
+      if($check == 0){
 
+        $employee=new employeedetail();
+        $employee->employeename=$request->employeename;
+        $employee->dob=$request->dob;
+        $employee->email=$request->email;
+        $employee->gender=$request->gender;
+        $employee->phone=$request->phone;
+        $employee->adharno=$request->adharno;
+        $employee->bloodgroup=$request->bloodgroup;
+        $employee->alternativephonenumber=$request->alternativephonenumber;
+        $employee->presentaddress=$request->presentaddress;
+        $employee->permanentaddress=$request->permanentaddress;
+        $employee->save();
+
+        $eid=$employee->id;
+        $employeecompany=new employeecompanydetail();
+        $employeecompany->employee_id=$eid;
+        $employeecompany->department=$request->department;
+        $employeecompany->designation=$request->designation;
+        $employeecompany->dateofjoining=$request->dateofjoining;
+        $employeecompany->joinsalary=$request->joinsalary;
+        $employeecompany->save();
+
+        $employeebankaccount=new employeebankaccountsdetail();
+        $employeebankaccount->employee_id=$eid;
+        $employeebankaccount->accountholdername=$request->accountholdername;
+        $employeebankaccount->accountnumber=$request->accountnumber;
+        $employeebankaccount->bankname=$request->bankname;
+        $employeebankaccount->ifsc=$request->ifsc;
+        $employeebankaccount->pan=$request->pan;
+        $employeebankaccount->branch=$request->branch;
+        $employeebankaccount->pfaccount=$request->pfaccount;
+        $employeebankaccount->save();
+
+        $employeedocument=new employeedocument();
+        $employeedocument->employee_id=$eid;
+        $rarefile = $request->file('resume');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/resume";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->resume = $uplogoimg;
+        }
+        $rarefile = $request->file('offerletter');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/offerletter";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->offerletter = $uplogoimg;
+        }
+        $rarefile = $request->file('joiningletter');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/joiningletter";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->joiningletter = $uplogoimg;
+        }
+        $rarefile = $request->file('agreementpaper');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/agreementpaper";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->agreementpaper = $uplogoimg;
+        }
+        $rarefile = $request->file('idproof');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/idproof";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->idproof = $uplogoimg;
+        }
+        $employeedocument->save();
+
+        $user=new User();
+        $user->employee_id=$eid;
+        $user->name=$request->employeename;
+        $user->email=$request->email;
+        $user->password=bcrypt($request->phone);
+        $user->pass=$request->phone;
+        $user->mobile=$request->phone;
+        $user->usertype="USER";
+        $user->save();
+        Session::flash('message','Employee save successfully');
+      }
+      else{
+        Session::flash('duplicate','Employee Already Registered');
+      }
+       return redirect('hrmain/employeelist');
+}
+public function registeremployee(){
+  $departments=department::all();
+  $designations=designation::all();
+  return view('hr.registeremployee',compact('departments','designations'));
+}
+public function importemployee(Request $request){
+  $this->validate($request, [
+      'select_file'  => 'required|mimes:xls,xlsx'
+     ]);
+      $path = $request->file('select_file')->getRealPath();
+      $data = Excel::load($path)->get();
+      //return $data;
+      if($data->count()>0){
+        foreach($data as $kay=>$value){
+          $check=employeedetail::where('email',$value['employeename'])
+          ->orWhere('phone',$value['mobile1'])->count();
+          if($check==0){
+          $employee=new employeedetail();
+          $employee->employeename=$value['employeename'];
+          $employee->dob=$value['dob'];
+          $employee->email=$value['email'];
+          $employee->gender=$value['gender'];
+          $employee->phone=$value['mobile1'];
+          $employee->alternativephonenumber=$value['mobile2'];
+          $employee->adharno=$value['adharno'];
+          $employee->bloodgroup=$value['bloodgroup'];
+          $employee->presentaddress=$value['presentaddress'];
+          $employee->permanentaddress=$value['permanentaddress'];
+          $employee->save();
+          $empid=$employee->id;
+          $compemployee=new employeecompanydetail();
+          $compemployee->employee_id=$empid;
+          $compemployee->dateofjoining=$value['dateofjoining'];
+          $compemployee->joinsalary=$value['joinsalary'];
+          $compemployee->save();
+          $empbank=new employeebankaccountsdetail();
+          $empbank->employee_id=$empid;
+          $empbank->accountholdername=$value['employeename'];
+          $empbank->accountnumber=$value['acno'];
+          $empbank->bankname=$value['bankname'];
+          $empbank->ifsc=$value['ifsc'];
+          $empbank->pan=$value['pan'];
+          $empbank->branch=$value['branch'];
+          $empbank->pfaccount=$value['pfaccount'];
+          $empbank->save();
+          $user=new User();
+          $user->employee_id=$empid;
+          $user->name=$value['employeename'];
+          $user->email=$value['email'];
+          $user->password=bcrypt($value['mobile1']);
+          $user->pass=$value['mobile1'];
+          $user->mobile=$value['mobile1'];
+          $user->usertype='USER';
+          $user->save();
+        }
+      }
+      }
+    Session::flash('status', 'Task was successful!');
+    return back();
 }
 public function employeelist(){
-  return view('hr.employeelist');
+  $employeedetails=employeedetail::all();
+  return view('hr.employeelist',compact('employeedetails'));
 }
 public function department(){
   $all=array();

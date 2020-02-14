@@ -382,7 +382,7 @@ if (event.persisted) {
 
       $('.datatable1').DataTable({
         dom: 'Bfrtip',
-        "order": [[ 0, "desc" ]],
+        //"order": [[ 0, "desc" ]],
         "iDisplayLength": 10,
         buttons: [
             {

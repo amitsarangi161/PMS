@@ -20,9 +20,11 @@ class CreateEmployeedetailsTable extends Migration
             $table->string('email',100)->nullable();
             $table->string('gender',50)->nullable();
             $table->string('phone',15)->nullable();
+            $table->string('adharno',15)->nullable();
+            $table->string('bloodgroup',15)->nullable();
             $table->string('alternativephonenumber',15)->nullable();
-            $table->text('presentaddress');
-            $table->text('permanentaddress');
+            $table->text('presentaddress')->nullable();
+            $table->text('permanentaddress')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
