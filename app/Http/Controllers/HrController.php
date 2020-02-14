@@ -18,9 +18,14 @@ use App\notice;
 use App\document;
 use App\department; 
 use App\designation; 
+
+use Excel;
 class HrController extends Controller
 {
   //-------------PMS HR ------------//
+public function importemployee(Request $request){
+
+}
 public function employeelist(){
   return view('hr.employeelist');
 }

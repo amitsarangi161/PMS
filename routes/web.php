@@ -542,7 +542,7 @@ Route::post('/changedrvoucherstatus/{id}','AccountController@changedrvoucherstat
 Route::get('/hrmain/employeelist','HrController@employeelist');
 Route::get('/hrmain/department','HrController@department');
 Route::post('/adddepartment','HrController@adddepartment');
-
+Route::post('/importemployee','ExcelController@importemployee');
 });
 
 
