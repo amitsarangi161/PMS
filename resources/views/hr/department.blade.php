@@ -18,6 +18,9 @@
 			  </thead>
 			  <tbody>
 			  	@foreach($all as $key=>$value)
+			  	@php 
+			  		$did=$value['department']['id'];
+			  	@endphp
 			  	<tr>
 			  		<td>{{++$key}}</td>
 			  		<td>{{$value['department']['departmentname']}}</td>
@@ -30,13 +33,56 @@
 			  			@endforeach
 			  		</ol>
 			  		</td>
-			  		<td><button class="btn btn-primary btn-flat">Edit</button></td>
+			  		<td><button type="button" class="btn btn-primary btn-flat" onclick="updatedepartment('{{$did}}');">Edit</button></td>
 			  	</tr>
 			  	@endforeach
 			  </tbody>
 			</table>
 	</div>
 
+</div>
+
+<div class="modal fade in" id="editdepartment">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    	<form method="post" action="/updatedepartment">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+      </button>
+        <h4 class="modal-title text-center">Edit Department</h4>
+      </div>
+      <div class="modal-body">
+      	
+      		{{csrf_field()}}
+            <div class="form-group">
+            	<input type="hidden" name="depid" id="depid">
+                <div>
+                    <label class="control-label">Department</label>
+                    <input class="form-control" name="departmentname" type="text"placeholder="Enter Department Name" id="department">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div style="display: none;" id="desgn">
+                    <label class="control-label">Designations</label>
+                    <input class="form-control" name="designationname[]" type="text" value="" placeholder="Designation #1" style="width: 60%;">
+                </div>
+            </div>
+            <div id="insertBefore1"></div>
+            <div class="form-group">
+                <button type="button" id="plusButton1" onclick="addMore1();" class="btn btn-sm btn-info btn-flat">
+                    Add Designation <i class="fa fa-plus"></i>
+                </button>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success btn-flat">Submit</button>
+      </div>
+      	</form>
+    </div>
+  </div>
 </div>
 
 <div class="modal fade in" id="modal-default">
@@ -87,7 +133,38 @@
 		++count;
 		$("#insertBefore").append('<input class="form-control input-medium designation" name="designationname[]" style="width: 60%;margin-bottom:10px;" type="text" value="" placeholder="Designation #'+count+'" id="row'+count+'">');
 	}
+	function addMore1(){
+		++count;
+		$("#insertBefore1").append('<input class="form-control input-medium designation" name="designationname[]" style="width: 60%;margin-bottom:10px;" type="text" value="" placeholder="Designation" id="row'+count+'">');
+	}
 
+function updatedepartment(id){
+	var depid=id;
+
+		$.ajax({
+		type:'POST',
+		url:'{{url("/ajaxgetdept")}}',
+		data:{
+			"_token":"{{csrf_token()}}",
+			depid:depid
+		},
+		success:function(data){
+			$("#insertBefore1").empty();
+			 $("#department").val(data.departments.departmentname);
+			 $("#depid").val(data.departments.id);
+			 if(data.designations.length>0){
+			 	$.each(data.designations,function(key,value){
+			 	$("#insertBefore1").append('<input class="form-control input-medium designation" value="'+value.designationname+'" name="designationname[]" style="width: 60%;margin-bottom:10px;" type="text" value="" placeholder="Designation" id="row'+count+'">');
+			 });
+			 }
+			 else{
+			 	$("#desgn").show();
+			 }
+
+		}
+	});
+	$('#editdepartment').modal('show');
+}
 
 </script>
 @endsection

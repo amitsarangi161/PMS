@@ -17,14 +17,14 @@
 <title>PMS Monitors</title>
 <body>
 	<div id="container1">
-<nav class="navbar navbar-default fnav" role="navigation">
+<nav class="navbar navbar-default fnav" role="navigation" style="height: 77px;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
      <div class="">
         <ul class="nav navbar-nav navbar-left">
             <li>
-                <a style="font-size: 23px;font-weight: bold;" class="navbar-brand" href="/">
-                   PMS Monitors
+                <a style="font-size: 23px;font-weight: bold;margin-top: -20px;" class="navbar-brand" href="/">
+                   <img src="/slogo.png" class="img-responsive">
                 </a>
             </li>
         </ul>
@@ -35,7 +35,7 @@
       
       
       <ul class="nav navbar-nav navbar-right mynav">
-         <li><img src="/logo2.jpg"></li>
+         <!-- <li><img src="/logo2.jpg"></li> -->
          <!-- <li data-match-route="/login"><a href="/login" class="btn btn-outline-white btn-md waves-effect">Login</a></li> -->
         <!-- <li data-match-route="/register"><a href="/register" class="btn btn-outline-white btn-md waves-effect">Register</a></li> -->
       </ul>
