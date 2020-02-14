@@ -545,13 +545,11 @@ Route::post('/adddepartment','HrController@adddepartment');
 Route::post('/importemployee','HrController@importemployee');
 Route::get('/registeremployee','HrController@registeremployee');
 Route::post('/saveemployeedetails','HrController@saveemployeedetails');
-<<<<<<< HEAD
+
 Route::get('/editemployeedetails/{id}','HrController@editemployeedetails');
 Route::post('/updateemployeedetails/{id}','HrController@updateemployeedetails');
-=======
 Route::post('/ajaxgetdept','HrController@ajaxgetdept');
 Route::post('/updatedepartment','HrController@updatedepartment');
->>>>>>> eaa1369104214559c213b64399fefcbd994bebe4
 });
 
 
