@@ -33,7 +33,7 @@
           <tr class="bg-navy">
             <td>Emp. Id</td>
             <td>Employee Name</td>
-            <td>Gender</td>
+            <td>Blood Group</td>
             <td>Mobile No</td>
             <td>Alternate Mobile No</td>
             <td>Email</td>
@@ -53,7 +53,7 @@
             <td>{{$employeedetail->email}}</td>
             <td>{{$employeedetail->presentaddress}}</td>
             <td>ACTIVE</td>
-            <td><button class="btn btn-primary btn-flat">Edit</button></td>
+            <td><a href="/editemployeedetails/{{$employeedetail->id}}" onclick="return confirm('are you sure to edit employee ??')" ><button class="btn btn-primary btn-flat">Edit</button></a></td>
           </tr>
           @endforeach
         </tbody>

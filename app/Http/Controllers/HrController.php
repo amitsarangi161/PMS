@@ -150,12 +150,111 @@ public function saveemployeedetails(Request $request){
         $user->usertype="USER";
         $user->save();
         Session::flash('message','Employee save successfully');
+        return redirect('hrmain/employeelist');
       }
       else{
         Session::flash('duplicate','Employee Already Registered');
       }
-       return redirect('hrmain/employeelist');
+       
 }
+public function editemployeedetails($id){
+      $departments=department::all();
+      $designations=designation::all();
+      $editemployeedetail=employeedetail::find($id);
+      $editcompanydetail=employeecompanydetail::find($id);
+      $editemployeebankaccount=employeebankaccountsdetail::find($id);
+      $editemployeedocument=employeedocument::find($id);
+        //return $editemployeedocument;
+        return view('hr.editemployeedetails',compact('editemployeedetail','editcompanydetail','editemployeebankaccount','editemployeedocument','departments','designations'));
+    }
+public function updateemployeedetails(Request $request,$id)
+    {
+        $updateemployee=employeedetail::find($id);
+        $updateemployee->employeename=$request->employeename;
+        $updateemployee->dob=$request->dob;
+        $updateemployee->email=$request->email;
+        $updateemployee->gender=$request->gender;
+        $updateemployee->phone=$request->phone;
+        $updateemployee->adharno=$request->adharno;
+        $updateemployee->bloodgroup=$request->bloodgroup;
+        $updateemployee->alternativephonenumber=$request->alternativephonenumber;
+        $updateemployee->presentaddress=$request->presentaddress;
+        $updateemployee->permanentaddress=$request->permanentaddress;
+        $updateemployee->save();
+
+        $eid=$updateemployee->id;
+
+        $employeecompany=employeecompanydetail::find($eid);
+        $employeecompany->employee_id=$eid;
+        $employeecompany->department=$request->department;
+        $employeecompany->designation=$request->designation;
+        $employeecompany->dateofjoining=$request->dateofjoining;
+        $employeecompany->joinsalary=$request->joinsalary;
+        $employeecompany->save();
+
+        $employeebankaccount=employeebankaccountsdetail::find($eid);
+        $employeebankaccount->employee_id=$eid;
+        $employeebankaccount->accountholdername=$request->accountholdername;
+        $employeebankaccount->accountnumber=$request->accountnumber;
+        $employeebankaccount->bankname=$request->bankname;
+        $employeebankaccount->ifsc=$request->ifsc;
+        $employeebankaccount->pan=$request->pan;
+        $employeebankaccount->branch=$request->branch;
+        $employeebankaccount->pfaccount=$request->pfaccount;
+        $employeebankaccount->save();
+
+        $employeedocument=employeedocument::find($eid);
+        $employeedocument->employee_id=$eid;
+        $rarefile = $request->file('resume');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/resume";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->resume = $uplogoimg;
+        }
+        $rarefile = $request->file('offerletter');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/offerletter";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->offerletter = $uplogoimg;
+        }
+        $rarefile = $request->file('joiningletter');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/joiningletter";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->joiningletter = $uplogoimg;
+        }
+        $rarefile = $request->file('agreementpaper');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/agreementpaper";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->agreementpaper = $uplogoimg;
+        }
+        $rarefile = $request->file('idproof');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/idproof";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->idproof = $uplogoimg;
+        }
+        $employeedocument->save();
+        Session::flash('message','Updated Employee successfully');
+        return redirect('hrmain/employeelist');
+      }
+
 public function registeremployee(){
   $departments=department::all();
   $designations=designation::all();
