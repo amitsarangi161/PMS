@@ -21,34 +21,11 @@
     <!--  <td><input type="hidden" value="+91" id="country_code" readonly /></td> -->
     <td></td>
 	 	 <td><input type="number" autocomplete="off" name="mobile" id="phone_number" placeholder="Enter Vendor Mobile No" class="form-control" required></td>
-	 	 <!-- <td id="hidebutton">
-           <div class="col-md-12" style="padding-bottom: 10px;" id="mobile_verfication">
-	 	 	<button class="btn btn-primary" onclick="smsLogin();">SEND OTP</button>
-           </div>
-	 	 </td> -->
+	
 
 	 	 
 	   </tr>
-
-	 <tbody id="otptr" style="display: none;">
-	    <tr>
-	    	<td colspan="2"><strong>OTP</strong></td>
-	    	<td><input type="text" placeholder="Enter Your Otp Here" class="form-control" name="otp" id="otp"></td>
-	    	<td><button type="button" class="btn btn-info" onclick="verifyOtp();">VERIFY OTP</button></td>
-	    </tr>
-	    <tr>
-	    <td></td>
-	    <td>
-	    	<div id="timer">
-	    		<b style="color: blue;">
-             This Otp is valid for the next <strong id="minutes" style="color: red;">-</strong> minutes and <strong id="seconds" style="color: red;">-</strong> seconds.</b>
-            </div>
-	    </td>
-	    </tr>
-        </tbody>
-        
-	    <!-- <tbody id="tbody" style="display: none;"> -->
-        <tbody id="tbody">
+    
 	    <tr>
 	 	 <td colspan="2"><strong>ENTER VENDOR NAME<span style="color: red"> *</span></strong></td>
 	 	 <td colspan="2"><input type="text" autocomplete="off" name="vendorname" placeholder="Enter Vendor Name" class="form-control"  required></td>
@@ -63,19 +40,19 @@
 	 	 
 	    </tr>
       <tr>
-        <td colspan="2">BANK NAME</td>
+        <td colspan="2"><strong>BANK NAME</strong></td>
         <td colspan="2"><input type="text" placeholder="Enter Bank Name" name="bankname" class="form-control"></td>
       </tr>
         <tr>
-        <td colspan="2">BANK ACCOUNT NO</td>
+        <td colspan="2"><strong>BANK ACCOUNT NO</strong></td>
         <td colspan="2"><input type="text" placeholder="Enter Bank Ac No" name="acno" class="form-control"></td>
       </tr>
       <tr>
-        <td colspan="2">BRANCH NAME</td>
+        <td colspan="2"><strong>BRANCH NAME</strong></td>
         <td colspan="2"><input type="text" placeholder="Enter Branch Name" name="branchname" class="form-control"></td>
       </tr>
       <tr>
-        <td colspan="2">IFSC CODE</td>
+        <td colspan="2"><strong>IFSC CODE</strong></td>
         <td colspan="2"><input type="text" placeholder="Enter IFSC Code" name="ifsccode" class="form-control"></td>
       </tr>
 
@@ -101,7 +78,7 @@
 	   <tr>
 	   	<td colspan="4" style="text-align: right;"><button class="btn btn-success btn-lg" type="submit" onclick="return confirm('Do You want to Proceed?')">Save</button></td>
 	   </tr>
-      </tbody>
+      
 	</table>
 </form>
 </div>
