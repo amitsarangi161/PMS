@@ -132,12 +132,7 @@ Route::post('/ajaxgetdetails','AjaxController@ajaxgetdetails');
 Route::post('/ajaxremovemeberfromactivity','AjaxController@ajaxremovemeberfromactivity');
 Route::post('/ajaxallusers','AjaxController@ajaxallusers');
 Route::post('/ajaxmemberaddtoactivity','AjaxController@ajaxmemberaddtoactivity');
-Route::get('/dm/addclient','HomeController@addclient');
-Route::post('/saveclient','HomeController@saveclient');
-Route::delete('/deleteclient/{id}','HomeController@deleteclient');
-Route::get('/editclient/{id}','HomeController@editclient');
-Route::post('/updateclient/{id}','HomeController@updateclient');
-Route::get('/dm/viewallclient','HomeController@viewallclient');
+
 Route::get('/projects/addproject','HomeController@addproject');
 Route::post('/saveproject','HomeController@saveproject');
 Route::get('/projects/viewallproject','HomeController@viewallproject');
@@ -556,6 +551,12 @@ Route::post('/updatedepartment','HrController@updatedepartment');
 //-------------PMS MAIN ROUTE------------//
 Route::get('/dm/adduser','HomeController@adduser');
 Route::post('/saveuser','HomeController@saveuser');
+Route::get('/projects/addclient','HomeController@addclient');
+Route::post('/saveclient','HomeController@saveclient');
+Route::delete('/deleteclient/{id}','HomeController@deleteclient');
+Route::get('/editclient/{id}','HomeController@editclient');
+Route::post('/updateclient/{id}','HomeController@updateclient');
+
 //-------------END PMS MAIN ROUTE------------//
 });
 

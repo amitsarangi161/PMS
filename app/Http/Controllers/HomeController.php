@@ -2759,7 +2759,7 @@ return $message->sid;*/
       $client->userid=Auth::id();
       $client->save();
       Session::flash('message','Client Updated Successfully');
-      return redirect('/dm/viewallclient');
+      return redirect('/projects/addclient');
 
    }
 

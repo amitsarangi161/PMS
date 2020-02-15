@@ -224,7 +224,20 @@
              @endif
           </ul>
         </li>
-
+        <li class="{{ Request::is('projects*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-th"></i> <span>PROJECT MAIN</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ Request::is('projects/addclient') ? 'active' : '' }}"><a href="/projects/addclient"><i class="fa fa-circle-o text-aqua"></i>ADD A NEW CLIENT</a></li>
+            <!-- <li class="{{ Request::is('projects/addproject') ? 'active' : '' }}"><a href="/projects/addproject"><i class="fa fa-circle-o text-red"></i>ADD A PROJECT</a></li>
+             
+             <li class="{{ Request::is('projects/viewallproject') ? 'active' : '' }}"><a href="/projects/viewallproject"><i class="fa fa-circle-o text-red"></i>VIEW ALL PROJECT</a></li> -->
+          </ul>
+        </li>
 
 
     </section>
