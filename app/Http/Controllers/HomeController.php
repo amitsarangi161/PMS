@@ -27,7 +27,6 @@ use App\wallet;
 use App\debitvoucherheader;
 use App\particular;
 use App\todo;
-
 use Carbon\Carbon;
 use App\userrequest;
 use Mail;
@@ -65,6 +64,27 @@ class HomeController extends Controller
 {
 
 
+public function importvendor(Request $request){
+  $this->validate($request, [
+      'select_file'  => 'required|mimes:xls,xlsx'
+     ]);
+      $path = $request->file('select_file')->getRealPath();
+      $data = Excel::selectSheetsByIndex(0)->load($path)->get();
+        foreach($data as $kay=>$value){
+
+         $vendor=new vendor();
+         $vendor->vendorname=$value['vendorname'];
+         $vendor->mobile=$value['mobile'];
+         $vendor->details=$value['vendordetails'];
+         $vendor->bankname=$value['bankname'];
+         $vendor->acno=$value['accountnumber'];
+         $vendor->branchname=$value['branchname'];
+         $vendor->ifsccode=$value['ifsccode'];
+         $vendor->save();
+        }
+    Session::flash('status', 'Task was successful!');
+    return back();
+}
 public function importclient(Request $request){
   $this->validate($request, [
       'select_file'  => 'required|mimes:xls,xlsx'

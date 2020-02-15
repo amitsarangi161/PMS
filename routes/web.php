@@ -557,6 +557,7 @@ Route::delete('/deleteclient/{id}','HomeController@deleteclient');
 Route::get('/editclient/{id}','HomeController@editclient');
 Route::post('/updateclient/{id}','HomeController@updateclient');
 Route::post('/importclient','HomeController@importclient');
+Route::post('/importvendor','HomeController@importvendor');
 
 //-------------END PMS MAIN ROUTE------------//
 });
