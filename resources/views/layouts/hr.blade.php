@@ -250,19 +250,7 @@
           </ul>
       </li>
 
-        <li class="{{ Request::is('hrcom*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-envelope"></i> <span>COMPLAINT</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ Request::is('hrcom/complaint') ? 'active' : '' }}"><a href="/hrcom/complaint"><i class="fa fa-circle-o text-red"></i>CREATE A COMPLAINT</a></li>
 
-            <li class="{{ Request::is('hrcom/complainttoresolve') ? 'active' : '' }}"><a href="/hrcom/complainttoresolve"><i class="fa fa-circle-o text-red"></i>TO DO LIST</a></li>
-          </ul>
-      </li>
 
 
 @endif

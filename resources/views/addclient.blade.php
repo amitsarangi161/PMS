@@ -71,12 +71,27 @@
 </table>
 
 </form>
-<table>
-    
-</table>
+   @if(Session::has('msg'))
+   <p class="alert alert-info text-center">{{ Session::get('msg') }}</p>
+   @endif
+
+   @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div><br />
+      @endif
 
 @if($clients)
 <div class="box">
+<div class="box-header">
+     <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importclient" onclick="importclient();"><i class="fa fa-file-excel-o"></i> Import Employee</button>
+     <a href="/Client Import Sample.xlsx" download="Client-Sample" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
+          </span>
+</div>
 <div class="box-body">
     <div style="overflow-x:auto;">
 <table class="table table-responsive table-hover table-bordered table-striped datatable" width="100%">
@@ -115,16 +130,6 @@
             <td>{{$client->panno}}</td>
            
             <td><a href="/editclient/{{$client->id}}" class="btn btn-primary">EDIT</a></td>
-
-   <!--          <td>
-                <form action="/deleteclient/{{$client->id}}" method="post">
-                     {{method_field('DELETE')}}
-                     {{csrf_field()}}
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Do You Want Delete this Client');">DELETE</button>
-                    
-                </form>
-            </td> -->
-
         </tr>
 
         @endforeach
@@ -135,4 +140,37 @@
 </div>
 @endif
 
+
+<div class="modal fade in" id="importclient">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <form method="post" enctype="multipart/form-data" action="/importclient">
+      <div class="modal-header bg-navy">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: #fff;">×</span>
+      </button>
+        <h4 class="modal-title text-center">Upload Client Excel</h4>
+      </div>
+      <div class="modal-body">
+        
+              
+                {{ csrf_field() }}
+                <div class="form-group">
+                <label>Select File for Upload Client</label>
+                    <input type="file" name="select_file" />
+                    <span class="text-muted">.xls, .xslx</span>
+                </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success btn-flat">Upload</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    function importclient(){
+        alert("Do You Want To Upload Employee Excel");
+    }
 @endsection
