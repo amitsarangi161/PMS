@@ -247,7 +247,7 @@
           $("#pass1").val(randPassword);
     }
 
-    function edituser(id,name,email,mobile,pass,usertype,activityassigned,designation,username)
+    function edituser(id,name,email,mobile,pass,usertype,username)
     {
         
         $("#uid").val(id);
@@ -255,7 +255,6 @@
         $("#email").val(email);
         $("#mobile").val(mobile);
         $("#pass1").val(pass);
-        $("#designation").val(designation);
         $("#username").val(username);
         $('#usertype option[value="'+usertype+'"]').attr("selected", "selected");
         //$('#activityassigned option[value="'+activityassigned+'"]').attr("selected", "selected");
