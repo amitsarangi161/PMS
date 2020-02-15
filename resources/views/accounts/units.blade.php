@@ -21,7 +21,8 @@
 	
 </table>
 </form>
-<table class="table table-responsive table-hover table-bordered table-striped">
+<div class="table-responsive">
+<table class="table  table-hover table-bordered table-striped">
 	<thead class="bg-navy">
 		<th>ID</th>
 		<th>UNIT NAME</th>
@@ -49,6 +50,7 @@
 	</tbody>
 	
 </table>
+</div>
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 

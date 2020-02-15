@@ -1,7 +1,8 @@
 @extends('layouts.account')
 @section('content')
 
-<table class="table table-responsive table-hover table-bordered table-striped datatable">
+<div class="table-responsive">
+<table class="table  table-hover table-bordered table-striped datatable">
        <thead class="bg-navy">
        	   <tr>
        	   	<th>ID</th>
@@ -48,4 +49,5 @@
        
        </tbody>
 	</table>
+</div>
 @endsection
