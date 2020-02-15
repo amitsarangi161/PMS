@@ -251,8 +251,8 @@
             <a href="/" class="btn btn-warning btn-lg">MAIN</a>
             <a href="/adminhr" class="btn btn-success btn-lg">HR</a>
             <a href="/adminaccounts" class="btn btn-warning btn-lg">ACCOUNTS</a>
-            <a href="/admintender" class="btn btn-info btn-lg">TENDER</a>
-          </div>   
+            <a href="#" class="btn btn-info btn-lg">INVENTORY</a>
+          </div> 
         @endif
               
         <section class="content-header">      

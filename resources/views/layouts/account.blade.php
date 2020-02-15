@@ -123,7 +123,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Status Gear</b></span>
+      <span class="logo-lg"><b>PMS MONITOROS</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -203,9 +203,6 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
       
-    
-@if(Auth::user()->usertype=='MASTER ADMIN' ||Auth::user()->usertype=='ACCOUNTS' || Auth::user()->usertype=='CASHIER' ||Auth::user()->usertype=='ACCOUNTS ENTRY')
-
 
 
            <li class="{{ Request::is('adminaccounts') ? 'active' : '' }} treeview">
@@ -225,10 +222,6 @@
             </span>
           </a>
           <ul class="treeview-menu">
-             @if(Auth::user()->usertype=='MASTER ADMIN' ||Auth::user()->usertype=='ACCOUNTS' || Auth::user()->usertype=='CASHIER')
-             <li class="{{ Request::is('defination/labours') ? 'active' : '' }}"><a href="/defination/labours"><i class="fa fa-circle-o text-aqua"></i>MANAGE LABOURS</a></li>
-
-             <li class="{{ Request::is('defination/vehicles') ? 'active' : '' }}"><a href="/defination/vehicles"><i class="fa fa-circle-o text-aqua"></i>MANAGE VEHICLES</a></li>
 
             <li class="{{ Request::is('defination/expensehead') ? 'active' : '' }}"><a href="/defination/expensehead"><i class="fa fa-circle-o text-aqua"></i>EXPENSE HEAD</a></li>
 
@@ -236,475 +229,39 @@
             
 
             <li class="{{ Request::is('defination/deductiondefination') ? 'active' : '' }}"><a href="/defination/deductiondefination"><i class="fa fa-circle-o text-aqua"></i>DEDUCTION DEFINATION</a></li>
-             @endif
             <li class="{{ Request::is('defination/vendors') ? 'active' : '' }}"><a href="/defination/vendors"><i class="fa fa-circle-o text-aqua"></i>VENDORS</a></li>
 
             <li class="{{ Request::is('defination/managevendors') ? 'active' : '' }}"><a href="/defination/managevendors"><i class="fa fa-circle-o text-aqua"></i>MANAGE ALL VENDORS</a></li>
              <li class="{{ Request::is('defination/units') ? 'active' : '' }}"><a href="/defination/units"><i class="fa fa-circle-o text-aqua"></i>UNITS</a></li>
 
              <li class="{{ Request::is('defination/hsn') ? 'active' : '' }}"><a href="/defination/hsn"><i class="fa fa-circle-o text-aqua"></i>HSN MASTER</a></li>
-
-             <li class="{{ Request::is('defination/discount') ? 'active' : '' }}"><a href="/defination/discount"><i class="fa fa-circle-o text-aqua"></i>TENDER PREMIUM/DISCOUNT SETUP</a></li>
           </ul>
         </li>
 
 
-      <li class="{{ Request::is('setupcrv*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-gear"></i> <span>CREDIT VOUCHER SETUP</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li class="{{ Request::is('setupcrv/sacrsetup') ? 'active' : '' }}"><a href="/setupcrv/sacrsetup"><i class="fa fa-circle-o text-blue"></i>CR VOUCHER SETUP SA</a></li>
 
-            <li class="{{ Request::is('setupcrv/steplcrsetup') ? 'active' : '' }}"><a href="/setupcrv/steplcrsetup"><i class="fa fa-circle-o text-red"></i>CR VOUCHER SETUP STEPL</a></li>
-            <li class="{{ Request::is('setupcrv/stecscrsetup') ? 'active' : '' }}"><a href="/setupcrv/stecscrsetup"><i class="fa fa-circle-o text-red"></i>CR VOUCHER SETUP STECS</a></li>
 
-          </ul>
-        </li>
-      
-@if(Auth::user()->usertype=='MASTER ADMIN' ||Auth::user()->usertype=='ACCOUNTS' || Auth::user()->usertype=='CASHIER')
-       <li class="{{ Request::is('banks*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-university"></i> <span>BANKS</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li class="{{ Request::is('banks/banks') ? 'active' : '' }}"><a href="/banks/banks"><i class="fa fa-circle-o text-aqua"></i>ADD BANKS</a></li>
-            
-             <li class="{{ Request::is('banks/companybankaccount') ? 'active' : '' }}"><a href="/banks/companybankaccount"><i class="fa fa-circle-o text-red"></i>COMPANY BANK ACCOUNTS</a></li>
-
-            <li class="{{ Request::is('banks/userbankaccount') ? 'active' : '' }}"><a href="/banks/userbankaccount"><i class="fa fa-circle-o text-red"></i>ADD USER BANK ACCOUNT</a></li>
-            
-             <li class="{{ Request::is('banks/viewalluserbankaccount') ? 'active' : '' }}"><a href="/banks/viewalluserbankaccount"><i class="fa fa-circle-o text-red"></i>VIEW ALL USER ACCOUNTS</a></li>
-
-          </ul>
-        </li>
-
-  <li class="{{ Request::is('ledger*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-flag" aria-hidden="true"></i>
- <span>Ledger</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-              
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li class="{{ Request::is('ledger/ledger') ? 'active' : '' }}"><a href="/ledger/ledger"><i class="fa fa-circle-o text-aqua"></i>Ledger</a></li>
-           <li class="{{ Request::is('ledger/debitorledger') ? 'active' : '' }}"><a href="/ledger/debitorledger"><i class="fa fa-circle-o text-aqua"></i>CR Ledger</a></li>
-
-           <li class="{{ Request::is('ledger/creditorledger') ? 'active' : '' }}"><a href="/ledger/creditorledger"><i class="fa fa-circle-o text-aqua"></i>DR Ledger</a></li>
-
-          </ul>
-        </li>
-        
-        <li class="{{ Request::is('accbills*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-print"></i> <span>BILL</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+     
          
-              <span class="label label-danger pull-right"></span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ Request::is('accbills/createbill') ? 'active' : '' }}"><a href="/accbills/createbill"><i class="fa fa-circle-o text-red"></i>CREATE A BILL</a></li>
-
-             
-              
-             <li class="{{ Request::is('accbills/viewpendingbills') ? 'active' : '' }}"><a href="/accbills/viewpendingbills"><i class="fa fa-circle-o text-red"></i>VIEW PENDING BILL</a></li>
-              <li class="{{ Request::is('accbills/viewapprovedbills') ? 'active' : '' }}"><a href="/accbills/viewapprovedbills"><i class="fa fa-circle-o text-red"></i>VIEW APPROVED BILL</a></li>
-                <li class="{{ Request::is('accbills/viewrejectbills') ? 'active' : '' }}"><a href="/accbills/viewrejectbills"><i class="fa fa-circle-o text-red"></i>VIEW REJECT BILL</a></li>
-           
-            
-
-            <li class="{{ Request::is('accbills/viewallbills') ? 'active' : '' }}"><a href="/accbills/viewallbills"><i class="fa fa-circle-o text-red"></i>VIEW ALL BILL</a></li>
-
-          <!--   <li class="{{ Request::is('accbills/viewallinvoicenos') ? 'active' : '' }}"><a href="/accbills/viewallinvoicenos"><i class="fa fa-circle-o text-red"></i>VIEW ALL INVOICE NOS</a></li> -->
 
 
-           
-          
-          </ul>
-</li>
 
-        <li class="{{ Request::is('crvoucher*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-gear"></i> <span>CREDIT VOUCHER</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-
-            <li class="{{ Request::is('crvoucher/createcrvoucher*') ? 'active' : '' }} treeview">
-              <a href="#"><i class="fa fa-circle-o text-blue"></i>CREATE CR VOUCHER
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <!-- <li class="{{ Request::is('crvoucher/createcrvoucher/createnew') ? 'active' : '' }}"><a href="/crvoucher/createcrvoucher/createnew"><i class="fa fa-circle-o"></i>CREATE NEW</a></li> -->
-                <li class="{{ Request::is('crvoucher/createcrvoucher/createfrombill') ? 'active' : '' }}"><a href="/crvoucher/createcrvoucher/createfrombill"><i class="fa fa-circle-o"></i>CREATE FROM BILL</a></li>
-           
-              </ul>
-            </li>
-
-          <!--  <li class="{{ Request::is('crvoucher/createcrvoucher') ? 'active' : '' }}"><a href="/crvoucher/createcrvoucher"><i class="fa fa-circle-o text-blue"></i>CREATE CR VOUCHER</a></li> -->
-
-            <li class="{{ Request::is('crvoucher/viewallcrvoucher') ? 'active' : '' }}"><a href="/crvoucher/viewallcrvoucher"><i class="fa fa-circle-o text-blue"></i>VIEW ALL CR VOUCHER</a></li>
 
 
        
 
 
-          </ul>
-
-        </li>
-
-          @php
-              $counthodpendingexp=\App\expenseentry::where('status','HOD PENDING')->count();
-              $countpendingexp=\App\expenseentry::where('status','PENDING')->count();
-              $countapprovedexp=\App\expenseentry::where('status','APPROVED')->count();
-              $countcancelledexp=\App\expenseentry::where('status','CANCELLED')->count();
-              $countwalletpaidexp=\App\expenseentry::where('status','WALLET PAID')->count();
-              $countallexp=\App\expenseentry::count();
-              
-          @endphp
-
-         <li class="{{ Request::is('expense*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-dollar"></i> <span>EXPENSES ENTRY</span>
-
-            <span class="pull-right-container">
-
-              <i class="fa fa-angle-left pull-right"></i><span class="label label-warning pull-right">{{$countpendingexp+$counthodpendingexp}}</span>
-            </span>
-
-          </a>
-          <ul class="treeview-menu">
-
-          
-
-            <li class="{{ Request::is('expense/expenseentry') ? 'active' : '' }}"><a href="/expense/expenseentry"><i class="fa fa-circle-o text-red"></i>EXPENSE ENTRY</a></li>
-            <li class="{{ Request::is('expense/pendinghodexpenseentry') ? 'active' : '' }}"><a href="/expense/pendinghodexpenseentry"><i class="fa fa-circle-o text-red"></i>PENDING HOD EXPENSE ENTRY
-
-              <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$counthodpendingexp}}</span>
-                </span>
-            </a></li>
-            <li class="{{ Request::is('expense/pendingexpenseentry') ? 'active' : '' }}"><a href="/expense/pendingexpenseentry"><i class="fa fa-circle-o text-red"></i>PENDING EXPENSE ENTRY
-
-              <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$countpendingexp}}</span>
-                </span>
-            </a></li>
-            <li class="{{ Request::is('expense/approvedexpenseentry') ? 'active' : '' }}"><a href="/expense/approvedexpenseentry"><i class="fa fa-circle-o text-red"></i>APPROVED EXPENSE ENTRY
-
-             <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$countapprovedexp}}</span>
-                </span>
-            </a></li>
-
-            <li class="{{ Request::is('expense/cancelledexpenseentry') ? 'active' : '' }}"><a href="/expense/cancelledexpenseentry"><i class="fa fa-circle-o text-red"></i>CANCELLED EXPENSE ENTRY
-              <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$countcancelledexp}}</span>
-                </span>
-            </a></li>
-
-            <li class="{{ Request::is('expense/walletpaidexpenseentry') ? 'active' : '' }}"><a href="/expense/walletpaidexpenseentry"><i class="fa fa-circle-o text-red"></i>WALLET PAID EXPENSE ENTRY
-              <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$countwalletpaidexp}}</span>
-                </span>
-            </a></li>
-
-            <li class="{{ Request::is('expense/viewallexpenseentry') ? 'active' : '' }}"><a href="/expense/viewallexpenseentry"><i class="fa fa-circle-o text-red"></i>ALL EXPENSE ENTRY
-                <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$countallexp}}</span>
-                </span>
-
-            </a></li>
-
-
-          </ul>
-        </li>
-
-  @endif
-
-      @php
-        $countpendingdrmgr=\App\debitvoucherheader::where('status','PENDING')->count();
-        $countpendingdradmin=\App\debitvoucherheader::where('status','MGR APPROVED')->count();
-        $countapproveddrvoucher=\App\debitvoucherheader::where('status','ADMIN APPROVED')
-        ->count();
-        $countcompleteddrvoucher=\App\debitvoucherheader::where('status','COMPLETED')
-        ->count();
-        $countcancelleddrvoucher=\App\debitvoucherheader::where('status','CANCELLED')
-        ->count();
-        $alldr=\App\debitvoucherheader::where('id','>','0')
-        ->count();
-      @endphp
-         
-          <li class="{{ Request::is('vouchers*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-rupee"></i> <span>DEBIT VOUCHER</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-                <span class="label label-warning pull-right">{{$countpendingdrmgr+$countpendingdradmin}}</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ Request::is('vouchers/debitvoucher') ? 'active' : '' }}"><a href="/vouchers/debitvoucher"><i class="fa fa-circle-o text-red"></i>DEBIT VOUCHER</a></li>
-          @if(Auth::user()->usertype=='MASTER ADMIN' ||Auth::user()->usertype=='ACCOUNTS' || Auth::user()->usertype=='CASHIER')
-            <li class="{{ Request::is('vouchers/pendingdebitvouchermgr') ? 'active' : '' }}"><a href="/vouchers/pendingdebitvouchermgr" title="PENDING DR VOUCHER(MGR)" class="chngdrfont"><i class="fa fa-circle-o text-red"></i>PENDING DR VOUCHER(MGR)
-            <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$countpendingdrmgr}}</span>
-            </span>
-
-            </a></li>
-
-            <li class="{{ Request::is('vouchers/pendingdebitvoucheradmin') ? 'active' : '' }}"><a href="/vouchers/pendingdebitvoucheradmin" class="chngdrfont" title="PENDING DR VOUCHER(ADMIN)"><i class="fa fa-circle-o text-red"></i>PENDING DR VOUCHER(ADMIN)
-             <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$countpendingdradmin}}</span>
-            </span>
-            </a></li>
-
-             <li class="{{ Request::is('vouchers/approveddebitvoucher') ? 'active' : '' }}"><a href="/vouchers/approveddebitvoucher"><i class="fa fa-circle-o text-red"></i>APPROVED DR VOUCHER 
-              <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$countapproveddrvoucher}}</span>
-            </span>
-             </a></li>
-               <li class="{{ Request::is('vouchers/completeddebitvoucher') ? 'active' : '' }}"><a href="/vouchers/completeddebitvoucher"><i class="fa fa-circle-o text-red"></i>COMPLETED DR VOUCHER 
-              <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$countcompleteddrvoucher}}</span>
-            </span>
-             </a></li>
-               <li class="{{ Request::is('vouchers/cancelleddebitvoucher') ? 'active' : '' }}"><a href="/vouchers/cancelleddebitvoucher"><i class="fa fa-circle-o text-red"></i>CANCELLED DR VOUCHER 
-              <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$countcancelleddrvoucher}}</span>
-            </span>
-             </a></li>
-
-          @endif
-            <li class="{{ Request::is('vouchers/viewalldebitvoucher') ? 'active' : '' }}"><a href="/vouchers/viewalldebitvoucher"><i class="fa fa-circle-o text-red"></i>ALL DEBIT VOUCHERS
-              <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$alldr}}</span>
-            </span>
-
-            </a></li>
-           
-
-          </ul>
-        </li>
-        @if(Auth::user()->usertype=='MASTER ADMIN' ||Auth::user()->usertype=='ACCOUNTS' || Auth::user()->usertype=='CASHIER')
-         @php
-
-               $pendingdrcount=\App\debitvoucherpayment::where('paymentstatus','PENDING')
-                                                       ->count();
-                 $paiddrcount=\App\debitvoucherpayment::where('paymentstatus','PAID')
-                                                       ->count();
-           @endphp
-
-          <li class="{{ Request::is('dvpay*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-book"></i> <span>DEBIT VOUCHER PAYMENT</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-              <span class="label label-warning pull-right">{{$pendingdrcount}}</span>
-                </span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li class="{{ Request::is('dvpay/pendingdrpayment') ? 'active' : '' }}"><a href="/dvpay/pendingdrpayment"><i class="fa fa-circle-o text-aqua"></i>PENDING DR  PAYMENT
-
-            <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$pendingdrcount}}</span>
-                </span>
-           </a></li>
-            
-             <li class="{{ Request::is('dvpay/paiddramount') ? 'active' : '' }}"><a href="/dvpay/paiddramount"><i class="fa fa-circle-o text-red"></i>PAID DR PAYMENTS
-               <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$paiddrcount}}</span>
-                </span>
-             </a></li>
-
-           
-
-          </ul>
-        </li>
-       <li class="{{ Request::is('requisitions*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-retweet"></i> <span>REQUISITIONS</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ Request::is('requisitions/applicationform') ? 'active' : '' }}"><a href="/requisitions/applicationform"><i class="fa fa-circle-o text-red"></i>APPLICATION FORM</a></li>
-
-
-
-          </ul>
-        </li>
 
 
  
 
-         @php
-          $mgrpendingreqcount=\App\requisitionheader::where('status','PENDING MGR')
-                          ->count();
-          $hodpendingreqcount=\App\requisitionheader::where('status','PENDING HOD')
-                          ->count();
-          $pendingreqcount=\App\requisitionheader::where('status','PENDING')
-                          ->count();
-          $approvedreqcount=\App\requisitionheader::where('status','APPROVED')
-                          ->count();
-          $completedreqcount=\App\requisitionheader::where('status','COMPLETED')
-                          ->count();
-          $cancelledreqcount=\App\requisitionheader::where('status','CANCELLED')
-                          ->count();
-
-
-          @endphp
-        <li class="{{ Request::is('viewrequisitions*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-envelope"></i> <span>VIEW REQUISITIONS</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-              <span class="label label-warning pull-right">{{$mgrpendingreqcount+$pendingreqcount+$hodpendingreqcount}}</span>
-            </span>
-          </a>
-
-       
-          <ul class="treeview-menu">
-
-                  <li class="{{ Request::is('viewrequisitions/pendingrequisitionshod') ? 'active' : '' }}"><a href="/viewrequisitions/pendingrequisitionshod" title="PENDING REQUISITIONS(FOR HOD)" class="chngreqfont"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(FOR HOD)
-             <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$hodpendingreqcount}}</span>
-                </span>
-            </a></li>
-
-
-                <li class="{{ Request::is('viewrequisitions/pendingrequisitionsmgr') ? 'active' : '' }}"><a title="PENDING REQUISITIONS(FOR ACCOUNTS)" class="chngreqfont" href="/viewrequisitions/pendingrequisitionsmgr"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(ACCOUNTS)
-             <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$mgrpendingreqcount}}</span>
-                </span>
-            </a></li>
-
-            <li class="{{ Request::is('viewrequisitions/pendingrequisitions') ? 'active' : '' }}"><a title="PENDING REQUISITIONS(FOR ADMIN)" class="chngreqfont" href="/viewrequisitions/pendingrequisitions"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(FOR ADMIN)
-             <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$pendingreqcount}}</span>
-                </span>
-            </a></li>
-            <li class="{{ Request::is('viewrequisitions/approvedrequisitions') ? 'active' : '' }}"><a href="/viewrequisitions/approvedrequisitions"><i class="fa fa-circle-o text-blue"></i>APPROVED REQUISITIONS
-             <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$approvedreqcount}}</span>
-                </span>
-            </a></li>
-
-             <li class="{{ Request::is('viewrequisitions/completedrequisitions') ? 'active' : '' }}"><a href="/viewrequisitions/completedrequisitions"><i class="fa fa-circle-o text-blue"></i>COMPLETED REQUISITIONS
-              <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$completedreqcount}}</span>
-                </span>
-             </a></li>
-           
-              <li class="{{ Request::is('viewrequisitions/cancelledrequisitions') ? 'active' : '' }}"><a href="/viewrequisitions/cancelledrequisitions"><i class="fa fa-circle-o text-blue"></i>CANCELLED REQUISITIONS
-               <span class="pull-right-container">
-                  <span class="label label-success pull-right">{{$cancelledreqcount}}</span>
-                </span>
-
-              </a></li>
-              <li class="{{ Request::is('viewrequisitions/viewapplicationform') ? 'active' : '' }}"><a href="/viewrequisitions/viewapplicationform"><i class="fa fa-circle-o text-red"></i>VIEW ALL APPLICATION FORM</a></li>
-
-          </ul>
-
-        </li>
 
 
 
-         <li class="{{ Request::is('prb*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-credit-card"></i> <span>PAY REQUISITION BANK</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-             @php 
-                  $banks=\App\useraccount::select('useraccounts.*','banks.bankname')
-                        ->where('useraccounts.type','COMPANY')
-                        ->leftJoin('banks','useraccounts.bankid','=','banks.id')
-                        ->get();
-             @endphp
 
-             @if(count($banks)>0)
-             @foreach($banks as $bank)
-          <li class="{{ Request::is('prb/'.$bank->bankname.'/*') ? 'active' : '' }}"><a href="/prb/{{$bank->bankname}}/{{$bank->id}}"><i class="fa fa-circle-o text-blue"></i>{{$bank->bankname}} PENDING AMOUNTS</a></li>
-          
 
-              <li class="{{ Request::is('prb/paidamt/'.$bank->bankname.'/*') ? 'active' : '' }}"><a href="/prb/paidamt/{{$bank->bankname}}/{{$bank->id}}"><i class="fa fa-circle-o text-blue"></i>{{$bank->bankname}} PAID AMOUNTS</a></li>
-             @endforeach
-           
-            @else
-             <li class="{{ Request::is('prc/*') ? 'active' : '' }}"><a href="#"><i class="fa fa-circle-o text-blue"></i>CURRENTLY NO BANK ADDED</a></li>
-            @endif
-          </ul>
-        </li>
 
-         <li class="{{ Request::is('prc*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-money"></i> <span>PAY REQUISITION CASH</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ Request::is('prc/requisitioncashrequest') ? 'active' : '' }}"><a href="/prc/requisitioncashrequest"><i class="fa fa-circle-o text-blue"></i>REQUISITION CASH REQUEST</a></li>
-           
-           <li class="{{ Request::is('prc/viewpaidrequisitioncash') ? 'active' : '' }}"><a href="/prc/viewpaidrequisitioncash"><i class="fa fa-circle-o text-blue"></i>VIEW PAID REQUISITION(CASH)</a></li>
-
-          </ul>
-
-        </li>
-@endif
-
-         <li class="{{ Request::is('ucacc*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-envelope"></i> <span>COMPLAINT</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ Request::is('ucacc/complaint') ? 'active' : '' }}"><a href="/ucacc/complaint"><i class="fa fa-circle-o text-red"></i>CREATE A COMPLAINT</a></li>
-
-            <li class="{{ Request::is('ucacc/complainttoresolve') ? 'active' : '' }}"><a href="/ucacc/complainttoresolve"><i class="fa fa-circle-o text-red"></i>TO DO LIST</a></li>
-
-          </ul>
-        </li>
-
-<li class="{{ Request::is('accountmsg*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-envelope"></i> <span>MESSAGE</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-               <span class="label label-danger pull-right" id="countmsg"></span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <!-- <li class="{{ Request::is('usermsg/writemsg') ? 'active' : '' }}"><a href="/usermsg/writemsg"><i class="fa fa-circle-o text-red"></i>SEND A MESSAGE</a></li> -->
-
-            <li class="{{ Request::is('accountmsg/mymessages') ? 'active' : '' }}"><a href="/accountmsg/mymessages"><i class="fa fa-circle-o text-red"></i>MESSAGES</a></li>
-            
-           
-
-          </ul>
-</li>
-        @endif
+        
 
        
     </section>
@@ -716,10 +273,10 @@
     <div class="content-wrapper">
        @if(Auth::user()->usertype=='MASTER ADMIN')
           <div class="btn-group btn-group-justified amit-btn">
-            <a href="/" class="btn btn-warning btn-lg">Construction</a>
+            <a href="/" class="btn btn-warning btn-lg">MAIN</a>
             <a href="/adminhr" class="btn btn-success btn-lg">HR</a>
-            <a href="/adminaccounts" class="btn btn-warning btn-lg">Accounts</a>
-            <a href="/admintender" class="btn btn-info btn-lg">TENDER</a>
+            <a href="/adminaccounts" class="btn btn-warning btn-lg">ACCOUNTS</a>
+            <a href="#" class="btn btn-info btn-lg">INVENTORY</a>
           </div>   
         @endif
         <!-- Content Header (Page header) -->
