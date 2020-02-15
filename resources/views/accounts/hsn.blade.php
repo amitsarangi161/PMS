@@ -27,7 +27,8 @@
 </table>
 </form>
 @if(count($hsncodes)>0)
-<table class="table table-responsive table-hover table-bordered table-striped" >
+<div class="table-responsive">
+<table class="table  table-hover table-bordered table-striped" >
     <thead>
         <tr class="bg-navy">
             <th class="text-center">SL.NO</th>
@@ -51,6 +52,7 @@
         @endforeach
     </tbody>
 </table>
+</div>
 
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">

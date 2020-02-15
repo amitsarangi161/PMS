@@ -44,7 +44,8 @@
 </form>
 </div>
 
-	<table class="table table-responsive table-hover table-bordered table-striped datatable">
+<div class="table-responsive">
+	<table class="table table-hover table-bordered table-striped datatable">
        <thead class="bg-navy">
        	   <tr>
        	   	<th>ID</th>
@@ -77,7 +78,7 @@
        	@endforeach
        </tbody>
 	</table>
-
+</div>
 
 	<div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
