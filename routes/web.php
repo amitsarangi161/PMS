@@ -114,11 +114,11 @@ Route::get('/dm/activity','HomeController@activity')->name('activity');
 Route::post('/saveactivity','HomeController@saveactivity');
 Route::delete('/deleteactivity/{id}','HomeController@deleteactivity');
 Route::post('/updateactivity','HomeController@updateactivity');
-Route::get('/dm/adduser','HomeController@adduser');
+
 Route::get('/hrmain/adduser','HrController@adduser');
 Route::get('/tour/tourapprovalapplication','HomeController@tourapprovalapplication');
 Route::post('/updatetourapplication','HomeController@updatetourapplication');
-Route::post('/saveuser','HomeController@saveuser');
+
 Route::delete('/deleteuser/{id}','HomeController@deleteuser');
 Route::post('/updateuser','HomeController@updateuser');
 Route::post('/hrupdateuser','HomeController@updateuser');
@@ -550,6 +550,13 @@ Route::get('/editemployeedetails/{id}','HrController@editemployeedetails');
 Route::post('/updateemployeedetails/{id}','HrController@updateemployeedetails');
 Route::post('/ajaxgetdept','HrController@ajaxgetdept');
 Route::post('/updatedepartment','HrController@updatedepartment');
+//-------------PMS END ROUTE------------//
+
+
+//-------------PMS MAIN ROUTE------------//
+Route::get('/dm/adduser','HomeController@adduser');
+Route::post('/saveuser','HomeController@saveuser');
+//-------------END PMS MAIN ROUTE------------//
 });
 
 

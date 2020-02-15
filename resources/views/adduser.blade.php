@@ -39,12 +39,6 @@
             <td colspan="2"><input type="number" class="form-control" autocomplete="off" name="mobile" placeholder="ENTER MOBILE" ></td>
           </tr>
           <tr>
-            <td>DESIGNATION<span style="color: red"> *</span></td>
-            <td colspan="2">
-              <input type="text" name="designation" placeholder="Enter User Designation" class="form-control">
-            </td>
-          </tr>
-          <tr>
             <td>PASSWORD<span style="color: red"> *</span></td>
             <td><input type="text" class="form-control" autocomplete="off" id="pass" name="userpassword" placeholder="ENTER PASSWORD" required></td>
             <td><button type="button" onclick="generatepassword();" class="btn btn-info">Generate a Password</button></td>
@@ -55,6 +49,7 @@
               <select name="usertype" class="form-control" required>
                   <option value="">Select</option>
                   <option value="USER" selected>USER</option>
+                  <option value="MASTER ADMIN">MASTER ADMIN</option>
                   <option value="ADMIN">ADMIN</option>
                   <option value="ACCOUNTS">ACCOUNTS</option>
                   <option value="ACCOUNTS ENTRY">ACCOUNTS ENTRY</option>
@@ -62,23 +57,7 @@
                   <option value="HR">HR</option>
               </select>
             </td>
-          </tr>
-
-          
-
-              <tr>
-              <td>ASSIGN A ACTIVITY<span style="color: red"> *</span></td>
-            <td colspan="2">
-              <select name="activityassigned" class="form-control" >
-                  <option value="">Select</option>
-                   @foreach($activities as $activity)
-                    <option value="{{$activity->id}}" title="{{$activity->description}}">{{$activity->activityname}}</option>
-                   @endforeach
-              </select>
-            </td>
-          </tr>
-
-        
+          </tr>        
         <tr>
             <td></td>
 <td colspan="3"><input type="submit" value="Submit" class="btn btn-success" style="float: right ;"></td>
@@ -99,8 +78,6 @@
             <th>MOBILE</th>
             <th>PASSWORD</th>
             <th>USER TYPE</th>
-            <th>ASSIGNED ACTIVITY</th>
-            <th>DESIGNATION</th>
             <th>ACTIVE</th>
             <th>EDIT</th>
             <!-- <th>DELETE</th> -->
@@ -116,29 +93,12 @@
              <td>{{$user->mobile}}</td>
              <td>{{$user->pass}}</td>
              <td>{{$user->usertype}}</td>
-             <td>{{$user->activityname}}</td>
-             <td>{{$user->designation}}</td>
              @if($user->active=='1')
               <td><span class="label label-success" ondblclick="callmodals('{{$user->id}}')">ACTIVE</span></td>
              @else
                <td><span class="label label-danger" ondblclick="callmodals('{{$user->id}}')">INACTIVE</span></td>
              @endif
-             <td><button onclick="edituser('{{$user->id}}','{{$user->name}}','{{$user->email}}','{{$user->mobile}}','{{$user->pass}}','{{$user->usertype}}','{{$user->activityassigned}}','{{$user->designation}}','{{$user->username}}')" class="btn btn-info">EDIT</button></td>
-             <!-- <td>
-                @if($user->usertype!='MASTER ADMIN')
-                 <form action="/deleteuser/{{$user->id}}" method="post">
-                       {{method_field('DELETE')}}
-                       {{csrf_field()}}
-                       
-                     <button type="submit" onclick="return confirm('Do You Want to Delete This User?');" class="btn btn-danger">DELETE</button>
-                      
-                 </form>
-                  @else
-                  <button type="button" onclick="return confirm('Do You Want to Delete This User?');" class="btn btn-danger" disabled>DELETE</button>
-                  @endif
-
-             </td> -->
-
+             <td><button onclick="edituser('{{$user->id}}','{{$user->name}}','{{$user->email}}','{{$user->mobile}}','{{$user->pass}}','{{$user->usertype}}','{{$user->username}}')" class="btn btn-info">EDIT</button></td>
          </tr>
 
         @endforeach
@@ -183,12 +143,6 @@
             <td>MOBILE<span style="color: red"> *</span></td>
             <td colspan="2"><input type="number" class="form-control" autocomplete="off" id="mobile" name="mobile" placeholder="ENTER MOBILE" ></td>
           </tr>
-            <tr>
-            <td>DESIGNATION<span style="color: red"> *</span></td>
-            <td>
-              <input type="text" name="designation" id="designation" class="form-control">
-            </td>
-          </tr>
           <tr>
             <td>PASSWORD<span style="color: red"> *</span></td>
             <td><input type="text" class="form-control" autocomplete="off" id="pass1" name="userpassword" placeholder="ENTER PASSWORD" required></td>
@@ -200,6 +154,7 @@
             <td colspan="2">
               <select name="usertype" id="usertype" class="form-control"  required>
                   <option value="">Select</option>
+                  <option value="MASTER ADMIN">MASTER ADMIN</option>
                   <option value="USER">USER</option>
                   <option value="ADMIN">ADMIN</option>
                   <option value="ACCOUNTS">ACCOUNTS</option>

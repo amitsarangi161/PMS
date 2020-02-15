@@ -70,7 +70,6 @@ public function saveemployeedetails(Request $request){
         $employee->presentaddress=$request->presentaddress;
         $employee->permanentaddress=$request->permanentaddress;
         $employee->save();
-
         $eid=$employee->id;
         $employeecompany=new employeecompanydetail();
         $employeecompany->employee_id=$eid;
@@ -143,18 +142,17 @@ public function saveemployeedetails(Request $request){
         $user=new User();
         $user->employee_id=$eid;
         $user->name=$request->employeename;
+        $user->username=$request->email;
         $user->email=$request->email;
         $user->password=bcrypt($request->phone);
         $user->pass=$request->phone;
         $user->mobile=$request->phone;
         $user->usertype="USER";
         $user->save();
-        Session::flash('message','Employee save successfully');
-        return redirect('hrmain/employeelist');
       }
-      else{
-        Session::flash('duplicate','Employee Already Registered');
-      }
+      Session::flash('message','Employee save successfully');
+      return redirect('hrmain/employeelist');
+      
        
 }
 public function editemployeedetails($id){
@@ -303,6 +301,7 @@ public function importemployee(Request $request){
           $user=new User();
           $user->employee_id=$empid;
           $user->name=$value['employeename'];
+          $user->username=$value['email'];
           $user->email=$value['email'];
           $user->password=bcrypt($value['mobile1']);
           $user->pass=$value['mobile1'];

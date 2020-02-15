@@ -2615,14 +2615,8 @@ return $message->sid;*/
    public function adduser()
    {
     
-      $users=User::select('users.*','activities.activityname')
-             ->leftJoin('assignedactivities','assignedactivities.userid','=','users.id')
-             ->leftJoin('activities','assignedactivities.activityassigned','=','activities.id')
-             ->groupBy('users.id')
-             ->get();
-      $activities=activity::all();
-
-      return view('adduser',compact('users','activities'));
+      $users=User::all();
+      return view('adduser',compact('users'));
    }
 
    public function saveuser(Request $request)
@@ -2645,12 +2639,7 @@ return $message->sid;*/
        $user->username=$request->username;
        $user->password= bcrypt($request->userpassword);
        $user->pass=$request->userpassword;
-       $user->designation=$request->designation;
        $user->save();
-       $assignedactivity=new assignedactivity();
-       $assignedactivity->userid=$user->id;
-       $assignedactivity->activityassigned=$request->activityassigned;
-       $assignedactivity->save();
         $email=$user->email;
         $uname=$user->username;
         $password=$user->pass;
@@ -2681,15 +2670,13 @@ return $message->sid;*/
 
       $user=User::find($request->uid);
       $user->name=$request->name;
-       $user->email=$request->email;
-       $user->mobile=$request->mobile;
-       $user->usertype=$request->usertype;
-       $user->username=$request->username;
-       $user->password= bcrypt($request->userpassword);
-       $user->designation=$request->designation;
-       $user->pass=$request->userpassword;
-      
-       $user->save();
+      $user->email=$request->email;
+      $user->mobile=$request->mobile;
+      $user->usertype=$request->usertype;
+      $user->username=$request->username;
+      $user->password= bcrypt($request->userpassword);
+      $user->pass=$request->userpassword;
+      $user->save();
     Session::flash('msg','User Updated Successfully');
     return back();
    }

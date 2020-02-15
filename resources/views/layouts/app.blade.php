@@ -219,22 +219,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ Request::is('dm/activity') ? 'active' : '' }}"><a href="/dm/activity"><i class="fa fa-circle-o text-aqua"></i>DEFINE ACTIVITY</a></li>
             @if(Auth::user()->usertype=='MASTER ADMIN')
             <li class="{{ Request::is('dm/adduser') ? 'active' : '' }}"><a href="/dm/adduser"><i class="fa fa-circle-o text-aqua"></i>ADD NEW USER</a></li>
-
-             <li class="{{ Request::is('dm/newuserrequest') ? 'active' : '' }}"><a href="/dm/newuserrequest"><i class="fa fa-circle-o text-aqua"></i>NEW USER REQUEST</a></li>
              @endif
-            <li class="{{ Request::is('dm/activitydetails') ? 'active' : '' }}"><a href="/dm/activitydetails"><i class="fa fa-circle-o text-aqua"></i>ASSIGNED ACTIVITY TO USERS</a></li>
-
-            <li class="{{ Request::is('dm/addclient') ? 'active' : '' }}"><a href="/dm/addclient"><i class="fa fa-circle-o text-aqua"></i>ADD A NEW CLIENT</a></li>
-
-
-            <li class="{{ Request::is('dm/viewallclient') ? 'active' : '' }}"><a href="/dm/viewallclient"><i class="fa fa-circle-o text-aqua"></i>VIEW ALL CLIENT</a></li>
-            <li class="{{ Request::is('dm/userassigntohod') ? 'active' : '' }}"><a href="/dm/userassigntohod"><i class="fa fa-circle-o text-aqua"></i>USER ASSIGN TO HOD</a></li>
-
-            <li class="{{ Request::is('dm/viewallassignedusertohod') ? 'active' : '' }}"><a href="/dm/viewallassignedusertohod"><i class="fa fa-circle-o text-aqua"></i>VIEW ASSIGNED USERS TO HOD</a></li>
-
           </ul>
         </li>
 
