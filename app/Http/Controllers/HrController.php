@@ -263,7 +263,7 @@ public function importemployee(Request $request){
       'select_file'  => 'required|mimes:xls,xlsx'
      ]);
       $path = $request->file('select_file')->getRealPath();
-      $data = Excel::load($path)->get();
+      $data = Excel::selectSheetsByIndex(0)->load($path)->get();
       //return $data;
       if($data->count()>0){
         foreach($data as $kay=>$value){

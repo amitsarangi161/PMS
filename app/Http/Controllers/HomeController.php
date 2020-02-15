@@ -59,10 +59,43 @@ use App\expenseentrydailyvehicle;
 use App\suggestion;
 use App\testimage;
 use DataTables;
+use Excel;
 //use Barryvdh\DomPDF\Facade as PDF;
 class HomeController extends Controller
 {
 
+
+public function importclient(Request $request){
+  $this->validate($request, [
+      'select_file'  => 'required|mimes:xls,xlsx'
+     ]);
+      $path = $request->file('select_file')->getRealPath();
+      $data = Excel::selectSheetsByIndex(0)->load($path)->get();
+        foreach($data as $kay=>$value){
+
+          $client=new client();
+          $client->clientname=$value['clientname'];
+          $client->orgname=$value['orgname'];
+          $client->contact1=$value['mobile1'];
+          $client->contact2=$value['mobile2'];
+          $client->officecontact=$value['officeno'];
+          $client->email=$value['email'];
+          $client->gstn=$value['gstno'];
+          $client->panno=$value['panno'];
+          $client->residentaddress=$value['residentaddress'];
+          $client->officeaddress=$value['officeaddress'];
+          $client->city=$value['city'];
+          $client->dist=$value['district'];
+          $client->state=$value['state'];
+          $client->country=$value['country'];
+          $client->additionalinfo=$value['additionalinfo'];
+          $client->save();
+        }
+    Session::flash('status', 'Task was successful!');
+    return back();
+}
+
+/*--------Start New Works------*/
      public function changeuserstatus(Request $request)
      {
          $user=User::find($request->chid);

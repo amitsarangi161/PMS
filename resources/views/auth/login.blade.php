@@ -33,7 +33,7 @@
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate = "Username is required">
-                        <input class="input100" type="text"  name="username" value="{{ old('username') }}" required placeholder="Email">
+                        <input class="input100" type="text"  name="username" value="{{ old('username') }}" required placeholder="Username">
                         <span class="focus-input100"></span>
                     </div>
                      @if ($errors->has('email'))
