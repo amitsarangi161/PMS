@@ -93,8 +93,8 @@
           </span>
 </div>
 <div class="box-body">
-    <div style="overflow-x:auto;">
-<table class="table table-responsive table-hover table-bordered table-striped datatable" width="100%">
+    <div class="table-responsive">
+<table class="table table-hover table-bordered table-striped datatable" width="100%">
     <thead>
         <tr class="bg-navy" style="font-size: 10px;">
             <th>ID</th>
@@ -173,4 +173,5 @@
     function importclient(){
         alert("Do You Want To Upload Employee Excel");
     }
+</script>
 @endsection
