@@ -9,7 +9,7 @@
        	   	<th>VENDOR NAME</th>
        	   	<th>MOBILE</th>
        	   	<th>DETAILS</th>
-       	   	<th>VENDORS ID PROOF</th>
+       	   	<!-- <th>VENDORS ID PROOF</th> -->
        	   	<th>PHOTO</th>
        	   	<th>ADDED BY</th>
        	   	<th>EDIT</th>
@@ -23,11 +23,11 @@
            	<td>{{$vendor->vendorname}}</td>
            	<td>{{$vendor->mobile}}</td>
            	<td>{{$vendor->details}}</td>
-           	<td>
+           	<!-- <td>
               <a href="{{ asset('/img/vendor/'.$vendor->vendoridproof )}}" target="_blank">
               <img style="height:70px;width:95px;" alt="click to view the file" src="{{ asset('/img/vendor/'.$vendor->vendoridproof )}}">
               </a>
-            </td>
+            </td> -->
            	<td>
                <a href="{{ asset('/img/vendor/'.$vendor->photo )}}" target="_blank">
               <img style="height:70px;width:95px;" alt="click to view the file" src="{{ asset('/img/vendor/'.$vendor->photo )}}">

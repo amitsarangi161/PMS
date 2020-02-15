@@ -61,7 +61,7 @@
         <td colspan="2"><input type="text" placeholder="Enter IFSC Code" name="ifsccode" class="form-control"></td>
       </tr>
 
-         <tr>
+        <!-- <tr>
 	 	 <td colspan="2"><strong>VENDOR ID PROOF<span style="color: red"> *</span></strong></td>
 	 	 <td colspan="2">
 	 	 	<input name="vendoridproof" type="file" onchange="readURL(this);">
@@ -70,7 +70,7 @@
             <img style="height:70px;width:95px;" alt="noimage" id="imgshow">
 	 	 </td>
 	 	 
-	    </tr>
+	    </tr> -->
 	   <tr>
 	   	 <td colspan="2"><strong>VENDOR PHOTO/AC. INFO PHOTO<span style="color: red"> *</span></strong></td>
 	 	 <td colspan="2">

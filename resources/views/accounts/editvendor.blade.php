@@ -52,7 +52,7 @@
         <td><input type="text" value="{{$vendor->ifsccode}}" name="ifsccode" class="form-control"></td>
       </tr>
 
-         <tr>
+    <!--  <tr>
 	 	 <td><strong>VENDOR ID PROOF<span style="color: red"> *</span></strong></td>
 	 	 <td>
 	 	 	<input name="vendoridproof" type="file" onchange="readURL(this);">
@@ -61,7 +61,7 @@
             <img style="height:70px;width:95px;" src="{{ asset('/img/vendor/'.$vendor->vendoridproof )}}" style="height:70px;width:95px;" alt="noimage" id="imgshow">
 	 	 </td>
 	 	 
-	    </tr>
+	    </tr> -->
 	   <tr>
 	   	 <td><strong>VENDOR PHOTO<span style="color: red"> *</span></strong></td>
 	 	 <td>
