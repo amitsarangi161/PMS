@@ -8,7 +8,7 @@
           <a href="/registeremployee" class="btn btn-success btn-flat margin"><i class="fa fa-plus"></i> Add Employee
           </a>
             <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importemployee" onclick="importemployee();"><i class="fa fa-file-excel-o"></i> Import Employee</button>
-                <a href="/Employee Import Sample.xlsx" download="Employee-Sample" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
+                <a href="/Employee Import Sample.xlsx" download="/Employee Import Sample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
           </span>
           
         </p>

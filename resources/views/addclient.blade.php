@@ -89,7 +89,7 @@
 <div class="box">
 <div class="box-header">
      <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importclient" onclick="importclient();"><i class="fa fa-file-excel-o"></i> Import Employee</button>
-     <a href="/Client Import Sample.xlsx" download="Client-Sample" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
+     <a href="/Client Import Sample.xlsx" download="/Client Import Sample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
           </span>
 </div>
 <div class="box-body">
