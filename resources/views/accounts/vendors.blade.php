@@ -71,7 +71,7 @@
 	 	 </td>
 	 	 
 	    </tr> -->
-	   <tr>
+	 <!--   <tr>
 	   	 <td colspan="2"><strong>VENDOR PHOTO/AC. INFO PHOTO<span style="color: red"> *</span></strong></td>
 	 	 <td colspan="2">
 	 	 	<input name="photo" type="file" onchange="readURL1(this);">
@@ -79,7 +79,7 @@
 
             <img style="height:70px;width:95px;" alt="noimage" id="imgshow1">
 	 	 </td>
-	   </tr>
+	   </tr> -->
 	   <tr>
 	   	<td colspan="4"><button class="btn btn-success" type="submit">Save</button></td>
 	   </tr>

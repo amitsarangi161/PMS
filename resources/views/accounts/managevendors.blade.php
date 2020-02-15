@@ -29,7 +29,7 @@
        	   	<th>MOBILE</th>
        	   	<th>DETAILS</th>
        	   	<!-- <th>VENDORS ID PROOF</th> -->
-       	   	<th>PHOTO</th>
+       	   	<!-- <th>PHOTO</th> -->
        	   	<th>ADDED BY</th>
        	   	<th>EDIT</th>
        	   <!-- 	<th>DELETE</th> -->
@@ -47,11 +47,11 @@
               <img style="height:70px;width:95px;" alt="click to view the file" src="{{ asset('/img/vendor/'.$vendor->vendoridproof )}}">
               </a>
             </td> -->
-           	<td>
+           <!-- 	<td>
                <a href="{{ asset('/img/vendor/'.$vendor->photo )}}" target="_blank">
               <img style="height:70px;width:95px;" alt="click to view the file" src="{{ asset('/img/vendor/'.$vendor->photo )}}">
               </a>
-            </td>
+            </td> -->
            	<td>{{$vendor->name}}</td>
            	<td><a href="/editvendor/{{$vendor->id}}" class="btn btn-primary">EDIT</a></td>
            </tr>
