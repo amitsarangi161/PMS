@@ -21,7 +21,7 @@
 	<tr>
 		<td><strong>NOTICE DESCRIPTION <p style="color: red">*</p></strong></td>
 		<td>	
-<textarea  class="form-control" name="description" rows="12">{{$notice->description}}</textarea>
+<textarea  class="form-control" name="description" rows="12">{!!$notice->description!!}</textarea>
 		</td>
 	</tr>
 	<tr>

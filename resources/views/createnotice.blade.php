@@ -21,7 +21,7 @@
 	<tr>
 		<td><strong>NOTICE DESCRIPTION <p style="color: red">*</p></strong></td>
 		<td>	
-<textarea class="form-control textarea" name="description" rows="12"></textarea>
+<textarea class="form-control" name="description" rows="12"></textarea>
 		</td>
 	</tr>
 	<tr>
@@ -38,9 +38,4 @@
 	
 </table>
 </form>
-<!-- <script type="text/javascript" src="{{asset('/js/tinyeditor.js')}}"></script>
-<script type="text/javascript" src="{{asset('/js/editor.js')}}"></script> -->
-<!-- <script type="text/javascript">
-	$('.textarea').wysihtml5();
-</script>
 @endsection

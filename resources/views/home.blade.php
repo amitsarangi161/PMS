@@ -263,6 +263,94 @@
   
 
     </section>
+ <div id="myModal2" class="modal fade" role="dialog">
+      <form action="/savetodo" method="post">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">ADD TODO</h4>
+      </div>
+      <div class="modal-body">
+      
+          {{csrf_field()}}
+        <table class="table">
+          <tr>
+            <td>Notes</td>
+            <td><textarea class="form-control" name="description"></textarea></td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td><input type="text" name="date" class="form-control datepicker1" readonly="">
+              <p style="color: red;">*click for change the date</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Time</td>
+            <td><input type="text" name="time" class="form-control timepicker" readonly="">
+              <p style="color: red;">*click for change the time</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-success btn-lg" type="submit">ADD</button>
+      </div>
+    </div>
+  </div>
+   </form>
+</div>
+
+<div id="myModal3" class="modal fade" role="dialog">
+  <form action="/updatetodo" method="post">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">EDIT TODO</h4>
+      </div>
+      <div class="modal-body">
+        
+          {{csrf_field()}}
+        <table class="table">
+          <input type="hidden" id="tdid" name="tdid">
+          <tr>
+            <td>Notes</td>
+            <td><textarea class="form-control" name="description" id="description"></textarea></td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td><input type="text" name="date" id="date" class="form-control datepicker1" readonly="">
+              <p style="color: red;">*click for change the date</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Time</td>
+            <td><input type="text" name="time" id="time" class="form-control timepicker" readonly="">
+              <p style="color: red;">*click for change the time</p>
+            </td>
+          </tr>
+         
+            
+                            
+           
+          
+        </table>
+        </form>
+        
+</div>
+<div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-success btn-lg" type="submit">UPDATE</button>
+
+      </div>
 
 
 
