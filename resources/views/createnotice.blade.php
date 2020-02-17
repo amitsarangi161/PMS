@@ -1,6 +1,5 @@
 @extends('layouts.hr')
 @section('content')
-<!-- <link rel="stylesheet" type="text/css" href="{{asset('/css/editor.css')}}"> -->
 <table class="table table-responsive table-hover table-bordered table-striped">
 	<tr class="bg-navy">
 		 <td class="text-center">NOTICE</td>
@@ -15,11 +14,11 @@
 <table class="table">
 
 	<tr>
-		<td><strong>NOTICE SUBJECT <p style="color: red">*</p></strong></td>
+		<td><strong>NOTICE SUBJECT <span style="color: red">*</span></strong></td>
 		<td><input type="text" name="subject" class="form-control" placeholder="Enter Notice Subject" required="" autocomplete="off"></td>
 	</tr>
 	<tr>
-		<td><strong>NOTICE DESCRIPTION <p style="color: red">*</p></strong></td>
+		<td><strong>NOTICE DESCRIPTION <span style="color: red">*</span></strong></td>
 		<td>	
 <textarea class="form-control" name="description" rows="12"></textarea>
 		</td>
