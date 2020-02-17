@@ -238,6 +238,20 @@
           </ul>
         </li>
 
+        <li class="{{ Request::is('banks*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-university"></i> <span>BANKS</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+           <li class="{{ Request::is('banks/banks') ? 'active' : '' }}"><a href="/banks/banks"><i class="fa fa-circle-o text-aqua"></i>ADD BANKS</a></li>
+            
+             <li class="{{ Request::is('banks/companybankaccount') ? 'active' : '' }}"><a href="/banks/companybankaccount"><i class="fa fa-circle-o text-red"></i>COMPANY BANK ACCOUNTS</a></li>
+          </ul>
+        </li>
+
 
 
 

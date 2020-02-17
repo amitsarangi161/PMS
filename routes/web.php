@@ -220,10 +220,7 @@ Route::post('/saveexpensehead','AccountController@saveexpensehead');
 Route::post('/updateexpensehead','AccountController@updateexpensehead');
 Route::delete('/deleteexpensehead/{id}','AccountController@deleteexpensehead');
 Route::get('/defination/particulars','AccountController@particulars');
-Route::get('/banks/banks','AccountController@banks');
-Route::post('/savebanks','AccountController@savebanks');
-Route::post('/updatebanks','AccountController@updatebanks');
-Route::delete('/deletebanks/{id}','AccountController@deletebanks');
+
 
 Route::get('/defination/deductiondefination','AccountController@deductiondefination');
 Route::post('/savediductiondefination','AccountController@savediductiondefination');
@@ -360,9 +357,7 @@ Route::post('/saveuesrbankaccount','AccountController@saveuesrbankaccount');
 Route::get('/banks/userbankaccount','AccountController@userbankaccount');
 Route::get('banks/viewalluserbankaccount','AccountController@viewalluserbankaccount');
 Route::post('/updateuserbankaccount','AccountController@updateuserbankaccount');
-Route::get('/banks/companybankaccount','AccountController@companybankaccount');
-Route::post('/savecompanybankaccount','AccountController@savecompanybankaccount');
-Route::post('/updatecompanybankaccount','AccountController@updatecompanybankaccount');
+
 Route::post('/cashierpaidrequsitiononline/{bankname}/{id}','AccountController@cashierpaidrequsitiononline');
 Route::post('/requisitionpaytovendor/{id}','AccountController@requisitionpaytovendor');
 Route::get('/prb/{bankname}/{id}','AccountController@viewallbankrequisitionpayment');
@@ -560,6 +555,17 @@ Route::post('/importclient','HomeController@importclient');
 Route::post('/importvendor','HomeController@importvendor');
 
 //-------------END PMS MAIN ROUTE------------//
+
+//------------- PMS ACCOUNT ROUTE------------//
+Route::get('/banks/banks','AccountController@banks');
+Route::post('/savebanks','AccountController@savebanks');
+Route::post('/updatebanks','AccountController@updatebanks');
+/*Route::delete('/deletebanks/{id}','AccountController@deletebanks');*/
+Route::get('/banks/companybankaccount','AccountController@companybankaccount');
+Route::post('/savecompanybankaccount','AccountController@savecompanybankaccount');
+Route::post('/updatecompanybankaccount','AccountController@updatecompanybankaccount');
+
+//-------------END PMS ACCOUNT ROUTE------------//
 });
 
 

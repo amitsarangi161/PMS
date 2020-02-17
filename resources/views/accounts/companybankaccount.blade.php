@@ -6,7 +6,7 @@
 	</tr>
 </table>
   @if(Session::has('msg'))
-   <p class="alert alert-warning text-center">{{ Session::get('msg') }}</p>
+   <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
    @endif
 <div class="well">
 	<form action="/savecompanybankaccount" method="post" enctype="multipart/form-data"> 
@@ -42,21 +42,9 @@
 	  		<input type="text" name="ifsccode" class="form-control" placeholder="Enter ifsccode" required="">
 	  	</td>
 	  </tr>
-	   <tr>
-	  	<td><strong>FOR COMPANY </strong></td>
-	  	<td>
-	  		<select name="forcompany" class="form-control" required="">
-	  			<option value="">Select a Comapny</option>
-	  			<option value="SA">SA</option>
-	  			<option value="STEPL">STEPL</option>
-	  			<option value="STECS">STECS</option>
-	  			<option value="PERSONAL">PERSONAL</option>
-	  		</select>
-	  	</td>
-	  </tr>
 	  <tr>
 	  	<tr>
-	  		<td><strong>Scan Copy Of Account</strong></td>
+	  		<td><strong>Account Details Scan Copy</strong></td>
 	  		<td>
 	  			 	<input name="scancopy" type="file" onchange="readURL1(this);">
                      <p class="help-block">Upload .png, .jpg or .jpeg image files only</p>
@@ -80,7 +68,6 @@
 			<td>BRANCH NAME</td>
 			<td>ACCOUNT NO</td>
 			<td>IFSC</td>
-			<td>COMPANY</td>
 			<td>IMAGE</td>
 			<td>EDIT</td>
 			
@@ -97,7 +84,6 @@
 			<td>{{$useraccount->branchname}}</td>
 			<td>{{$useraccount->acno}}</td>
 			<td>{{$useraccount->ifsccode}}</td>
-			<td>{{$useraccount->forcompany}}</td>
 			<td><a href="{{asset('/img/bankacscancopy/'.$useraccount->scancopy)}}" target="_blank"><img src="{{asset('/img/bankacscancopy/'.$useraccount->scancopy)}}" style="height:70px;width:95px;" alt="click to view"></a></td>
 			<td>
 				<button class="btn btn-info" onclick="edituseraccount('{{$useraccount->id}}','{{$useraccount->bankid}}','{{$useraccount->branchname}}','{{$useraccount->acno}}','{{$useraccount->ifsccode}}','{{$useraccount->scancopy}}','{{$useraccount->forcompany}}');" type="button">EDIT</button>
@@ -154,18 +140,7 @@
 	  		<input type="text" name="ifsccode" id="ifsccode" class="form-control" placeholder="Enter ifsccode" required="">
 	  	</td>
 	  </tr>
-	   <tr>
-	  	<td><strong>FOR COMPANY </strong></td>
-	  	<td>
-	  		<select name="forcompany" id="forcompany" class="form-control" required="">
-	  			<option value="">Select a Comapny</option>
-	  			<option value="SA">SA</option>
-	  			<option value="STEPL">STEPL</option>
-	  			<option value="STECS">STECS</option>
-	  			<option value="PERSONAL">PERSONAL</option>
-	  		</select>
-	  	</td>
-	  </tr>
+
 	  	<tr>
 	  		<td><strong>Scan Copy Of Account</strong></td>
 	  		<td>
