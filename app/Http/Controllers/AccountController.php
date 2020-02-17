@@ -52,7 +52,105 @@ use Excel;
 
 class AccountController extends Controller
 {  
+        public function updatecompanybankaccount(Request $request)
+      {
 
+        $useraccount=useraccount::find($request->uid);
+
+        $useraccount->bankid=$request->bankid;
+        $useraccount->acno=$request->acno;
+        $useraccount->ifsccode=$request->ifsccode;
+        $useraccount->branchname=$request->branchname;
+        //$useraccount->forcompany=$request->forcompany;
+        $useraccount->userid=Auth::id();
+        $useraccount->type="COMPANY";
+          $rarefile = $request->file('scancopy');    
+        if($rarefile!=''){
+        $raupload = public_path() .'/img/bankacscancopy/';
+        $rarefilename=time().'.'.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$rarefilename);
+        $useraccount->scancopy = $rarefilename;
+        }
+        $useraccount->save();
+           Session::flash('msg','Account Data Updated Successfully');
+       return back();
+
+      }
+      public function savecompanybankaccount(Request $request)
+      {
+           $count=useraccount::where('bankid',$request->bankid)->where('acno',$request->acno)->count();
+
+         if ($count>0) {
+              Session::flash('msg','Account Data Already Exists');
+         }
+         else
+         {
+        $useraccount=new useraccount();
+        $useraccount->user=$request->user;
+        $useraccount->bankid=$request->bankid;
+        $useraccount->acno=$request->acno;
+        $useraccount->ifsccode=$request->ifsccode;
+        $useraccount->branchname=$request->branchname;
+        //$useraccount->forcompany=$request->forcompany;
+        $useraccount->userid=Auth::id();
+        $useraccount->type="COMPANY";
+         $rarefile = $request->file('scancopy');    
+        if($rarefile!=''){
+        $raupload = public_path() .'/img/bankacscancopy/';
+        $rarefilename=time().'.'.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$rarefilename);
+        $useraccount->scancopy = $rarefilename;
+        }
+
+        $useraccount->save();
+           Session::flash('msg','Account Data Saved Successfully');
+         }
+      
+        return back();
+      }
+
+       public function companybankaccount()
+       {
+         $users=User::all();
+          $banks=bank::all();
+
+          $useraccounts=useraccount::select('useraccounts.*','users.name','banks.bankname')
+                       ->leftJoin('users','useraccounts.user','=','users.id')
+                       ->leftJoin('banks','useraccounts.bankid','=','banks.id')
+                       ->where('useraccounts.type','COMPANY')
+                       ->get();
+        return view('accounts.companybankaccount',compact('users','banks','useraccounts'));
+
+       }
+    public function updatebanks(Request $request)
+  {
+      $bank=bank::find($request->bid);
+      $bank->bankname=$request->bankname;
+    
+     $bank->userid=Auth::id();
+     $bank->save();
+     Session::flash('msg','Bank Details Updated Successfully');
+     return back();
+
+  }
+  public function savebanks(Request $request)
+  {
+     $bank=new bank();
+     $bank->bankname=$request->bankname;
+   
+     $bank->userid=Auth::id();
+     $bank->save();
+    Session::flash('msg','Bank Details Saved Successfully');
+     return back();
+  } 
+
+
+  //---------End New Account Controller-----------//
+  public function banks()
+  {
+     $banks=bank::all();
+     return view('accounts.banks',compact('banks'));
+  }
   public function creditorledger(Request $request)
   {
        $allarray=array();
@@ -3204,75 +3302,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
 
           return view('accounts.viewexpenseentrydetails',compact('expenseentry','vendor','expenseentrydailylabour','expenseentrydailyvehicle','engagedlaboursarr'));
       }
-      public function updatecompanybankaccount(Request $request)
-      {
 
-        $useraccount=useraccount::find($request->uid);
-
-        $useraccount->bankid=$request->bankid;
-        $useraccount->acno=$request->acno;
-        $useraccount->ifsccode=$request->ifsccode;
-        $useraccount->branchname=$request->branchname;
-        $useraccount->forcompany=$request->forcompany;
-        $useraccount->userid=Auth::id();
-        $useraccount->type="COMPANY";
-          $rarefile = $request->file('scancopy');    
-        if($rarefile!=''){
-        $raupload = public_path() .'/img/bankacscancopy/';
-        $rarefilename=time().'.'.$rarefile->getClientOriginalName();
-        $success=$rarefile->move($raupload,$rarefilename);
-        $useraccount->scancopy = $rarefilename;
-        }
-        $useraccount->save();
-           Session::flash('msg','Account Data Updated Successfully');
-       return back();
-
-      }
-      public function savecompanybankaccount(Request $request)
-      {
-           $count=useraccount::where('bankid',$request->bankid)->where('acno',$request->acno)->count();
-
-         if ($count>0) {
-              Session::flash('msg','Account Data Already Exists');
-         }
-         else
-         {
-        $useraccount=new useraccount();
-        $useraccount->user=$request->user;
-        $useraccount->bankid=$request->bankid;
-        $useraccount->acno=$request->acno;
-        $useraccount->ifsccode=$request->ifsccode;
-        $useraccount->branchname=$request->branchname;
-        $useraccount->forcompany=$request->forcompany;
-        $useraccount->userid=Auth::id();
-        $useraccount->type="COMPANY";
-         $rarefile = $request->file('scancopy');    
-        if($rarefile!=''){
-        $raupload = public_path() .'/img/bankacscancopy/';
-        $rarefilename=time().'.'.$rarefile->getClientOriginalName();
-        $success=$rarefile->move($raupload,$rarefilename);
-        $useraccount->scancopy = $rarefilename;
-        }
-
-        $useraccount->save();
-           Session::flash('msg','Account Data Saved Successfully');
-         }
-      
-        return back();
-      }
-
-       public function companybankaccount()
-       {
-         $users=User::all();
-          $banks=bank::all();
-
-          $useraccounts=useraccount::select('useraccounts.*','users.name','banks.bankname')
-                       ->leftJoin('users','useraccounts.user','=','users.id')
-                       ->leftJoin('banks','useraccounts.bankid','=','banks.id')
-                       ->where('useraccounts.type','COMPANY')
-                       ->get();
-        return view('accounts.companybankaccount',compact('users','banks','useraccounts'));
-       }
        public function updateuserbankaccount(Request $request)
        {
            
@@ -4274,32 +4304,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
 
        return back();
   }
-  public function updatebanks(Request $request)
-  {
-      $bank=bank::find($request->bid);
-      $bank->bankname=$request->bankname;
-    
-     $bank->userid=Auth::id();
-     $bank->save();
-     Session::flash('msg','Bank Details Updated Successfully');
-     return back();
 
-  }
-  public function savebanks(Request $request)
-  {
-     $bank=new bank();
-     $bank->bankname=$request->bankname;
-   
-     $bank->userid=Auth::id();
-     $bank->save();
-    Session::flash('msg','Bank Details Saved Successfully');
-     return back();
-  } 
-  public function banks()
-  {
-     $banks=bank::all();
-     return view('accounts.banks',compact('banks'));
-  }
   public function adminaccounts()
   {
        return view('accounts.home');
