@@ -545,6 +545,7 @@ Route::post('/updatedepartment','HrController@updatedepartment');
 
 //-------------PMS MAIN ROUTE------------//
 Route::get('/dm/companydetails','HomeController@companydetails');
+Route::post('/companysetup','HomeController@companysetup');
 Route::get('/dm/adduser','HomeController@adduser');
 Route::post('/saveuser','HomeController@saveuser');
 Route::get('/projects/addclient','HomeController@addclient');

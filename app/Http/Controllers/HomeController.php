@@ -57,6 +57,7 @@ use App\expenseentrydailylabour;
 use App\expenseentrydailyvehicle;
 use App\suggestion;
 use App\testimage;
+use App\companysetup;
 use DataTables;
 use Excel;
 //use Barryvdh\DomPDF\Facade as PDF;
@@ -114,8 +115,53 @@ public function importclient(Request $request){
     Session::flash('status', 'Task was successful!');
     return back();
 }
+public function companysetup(Request $request){
+  $count=companysetup::count();
+if($count>0){
+  $company=companysetup::find($request->id);
+  $company->companyname=$request->name;
+  $company->phone=$request->phone;
+  $company->mobile=$request->mobile;
+  $company->fax=$request->fax;
+  $company->websitelink=$request->website;
+  $company->email=$request->email;
+  $company->gst=$request->gst;
+  $company->pan=$request->pan;
+  $company->address=$request->address;
+  $rarefile = $request->file('logo');    
+    if($rarefile!=''){
+    $raupload = public_path() .'/img/company/';
+    $rarefilename=time().'.'.$rarefile->getClientOriginalName();
+    $success=$rarefile->move($raupload,$rarefilename);
+  $company->logo = $rarefilename;
+    }
+  $company->save();
+}
+  else{
+  $company=new companysetup();
+  $company->companyname=$request->name;
+  $company->phone=$request->phone;
+  $company->mobile=$request->mobile;
+  $company->fax=$request->fax;
+  $company->websitelink=$request->website;
+  $company->email=$request->email;
+  $company->gst=$request->gst;
+  $company->pan=$request->pan;
+  $company->address=$request->address;
+  $rarefile = $request->file('logo');    
+    if($rarefile!=''){
+    $raupload = public_path() .'/img/company/';
+    $rarefilename=time().'.'.$rarefile->getClientOriginalName();
+    $success=$rarefile->move($raupload,$rarefilename);
+  $company->logo = $rarefilename;
+    }
+  $company->save();
+  }
+  return back();
+}
 public function companydetails(){
-  return view('companydetails');
+  $compdetails=companysetup::first();
+  return view('companydetails',compact('compdetails'));
 }
 /*--------END New Works------*/
      public function changeuserstatus(Request $request)

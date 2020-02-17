@@ -18,6 +18,7 @@ class CreateCompanysetupsTable extends Migration
             $table->string('companyname', 100)->nullable();
             $table->string('phone', 20)->nullable();
             $table->string('mobile', 20)->nullable();
+            $table->string('fax', 20)->nullable();
             $table->string('websitelink', 100)->nullable();
             $table->string('email', 100)->nullable();
             $table->string('gst', 100)->nullable();
