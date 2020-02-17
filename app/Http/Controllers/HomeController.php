@@ -114,8 +114,10 @@ public function importclient(Request $request){
     Session::flash('status', 'Task was successful!');
     return back();
 }
-
-/*--------Start New Works------*/
+public function companydetails(){
+  return view('companydetails');
+}
+/*--------END New Works------*/
      public function changeuserstatus(Request $request)
      {
          $user=User::find($request->chid);

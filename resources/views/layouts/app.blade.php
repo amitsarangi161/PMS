@@ -211,7 +211,8 @@
           </li>
  
   
-       <li class="{{ Request::is('dm*') ? 'active' : '' }} treeview">
+
+        <li class="{{ Request::is('dm*') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>DEFINE MAIN</span>
             <span class="pull-right-container">
@@ -220,6 +221,7 @@
           </a>
           <ul class="treeview-menu">
             @if(Auth::user()->usertype=='MASTER ADMIN')
+            <li class="{{ Request::is('dm/companydetails') ? 'active' : '' }}"><a href="/dm/companydetails"><i class="fa fa-circle-o text-aqua"></i>COMPANY SETUP</a></li>
             <li class="{{ Request::is('dm/adduser') ? 'active' : '' }}"><a href="/dm/adduser"><i class="fa fa-circle-o text-aqua"></i>ADD NEW USER</a></li>
              @endif
           </ul>

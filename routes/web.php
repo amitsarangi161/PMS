@@ -540,10 +540,11 @@ Route::get('/editemployeedetails/{id}','HrController@editemployeedetails');
 Route::post('/updateemployeedetails/{id}','HrController@updateemployeedetails');
 Route::post('/ajaxgetdept','HrController@ajaxgetdept');
 Route::post('/updatedepartment','HrController@updatedepartment');
-//-------------PMS END ROUTE------------//
+//-------------PMS END HR ROUTE------------//
 
 
 //-------------PMS MAIN ROUTE------------//
+Route::get('/dm/companydetails','HomeController@companydetails');
 Route::get('/dm/adduser','HomeController@adduser');
 Route::post('/saveuser','HomeController@saveuser');
 Route::get('/projects/addclient','HomeController@addclient');
