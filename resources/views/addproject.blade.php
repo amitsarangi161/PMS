@@ -98,7 +98,7 @@
 
 
 
-    <table class="table table-striped table-bordered display">
+<!--     <table class="table table-striped table-bordered display">
 		<tr>
 		 <td colspan="4" class="text-center bg-primary">ACTIVITY DETAILS</td>
 		</tr>
@@ -138,9 +138,9 @@
 			</tr>
 									 
 	    </tbody>				
-	</table>
+	</table> -->
 
-    <table class="table table-striped table-bordered display">
+    <!-- <table class="table table-striped table-bordered display">
 		<tr>
 		 <td colspan="4" class="text-center bg-primary">ADDED ACTIVITY</td>
 		</tr>
@@ -174,7 +174,7 @@
 	    		<td><input type="text" id="totdays" readonly></td>
 	    	</tr>
 	    </tfoot>			  
-</table>
+</table> -->
 	
 
 

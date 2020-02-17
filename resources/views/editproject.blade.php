@@ -69,9 +69,7 @@
 			<option value="NORMAL" {{ ( $project->priority == "NORMAL") ? 'selected' : '' }}>NORMAL</option>
 			<option value="HIGH" {{ ( $project->priority == "HIGH") ? 'selected' : '' }}>HIGH</option>
 			<option value="MEDIUM" {{ ( $project->priority == "MEDIUM") ? 'selected' : '' }}>MEDIUM</option>
-			<option value="LOW" {{ ( $project->priority == "MEDIUM") ? 'selected' : '' }}>LOW</option>
-
-			
+			<option value="LOW" {{ ( $project->priority == "LOW") ? 'selected' : '' }}>LOW</option>
 		</select>
 	</td>
 	<td>TOTAL PROJECT TIME(IN DAYS)<span style="color: red"> *</span></td>
@@ -97,7 +95,7 @@
 
 
 
-    <table class="table table-striped table-bordered display">
+    <!-- <table class="table table-striped table-bordered display">
 		<tr>
 		 <td colspan="4" class="text-center bg-primary">ACTIVITY DETAILS</td>
 		</tr>
@@ -186,7 +184,7 @@
 	    		<td><input type="text" id="totdays" value="{{$projectactivities->sum('duration')}}" readonly></td>
 	    	</tr>
 	    </tfoot>			  
-</table>
+</table> -->
 	
 
 

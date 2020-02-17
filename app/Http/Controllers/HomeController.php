@@ -2863,27 +2863,7 @@ return $message->sid;*/
         $success=$rarefile->move($raupload,$uplogoimg);
         $project->orderform = $uplogoimg;
         }
-
      $project->save();
-     $pid=$project->id;
-
-     $count=count($request->activityid);
-    if($count>0)
-    {
-        for ($i=0; $i < $count; $i++) { 
-         $projectactivity=new projectactivity();
-         $projectactivity->projectid=$pid;
-         $projectactivity->activityid=$request->activityid[$i];
-         $projectactivity->position=$i+1;
-         $projectactivity->startdate=$request->activitystartdate[$i];
-         $projectactivity->enddate=$request->activityenddate[$i];
-         $projectactivity->enddate=$request->activityenddate[$i];
-         $projectactivity->duration=$request->duration[$i];
-         $projectactivity->save();
-
-     } 
-    }
-     
      Session::flash("Project Saved Successfully");
      return back();
      
@@ -2935,14 +2915,12 @@ return $message->sid;*/
 
    public function updateproject(Request $request,$id)
    {
-      
-   
      $project=project::find($id);
      $project->clientid=$request->clientid;
      $project->clientname=$request->clientname;
      $project->projectname=$request->projectname;
      $lastid=project::orderBy('id','DESC')->pluck('id')->first();
-     $project->projectid='SAOOO'.($lastid+1);
+     $project->projectid='PMS'.($lastid+1);
      $project->cost=$request->cost;
      $project->startdate=$request->startdate;
      $project->enddate=$request->enddate;
@@ -2950,28 +2928,7 @@ return $message->sid;*/
       $project->loano=$request->loano;
      $project->agreementno=$request->agreementno;
      $project->save();
-     $pid=$project->id;
-
-     projectactivity::where('projectid',$id)->delete();
-     
-     $count=count($request->activityid);
-
-
-
-     for ($i=0; $i < $count; $i++) { 
-         $projectactivity=new projectactivity();
-         $projectactivity->projectid=$pid;
-         $projectactivity->activityid=$request->activityid[$i];
-         $projectactivity->position=$i+1;
-         $projectactivity->startdate=$request->activitystartdate[$i];
-         $projectactivity->enddate=$request->activityenddate[$i];
-         $projectactivity->enddate=$request->activityenddate[$i];
-         $projectactivity->duration=$request->duration[$i];
-         $projectactivity->save();
-
-     }
      Session::flash("Project Saved Successfully");
-
      return back();
    }
    public function changestatus(Request $request)
