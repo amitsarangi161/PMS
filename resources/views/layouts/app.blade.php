@@ -363,10 +363,6 @@ if (event.persisted) {
     alert('Manually Input Blocked Choose a date from Picker');
   });
 
-
-
-
-
       $('.datatable1').DataTable({
         dom: 'Bfrtip',
         "order": [[ 0, "desc" ]],
@@ -567,7 +563,7 @@ $('.datatablescrollexport').DataTable({
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0V
     </div>
-    <strong>Copyright &copy; 2017-2018 <a href="http://www.subudhitechno.com">Subudhi Techno Engineers Pvt. Ltd.</a>.</strong> All rights
+    <strong>Copyright &copy; 2020-2021 <a href="http://www.subudhitechno.com">Subudhi Techno Engineers Pvt. Ltd.</a> </strong> All rights
     reserved.
   </footer>
 
