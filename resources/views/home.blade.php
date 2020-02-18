@@ -14,7 +14,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{$noofclients}}</h3>
 
               <p>No Of Clients</p>
             </div>
@@ -28,7 +28,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{$noofprojects}}</h3>
 
               <p>No Of Projects</p>
             </div>
@@ -58,7 +58,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{$noofusers}}</h3>
 
               <p>No Of Users</p>
             </div>

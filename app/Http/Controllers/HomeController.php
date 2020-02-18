@@ -157,12 +157,43 @@ if($count>0){
     }
   $company->save();
   }
+  Session::flash('message','Company Details Updated Successfully');
   return back();
 }
 public function companydetails(){
   $compdetails=companysetup::first();
   return view('companydetails',compact('compdetails'));
 }
+    public function home()
+    {
+
+        if (!Auth::user()){
+            $notices=array();
+            $documents=array();
+            return view('startpage',compact('notices','documents'));
+        }
+       $todos=todo::where('userid',Auth::id())->whereDate('datetime', Carbon::today())->paginate(10);
+
+      if(Auth::user()->usertype=='ACCOUNTS' || Auth::user()->usertype=='CASHIER' || Auth::user()->usertype=='ACCOUNTS ENTRY')
+      {
+          return view('accounts.home',compact('todos'));
+      }
+      elseif(Auth::user()->usertype=='HR')
+      {
+           return view('hr.home',compact('todos'));
+      }
+       elseif(Auth::user()->usertype=='TENDER' || Auth::user()->usertype=='TENDER COMMITTEE')
+      {
+           return view('tender.home');
+      }
+
+    $noofprojects=project::count();
+    $noofclients=client::count();
+    $noofusers=user::count();
+      return view('home',compact('noofprojects','noofclients','noofusers','todos'));
+       
+
+  }
 /*--------END New Works------*/
      public function changeuserstatus(Request $request)
      {
@@ -2629,34 +2660,7 @@ public function getusers()
 }
 
 
-    public function home()
-    {
 
-        if (!Auth::user()){
-            $notices=array();
-            $documents=array();
-            return view('startpage',compact('notices','documents'));
-        }
-       $todos=todo::where('userid',Auth::id())->whereDate('datetime', Carbon::today())->paginate(10);
-
-      if(Auth::user()->usertype=='ACCOUNTS' || Auth::user()->usertype=='CASHIER' || Auth::user()->usertype=='ACCOUNTS ENTRY')
-      {
-          return view('accounts.home',compact('todos'));
-      }
-      elseif(Auth::user()->usertype=='HR')
-      {
-           return view('hr.home',compact('todos'));
-      }
-       elseif(Auth::user()->usertype=='TENDER' || Auth::user()->usertype=='TENDER COMMITTEE')
-      {
-           return view('tender.home');
-      }
-
-    
-       
-      return view('home',compact('todos'));
-
-      }
    public function activity()
    {
      
