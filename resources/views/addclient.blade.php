@@ -66,13 +66,13 @@
 
                 <tr>
             <td></td>
-             <td colspan="4"><input type="submit" value="Submit" class="btn btn-success" style="float: right ;"></td>
+             <td colspan="4"><input type="submit" value="Submit" class="btn btn-success btn-flat" style="float: right ;"></td>
 </tr>
 </table>
 
 </form>
    @if(Session::has('msg'))
-   <p class="alert alert-info text-center">{{ Session::get('msg') }}</p>
+   <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
    @endif
 
    @if ($errors->any())

@@ -16,9 +16,18 @@ class CreateEmployeecompanydetailsTable extends Migration
         Schema::create('employeecompanydetails', function (Blueprint $table) {
             $table->increments('id');
             $table->string('employee_id',22)->nullable();
+            $table->string('empcode',22)->nullable();
+            $table->string('completionyear',22)->nullable();
+            $table->string('location',22)->nullable();
+            $table->string('reportingto',22)->nullable();
+            $table->string('skillsets',22)->nullable();
+            $table->string('ofcmail',100)->nullable();
             $table->string('department',52)->nullable();
+            $table->string('cugmob',20)->nullable();
+            $table->string('remarks',20)->nullable();
             $table->string('designation',52)->nullable();
             $table->date('dateofjoining')->nullable();
+            $table->date('dateofconfirmation')->nullable();
             $table->string('joinsalary',52)->nullable();
             $table->timestamps();
             $table->softDeletes();

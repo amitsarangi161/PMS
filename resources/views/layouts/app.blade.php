@@ -197,7 +197,7 @@
 
 
       <ul class="sidebar-menu">
-        <li class="header"><strong class="text-center">CONSTRUCTION NAVIGATION</strong></li>
+        <li class="header"><strong class="text-center">MAIN NAVIGATION</strong></li>
       
     
 
@@ -234,7 +234,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ Request::is('projects/addclient') ? 'active' : '' }}"><a href="/projects/addclient"><i class="fa fa-circle-o text-aqua"></i>ADD A NEW CLIENT</a></li>
+            <li class="{{ Request::is('projects/addclient') ? 'active' : '' }}"><a href="/projects/addclient"><i class="fa fa-circle-o text-aqua"></i>CLIENTS</a></li>
             <!-- <li class="{{ Request::is('projects/addproject') ? 'active' : '' }}"><a href="/projects/addproject"><i class="fa fa-circle-o text-red"></i>ADD A PROJECT</a></li>
              
              <li class="{{ Request::is('projects/viewallproject') ? 'active' : '' }}"><a href="/projects/viewallproject"><i class="fa fa-circle-o text-red"></i>VIEW ALL PROJECT</a></li> -->
@@ -257,10 +257,10 @@
         <!-- Content Header (Page header) -->
         @if(Auth::user()->usertype=='MASTER ADMIN')
           <div class="btn-group btn-group-justified amit-btn">
-            <a href="/" class="btn btn-warning btn-lg">MAIN</a>
-            <a href="/adminhr" class="btn btn-success btn-lg">HR</a>
-            <a href="/adminaccounts" class="btn btn-warning btn-lg">ACCOUNTS</a>
-            <a href="#" class="btn btn-info btn-lg">INVENTORY</a>
+            <a href="/" class="btn bg-maroon btn-lg">MAIN</a>
+            <a href="/adminhr" class="btn bg-purple btn-lg">HR</a>
+            <a href="/adminaccounts" class="btn bg-red btn-lg">ACCOUNTS</a>
+            <a href="#" class="btn btn-success btn-lg">INVENTORY</a>
           </div> 
         @endif
               

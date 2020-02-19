@@ -311,10 +311,11 @@
         <!-- Content Header (Page header) -->
         @if(Auth::user()->usertype=='MASTER ADMIN')
           <div class="btn-group btn-group-justified amit-btn">
-            <a href="/" class="btn btn-warning btn-lg">Construction</a>
-            <a href="/adminhr" class="btn btn-success btn-lg">HR</a>
-            <a href="/adminaccounts" class="btn btn-warning btn-lg">Accounts</a>
-            <a href="/admintender" class="btn btn-info btn-lg">TENDER</a>
+            <a href="/" class="btn bg-maroon btn-lg">MAIN</a>
+            <a href="/adminhr" class="btn bg-purple btn-lg">HR</a>
+            <a href="/adminaccounts" class="btn bg-red btn-lg">ACCOUNTS</a>
+            <a href="#" class="btn btn-success btn-lg">INVENTORY</a>
+          </div> 
           </div>   
         @endif
               
