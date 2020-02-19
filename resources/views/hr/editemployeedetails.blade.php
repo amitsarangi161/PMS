@@ -1,5 +1,22 @@
 @extends('layouts.hr')
 @section('content')
+@php
+if($editemployeedocument){
+  $offerletter=$editemployeedocument->offerletter;
+  $joiningletter=$editemployeedocument->joiningletter;
+  $agreementpaper=$editemployeedocument->agreementpaper;
+  $idproof=$editemployeedocument->idproof;
+  $resume=$editemployeedocument->resume;
+  
+}
+else{
+  $offerletter='';
+  $joiningletter='';
+  $agreementpaper='';
+  $idproof='';
+  $resume='';
+}
+@endphp
 
 <div class="row">
   @if(Session::has('message'))
@@ -331,8 +348,7 @@
                     <input name="resume" onchange="readURL1(this)" type="file">
                   </div>
                   <div class="col-sm-3">
-                    <img id="imgshow1" src="/image/resume/{{$editemployeedocument->resume}}" style="height: 70px;width: 70px;">
-                  </div>
+                                    </div>
                 </div>
 
                 <div class="form-group">
@@ -341,8 +357,7 @@
                     <input name="offerletter" onchange="readURL2(this)" type="file">
                   </div>
                   <div class="col-sm-3">
-                    <img id="imgshow2" src="/image/offerletter/{{$editemployeedocument->offerletter}}" style="height: 70px;width: 70px;">
-                  </div>
+                                   </div>
                 </div>
 
                 <div class="form-group">
@@ -351,8 +366,7 @@
                     <input name="joiningletter" onchange="readURL3(this)" type="file">
                   </div>
                   <div class="col-sm-3">
-                    <img id="imgshow3" src="/image/joiningletter/{{$editemployeedocument->joiningletter}}" style="height: 70px;width: 70px;">
-                  </div>
+                                   </div>
                 </div>
 
                 <div class="form-group">
@@ -361,8 +375,7 @@
                     <input name="agreementpaper" onchange="readURL4(this)" type="file">
                   </div>
                   <div class="col-sm-3">
-                    <img  id="imgshow4" src="/image/agreementpaper/{{$editemployeedocument->agreementpaper}}" style="height: 70px;width: 70px;">
-                  </div>
+                                   </div>
                 </div>
 
                 <div class="form-group">
@@ -371,8 +384,7 @@
                     <input name="idproof" onchange="readURL5(this)" type="file">
                   </div>
                   <div class="col-sm-3">
-                    <img id="imgshow5" src="/image/idproof/{{$editemployeedocument->idproof}}" style="height: 70px;width: 70px;">
-                  </div>
+                                   </div>
                 </div>
 
 
