@@ -17,8 +17,8 @@
 @if(Session::has('message'))
 <p class="alert alert-success">{{ Session::get('message') }}</p>
 @endif
-@if(Session::has('duplicate'))
-<p class="alert alert-danger">{{ Session::get('duplicate') }}</p>
+@if(Session::has('error'))
+<p class="alert alert-danger">{{ Session::get('error') }}</p>
 @endif
 @if(count($errors) > 0)
     <div class="alert alert-danger">
@@ -96,9 +96,9 @@
 </div>
 <script type="text/javascript">
 	function importemployee(){
-		alert("Do You Want To Upload Employee Excel");
-    $(".alert-success").delay(5000).fadeOut(800); 
-    $(".alert-danger").delay(5000).fadeOut(800); 
+		alert("Do You Want To Upload Employee Excel"); 
 	}
+  $(".alert-success").delay(5000).fadeOut(800); 
+    $(".alert-danger").delay(5000).fadeOut(800);
 </script>
 @endsection

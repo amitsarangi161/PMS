@@ -349,13 +349,15 @@ public function importemployee(Request $request)
           $user->mobile=$value['personal_mobile_number'];
           $user->usertype='USER';
           $user->save();
+          Session::flash('message', 'Employee was successfuly uploaded');
         }
-      }
-      Session::flash('message', 'Employee was successfuly uploaded');
-      }
-    else{
-      Session::flash('duplicate', 'Duplicate Entery');
+        else{
+      Session::flash('error', 'Duplicate Entery');
     }
+      }
+      
+      }
+    
     return back();
 }
 public function employeelist(){
