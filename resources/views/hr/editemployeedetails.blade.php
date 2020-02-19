@@ -39,6 +39,12 @@ else{
                   </div>
                 </div>
                 <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Employee Code</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="empcodeno"class="form-control" id="inputEmail3" placeholder="Employee Code" value="{{$editemployeedetail->empcodeno}}">
+                  </div>
+                </div>
+                <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Qualification</label>
                   <div class="col-sm-9">
                     <input type="text" name="qualification"class="form-control" id="inputEmail3" value="{{$editemployeedetail->qualification}}" placeholder="Qualification Name">
@@ -180,13 +186,6 @@ else{
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Employee Code</label>
-
-                  <div class="col-sm-9">
-                    <input type="text" name="empcode"class="form-control"  value="{{$editcompanydetail->empcode}}" placeholder="Enter Employee Code">
-                  </div>
-               </div>
                <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Date of joining</label>
 

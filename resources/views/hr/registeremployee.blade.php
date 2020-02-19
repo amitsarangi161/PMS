@@ -24,6 +24,13 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Employee Code</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="empcodeno"class="form-control" placeholder="Enter Employee Code">
+                  </div>
+               </div>
+                <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Qualification</label>
                   <div class="col-sm-9">
                     <input type="text" name="qualification"class="form-control" id="inputEmail3" placeholder="Qualification Name">
@@ -166,13 +173,6 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Employee Code</label>
-
-                  <div class="col-sm-9">
-                    <input type="text" name="empcode"class="form-control" placeholder="Enter Employee Code">
-                  </div>
-               </div>
                <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Date of joining</label>
 
@@ -198,7 +198,7 @@
                   <label for="inputEmail3" class=" col-sm-3">Total Year Experience</label>
 
                   <div class="col-sm-9">
-                    <input type="text" name="totalyrexprnc"class="form-control" placeholder="Joining Salary">
+                    <input type="text" name="totalyrexprnc"class="form-control" placeholder="Total Year of experience">
                   </div>
                </div>
                <div class="form-group">

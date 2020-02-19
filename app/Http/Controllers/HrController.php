@@ -61,6 +61,7 @@ public function saveemployeedetails(Request $request){
 
         $employee=new employeedetail();
         $employee->employeename=$request->employeename;
+        $employee->empcodeno=$request->empcodeno;
         $employee->qualification=$request->qualification;
         $employee->experencecomp=$request->experencecomp;
         $employee->dob=$request->dob;
@@ -79,7 +80,6 @@ public function saveemployeedetails(Request $request){
         $employeecompany=new employeecompanydetail();
         $employeecompany->employee_id=$eid;
         $employeecompany->department=$request->department;
-        $employeecompany->empcode=$request->empcode;
         $employeecompany->designation=$request->designation;
         $employeecompany->dateofjoining=$request->dateofjoining;
         $employeecompany->dateofconfirmation=$request->dateofconfirmation;
@@ -182,6 +182,7 @@ public function updateemployeedetails(Request $request,$id)
     {
         $updateemployee=employeedetail::find($id);
         $updateemployee->employeename=$request->employeename;
+        $updateemployee->empcodeno=$request->empcodeno;
         $updateemployee->employeename=$request->employeename;
         $updateemployee->qualification=$request->qualification;
         $updateemployee->experencecomp=$request->experencecomp;
@@ -203,7 +204,6 @@ public function updateemployeedetails(Request $request,$id)
         $employeecompany=employeecompanydetail::find($eid);
         $employeecompany->employee_id=$eid;
         $employeecompany->department=$request->department;
-        $employeecompany->empcode=$request->empcode;
         $employeecompany->designation=$request->designation;
         $employeecompany->dateofjoining=$request->dateofjoining;
         $employeecompany->dateofconfirmation=$request->dateofconfirmation;
