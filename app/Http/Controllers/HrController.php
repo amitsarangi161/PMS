@@ -267,49 +267,62 @@ public function importemployee(Request $request){
       //return $data;
       if($data->count()>0){
         foreach($data as $kay=>$value){
-          $check=employeedetail::where('email',$value['employeename'])
-          ->orWhere('phone',$value['mobile1'])->count();
-          if($check==0){
+          $check=employeedetail::where('email',$value['personal_mail_id'])
+          ->orWhere('phone',$value['personal_mobile_number'])->count();
+          /*if($check==0){*/
           $employee=new employeedetail();
-          $employee->employeename=$value['employeename'];
-          $employee->dob=$value['dob'];
-          $employee->email=$value['email'];
-          $employee->gender=$value['gender'];
-          $employee->phone=$value['mobile1'];
-          $employee->alternativephonenumber=$value['mobile2'];
-          $employee->adharno=$value['adharno'];
-          $employee->bloodgroup=$value['bloodgroup'];
-          $employee->presentaddress=$value['presentaddress'];
-          $employee->permanentaddress=$value['permanentaddress'];
+          $employee->employeename=$value['emp_name'];
+          $employee->dob=$value['date_of_birth'];
+          $employee->email=$value['personal_mail_id'];
+          $employee->phone=$value['personal_mobile_number'];
+          $employee->alternativephonenumber=$value['contact_number'];
+          $employee->bloodgroup=$value['blood_grp'];
+          $employee->qualification=$value['qualification'];
+          $employee->experencecomp=$value['experience_in_company_name'];
+          $employee->totalyearexperience=$value['total_experience_in_years'];
+          $employee->fathername=$value['fathers_name'];
+          $employee->maritalstatus=$value['marital_status'];
+          $employee->presentaddress=$value['present_address'];
+          $employee->permanentaddress=$value['permanent_address'];
           $employee->save();
           $empid=$employee->id;
           $compemployee=new employeecompanydetail();
           $compemployee->employee_id=$empid;
-          $compemployee->dateofjoining=$value['dateofjoining'];
-          $compemployee->joinsalary=$value['joinsalary'];
+          $employee->empcode=$value['emp_code_no'];
+          $compemployee->remarks=$value['remarks'];
+          $compemployee->dateofjoining=$value['date_of_joining'];
+          $compemployee->designation=$value['designation'];
+          $compemployee->department=$value['department'];
+          $compemployee->skillsets=$value['skill_sets'];
+          $compemployee->reportingto=$value['reporting_to'];
+          $compemployee->ofcmail=$value['official_mail_id'];
+          $compemployee->cugmob=$value['cug_mobile_number'];
+          $compemployee->dateofconfirmation=$value['date_of_confirmation'];
+          $compemployee->completionyear=$value['one_year_completion'];
+          $compemployee->location=$value['location'];
           $compemployee->save();
           $empbank=new employeebankaccountsdetail();
           $empbank->employee_id=$empid;
-          $empbank->accountholdername=$value['employeename'];
-          $empbank->accountnumber=$value['acno'];
-          $empbank->bankname=$value['bankname'];
-          $empbank->ifsc=$value['ifsc'];
-          $empbank->pan=$value['pan'];
-          $empbank->branch=$value['branch'];
-          $empbank->pfaccount=$value['pfaccount'];
+          $empbank->accountholdername=$value['emp_name'];
+          $empbank->accountnumber=$value['salary_account_no'];
+          $empbank->bankname=$value['bank_name'];
+          //$empbank->ifsc=$value['ifsc'];
+          //$empbank->pan=$value['pan'];
+          //$empbank->branch=$value['branch'];
+          //$empbank->pfaccount=$value['pfaccount'];
           $empbank->save();
           $user=new User();
           $user->employee_id=$empid;
-          $user->name=$value['employeename'];
-          $user->username=$value['email'];
-          $user->email=$value['email'];
-          $user->password=bcrypt($value['mobile1']);
-          $user->pass=$value['mobile1'];
-          $user->mobile=$value['mobile1'];
+          $user->name=$value['emp_name'];
+          $user->username=$value['emp_code_no'];
+          $user->email=$value['personal_mail_id'];
+          $user->password=bcrypt($value['personal_mobile_number']);
+          $user->pass=$value['personal_mobile_number'];
+          $user->mobile=$value['personal_mobile_number'];
           $user->usertype='USER';
           $user->save();
         }
-      }
+      //}
       }
     Session::flash('status', 'Task was successful!');
     return back();

@@ -1,5 +1,22 @@
 @extends('layouts.hr')
 @section('content')
+@php
+if($editemployeedocument){
+  $offerletter=$editemployeedocument->offerletter;
+  $joiningletter=$editemployeedocument->joiningletter;
+  $agreementpaper=$editemployeedocument->agreementpaper;
+  $idproof=$editemployeedocument->idproof;
+  $resume=$editemployeedocument->resume;
+  
+}
+else{
+  $offerletter='';
+  $joiningletter='';
+  $agreementpaper='';
+  $idproof='';
+  $resume='';
+}
+@endphp
 
 <div class="row">
   @if(Session::has('message'))
@@ -252,7 +269,7 @@
                     <input name="resume" onchange="readURL1(this);" type="file">
                   </div>
                   <div class="col-sm-3">
-                  <img id="imgshow1" src="/image/resume/{{$editemployeedocument->resume}}" style="height: 70px;width: 70px;">
+                  <img id="imgshow1" src="/image/resume/{{$resume}}" style="height: 70px;width: 70px;">
                   </div>
                 </div>
 
@@ -262,7 +279,7 @@
                     <input name="offerletter" onchange="readURL2(this);" type="file">
                   </div>
                   <div class="col-sm-3">
-                  <img id="imgshow2" src="/image/offerletter/{{$editemployeedocument->offerletter}}" style="height: 70px;width: 70px;">
+                  <img id="imgshow2" src="/image/offerletter/{{$offerletter}}" style="height: 70px;width: 70px;">
                   </div>
                 </div>
 
@@ -272,7 +289,7 @@
                     <input name="joiningletter" onchange="readURL3(this);" type="file">
                   </div>
                   <div class="col-sm-3">
-                  <img id="imgshow3" src="/image/joiningletter/{{$editemployeedocument->joiningletter}}" style="height: 70px;width: 70px;">
+                  <img id="imgshow3" src="/image/joiningletter/{{$joiningletter}}" style="height: 70px;width: 70px;">
                   </div>
                 </div>
 
@@ -282,7 +299,7 @@
                     <input name="agreementpaper" onchange="readURL4(this);" type="file">
                   </div>
                   <div class="col-sm-3">
-                  <img  id="imgshow4" src="/image/agreementpaper/{{$editemployeedocument->agreementpaper}}" style="height: 70px;width: 70px;">
+                  <img  id="imgshow4" src="/image/agreementpaper/{{$agreementpaper}}" style="height: 70px;width: 70px;">
                   </div>
                 </div>
 
@@ -292,7 +309,7 @@
                     <input name="idproof" onchange="readURL5(this);" type="file">
                   </div>
                   <div class="col-sm-3">
-                  <img id="imgshow5" src="/image/idproof/{{$editemployeedocument->idproof}}" style="height: 70px;width: 70px;">
+                  <img id="imgshow5" src="/image/idproof/{{$idproof}}" style="height: 70px;width: 70px;">
                   </div>
                 </div>
 
