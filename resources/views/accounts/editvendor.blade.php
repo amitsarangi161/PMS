@@ -34,21 +34,33 @@
 	 	</td>
 	 	 
 	    </tr>
+      <tr>
+        <td><strong>TIN NUMBER</strong></td>
+        <td><input type="text" value="{{$vendor->tinno}}" name="tinno" class="form-control"></td>
+      </tr>
+      <tr>
+        <td><strong>TAN NUMBER</strong></td>
+        <td><input type="text" value="{{$vendor->tanno}}" name="tanno" class="form-control"></td>
+      </tr>
+      <tr>
+        <td><strong>SERVICE TAX NUMBER</strong></td>
+        <td><input type="text" value="{{$vendor->servicetaxno}}" name="servicetaxno" class="form-control"></td>
+      </tr>
 
 	    <tr>
-        <td>BANK NAME</td>
+        <td><strong>BANK NAME</strong></td>
         <td><input type="text" value="{{$vendor->bankname}}" name="bankname" class="form-control"></td>
       </tr>
       <tr>
-        <td>BANK ACCOUNT NO</td>
+        <td><strong>BANK ACCOUNT NO</strong></td>
         <td><input type="text" value="{{$vendor->acno}}" name="acno" class="form-control"></td>
       </tr>
       <tr>
-        <td>BRANCH NAME</td>
+        <td><strong>BRANCH NAME</strong></td>
         <td><input type="text" value="{{$vendor->branchname}}" name="branchname" class="form-control"></td>
       </tr>
       <tr>
-        <td>IFSC CODE</td>
+        <td><strong>IFSC CODE</strong></td>
         <td><input type="text" value="{{$vendor->ifsccode}}" name="ifsccode" class="form-control"></td>
       </tr>
 
@@ -72,7 +84,7 @@
 	 	 </td>
 	   </tr> -->
 	   <tr>
-	   	<td colspan="2"><button class="btn btn-success" type="submit">Save</button></td>
+	   	<td colspan="2"><button class="btn btn-success" type="submit">Update</button></td>
 	   </tr>
 
 	</table>

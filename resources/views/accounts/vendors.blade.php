@@ -2,7 +2,7 @@
 @section('content')
 
 @if(Session::has('msg'))
-   <p class="alert alert-warning text-center">{{ Session::get('msg') }}</p>
+   <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
  @endif
 <table class="table table-responsive table-hover table-bordered table-striped">
 	 <tr class="bg-navy">
@@ -35,13 +35,24 @@
 	 	 
 	    </tr>
          
-           <tr>
-	 	 <td colspan="2"><strong>DETAILS<span style="color: red"> *</span></strong></td>
-	 	 <td colspan="2">
-	 	 <textarea name="details" class="form-control" autocomplete="off"></textarea>
-	 	</td>
-	 	 
-	    </tr>
+    <tr>
+     	 <td colspan="2"><strong>DETAILS<span style="color: red"> *</span></strong></td>
+     	 <td colspan="2">
+     	 <textarea name="details" class="form-control" autocomplete="off"></textarea>
+     	</td>
+	 </tr>
+    <tr>
+        <td colspan="2"><strong>TIN NUMBER</strong></td>
+        <td colspan="2"><input type="text" placeholder="Enter Tin Number" name="tinno" class="form-control"></td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>TAN NUMBER</strong></td>
+        <td colspan="2"><input type="text" placeholder="Enter Tan Number" name="tanno" class="form-control"></td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Service Tax Number</strong></td>
+        <td colspan="2"><input type="text" placeholder="Enter Service Tax Number" name="servicetaxno" class="form-control"></td>
+    </tr>
       <tr>
         <td colspan="2"><strong>BANK NAME</strong></td>
         <td colspan="2"><input type="text" placeholder="Enter Bank Name" name="bankname" class="form-control"></td>

@@ -127,6 +127,10 @@ if($count>0){
   $company->email=$request->email;
   $company->gst=$request->gst;
   $company->pan=$request->pan;
+  $company->tinno=$request->tinno;
+  $company->tanno=$request->tanno;
+  $company->servicetaxno=$request->servicetaxno;
+  $company->exciseno=$request->exciseno;
   $company->address=$request->address;
   $rarefile = $request->file('logo');    
     if($rarefile!=''){
@@ -147,6 +151,10 @@ if($count>0){
   $company->email=$request->email;
   $company->gst=$request->gst;
   $company->pan=$request->pan;
+  $company->tinno=$request->tinno;
+  $company->tanno=$request->tanno;
+  $company->servicetaxno=$request->servicetaxno;
+  $company->exciseno=$request->exciseno;
   $company->address=$request->address;
   $rarefile = $request->file('logo');    
     if($rarefile!=''){
@@ -2890,12 +2898,13 @@ return $message->sid;*/
      $project->clientname=$request->clientname;
      $project->projectname=$request->projectname;
      $lastid=project::orderBy('id','DESC')->pluck('id')->first();
-     $project->projectid='SAOOO'.($lastid+1);
+     $project->projectid='PMS'.($lastid+1);
      $project->cost=$request->cost;
      $project->startdate=$request->startdate;
      $project->enddate=$request->enddate;
+     $project->securitydepositdate=$request->securitydepositdate;
+     $project->period=$request->period;
      $project->priority=$request->priority;
-
      $project->loano=$request->loano;
      $project->agreementno=$request->agreementno;
 
@@ -2910,7 +2919,7 @@ return $message->sid;*/
         $project->orderform = $uplogoimg;
         }
      $project->save();
-     Session::flash("Project Saved Successfully");
+     Session::flash('msg','Project Saved Successfully');
      return back();
      
    
@@ -2970,11 +2979,23 @@ return $message->sid;*/
      $project->cost=$request->cost;
      $project->startdate=$request->startdate;
      $project->enddate=$request->enddate;
+     $project->securitydepositdate=$request->securitydepositdate;
+     $project->period=$request->period;
      $project->priority=$request->priority;
-      $project->loano=$request->loano;
+     $project->loano=$request->loano;
      $project->agreementno=$request->agreementno;
+     $rarefile = $request->file('orderform');
+
+        if($rarefile!='')
+        {
+             $u=time().uniqid(rand());
+        $raupload ="img/orderform";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->orderform = $uplogoimg;
+        }
      $project->save();
-     Session::flash("Project Saved Successfully");
+     Session::flash('msg','Project updated Successfully');
      return back();
    }
    public function changestatus(Request $request)

@@ -3,6 +3,9 @@
 
 <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="/updateproject/{{$project->id}}">
  {{ csrf_field() }}
+ @if(Session::has('msg'))
+   <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
+@endif
 <table class="table table-dponsive table-hover table-bordered table-striped" >
 <tr>
 <td colspan="4" class="text-center bg-navy">PROJECT DETAILS</td>
@@ -78,12 +81,23 @@
 	</td>
 </tr>
 <tr>
+	<td>Security Deposit Date<span style="color: red"> *</span></td>
+	<td>
+		<input type="text" value="{{$project->securitydepositdate}}" name="securitydepositdate" id="securitydate" class="form-control datepicker getdays" required="">
+	</td>
+
+	<td>Period<span style="color: red"> *</span></td>
+	<td><input type="text" value="{{$project->period}}" class="form-control" name="period" placeholder="Security Money Period" ></td>
+
+</tr>
+<tr>
 	<td>ATTACH ORDER FORM<span style="color: red"> *</span></td>
 	<td>
-		 <input type="file"  name="orderform" >
+		 <input type="file"  name="orderform" onchange="readURL(this);">
 		 <span style="color: red">(please upload .jpg or .pdf file)</span>
 		 <br>
          @if($project->orderform!='')
+         <img src="/img/orderform/{{$project->orderform}}" style="height: 85px;width: 85px;" id="imgshow">
 		 <a href="/img/orderform/{{$project->orderform}}" download>
         Click Here to download order form
          </a>
@@ -553,6 +567,23 @@ function sumofduration()
 
    
 }
+function readURL(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#imgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
 </script>
 
 

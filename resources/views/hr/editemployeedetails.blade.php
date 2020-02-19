@@ -3,7 +3,7 @@
 
 <div class="row">
   @if(Session::has('message'))
-  <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> {!! session('message') !!}</div>
+  <div class="alert alert-success text-center"><span class="glyphicon glyphicon-ok"></span> {!! session('message') !!}</div>
   @endif
 	<div class="col-md-6">
           <!-- Horizontal Form -->

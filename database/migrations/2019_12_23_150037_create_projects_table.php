@@ -19,6 +19,8 @@ class CreateProjectsTable extends Migration {
 			$table->string('clientname', 200)->nullable();
 			$table->string('projectname', 500)->nullable();
 			$table->string('projectid', 100)->nullable();
+			$table->date('securitydepositdate')->nullable();
+			$table->string('period', 500)->nullable();
 			$table->date('startdate');
 			$table->date('enddate');
 			$table->string('cost', 200);

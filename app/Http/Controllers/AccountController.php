@@ -4181,13 +4181,16 @@ public function approvedebitvoucheradmin(Request $request,$id)
    public function updatevendor(Request $request,$id)
    {
        $vendor=vendor::find($id);
-            $vendor->vendorname=$request->vendorname;
-     $vendor->mobile=$request->mobile;
-     $vendor->details=$request->details;
-      $vendor->bankname=$request->bankname;
-      $vendor->acno=$request->acno;
-     $vendor->branchname=$request->branchname;
-     $vendor->ifsccode=$request->ifsccode;
+       $vendor->vendorname=$request->vendorname;
+       $vendor->mobile=$request->mobile;
+       $vendor->details=$request->details;
+       $vendor->tinno=$request->tinno;
+       $vendor->tanno=$request->tanno;
+       $vendor->servicetaxno=$request->servicetaxno;
+       $vendor->bankname=$request->bankname;
+       $vendor->acno=$request->acno;
+       $vendor->branchname=$request->branchname;
+       $vendor->ifsccode=$request->ifsccode;
      
      
      
@@ -4208,7 +4211,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
         }
 
         $vendor->save();
-        Session::flash('msg','vendor added successfully');
+        Session::flash('msg','vendor Updated successfully');
 
         return redirect('/defination/managevendors');
 
@@ -4225,6 +4228,9 @@ public function approvedebitvoucheradmin(Request $request,$id)
      $vendor->vendorname=$request->vendorname;
      $vendor->mobile=$request->mobile;
      $vendor->details=$request->details;
+     $vendor->tinno=$request->tinno;
+     $vendor->tanno=$request->tanno;
+     $vendor->servicetaxno=$request->servicetaxno;
      $vendor->bankname=$request->bankname;
      $vendor->acno=$request->acno;
      $vendor->branchname=$request->branchname;

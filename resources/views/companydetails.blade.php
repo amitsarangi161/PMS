@@ -11,6 +11,10 @@ $websitelink=$compdetails->websitelink;
 $email=$compdetails->email;
 $gst=$compdetails->gst;
 $pan=$compdetails->pan;
+$tinno=$compdetails->tinno;
+$tanno=$compdetails->tanno;
+$servicetaxno=$compdetails->servicetaxno;
+$exciseno=$compdetails->exciseno;
 $address=$compdetails->address;
 $logo=$compdetails->logo;
 $value="Update Details";
@@ -25,6 +29,10 @@ $websitelink='';
 $email='';
 $gst='';
 $pan='';
+$tinno='';
+$tanno='';
+$servicetaxno='';
+$exciseno='';
 $address='';
 $logo='';
 $value="Save Details";
@@ -69,6 +77,22 @@ $value="Save Details";
                   <input type="text" class="form-control" palceholder="pan number" required="" value="{{$pan}}"name="pan">
                 </div>
                 <div class="form-group col-md-6">
+                  <label>TIN No</label>
+                  <input type="text" class="form-control" palceholder="tin number" required="" value="{{$tinno}}"name="tinno">
+                </div>
+                <div class="form-group col-md-6">
+                  <label>TAN No</label>
+                  <input type="text" class="form-control" palceholder="tan number" required="" value="{{$tanno}}"name="tanno">
+                </div>
+                <div class="form-group col-md-6">
+                  <label>SERVICE TAX No</label>
+                  <input type="text" class="form-control" palceholder="servicetax number" required="" value="{{$servicetaxno}}"name="servicetaxno">
+                </div>
+                <div class="form-group col-md-6">
+                  <label>EXCISE No</label>
+                  <input type="text" class="form-control" palceholder="excise number" required="" value="{{$exciseno}}"name="exciseno">
+                </div>
+                <div class="form-group col-md-6">
                   <label>GST No</label>
                   <input type="text" class="form-control" palceholder="gst number" required="" value="{{$gst}}"name="gst">
                 </div>
@@ -78,7 +102,7 @@ $value="Save Details";
                 </div>
                 <div class="form-group col-md-4">
                   <label>Logo</label>
-                  <input type="file" required="" value="{{$name}}"name="logo" onchange="readURL(this);">
+                  <input type="file" value="{{$name}}"name="logo" onchange="readURL(this);">
                 </div>
                 <div class="form-group col-md-2">
                   <img src="/img/company/{{$logo}}" id="imgshow" class="img-responsive">

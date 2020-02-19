@@ -2,7 +2,7 @@
 @section('content')
     
 @if(Session::has('msg'))
-   <p class="alert alert-warning text-center">{{ Session::get('msg') }}</p>
+   <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
 @endif
 
 <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="/saveproject">
@@ -63,7 +63,8 @@
 	</td>
 		<td>ATTACH ORDER FORM<span style="color: red"> *</span></td>
 	<td>
-		 <input type="file"  name="orderform" required>
+		 <input type="file"  name="orderform" onchange="readURL(this);" required>
+		 <img id="imgshow">
 		 <span style="color: red">(please upload .jpg or .pdf file)</span>
 	</td>
 </tr>
@@ -83,6 +84,16 @@
 	<td>
 		<input type="text" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="" required="">
 	</td>
+
+</tr>
+<tr>
+	<td>Security Deposit Date<span style="color: red"> *</span></td>
+	<td>
+		<input type="text" name="securitydepositdate" id="securitydate" class="form-control datepicker getdays" required="">
+	</td>
+
+	<td>Period<span style="color: red"> * </span></td>
+	<td><input type="text" class="form-control" name="period" placeholder="Security Money Period" ></td>
 
 </tr>
 
@@ -549,6 +560,24 @@ function sumofduration()
 
    
 }
+function readURL(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#imgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+
 </script>
 
 

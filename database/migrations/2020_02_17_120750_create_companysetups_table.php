@@ -23,6 +23,10 @@ class CreateCompanysetupsTable extends Migration
             $table->string('email', 100)->nullable();
             $table->string('gst', 100)->nullable();
             $table->string('pan', 100)->nullable();
+            $table->string('tinno', 100)->nullable();
+            $table->string('tanno', 100)->nullable();
+            $table->string('servicetaxno', 100)->nullable();
+            $table->string('exciseno', 100)->nullable();
             $table->string('logo', 500)->nullable();
             $table->text('address')->nullable();
             $table->timestamps();
