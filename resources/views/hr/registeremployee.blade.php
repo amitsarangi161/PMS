@@ -26,7 +26,7 @@
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Qualification</label>
                   <div class="col-sm-9">
-                    <input type="text" name="qualification"class="form-control" id="inputEmail3" placeholder="Employee Name">
+                    <input type="text" name="qualification"class="form-control" id="inputEmail3" placeholder="Qualification Name">
                   </div>
                 </div>
                 <div class="form-group">
@@ -166,6 +166,13 @@
                     </select>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Employee Code</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="empcode"class="form-control" placeholder="Enter Employee Code">
+                  </div>
+               </div>
                <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Date of joining</label>
 
@@ -177,7 +184,7 @@
                   <label for="inputEmail3" class=" col-sm-3">Date of Confirmation</label>
 
                   <div class="col-sm-9">
-                    <input type="text" name="confdate"class="form-control datepicker" placeholder="Date of Confirmation">
+                    <input type="text" name="dateofconfirmation"class="form-control datepicker" placeholder="Date of Confirmation">
                   </div>
                </div>
                <div class="form-group">
@@ -185,6 +192,13 @@
 
                   <div class="col-sm-9">
                     <input type="text" name="joinsalary"class="form-control" placeholder="Joining Salary">
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Total Year Experience</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="totalyrexprnc"class="form-control" placeholder="Joining Salary">
                   </div>
                </div>
                <div class="form-group">
@@ -219,7 +233,7 @@
                   <label  class="col-sm-3">Reporting To</label>
 
                   <div class="col-sm-9">
-                    <input type="text" name="repotingto"class="form-control" placeholder="Reporting To">
+                    <input type="text" name="reportingto"class="form-control" placeholder="Reporting To">
                   </div>
                 </div>
               </div>
@@ -231,7 +245,7 @@
           <!-- Horizontal Form -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Employee  Banka Account Details</h3>
+              <h3 class="box-title">Employee  Bank Account Details</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -250,7 +264,7 @@
                   <label for="inputEmail3" class=" col-sm-3">Salary Ac. No.</label>
 
                   <div class="col-sm-9">
-                    <input type="text" name="accountnumber"class="form-control" id="inputEmail3" placeholder="Account Number">
+                    <input type="text" name="accountnumber"class="form-control" id="inputEmail3" placeholder="Salary Account Number">
                   </div>
                 </div>
 
@@ -258,7 +272,7 @@
                   <label for="inputEmail3" class=" col-sm-3">Bank Name</label>
 
                   <div class="col-sm-9">
-                    <input type="text" name="bankname"class="form-control" id="inputEmail3" placeholder="Account Number">
+                    <input type="text" name="bankname"class="form-control" id="inputEmail3" placeholder="Enter Bank Name">
                   </div>
                 </div>
 
@@ -266,7 +280,7 @@
                   <label for="inputEmail3" class=" col-sm-3">Ifsc</label>
 
                   <div class="col-sm-9">
-                    <input type="text" name="ifsc"class="form-control" id="inputEmail3" placeholder="Account Number">
+                    <input type="text" name="ifsc"class="form-control" id="inputEmail3" placeholder="Enter Ifsc Number">
                   </div>
                 </div>
 
@@ -274,7 +288,7 @@
                   <label for="inputEmail3" class=" col-sm-3">Pan No.</label>
 
                   <div class="col-sm-9">
-                    <input type="text" name="pan"class="form-control" id="inputEmail3" placeholder="Account Number">
+                    <input type="text" name="pan"class="form-control" id="inputEmail3" placeholder="Enter Pan Number">
                   </div>
                 </div>
 
@@ -282,14 +296,14 @@
                   <label for="inputEmail3" class=" col-sm-3">Branch</label>
 
                   <div class="col-sm-9">
-                    <input type="text" name="branch"class="form-control" id="inputEmail3" placeholder="Account Number">
+                    <input type="text" name="branch"class="form-control" id="inputEmail3" placeholder="Enter Branch Name">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">PF Account</label>
 
                   <div class="col-sm-9">
-                    <input type="text" name="pfaccount"class="form-control" id="inputEmail3" placeholder="Account Number">
+                    <input type="text" name="pfaccount"class="form-control" id="inputEmail3" placeholder="PF Account Number">
                   </div>
                 </div>
              

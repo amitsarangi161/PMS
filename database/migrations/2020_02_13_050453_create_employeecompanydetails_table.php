@@ -21,7 +21,7 @@ class CreateEmployeecompanydetailsTable extends Migration
             $table->string('location',22)->nullable();
             $table->string('reportingto',22)->nullable();
             $table->string('skillsets',22)->nullable();
-            $table->string('ofcmail',100)->nullable();
+            $table->string('ofcemail',100)->nullable();
             $table->string('department',52)->nullable();
             $table->string('cugmob',20)->nullable();
             $table->string('remarks',20)->nullable();
@@ -29,6 +29,7 @@ class CreateEmployeecompanydetailsTable extends Migration
             $table->date('dateofjoining')->nullable();
             $table->date('dateofconfirmation')->nullable();
             $table->string('joinsalary',52)->nullable();
+            $table->string('totalyrexprnc',52)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

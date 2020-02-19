@@ -54,12 +54,15 @@ public function ajaxgetdept(Request $request){
  return response()->json(compact('departments','designations'));
 }
 public function saveemployeedetails(Request $request){
+      //return $request->all(); 
       $check=employeedetail::where('email',$request->email)
             ->orWhere('phone',$request->phone)->count();
       if($check == 0){
 
         $employee=new employeedetail();
         $employee->employeename=$request->employeename;
+        $employee->qualification=$request->qualification;
+        $employee->experencecomp=$request->experencecomp;
         $employee->dob=$request->dob;
         $employee->email=$request->email;
         $employee->gender=$request->gender;
@@ -69,14 +72,24 @@ public function saveemployeedetails(Request $request){
         $employee->alternativephonenumber=$request->alternativephonenumber;
         $employee->presentaddress=$request->presentaddress;
         $employee->permanentaddress=$request->permanentaddress;
+        $employee->fathername=$request->fathername;
+        $employee->maritalstatus=$request->maritalstatus;
         $employee->save();
         $eid=$employee->id;
         $employeecompany=new employeecompanydetail();
         $employeecompany->employee_id=$eid;
         $employeecompany->department=$request->department;
+        $employeecompany->empcode=$request->empcode;
         $employeecompany->designation=$request->designation;
         $employeecompany->dateofjoining=$request->dateofjoining;
+        $employeecompany->dateofconfirmation=$request->dateofconfirmation;
         $employeecompany->joinsalary=$request->joinsalary;
+        $employeecompany->totalyrexprnc=$request->totalyrexprnc;
+        $employeecompany->ofcemail=$request->ofcemail;
+        $employeecompany->cugmob=$request->cugmob;
+        $employeecompany->skillsets=$request->skillsets;
+        $employeecompany->location=$request->location;
+        $employeecompany->reportingto=$request->reportingto;
         $employeecompany->save();
 
         $employeebankaccount=new employeebankaccountsdetail();
@@ -169,6 +182,9 @@ public function updateemployeedetails(Request $request,$id)
     {
         $updateemployee=employeedetail::find($id);
         $updateemployee->employeename=$request->employeename;
+        $updateemployee->employeename=$request->employeename;
+        $updateemployee->qualification=$request->qualification;
+        $updateemployee->experencecomp=$request->experencecomp;
         $updateemployee->dob=$request->dob;
         $updateemployee->email=$request->email;
         $updateemployee->gender=$request->gender;
@@ -178,6 +194,8 @@ public function updateemployeedetails(Request $request,$id)
         $updateemployee->alternativephonenumber=$request->alternativephonenumber;
         $updateemployee->presentaddress=$request->presentaddress;
         $updateemployee->permanentaddress=$request->permanentaddress;
+        $updateemployee->fathername=$request->fathername;
+        $updateemployee->maritalstatus=$request->maritalstatus;
         $updateemployee->save();
 
         $eid=$updateemployee->id;
@@ -185,9 +203,17 @@ public function updateemployeedetails(Request $request,$id)
         $employeecompany=employeecompanydetail::find($eid);
         $employeecompany->employee_id=$eid;
         $employeecompany->department=$request->department;
+        $employeecompany->empcode=$request->empcode;
         $employeecompany->designation=$request->designation;
         $employeecompany->dateofjoining=$request->dateofjoining;
+        $employeecompany->dateofconfirmation=$request->dateofconfirmation;
         $employeecompany->joinsalary=$request->joinsalary;
+        $employeecompany->totalyrexprnc=$request->totalyrexprnc;
+        $employeecompany->ofcemail=$request->ofcemail;
+        $employeecompany->cugmob=$request->cugmob;
+        $employeecompany->skillsets=$request->skillsets;
+        $employeecompany->location=$request->location;
+        $employeecompany->reportingto=$request->reportingto;
         $employeecompany->save();
 
         $employeebankaccount=employeebankaccountsdetail::find($eid);
