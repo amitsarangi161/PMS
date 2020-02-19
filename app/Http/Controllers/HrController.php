@@ -175,7 +175,7 @@ public function editemployeedetails($id){
       $editcompanydetail=employeecompanydetail::find($id);
       $editemployeebankaccount=employeebankaccountsdetail::find($id);
       $editemployeedocument=employeedocument::find($id);
-        //return $editemployeedocument;
+        //return $editcompanydetail;
         return view('hr.editemployeedetails',compact('editemployeedetail','editcompanydetail','editemployeebankaccount','editemployeedocument','departments','designations'));
     }
 public function updateemployeedetails(Request $request,$id)
@@ -321,7 +321,7 @@ public function importemployee(Request $request){
           $compemployee->department=$value['department'];
           $compemployee->skillsets=$value['skill_sets'];
           $compemployee->reportingto=$value['reporting_to'];
-          $compemployee->ofcmail=$value['official_mail_id'];
+          $compemployee->ofcemail=$value['official_mail_id'];
           $compemployee->cugmob=$value['cug_mobile_number'];
           $compemployee->dateofconfirmation=$value['date_of_confirmation'];
           $compemployee->completionyear=$value['one_year_completion'];

@@ -30,34 +30,44 @@ else{
             <div class="box-header with-border">
               <h3 class="box-title">Employee Details</h3>
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
               <div class="box-body">
+                <div class="form-horizontal">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Employee Name</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" name="employeename"class="form-control" value="{{$editemployeedetail->employeename}}" id="inputEmail3" placeholder="Employee Name">
+                  <label for="inputEmail3" class=" col-sm-3">Emp. Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="employeename"class="form-control" id="inputEmail3" placeholder="Employee Name" value="{{$editemployeedetail->employeename}}">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">DOB</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editemployeedetail->dob}}" name="dob" class="form-control datepicker" placeholder="Date of Birth">
+                  <label for="inputEmail3" class=" col-sm-3">Qualification</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="qualification"class="form-control" id="inputEmail3" value="{{$editemployeedetail->qualification}}" placeholder="Qualification Name">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                  <div class="col-sm-10">
-                    <input type="email" value="{{$editemployeedetail->email}}" name="email"class="form-control" id="inputEmail3" placeholder="Email">
+                  <label for="inputEmail3" class=" col-sm-3">Experence In Company</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="experencecomp"class="form-control" id="inputEmail3" value="{{$editemployeedetail->experencecomp}}" placeholder="Experence In Which Company">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Gender</label>
+                  <label for="inputEmail3" class=" col-sm-3">DOB</label>
 
-                  <div class="col-sm-10">
-                    <label class="radio-inline">
+                  <div class="col-sm-9">
+                    <input type="text" name="dob" class="form-control datepicker" value="{{$editemployeedetail->dob}}" placeholder="Date of Birth">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Email</label>
+                  <div class="col-sm-9">
+                    <input type="email" name="email"class="form-control" id="inputEmail3" value="{{$editemployeedetail->email}}" placeholder="Email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Gender</label>
+
+                  <div class="col-sm-9">
+                   <label class="radio-inline">
                       <input type="radio" name="gender" value="male" {{ $editemployeedetail->gender == 'male' ? 'checked' : '' }}>Male
                     </label>
                     <label class="radio-inline">
@@ -70,56 +80,69 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Phone No.</label>
+                  <label for="inputEmail3" class=" col-sm-3">Personal Mobile No.</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editemployeedetail->phone}}" name="phone"class="form-control" id="inputEmail3" placeholder="Phone Number">
+                  <div class="col-sm-9">
+                    <input type="text" name="phone"class="form-control" id="inputEmail3" value="{{$editemployeedetail->phone}}" placeholder="Phone Number">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Alternative No.</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="alternativephonenumber"class="form-control" id="inputEmail3" value="{{$editemployeedetail->alternativephonenumber}}" placeholder="Alternative Phone Number">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Adhar No.</label>
+                  <label for="inputEmail3" class=" col-sm-3">Adhar No.</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editemployeedetail->adharno}}" name="adharno"class="form-control" id="inputEmail3" placeholder="Adhar Number">
+                  <div class="col-sm-9">
+                    <input type="text" name="adharno"class="form-control" id="inputEmail3" value="{{$editemployeedetail->adharno}}" placeholder="Adhar Number">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Blood Group</label>
+                  <label for="inputEmail3" class=" col-sm-3">Blood Group</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editemployeedetail->bloodgroup}}" name="bloodgroup"class="form-control" id="inputEmail3" placeholder="Blood Group">
+                  <div class="col-sm-9">
+                    <input type="text" name="bloodgroup"class="form-control" id="inputEmail3" value="{{$editemployeedetail->bloodgroup}}" placeholder="Blood Group">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Alternative No.</label>
+                  <label for="inputEmail3" class=" col-sm-3">
+                  Father's Name</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editemployeedetail->alternativephonenumber}}" name="alternativephonenumber"class="form-control" id="inputEmail3" placeholder="Alternative Phone Number">
+                  <div class="col-sm-9">
+                    <input type="text" name="fathername"class="form-control" id="inputEmail3" value="{{$editemployeedetail->fathername}}" placeholder="Father's Name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">
+                  Marital Status</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="maritalstatus"class="form-control" id="inputEmail3" value="{{$editemployeedetail->maritalstatus}}" placeholder="Marital Status">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Present Address</label>
+                  <label for="inputEmail3" class=" col-sm-3">Present Address</label>
 
-                  <div class="col-sm-10">
-                    <textarea class="form-control" id="presentaddress" name="presentaddress" autocomplete="off" type="text" placeholder="Present Address">{{$editemployeedetail->presentaddress}}</textarea>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" id="presentaddress" name="presentaddress" autocomplete="off" type="text" placeholder="Present Address" rows="5">{{$editemployeedetail->presentaddress}}</textarea>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Permanent Address</label>
+                  <label for="inputEmail3" class=" col-sm-3">Permanent Address</label>
 
-                  <div class="col-sm-10">
-                    <textarea class="form-control" id="permanentaddress" name="permanentaddress" autocomplete="off" type="text" placeholder="Permanent Address">
-                    {{$editemployeedetail->permanentaddress}}
-                    </textarea>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" id="permanentaddress" name="permanentaddress" autocomplete="off" type="text"  placeholder="Permanent Address" rows="5">{{$editemployeedetail->permanentaddress}}</textarea>
                   </div>
                 </div>
-
-              
+                </div>
               </div>
           </div>
       </div>
@@ -131,13 +154,12 @@ else{
               <h3 class="box-title">Employee Company Details</h3>
             </div>
             <!-- /.box-header -->
-            <!-- form start -->
               <div class="box-body">
-                
+                <div class="form-horizontal">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Department</label>
+                  <label class=" col-sm-3">Department</label>
 
-                  <div class="col-sm-10">
+                  <div class="col-sm-9">
                     <select class="form-control select2" name="department" style="width: 100%;">
                       <option>Select</option>
                       @foreach($departments as $department)
@@ -146,12 +168,10 @@ else{
                     </select>
                   </div>
                 </div>
-                
-                <br>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Designation</label>
+                  <label for="inputEmail3" class=" col-sm-3">Designation</label>
 
-                  <div class="col-sm-10">
+                  <div class="col-sm-9">
                     <select class="form-control select2" name="designation" style="width: 100%;">
                       <option value="">Select</option>
                       @foreach($designations as $designation)
@@ -160,24 +180,78 @@ else{
                     </select>
                   </div>
                 </div>
-               <br>
-               <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Date of joining</label>
+                <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Employee Code</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editcompanydetail->dateofjoining}}" name="dateofjoining"class="form-control datepicker" placeholder="Date of Joining">
+                  <div class="col-sm-9">
+                    <input type="text" name="empcode"class="form-control"  value="{{$editcompanydetail->empcode}}" placeholder="Enter Employee Code">
                   </div>
                </div>
-               <br>
-               <br>
                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Joining Salary</label>
+                  <label for="inputEmail3" class=" col-sm-3">Date of joining</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editcompanydetail->joinsalary}}" name="joinsalary"class="form-control" placeholder="Joining Salary">
+                  <div class="col-sm-9">
+                    <input type="text" name="dateofjoining"class="form-control datepicker" value="{{$editcompanydetail->dateofjoining}}" placeholder="Date of Joining">
                   </div>
                </div>
+               <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Date of Confirmation</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="dateofconfirmation"class="form-control datepicker" value="{{$editcompanydetail->dateofconfirmation}}" placeholder="Date of Confirmation">
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Joining Salary</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="joinsalary"class="form-control" value="{{$editcompanydetail->joinsalary}}" placeholder="Joining Salary">
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label for="inputEmail3" class=" col-sm-3">Total Year Experience</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="totalyrexprnc"class="form-control" value="{{$editcompanydetail->totalyrexprnc}}" placeholder="Joining Salary">
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label  class=" col-sm-3">Official Email</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="ofcemail"class="form-control" value="{{$editcompanydetail->ofcemail}}" placeholder="Official Email Id">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label  class=" col-sm-3">CUG Mobile No</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="cugmob"class="form-control" value="{{$editcompanydetail->cugmob}}" placeholder="CUG Mobile Number">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label  class="col-sm-3">Skill Sets</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="skillsets"class="form-control" value="{{$editcompanydetail->skillsets}}" placeholder="Skill Sets">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label  class="col-sm-3">Location</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="location"class="form-control" value="{{$editcompanydetail->location}}" placeholder="Location">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label  class="col-sm-3">Reporting To</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" name="reportingto"class="form-control" value="{{$editcompanydetail->reportingto}}" placeholder="Reporting To">
+                  </div>
+                </div>
               </div>
+            </div>
           </div>
       </div>
 
@@ -190,67 +264,68 @@ else{
             <!-- /.box-header -->
             <!-- form start -->
             <div class="form-horizontal">
-              <div class="box-body">
+                            <div class="box-body">
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Ac. Name</label>
+                  <label for="inputEmail3" class="col-sm-3">Ac. Name</label>
 
-                  <div class="col-sm-10">
+                  <div class="col-sm-9">
                     <input type="text" value="{{$editemployeebankaccount->accountholdername}}" name="accountholdername"class="form-control" id="inputEmail3" placeholder="Account Holder Name">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Ac. No.</label>
+                  <label for="inputEmail3" class="col-sm-3">Salary Ac. No.</label>
 
-                  <div class="col-sm-10">
+                  <div class="col-sm-9">
                     <input type="text" value="{{$editemployeebankaccount->accountnumber}}" name="accountnumber"class="form-control" id="inputEmail3" placeholder="Account Number">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Bank Name</label>
+                  <label for="inputEmail3" class="col-sm-3">Bank Name</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editemployeebankaccount->bankname}}" name="bankname"class="form-control" id="inputEmail3" placeholder="Account Number">
+                  <div class="col-sm-9">
+                    <input type="text" value="{{$editemployeebankaccount->bankname}}" name="bankname"class="form-control" id="inputEmail3" placeholder="Bank Name">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Ifsc</label>
+                  <label for="inputEmail3" class="col-sm-3">Ifsc</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editemployeebankaccount->ifsc}}" name="ifsc"class="form-control" id="inputEmail3" placeholder="Account Number">
+                  <div class="col-sm-9">
+                    <input type="text" value="{{$editemployeebankaccount->ifsc}}" name="ifsc"class="form-control" id="inputEmail3" placeholder="Ifsc Number">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Pan No.</label>
+                  <label for="inputEmail3" class="col-sm-3">Pan No.</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editemployeebankaccount->pan}}" name="pan"class="form-control" id="inputEmail3" placeholder="Account Number">
+                  <div class="col-sm-9">
+                    <input type="text" value="{{$editemployeebankaccount->pan}}" name="pan"class="form-control" id="inputEmail3" placeholder="Pan Number">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Branch</label>
+                  <label for="inputEmail3" class="col-sm-3">Branch</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editemployeebankaccount->branch}}" name="branch"class="form-control" id="inputEmail3" placeholder="Account Number">
+                  <div class="col-sm-9">
+                    <input type="text" value="{{$editemployeebankaccount->branch}}" name="branch"class="form-control" id="inputEmail3" placeholder="Branch">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">PF Account</label>
+                  <label for="inputEmail3" class="col-sm-3">PF Account</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" value="{{$editemployeebankaccount->pfaccount}}" name="pfaccount"class="form-control" id="inputEmail3" placeholder="Account Number">
+                  <div class="col-sm-9">
+                    <input type="text" value="{{$editemployeebankaccount->pfaccount}}" name="pfaccount"class="form-control" id="inputEmail3" placeholder="PF Number">
                   </div>
                 </div>
              
               </div>
             </div>
           </div>
-      </div>
+            </div>
+
       <div class="col-md-6">
           <!-- Horizontal Form -->
           <div class="box box-info">
@@ -263,7 +338,7 @@ else{
               <div class="box-body">
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Resume</label>
+                  <label for="inputEmail3" class="col-sm-2">Resume</label>
 
                   <div class="col-sm-6">
                     <input name="resume" onchange="readURL1(this);" type="file">
@@ -274,7 +349,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Offer Letter</label>
+                  <label for="inputEmail3" class="col-sm-2">Offer Letter</label>
                   <div class="col-sm-6">
                     <input name="offerletter" onchange="readURL2(this);" type="file">
                   </div>
@@ -284,7 +359,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Joining Letter</label>
+                  <label for="inputEmail3" class="col-sm-2">Joining Letter</label>
                   <div class="col-sm-6">
                     <input name="joiningletter" onchange="readURL3(this);" type="file">
                   </div>
@@ -294,7 +369,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Agreement Paper</label>
+                  <label for="inputEmail3" class="col-sm-2">Agreement Paper</label>
                   <div class="col-sm-6">
                     <input name="agreementpaper" onchange="readURL4(this);" type="file">
                   </div>
@@ -304,7 +379,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">ID Proof</label>
+                  <label for="inputEmail3" class="col-sm-2">ID Proof</label>
                   <div class="col-sm-6">
                     <input name="idproof" onchange="readURL5(this);" type="file">
                   </div>
