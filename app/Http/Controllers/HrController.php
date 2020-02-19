@@ -284,7 +284,8 @@ public function registeremployee(){
   $designations=designation::all();
   return view('hr.registeremployee',compact('departments','designations'));
 }
-public function importemployee(Request $request){
+public function importemployee(Request $request)
+{
   $this->validate($request, [
       'select_file'  => 'required|mimes:xls,xlsx'
      ]);
@@ -293,11 +294,13 @@ public function importemployee(Request $request){
       //return $data;
       if($data->count()>0){
         foreach($data as $kay=>$value){
-          $check=employeedetail::where('email',$value['personal_mail_id'])
-          ->orWhere('phone',$value['personal_mobile_number'])->count();
-          /*if($check==0){*/
+          $check=employeedetail::where('empcodeno',$value['emp_code_no'])
+          ->count();
+          //return $check;
+          if($check==0){
           $employee=new employeedetail();
           $employee->employeename=$value['emp_name'];
+          $employee->empcodeno=$value['emp_code_no'];
           $employee->dob=$value['date_of_birth'];
           $employee->email=$value['personal_mail_id'];
           $employee->phone=$value['personal_mobile_number'];
@@ -314,7 +317,6 @@ public function importemployee(Request $request){
           $empid=$employee->id;
           $compemployee=new employeecompanydetail();
           $compemployee->employee_id=$empid;
-          $employee->empcode=$value['emp_code_no'];
           $compemployee->remarks=$value['remarks'];
           $compemployee->dateofjoining=$value['date_of_joining'];
           $compemployee->designation=$value['designation'];
@@ -348,9 +350,12 @@ public function importemployee(Request $request){
           $user->usertype='USER';
           $user->save();
         }
-      //}
       }
-    Session::flash('status', 'Task was successful!');
+      Session::flash('message', 'Employee was successfuly uploaded');
+      }
+    else{
+      Session::flash('duplicate', 'Duplicate Entery');
+    }
     return back();
 }
 public function employeelist(){

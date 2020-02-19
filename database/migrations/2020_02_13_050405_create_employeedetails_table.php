@@ -20,6 +20,7 @@ class CreateEmployeedetailsTable extends Migration
             $table->string('email',100)->nullable();
             $table->string('qualification',50)->nullable();
             $table->string('fathername',50)->nullable();
+            $table->string('empcodeno',50)->nullable();
             $table->string('maritalstatus',50)->nullable();
             $table->string('gender',50)->nullable();
             $table->string('experencecomp',50)->nullable();

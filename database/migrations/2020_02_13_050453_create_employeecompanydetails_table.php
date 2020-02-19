@@ -16,7 +16,6 @@ class CreateEmployeecompanydetailsTable extends Migration
         Schema::create('employeecompanydetails', function (Blueprint $table) {
             $table->increments('id');
             $table->string('employee_id',22)->nullable();
-            $table->string('empcode',22)->nullable();
             $table->string('remarks',20)->nullable();
             $table->string('completionyear',22)->nullable();
             $table->string('location',22)->nullable();
