@@ -10,9 +10,36 @@
    
 }
 </style>
-
+@if(Session::has('message'))
+<p class="alert alert-success">{{ Session::get('message') }}</p>
+@endif
+@if(Session::has('error'))
+<p class="alert alert-danger">{{ Session::get('error') }}</p>
+@endif
+@if(count($errors) > 0)
+    <div class="alert alert-danger">
+     Upload Validation Error<br><br>
+     <ul>
+      @foreach($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+     </ul>
+    </div>
+@endif
 <h3 class="text-center"><strong>ALL PROJECTS</strong></h3>
 <div class="box">
+  <div class="box-header">
+    <div class="row">
+        <p>
+          <a href="/projects/addproject" class="btn btn-success btn-flat margin"><i class="fa fa-plus"></i> Add Project
+          </a>
+            <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importproject" onclick="importproject();"><i class="fa fa-file-excel-o"></i> Import Project</button>
+                <a href="/Project Import Sample.xlsx" download="/Employee Import Sample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
+          </span>
+          
+        </p>
+    </div>
+  </div>
 <div class="box-body">
     <div style="overflow-x:auto;">
 <table class="table table-responsive table-hover table-bordered table-striped datatable">
@@ -151,6 +178,34 @@
 
   </div>
 </div>
+<div class="modal fade in" id="importproject">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <form method="post" enctype="multipart/form-data" action="/importproject">
+      <div class="modal-header bg-navy">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: #fff;">×</span>
+      </button>
+        <h4 class="modal-title text-center">Upload Project Excel</h4>
+      </div>
+      <div class="modal-body">
+        
+              
+                {{ csrf_field() }}
+                <div class="form-group">
+                <label>Select File for Upload Project</label>
+                    <input type="file" name="select_file" />
+                    <span class="text-muted">.xls, .xslx</span>
+                </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success btn-flat">Upload</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
 	function changestatus(id,pname)
 	{
@@ -158,5 +213,11 @@
 		$("#pid").val(id);
         $("#myModal").modal('show');
 	}
+
+    function importproject(){
+        alert("Do You Want To Upload Project Excel");
+    }
+  $(".alert-success").delay(5000).fadeOut(800); 
+    $(".alert-danger").delay(5000).fadeOut(800);
 </script>
 @endsection
