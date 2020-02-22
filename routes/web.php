@@ -555,6 +555,7 @@ Route::get('/editclient/{id}','HomeController@editclient');
 Route::post('/updateclient/{id}','HomeController@updateclient');
 Route::post('/importclient','HomeController@importclient');
 Route::post('/importvendor','HomeController@importvendor');
+Route::post('/importproject','HomeController@importproject');
 
 //-------------END PMS MAIN ROUTE------------//
 

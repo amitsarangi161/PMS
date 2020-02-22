@@ -64,7 +64,40 @@ use Excel;
 class HomeController extends Controller
 {
 
-
+public function importproject(Request $request){
+  $this->validate($request, [
+      'select_file'  => 'required|mimes:xls,xlsx'
+     ]);
+      $path = $request->file('select_file')->getRealPath();
+      $data = Excel::selectSheetsByIndex(0)->load($path)->get();
+      //return $data;
+       if($data->count()>0){
+        foreach($data as $kay=>$value){
+        $check=project::where('projectname',$value['project_name'])
+          ->count();
+        if($check==0){
+          $project=new project();
+         $project->clientname=$value['client_name'];
+         $project->projectname=$value['project_name'];
+         $project->securitydepositdate=$value['security_deposit_date'];
+         $project->period=$value['security_money_period'];
+         $project->startdate =$value['date_of_commencement'];
+         $project->enddate=$value['end_date'];
+         $project->cost=$value['project_cost'];
+         $project->priority=$value['priority'];
+         $project->loano=$value['loa_no'];
+         $project->agreementno=$value['agreement_no'];
+         $project->save();
+        Session::flash('message', 'Project successfully Uploaded');
+        }
+        else{
+          Session::flash('error', 'Duplicate Entery');
+        }
+        }
+      }
+   
+    return back();
+}
 public function importvendor(Request $request){
   $this->validate($request, [
       'select_file'  => 'required|mimes:xls,xlsx'
