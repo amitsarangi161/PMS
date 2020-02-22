@@ -17,13 +17,13 @@ width: 100%;
 	<div class="col-sm-10 col-sm-offset-1">
 		<div class="row">
 			<div class="col-md-4 text-center">
-    			<a href="/login" class="btn btn-warning groupsbtn">Login To Pabitra Groups</a>
+    			<a href="/login" class="btn btn-warning groupsbtn">Login To PWEPL</a>
 			</div>
 			<div class="col-md-4 text-center">
     			<a href="/login" class="btn btn-warning groupsbtn">Login To Sonali Industries</a>
 			</div>
 			<div class="col-md-4 text-center">
-    			<a href="/login" class="btn btn-warning groupsbtn">Login To Mitali Transformer</a>
+    			<a href="/login" class="btn btn-warning groupsbtn">Login To MTSPL</a>
 			</div>
 		</div>
 	</div>
