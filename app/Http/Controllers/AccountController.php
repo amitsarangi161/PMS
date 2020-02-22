@@ -4264,6 +4264,32 @@ public function approvedebitvoucheradmin(Request $request,$id)
       $vendors=vendor::all();
       return view('accounts.vendors',compact('vendors'));
    }
+   public function importvendor(Request $request){
+    //return $request->all();
+    $this->validate($request, [
+        'select_file'  => 'required|mimes:xls,xlsx'
+
+       ]);
+      $path = $request->file('select_file')->getRealPath();
+      $data = Excel::selectSheetsByIndex(0)->load($path)->get();
+        foreach($data as $kay=>$value){
+
+         $vendor=new vendor();
+         $vendor->vendorname=$value['vendorname'];
+         $vendor->mobile=$value['mobile'];
+         $vendor->details=$value['vendordetails'];
+         $vendor->tinno=$value['tin'];
+         $vendor->tanno=$value['tan'];
+         $vendor->servicetaxno=$value['servicetax'];
+         $vendor->bankname=$value['bankname'];
+         $vendor->acno=$value['bankaccountno'];
+         $vendor->branchname=$value['branchname'];
+         $vendor->ifsccode=$value['ifsc'];
+         $vendor->save();
+        }
+    Session::flash('status', 'Upload successful!');
+    return back();
+}
   public function deletedeductiondefination(Request $request,$id)
    {
      $deductiondefination=deductiondefination::find($id);

@@ -568,6 +568,8 @@ Route::post('/savecompanybankaccount','AccountController@savecompanybankaccount'
 Route::post('/updatecompanybankaccount','AccountController@updatecompanybankaccount');
 
 //-------------END PMS ACCOUNT ROUTE------------//
+
+Route::post('/importvendor','AccountController@importvendor');
 });
 
 
