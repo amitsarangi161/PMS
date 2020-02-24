@@ -31,6 +31,8 @@ class CreateClientsTable extends Migration {
 			$table->string('userid', 100)->nullable();
 			$table->string('gstn', 1000)->nullable();
 			$table->string('panno', 200)->nullable();
+			$table->string('tinno', 200)->nullable();
+			$table->string('tanno', 200)->nullable();
 			$table->timestamps();
 		});
 	}

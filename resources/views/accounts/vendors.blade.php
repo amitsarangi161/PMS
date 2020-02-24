@@ -53,6 +53,14 @@
         <td colspan="2"><strong>Service Tax Number</strong></td>
         <td colspan="2"><input type="text" placeholder="Enter Service Tax Number" name="servicetaxno" class="form-control"></td>
     </tr>
+    <tr>
+        <td colspan="2"><strong>GSTN</strong></td>
+        <td colspan="2"><input type="text" placeholder="Enter Gst Number" name="gstno" class="form-control"></td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>PAN Number</strong></td>
+        <td colspan="2"><input type="text" placeholder="Enter Pan Number" name="panno" class="form-control"></td>
+    </tr>
       <tr>
         <td colspan="2"><strong>BANK NAME</strong></td>
         <td colspan="2"><input type="text" placeholder="Enter Bank Name" name="bankname" class="form-control"></td>
