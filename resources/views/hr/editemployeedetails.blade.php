@@ -26,7 +26,7 @@ else{
           <!-- Horizontal Form -->
           <form action="/updateemployeedetails/{{$editemployeedetail->id}}" method="post" enctype="multipart/form-data" class="form-horizontal">
           {{csrf_field()}}
-          <div class="box box-info">
+          <div class="box box-info box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Employee Details</h3>
             </div>
@@ -155,7 +155,7 @@ else{
 
         <div class="col-md-6" class="form-horizontal">
           <!-- Horizontal Form -->
-          <div class="box box-info">
+          <div class="box box-info box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Employee Company Details</h3>
             </div>
@@ -166,24 +166,14 @@ else{
                   <label class=" col-sm-3">Department</label>
 
                   <div class="col-sm-9">
-                    <select class="form-control select2" name="department" style="width: 100%;">
-                      <option>Select</option>
-                      @foreach($departments as $department)
-                      <option value="{{$department->id}}" {{$editcompanydetail->department==$department->id ? 'selected="selected"':''}}>{{$department->departmentname}}</option>
-                      @endforeach
-                    </select>
+                    <input type="text" name="department"class="form-control" value="{{$editcompanydetail->department}}" placeholder="Date of Confirmation">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Designation</label>
 
                   <div class="col-sm-9">
-                    <select class="form-control select2" name="designation" style="width: 100%;">
-                      <option value="">Select</option>
-                      @foreach($designations as $designation)
-                      <option value="{{$designation->id}}" {{$editcompanydetail->designation==$designation->id ? 'selected="selected"':''}}>{{$designation->designationname}}</option>
-                     @endforeach
-                    </select>
+                    <input type="text" name="designation"class="form-control" value="{{$editcompanydetail->designation}}" placeholder="Date of Confirmation">
                   </div>
                 </div>
                <div class="form-group">
@@ -256,7 +246,7 @@ else{
 
       <div class="col-md-6">
           <!-- Horizontal Form -->
-          <div class="box box-info">
+          <div class="box box-info box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Employee  Banka Account Details</h3>
             </div>
@@ -327,7 +317,7 @@ else{
 
       <div class="col-md-6">
           <!-- Horizontal Form -->
-          <div class="box box-info">
+          <div class="box box-info box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Employee Documents</h3>
             </div>
