@@ -1,15 +1,36 @@
 @extends('layouts.hr')
 @section('content')
-
-<div class="row">
+<style type="text/css">
+  .box{border-radius: 0px!important;}
+}
+</style>
   @if(Session::has('message'))
-  <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> {!! session('message') !!}</div>
+  <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> {!! session('message') !!}
+  </div>
   @endif
+  @if(Session::has('error'))
+<p class="alert alert-danger">{{ Session::get('error') }}</p>
+@endif
+@if(count($errors) > 0)
+    <div class="alert alert-danger">
+     Fillup all fields<br>
+     <ul>
+      @foreach($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+     </ul>
+    </div>
+@endif
+  <div class="box box-info box-solid">
+     <div class="box-header bg-navy with-border text-center">
+              <h3 class="box-title">Employee Registration</h3>
+      </div>
+  <div class="row">
 	<div class="col-md-6">
           <!-- Horizontal Form -->
           <form action="/saveemployeedetails" method="post" enctype="multipart/form-data" class="form-horizontal">
           {{csrf_field()}}
-          <div class="box box-info">
+          <div class="box box-info  box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Employee Details</h3>
             </div>
@@ -131,7 +152,7 @@
                   <label for="inputEmail3" class=" col-sm-3">Permanent Address</label>
 
                   <div class="col-sm-9">
-                    <textarea class="form-control" id="permanentaddress" name="permanentaddress" autocomplete="off" type="text" placeholder="Permanent Address" rows="5"></textarea>
+                    <textarea class="form-control" id="permanentaddress" name="permanentaddress" autocomplete="off" type="text" placeholder="Permanent Address" rows="6"></textarea>
                   </div>
                 </div>
                 </div>
@@ -141,9 +162,9 @@
 
       	<div class="col-md-6" class="form-horizontal">
           <!-- Horizontal Form -->
-          <div class="box box-info">
+          <div class="box box-info  box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">Employee Company Details</h3>
+              <h3 class="box-title">Company Details</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -153,24 +174,14 @@
                   <label class=" col-sm-3">Department</label>
 
                   <div class="col-sm-9">
-                    <select class="form-control select2" name="department" style="width: 100%;">
-                      <option value="">Select</option>
-                      @foreach($departments as $department)
-                      <option value="{{$department->id}}">{{$department->departmentname}}</option>
-                      @endforeach
-                    </select>
+                    <input type="text" name="department"class="form-control" placeholder="Enter Department Name">
                   </div>
-                </div>
+                  </div>
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Designation</label>
 
                   <div class="col-sm-9">
-                    <select class="form-control select2" name="designation" style="width: 100%;">
-                      <option value="">Select</option>
-                      @foreach($designations as $designation)
-                      <option value="{{$designation->id}}">{{$designation->designationname}}</option>
-                      @endforeach
-                    </select>
+                    <input type="text" name="designation"class="form-control" placeholder="Enter Designation Name">
                   </div>
                 </div>
                <div class="form-group">
@@ -243,9 +254,9 @@
 
       <div class="col-md-6">
           <!-- Horizontal Form -->
-          <div class="box box-info">
+          <div class="box box-info  box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">Employee  Bank Account Details</h3>
+              <h3 class="box-title">Bank Account Details</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -313,9 +324,9 @@
       </div>
       <div class="col-md-6">
           <!-- Horizontal Form -->
-          <div class="box box-info">
+          <div class="box box-info  box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">Employee Documents</h3>
+              <h3 class="box-title">Documents</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -388,7 +399,7 @@
               </div>
               <!-- /.box-footer -->
         </form>
-
+</div>
 <script>
   function readURL1(input) {
     if (input.files && input.files[0]) {

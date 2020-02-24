@@ -54,12 +54,18 @@ public function ajaxgetdept(Request $request){
  return response()->json(compact('departments','designations'));
 }
 public function saveemployeedetails(Request $request){
-      //return $request->all(); 
+$request->validate([
+    'email' => 'required|unique:employeedetails|max:255',
+    'phone' => 'required|max:10|min:10',
+    'empcodeno' => 'required|unique:employeedetails|max:20',
+]);
       $check=employeedetail::where('email',$request->email)
             ->orWhere('phone',$request->phone)
             ->orWhere('empcodeno',$request->empcodeno)
             ->count();
-      if($check == 0){
+
+  if($check == 0)
+  {
 
         $employee=new employeedetail();
         $employee->employeename=$request->employeename;
@@ -104,7 +110,6 @@ public function saveemployeedetails(Request $request){
         $employeebankaccount->branch=$request->branch;
         $employeebankaccount->pfaccount=$request->pfaccount;
         $employeebankaccount->save();
-
         $employeedocument=new employeedocument();
         $employeedocument->employee_id=$eid;
         $rarefile = $request->file('resume');
@@ -154,31 +159,19 @@ public function saveemployeedetails(Request $request){
         }
         $employeedocument->save();
 
-        $user=new User();
-        $user->employee_id=$eid;
-        $user->name=$request->employeename;
-        $user->username=$request->email;
-        $user->email=$request->email;
-        $user->password=bcrypt($request->phone);
-        $user->pass=$request->phone;
-        $user->mobile=$request->phone;
-        $user->usertype="USER";
-        $user->save();
-      }
-      Session::flash('message','Employee save successfully');
-      return redirect('hrmain/employeelist');
-      
-       
+  }
+   Session::flash('message','Employee save successfully');
+      return redirect('/hrmain/employeelist');       
 }
 public function editemployeedetails($id){
-      $departments=department::all();
-      $designations=designation::all();
+/*      $departments=department::all();*/
+      //$designations=designation::all();
       $editemployeedetail=employeedetail::find($id);
       $editcompanydetail=employeecompanydetail::find($id);
       $editemployeebankaccount=employeebankaccountsdetail::find($id);
       $editemployeedocument=employeedocument::find($id);
-        //return $editcompanydetail;
-        return view('hr.editemployeedetails',compact('editemployeedetail','editcompanydetail','editemployeebankaccount','editemployeedocument','departments','designations'));
+        /*return $editcompanydetail;*/
+        return view('hr.editemployeedetails',compact('editemployeedetail','editcompanydetail','editemployeebankaccount','editemployeedocument'));
     }
 public function updateemployeedetails(Request $request,$id)
     {
