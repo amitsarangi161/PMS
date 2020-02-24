@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'HomeController@home')->name('home');
 Route::post('/ajaxexpchangedate','AjaxController@ajaxexpchangedate');
 Route::get('/testimage','HomeController@testimage');
 Route::post('/registerrequest','HomeController@registerrequest');
@@ -17,7 +18,7 @@ Route::post('/account/kit','AjaxController@accountkitverify');
 Route::post('/ajaxsavesuggestion','AjaxController@savesuggestion');
 Route::post('/ajaxcheckbill','AccountController@ajaxcheckbill');
 Route::post('/ajaxsearchtenderno','AjaxController@ajaxsearchtenderno');
-Route::get('/', 'HomeController@home')->name('home');
+
 Route::get('gettenderlist','TenderController@gettenderlist')->name('gettenderlist');
 Route::get('getaccountexpenseentrylist','AccountController@getaccountexpenseentrylist')->name('getaccountexpenseentrylist');
 Route::get('getaccountapprovedexpenseentry','AccountController@getaccountapprovedexpenseentry')->name('getaccountapprovedexpenseentry');

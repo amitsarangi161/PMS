@@ -56,7 +56,9 @@ public function ajaxgetdept(Request $request){
 public function saveemployeedetails(Request $request){
       //return $request->all(); 
       $check=employeedetail::where('email',$request->email)
-            ->orWhere('phone',$request->phone)->count();
+            ->orWhere('phone',$request->phone)
+            ->orWhere('empcodeno',$request->empcodeno)
+            ->count();
       if($check == 0){
 
         $employee=new employeedetail();
@@ -339,6 +341,9 @@ public function importemployee(Request $request)
           //$empbank->branch=$value['branch'];
           //$empbank->pfaccount=$value['pfaccount'];
           $empbank->save();
+          $checkuser=User::where('username',$value['emp_code_no'])
+                    ->count();
+          if ($checkuser==0) {
           $user=new User();
           $user->employee_id=$empid;
           $user->name=$value['emp_name'];
@@ -349,6 +354,8 @@ public function importemployee(Request $request)
           $user->mobile=$value['personal_mobile_number'];
           $user->usertype='USER';
           $user->save();
+          }
+     
           Session::flash('message', 'Employee was successfuly uploaded');
         }
         else{
