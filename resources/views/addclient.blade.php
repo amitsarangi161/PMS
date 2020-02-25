@@ -3,19 +3,22 @@
 @section('content')
 
 @if(Session::has('message'))
-   <p class="alert alert-info text-center">{{ Session::get('message') }}</p>
+   <p class="alert alert-success text-center">{{ Session::get('message') }}</p>
    @endif
+ @if(Session::has('status'))
+ <p class="alert alert-success text-center">{{ Session::get('status') }}</p>
+ @endif
 <form action="/saveclient" method="post">
 	{{csrf_field()}}
 <table class="table table-responsive table-hover table-bordered table-striped" >
         <tr>
-            <td colspan="4" class="text-center bg-navy">ADD A NEW CLIENT</td>
+            <td colspan="4" class="text-center bg-navy">ADD A NEW DEBITOR</td>
         </tr>
         <tr>
-         <td><strong>CLIENT NAME</strong><span style="color: red"> *</span></td>
+         <td><strong>CLIENT/DEPARTMENT NAME</strong><span style="color: red"> *</span></td>
          <td><input type="text" name="clientname" class="form-control" placeholder="Enter Client Name" required=""></td>
-         <td><strong>OFC/ORG NAME</strong><span style="color: red"> *</span></td>
-         <td><input type="text" name="orgname" class="form-control" placeholder="Enter Organisation Name" required=""></td>
+         <td><strong>TAN NUMBER</strong><span style="color: red"> *</span></td>
+         <td><input type="text" name="tanno" class="form-control" placeholder="Enter Tan Number" required=""></td>
         </tr>
         <tr>
         	<td><strong>CONTACT NO</strong><span style="color: red"> *</span></td>
@@ -62,8 +65,9 @@
         <tr>
         	<td><strong>ADDITIONAL INFO</strong><span style="color: red"> *</span></td>
         	<td><textarea name="additionalinfo" class="form-control" placeholder="Enter Addional Info"></textarea></td>
+          <td><strong>TIN NUMBER</strong><span style="color: red"> *</span></td>
+         <td><input type="text" name="tinno" class="form-control" placeholder="Enter Tin Number" required=""></td>
         </tr>
-
                 <tr>
             <td></td>
              <td colspan="4"><input type="submit" value="Submit" class="btn btn-success btn-flat" style="float: right ;"></td>
@@ -88,8 +92,8 @@
 @if($clients)
 <div class="box">
 <div class="box-header">
-     <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importclient" onclick="importclient();"><i class="fa fa-file-excel-o"></i> Import Employee</button>
-     <a href="/Client Import Sample.xlsx" download="/Client Import Sample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
+     <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importclient" onclick="importclient();"><i class="fa fa-file-excel-o"></i> Import Debitor</button>
+     <a href="/Debitor Import Sample.xlsx" download="/debitorSample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
           </span>
 </div>
 <div class="box-body">
@@ -98,8 +102,7 @@
     <thead>
         <tr class="bg-navy" style="font-size: 10px;">
             <th>ID</th>
-            <th>CLIENT NAME</th>
-            <th>ORG NAME</th>
+            <th>DEPARTMENT NAME</th>
             <th>CONTACT</th>
             <th>OFFICE CONTACT</th>
             <th>EMAIL</th>
@@ -118,7 +121,6 @@
         <tr style="font-size: 12px;">
             <td>{{$client->id}}</td>
             <td>{{$client->clientname}}</td>
-            <td>{{$client->orgname}}</td>
             <td>{{$client->contact1}}</td>
             <td>{{$client->officecontact}}</td>
             <td>{{$client->email}}</td>
@@ -149,7 +151,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" style="color: #fff;">×</span>
       </button>
-        <h4 class="modal-title text-center">Upload Client Excel</h4>
+        <h4 class="modal-title text-center">Upload Debitor Excel</h4>
       </div>
       <div class="modal-body">
         
@@ -171,7 +173,7 @@
 </div>
 <script type="text/javascript">
     function importclient(){
-        alert("Do You Want To Upload Employee Excel");
+        alert("Do You Want To Upload Debitor Excel");
     }
 </script>
 @endsection

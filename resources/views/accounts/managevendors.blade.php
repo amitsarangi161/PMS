@@ -1,10 +1,10 @@
 @extends('layouts.account')
 @section('content')
    @if(Session::has('msg'))
-   <p class="alert alert-info text-center">{{ Session::get('msg') }}</p>
+   <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
    @endif
    @if(Session::has('status'))
-   <p class="alert alert-info text-center">{{ Session::get('status') }}</p>
+   <p class="alert alert-success text-center">{{ Session::get('status') }}</p>
    @endif
 
    @if ($errors->any())
@@ -21,7 +21,7 @@
     <div class="row">
         <p>
             <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importvendor" onclick="importvendor();"><i class="fa fa-file-excel-o"></i> Import Vendor</button>
-                <a href="/vendorsample.xlsx" download="/vendorsample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
+                <a href="/VendorImportSample.xlsx" download="/vendorsample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
           </span>
           
         </p>
@@ -36,8 +36,8 @@
        	   	<th>VENDOR NAME</th>
        	   	<th>MOBILE</th>
        	   	<th>DETAILS</th>
-            <th>Tin Number</th>
-            <th>Tan Number</th>
+            <th>GSTN</th>
+            <th>PAN Number</th>
             <th>Service Tax Number</th>
        	   	<th>EDIT</th>
        	   <!-- 	<th>DELETE</th> -->
@@ -50,8 +50,8 @@
            	<td>{{$vendor->vendorname}}</td>
            	<td>{{$vendor->mobile}}</td>
            	<td>{{$vendor->details}}</td>
-            <td>{{$vendor->tinno}}</td>
-            <td>{{$vendor->tanno}}</td>
+            <td>{{$vendor->gstno}}</td>
+            <td>{{$vendor->panno}}</td>
             <td>{{$vendor->servicetaxno}}</td>
            	<!-- <td>
               <a href="{{ asset('/img/vendor/'.$vendor->vendoridproof )}}" target="_blank">

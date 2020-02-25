@@ -34,7 +34,7 @@
           <a href="/projects/addproject" class="btn btn-success btn-flat margin"><i class="fa fa-plus"></i> Add Project
           </a>
             <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importproject" onclick="importproject();"><i class="fa fa-file-excel-o"></i> Import Project</button>
-                <a href="/Project Import Sample.xlsx" download="/Employee Import Sample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
+                <a href="/Project Import Sample.xlsx" download="/Project Import Sample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
           </span>
           
         </p>

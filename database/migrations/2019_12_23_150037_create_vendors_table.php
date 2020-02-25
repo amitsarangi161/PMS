@@ -24,6 +24,8 @@ class CreateVendorsTable extends Migration {
 			$table->string('acno', 200)->nullable();
 			$table->string('tinno', 200)->nullable();
 			$table->string('tanno', 200)->nullable();
+			$table->string('panno', 200)->nullable();
+			$table->string('gstno', 200)->nullable();
 			$table->string('servicetaxno', 200)->nullable();
 			$table->string('branchname', 200)->nullable();
 			$table->string('ifsccode', 200)->nullable();

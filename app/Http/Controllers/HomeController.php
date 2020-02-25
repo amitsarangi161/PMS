@@ -76,7 +76,7 @@ public function importproject(Request $request){
         $check=project::where('projectname',$value['project_name'])
           ->count();
         if($check==0){
-          $project=new project();
+         $project=new project();
          $project->clientname=$value['client_name'];
          $project->projectname=$value['project_name'];
          $project->securitydepositdate=$value['security_deposit_date'];
@@ -143,6 +143,8 @@ public function importclient(Request $request){
           $client->state=$value['state'];
           $client->country=$value['country'];
           $client->additionalinfo=$value['additionalinfo'];
+          $client->tinno=$value['tinno'];
+          $client->tanno=$value['tanno'];
           $client->save();
         }
     Session::flash('status', 'Task was successful!');
@@ -2860,6 +2862,8 @@ return $message->sid;*/
       $client->dist=$request->dist;
       $client->state=$request->state;
       $client->country=$request->country;
+      $client->tinno=$request->tinno;
+      $client->tanno=$request->tanno;
       $client->userid=Auth::id();
       $client->save();
     Session::flash('message','Client save Successfully');
@@ -2886,7 +2890,7 @@ return $message->sid;*/
 
 
        
-       $client=client::find($id);
+      $client=client::find($id);
       $client->clientname=$request->clientname;
       $client->orgname=$request->orgname;
       $client->contact1=$request->contact1;
@@ -2902,6 +2906,8 @@ return $message->sid;*/
       $client->dist=$request->dist;
       $client->state=$request->state;
       $client->country=$request->country;
+      $client->tinno=$request->tinno;
+      $client->tanno=$request->tanno;
       $client->userid=Auth::id();
       $client->save();
       Session::flash('message','Client Updated Successfully');

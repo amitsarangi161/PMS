@@ -8,13 +8,13 @@
 	{{csrf_field()}}
 <table class="table table-responsive table-hover table-bordered table-striped" >
         <tr>
-            <td colspan="4" class="text-center bg-navy">ADD A NEW CLIENT</td>
+            <td colspan="4" class="text-center bg-navy">UPDATE DEBITOR</td>
         </tr>
         <tr>
-         <td><strong>CLIENT NAME</strong><span style="color: red"> *</span></td>
+         <td><strong>DEPARTMENT NAME</strong><span style="color: red"> *</span></td>
          <td><input type="text" name="clientname" value="{{$client->clientname}}" class="form-control" placeholder="Enter Client Name" required=""></td>
-         <td><strong>OFC/ORG NAME</strong><span style="color: red"> *</span></td>
-         <td><input type="text" name="orgname" value="{{$client->orgname}}" class="form-control" placeholder="Enter Organisation Name" required=""></td>
+         <td><strong>TAN NUMBER</strong><span style="color: red"> *</span></td>
+         <td><input type="text" value="{{$client->tanno}}" name="tanno" class="form-control" placeholder="Enter Tan Number" required=""></td>
         </tr>
         <tr>
         	<td><strong>CONTACT NO</strong><span style="color: red"> *</span></td>
@@ -63,6 +63,11 @@
         	<td><strong>ADDITIONAL INFO</strong><span style="color: red"> *</span></td>
         	<td><textarea name="additionalinfo" class="form-control" placeholder="Enter Addional Info">{{$client->additionalinfo}}   
             </textarea></td>
+            <td><strong>TIN NUMBER</strong><span style="color: red"> *</span></td>
+         <td><input type="text" name="tinno" value="{{$client->tinno}}" class="form-control" placeholder="Enter Tin Number" required=""></td>
+        </tr>
+        <tr>
+          
         </tr>
 
                 <tr>

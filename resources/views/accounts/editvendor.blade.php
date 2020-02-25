@@ -46,6 +46,14 @@
         <td><strong>SERVICE TAX NUMBER</strong></td>
         <td><input type="text" value="{{$vendor->servicetaxno}}" name="servicetaxno" class="form-control"></td>
       </tr>
+      <tr>
+        <td><strong>GSTN</strong></td>
+        <td><input type="text" value="{{$vendor->gstno}}" name="gstno" class="form-control"></td>
+      </tr>
+      <tr>
+        <td><strong>PAN NUMBER</strong></td>
+        <td><input type="text" value="{{$vendor->panno}}" name="panno" class="form-control"></td>
+      </tr>
 
 	    <tr>
         <td><strong>BANK NAME</strong></td>
