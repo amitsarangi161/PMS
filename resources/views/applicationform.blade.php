@@ -11,24 +11,24 @@
 
 </table>
 
-<div class="well" style="font-size: 20px;background-color: violet;">
+<!-- <div class="well" style="font-size: 20px;background-color: violet;">
   <div class="table-responsive">
     <table class="table">
       <tr>
 
-      <td><strong>TOTAL PAID AMOUNT TILL DATE :</strong>  {{$totalamt}}</td>
-      <td><strong>TOTAL EXPENSE TILL DATE :</strong> {{$totalamtentry}}</td>
-      <td><strong>BALANCE AMOUNT :</strong> {{$bal}}</td>
-       <td><strong>+</strong> <img src="{{asset('wallet.png')}}" style="height: 40px;width: 40px;">Rs. {{$walletbalance}}</td>
+      <td><strong>TOTAL PAID AMOUNT TILL DATE :</strong>  0</td>
+      <td><strong>TOTAL EXPENSE TILL DATE :</strong>0</td>
+      <td><strong>BALANCE AMOUNT :</strong> 0</td>
+       <td><strong>+</strong> <img src="{{asset('wallet.png')}}" style="height: 40px;width: 40px;">Rs. 0</td>
       </tr>
       
     </table>
     
   </div>
   
-</div>
+</div> -->
 
-@if($bal<=5001)
+
 <form action="/saveuserrequisitions" method="post">
 	{{csrf_field()}}
 
@@ -53,11 +53,10 @@
       	 	<select class="form-control select2" id="projectid" onchange="showclient();"  name="projectid" required="">
 
       	 		<option value="">select a project</option>
+            <option value="">aaa</option>
+            <option value="">bbb</option>
             
-      	 	@foreach($projects as $project)
-             <option value="{{$project->id}}" title="{{$project->orgname}}">{{$project->projectname}}</option>
-                 
-      	 	@endforeach 
+      	 
       	 	</select>
       	 </td>
       </tr>
@@ -182,11 +181,9 @@
 </table>
 
 </form>
-@else
 
-<h1>Your Balance is Greater Rs.5000,Please Do the Expense Entry First</h1>
 
-@endif
+
 
 
 

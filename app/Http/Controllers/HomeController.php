@@ -121,15 +121,21 @@ public function importvendor(Request $request){
 }
 public function importclient(Request $request){
   $this->validate($request, [
-      'select_file'  => 'required|mimes:xls,xlsx'
+      'select_file'  => 'required|mimes:xls,xlsx',
+
      ]);
       $path = $request->file('select_file')->getRealPath();
       $data = Excel::selectSheetsByIndex(0)->load($path)->get();
-        foreach($data as $kay=>$value){
 
+        foreach($data as $kay=>$value){
+        $check=client::where('panno',$value['panno'])
+                      ->orWhere('gstn',$value['panno'])
+          ->count();
+          if($check==0){
           $client=new client();
           $client->clientname=$value['clientname'];
           $client->orgname=$value['orgname'];
+   
           $client->contact1=$value['mobile1'];
           $client->contact2=$value['mobile2'];
           $client->officecontact=$value['officeno'];
@@ -146,8 +152,13 @@ public function importclient(Request $request){
           $client->tinno=$value['tinno'];
           $client->tanno=$value['tanno'];
           $client->save();
+          Session::flash('status', 'Task was successful!');
+          }
+          else{
+            Session::flash('error', 'duplicate client entry!');
+          }
         }
-    Session::flash('status', 'Task was successful!');
+    
     return back();
 }
 public function companysetup(Request $request){
@@ -2044,41 +2055,42 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
     {
             
 
-           $requisition=requisitionheader::select('requisitions.*','requisitionheaders.employeeid','requisitionpayments.amount as paidamt')
-                      ->leftJoin('requisitionpayments','requisitionpayments.rid','=','requisitionheaders.id')
-                       ->leftJoin('requisitions','requisitions.requisitionheaderid','=','requisitionheaders.id')
-                       ->where('requisitionpayments.paymentstatus','PAID')
-                       ->where('requisitionpayments.paymenttype','!=','WALLET')
-                      ->where('requisitionheaders.employeeid',Auth::id())
-                      ->groupBy('requisitionpayments.id')
-                      ->get();
+           // $requisition=requisitionheader::select('requisitions.*','requisitionheaders.employeeid','requisitionpayments.amount as paidamt')
+           //            ->leftJoin('requisitionpayments','requisitionpayments.rid','=','requisitionheaders.id')
+           //             ->leftJoin('requisitions','requisitions.requisitionheaderid','=','requisitionheaders.id')
+           //             ->where('requisitionpayments.paymentstatus','PAID')
+           //             ->where('requisitionpayments.paymenttype','!=','WALLET')
+           //            ->where('requisitionheaders.employeeid',Auth::id())
+           //            ->groupBy('requisitionpayments.id')
+           //            ->get();
          
-          $totalamt=$requisition->sum('paidamt');
+        //   $totalamt=$requisition->sum('paidamt');
         
-        $entries=expenseentry::where('employeeid',Auth::id())
-                ->where('towallet','!=','YES')
-                ->get();
-          $totalamtentry=$entries->sum('approvalamount');
-           $wallet=wallet::where('employeeid',Auth::id())
-                ->get();
-         $walletcr=$wallet->sum('credit');
-         $walletdr=$wallet->sum('debit');
-         $walletbalance=$walletcr-$walletdr;
+        // $entries=expenseentry::where('employeeid',Auth::id())
+        //         ->where('towallet','!=','YES')
+        //         ->get();
+        //   $totalamtentry=$entries->sum('approvalamount');
+        //    $wallet=wallet::where('employeeid',Auth::id())
+        //         ->get();
+        //  $walletcr=$wallet->sum('credit');
+        //  $walletdr=$wallet->sum('debit');
+        //  $walletbalance=$walletcr-$walletdr;
 
-          $bal=($totalamt-$totalamtentry)-$walletbalance;
+        //   $bal=($totalamt-$totalamtentry)-$walletbalance;
 
-          $all=array('totalamt'=>$totalamt,'totalexpense'=>$totalamtentry,'balance'=>$bal);
+        //   $all=array('totalamt'=>$totalamt,'totalexpense'=>$totalamtentry,'balance'=>$bal);
           
 
         $users=User::all();
         $expenseheads=expensehead::all();
         $particulars=particular::all();
 
-        $projects=project::select('projects.*','clients.orgname')
-                ->leftJoin('clients','projects.clientid','=','clients.id')
-                ->get();
+        // $projects=project::select('projects.*','clients.orgname')
+        //         ->leftJoin('clients','projects.clientid','=','clients.id')
+        //         ->get();
 
-        return view('applicationform',compact('users','projects','expenseheads','totalamt','bal','totalamtentry','walletbalance'));
+        // return view('applicationform',compact('users','projects','expenseheads','totalamt','bal','totalamtentry','walletbalance'));
+        return view('applicationform',compact('users','expenseheads'));
     }
      public function viewallexpenseentry()
      {

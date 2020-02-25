@@ -4277,7 +4277,10 @@ public function approvedebitvoucheradmin(Request $request,$id)
       $path = $request->file('select_file')->getRealPath();
       $data = Excel::selectSheetsByIndex(0)->load($path)->get();
         foreach($data as $kay=>$value){
-
+        $check=vendor::where('panno',$value['pan'])
+                      ->orWhere('gstno',$value['gst'])
+          ->count();
+         if($check==0){
          $vendor=new vendor();
          $vendor->vendorname=$value['vendorname'];
          $vendor->mobile=$value['mobile'];
@@ -4292,8 +4295,13 @@ public function approvedebitvoucheradmin(Request $request,$id)
          $vendor->branchname=$value['branchname'];
          $vendor->ifsccode=$value['ifsc'];
          $vendor->save();
+         Session::flash('status', 'Upload successful!');
+         }
+         else{
+          Session::flash('error', 'duplicate vendor entry!');
+         }
         }
-    Session::flash('status', 'Upload successful!');
+    
     return back();
 }
   public function deletedeductiondefination(Request $request,$id)

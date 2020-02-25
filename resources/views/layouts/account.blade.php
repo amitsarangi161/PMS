@@ -251,6 +251,89 @@
              <li class="{{ Request::is('banks/companybankaccount') ? 'active' : '' }}"><a href="/banks/companybankaccount"><i class="fa fa-circle-o text-red"></i>COMPANY BANK ACCOUNTS</a></li>
           </ul>
         </li>
+        <li class="{{ Request::is('requisitions*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-retweet"></i> <span>REQUISITIONS</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ Request::is('requisitions/applicationform') ? 'active' : '' }}"><a href="/requisitions/applicationform"><i class="fa fa-circle-o text-red"></i>APPLICATION FORM</a></li>
+
+
+
+          </ul>
+        </li>
+        @php
+          $mgrpendingreqcount=\App\requisitionheader::where('status','PENDING MGR')
+                          ->count();
+          $hodpendingreqcount=\App\requisitionheader::where('status','PENDING HOD')
+                          ->count();
+          $pendingreqcount=\App\requisitionheader::where('status','PENDING')
+                          ->count();
+          $approvedreqcount=\App\requisitionheader::where('status','APPROVED')
+                          ->count();
+          $completedreqcount=\App\requisitionheader::where('status','COMPLETED')
+                          ->count();
+          $cancelledreqcount=\App\requisitionheader::where('status','CANCELLED')
+                          ->count();
+
+
+          @endphp
+         <li class="{{ Request::is('viewrequisitions*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-envelope"></i> <span>VIEW REQUISITIONS</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+              <span class="label label-warning pull-right">{{$mgrpendingreqcount+$pendingreqcount+$hodpendingreqcount}}</span>
+            </span>
+          </a>
+
+       
+          <ul class="treeview-menu">
+
+                  <li class="{{ Request::is('viewrequisitions/pendingrequisitionshod') ? 'active' : '' }}"><a href="/viewrequisitions/pendingrequisitionshod" title="PENDING REQUISITIONS(FOR HOD)" class="chngreqfont"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(FOR HOD)
+             <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$hodpendingreqcount}}</span>
+                </span>
+            </a></li>
+
+
+                <li class="{{ Request::is('viewrequisitions/pendingrequisitionsmgr') ? 'active' : '' }}"><a title="PENDING REQUISITIONS(FOR ACCOUNTS)" class="chngreqfont" href="/viewrequisitions/pendingrequisitionsmgr"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(ACCOUNTS)
+             <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$mgrpendingreqcount}}</span>
+                </span>
+            </a></li>
+
+            <li class="{{ Request::is('viewrequisitions/pendingrequisitions') ? 'active' : '' }}"><a title="PENDING REQUISITIONS(FOR ADMIN)" class="chngreqfont" href="/viewrequisitions/pendingrequisitions"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(FOR ADMIN)
+             <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$pendingreqcount}}</span>
+                </span>
+            </a></li>
+            <li class="{{ Request::is('viewrequisitions/approvedrequisitions') ? 'active' : '' }}"><a href="/viewrequisitions/approvedrequisitions"><i class="fa fa-circle-o text-blue"></i>APPROVED REQUISITIONS
+             <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$approvedreqcount}}</span>
+                </span>
+            </a></li>
+
+             <li class="{{ Request::is('viewrequisitions/completedrequisitions') ? 'active' : '' }}"><a href="/viewrequisitions/completedrequisitions"><i class="fa fa-circle-o text-blue"></i>COMPLETED REQUISITIONS
+              <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$completedreqcount}}</span>
+                </span>
+             </a></li>
+           
+              <li class="{{ Request::is('viewrequisitions/cancelledrequisitions') ? 'active' : '' }}"><a href="/viewrequisitions/cancelledrequisitions"><i class="fa fa-circle-o text-blue"></i>CANCELLED REQUISITIONS
+               <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$cancelledreqcount}}</span>
+                </span>
+
+              </a></li>
+              <li class="{{ Request::is('viewrequisitions/viewapplicationform') ? 'active' : '' }}"><a href="/viewrequisitions/viewapplicationform"><i class="fa fa-circle-o text-red"></i>VIEW ALL APPLICATION FORM</a></li>
+
+          </ul>
+
+        </li>
 
 
 

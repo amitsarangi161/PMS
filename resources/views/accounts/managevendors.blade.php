@@ -6,6 +6,9 @@
    @if(Session::has('status'))
    <p class="alert alert-success text-center">{{ Session::get('status') }}</p>
    @endif
+   @if(Session::has('error'))
+    <p class="alert alert-danger text-center">{{ Session::get('error') }}</p>
+   @endif
 
    @if ($errors->any())
           <div class="alert alert-danger">

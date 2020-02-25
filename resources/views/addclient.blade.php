@@ -8,6 +8,22 @@
  @if(Session::has('status'))
  <p class="alert alert-success text-center">{{ Session::get('status') }}</p>
  @endif
+ @if(Session::has('error'))
+ <p class="alert alert-danger text-center">{{ Session::get('error') }}</p>
+ @endif
+ @if(Session::has('msg'))
+   <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
+   @endif
+
+   @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div><br />
+      @endif
 <form action="/saveclient" method="post">
 	{{csrf_field()}}
 <table class="table table-responsive table-hover table-bordered table-striped" >
@@ -75,20 +91,7 @@
 </table>
 
 </form>
-   @if(Session::has('msg'))
-   <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
-   @endif
-
-   @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div><br />
-      @endif
-
+   
 @if($clients)
 <div class="box">
 <div class="box-header">
