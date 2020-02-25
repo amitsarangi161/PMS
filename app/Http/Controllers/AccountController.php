@@ -4272,6 +4272,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
        ]);
       $path = $request->file('select_file')->getRealPath();
       $data = Excel::selectSheetsByIndex(0)->load($path)->get();
+      return $data;
         foreach($data as $kay=>$value){
 
          $vendor=new vendor();

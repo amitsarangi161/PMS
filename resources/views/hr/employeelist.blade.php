@@ -22,7 +22,7 @@
 @endif
 @if(count($errors) > 0)
     <div class="alert alert-danger">
-     Upload Validation Error<br><br>
+     Upload A Valid Excel File<br><br>
      <ul>
       @foreach($errors->all() as $error)
       <li>{{ $error }}</li>
@@ -99,6 +99,6 @@
 		alert("Do You Want To Upload Employee Excel"); 
 	}
   $(".alert-success").delay(5000).fadeOut(800); 
-    $(".alert-danger").delay(5000).fadeOut(800);
+    $(".alert-danger").delay(15000).fadeOut(800);
 </script>
 @endsection

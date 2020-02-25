@@ -196,7 +196,7 @@ public function updateemployeedetails(Request $request,$id)
 
         $eid=$updateemployee->id;
 
-        $employeecompany=employeecompanydetail::find($eid);
+        $employeecompany=employeecompanydetail::where('employee_id',$eid)->first();
         $employeecompany->employee_id=$eid;
         $employeecompany->department=$request->department;
         $employeecompany->designation=$request->designation;
@@ -211,7 +211,7 @@ public function updateemployeedetails(Request $request,$id)
         $employeecompany->reportingto=$request->reportingto;
         $employeecompany->save();
 
-        $employeebankaccount=employeebankaccountsdetail::find($eid);
+        $employeebankaccount=employeebankaccountsdetail::where('employee_id',$eid)->first();
         $employeebankaccount->employee_id=$eid;
         $employeebankaccount->accountholdername=$request->accountholdername;
         $employeebankaccount->accountnumber=$request->accountnumber;
@@ -222,7 +222,7 @@ public function updateemployeedetails(Request $request,$id)
         $employeebankaccount->pfaccount=$request->pfaccount;
         $employeebankaccount->save();
 
-        $employeedocument=employeedocument::find($eid);
+        $employeedocument=employeedocument::where('employee_id',$eid)->first();
         $employeedocument->employee_id=$eid;
         $rarefile = $request->file('resume');
         if($rarefile!='')
@@ -334,6 +334,9 @@ public function importemployee(Request $request)
           //$empbank->branch=$value['branch'];
           //$empbank->pfaccount=$value['pfaccount'];
           $empbank->save();
+          $empdoc=new employeedocument();
+          $empdoc->employee_id=$empid;
+          $empdoc->save();
           $checkuser=User::where('username',$value['emp_code_no'])
                     ->count();
           if ($checkuser==0) {
