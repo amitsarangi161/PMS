@@ -251,7 +251,7 @@
              <li class="{{ Request::is('banks/companybankaccount') ? 'active' : '' }}"><a href="/banks/companybankaccount"><i class="fa fa-circle-o text-red"></i>COMPANY BANK ACCOUNTS</a></li>
           </ul>
         </li>
-        <li class="{{ Request::is('requisitions*') ? 'active' : '' }} treeview">
+       <!--  <li class="{{ Request::is('requisitions*') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-retweet"></i> <span>REQUISITIONS</span>
             <span class="pull-right-container">
@@ -264,7 +264,7 @@
 
 
           </ul>
-        </li>
+        </li> -->
         @php
           $mgrpendingreqcount=\App\requisitionheader::where('status','PENDING MGR')
                           ->count();
@@ -281,7 +281,7 @@
 
 
           @endphp
-         <li class="{{ Request::is('viewrequisitions*') ? 'active' : '' }} treeview">
+        <!--  <li class="{{ Request::is('viewrequisitions*') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-envelope"></i> <span>VIEW REQUISITIONS</span>
             <span class="pull-right-container">
@@ -333,7 +333,7 @@
 
           </ul>
 
-        </li>
+        </li> -->
 
 
 
