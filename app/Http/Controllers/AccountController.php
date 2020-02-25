@@ -4276,6 +4276,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
        ]);
       $path = $request->file('select_file')->getRealPath();
       $data = Excel::selectSheetsByIndex(0)->load($path)->get();
+      //return $data;
         foreach($data as $kay=>$value){
         $check=vendor::where('panno',$value['pan'])
                       ->orWhere('gstno',$value['gst'])
