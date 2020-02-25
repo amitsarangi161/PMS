@@ -4187,6 +4187,8 @@ public function approvedebitvoucheradmin(Request $request,$id)
        $vendor->tinno=$request->tinno;
        $vendor->tanno=$request->tanno;
        $vendor->servicetaxno=$request->servicetaxno;
+       $vendor->gstno=$request->gstno;
+       $vendor->panno=$request->panno;
        $vendor->bankname=$request->bankname;
        $vendor->acno=$request->acno;
        $vendor->branchname=$request->branchname;
@@ -4231,6 +4233,8 @@ public function approvedebitvoucheradmin(Request $request,$id)
      $vendor->tinno=$request->tinno;
      $vendor->tanno=$request->tanno;
      $vendor->servicetaxno=$request->servicetaxno;
+     $vendor->gstno=$request->gstno;
+     $vendor->panno=$request->panno;
      $vendor->bankname=$request->bankname;
      $vendor->acno=$request->acno;
      $vendor->branchname=$request->branchname;
@@ -4282,6 +4286,8 @@ public function approvedebitvoucheradmin(Request $request,$id)
          $vendor->tinno=$value['tin'];
          $vendor->tanno=$value['tan'];
          $vendor->servicetaxno=$value['servicetax'];
+         $vendor->panno=$value['pan'];
+         $vendor->gstno=$value['gst'];
          $vendor->bankname=$value['bankname'];
          $vendor->acno=$value['bankaccountno'];
          $vendor->branchname=$value['branchname'];
