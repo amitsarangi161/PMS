@@ -23,7 +23,7 @@
                         PMS Monitors
                     </span>   -->
                      <span class="login100-form-title p-b-53">
-                       PWEPL Login
+                       PEWPL Login
                     </span>  
 
                     <div class="form-group{{ $errors->has('email') || $errors->has('username') ? ' has-error' : '' }}">            

@@ -2020,9 +2020,8 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
           }
           else
           {
-                 $countvendor=$countvendor+0;
+            $countvendor=$countvendor+0;
           }
-
 
            $requisition=new requisition();
            $requisition->expenseheadid=$request->expenseheadid[$i];

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @if(Session::has('msg'))
-   <p class="alert alert-warning text-center">{{ Session::get('msg') }}</p>
+   <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
 @endif
 
 <table class="table table-responsive table-hover table-bordered table-striped">

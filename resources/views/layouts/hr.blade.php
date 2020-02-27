@@ -218,7 +218,7 @@
            
            
             <!-- <li class="{{ Request::is('hrmain/department') ? 'active' : '' }}"><a href="/hrmain/department"><i class="fa fa-circle-o text-aqua"></i>Department</a></li> -->
-             <li class="{{ Request::is('hrmain/employeelist') ? 'active' : '' }}"><a href="/hrmain/employeelist"><i class="fa fa-circle-o text-aqua"></i>Employee List</a></li>
+             <li class="{{ Request::is('hrmain/employeelist') ? 'active' : '' }}"><a href="/hrmain/employeelist"><i class="fa fa-circle-o text-aqua"></i>Employee Database</a></li>
           </ul>
         </li>
         

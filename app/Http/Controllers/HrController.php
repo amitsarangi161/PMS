@@ -274,6 +274,12 @@ public function updateemployeedetails(Request $request,$id)
         return redirect('hrmain/employeelist');
       }
 
+public function employeestatus(Request $request){
+  $status=User::select('users.active')->where('employee_id',$request->empid)->first();
+  $status->active=$request->empid;
+  $status->save();
+  return back();
+}
 public function registeremployee(){
   $departments=department::all();
   $designations=designation::all();

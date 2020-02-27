@@ -535,6 +535,7 @@ Route::get('/hrmain/department','HrController@department');
 Route::post('/adddepartment','HrController@adddepartment');
 Route::post('/importemployee','HrController@importemployee');
 Route::get('/registeremployee','HrController@registeremployee');
+Route::post('/employeestatus','HrController@employeestatus');
 Route::post('/saveemployeedetails','HrController@saveemployeedetails');
 
 Route::get('/editemployeedetails/{id}','HrController@editemployeedetails');

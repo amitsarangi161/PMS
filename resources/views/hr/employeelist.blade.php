@@ -5,9 +5,9 @@
   <div class="box-header">
     <div class="row">
         <p>
-          <a href="/registeremployee" class="btn btn-success btn-flat margin"><i class="fa fa-plus"></i> Add Employee
+          <a href="/registeremployee" class="btn btn-success btn-flat margin"><i class="fa fa-plus"></i> Add New Employee
           </a>
-            <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importemployee" onclick="importemployee();"><i class="fa fa-file-excel-o"></i> Import Employee</button>
+            <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importemployee" onclick="importemployee();"><i class="fa fa-file-excel-o"></i> Import Employee Database</button>
                 <a href="/Employee Import Sample.xlsx" download="/Employee Import Sample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
           </span>
           
@@ -56,7 +56,7 @@
             <td>{{$employeedetail->alternativephonenumber}}</td>
             <td>{{$employeedetail->email}}</td>
             <td>{{$employeedetail->presentaddress}}</td>
-            <td>ACTIVE</td>
+            <td><button class="btn btn-success btn-flat" onclick="employeestatus('{{$employeedetail->id}}');">ACTIVE</button></td>
             <td><a href="/editemployeedetails/{{$employeedetail->id}}" onclick="return confirm('are you sure to edit employee ??')" ><button class="btn btn-primary btn-flat">Edit</button></a></td>
           </tr>
           @endforeach
@@ -94,11 +94,48 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade in" id="employeestatus">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <form method="post" enctype="multipart/form-data" action="/employeestatus">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+      </button>
+        <h4 class="modal-title text-center">Change  Status</h4>
+      </div>
+      <div class="modal-body">
+          {{ csrf_field() }}
+          <input type="text" name="empid" id="id">
+          <div class="form-group">
+            <label>Change  Status</label>
+            <select class="form-control" name="active">
+              <option value="PRESENT">PRESENT</option>
+              <option value="RESIGN">RESIGN</option>
+              <option value="TERMINATED">TERMINATED </option>
+              <option value="LEFT WITHOUT INFORMATION">LEFT WITHOUT INFORMATION</option>
+            </select>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success btn-flat">Change Status</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
 	function importemployee(){
 		alert("Do You Want To Upload Employee Excel"); 
 	}
   $(".alert-success").delay(5000).fadeOut(800); 
     $(".alert-danger").delay(15000).fadeOut(800);
+
+  function employeestatus(userid){
+    $("#employeestatus").modal('show');
+    $("#id").val(userid);
+  }
 </script>
 @endsection
