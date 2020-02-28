@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+@if(Auth::user()->usertype=='USER')
+<script type="text/javascript">
+    location.replace('/400');
+</script>
+@elseif(Auth::user()->usertype=='ADMIN')
+<script type="text/javascript">
+    location.replace('/400');
+</script>
 
 
-    
+@endif
+
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <title>PMS-MONITORS</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,7 +43,7 @@
       <!-- jvectormap -->
       <link rel="stylesheet" href="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}">
       <!-- Date Picker -->
-     <!--  <link rel="stylesheet" href="{{ asset('plugins/datepicker/datepicker3.css')}}"> -->
+      <link rel="stylesheet" href="{{ asset('plugins/datepicker/datepicker3.css')}}">
       <!-- Daterange picker -->
       <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css')}}">
       <!-- bootstrap wysihtml5 - text editor -->
@@ -45,7 +57,7 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-  
+
   
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
@@ -74,7 +86,7 @@
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
     <!-- datepicker -->
-   <!--  <script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script> -->
+    <script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
     <!-- Bootstrap WYSIHTML5 -->
     <script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
     <!-- Slimscroll -->
@@ -102,7 +114,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Status Gear</b></span>
+      <span class="logo-lg"><b>PMS-MONITORS</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -114,34 +126,15 @@
       </a>
 
       <!-- Sidebar toggle button-->
-      <ul class="navbar-nav nav " style="padding-left: 64px;">
+       <ul class="navbar-nav nav " style="padding-left: 64px;">
         <li class="dropdown message-menu">
-          <a  onclick="window.history.back(0);">
+          <a  onclick="window.history.back();">
             <p style="font-size: 20px;"><i class="fa fa-arrow-circle-left"></i> Back</p>
           </a>
         </li>
       </ul>
-
       
-      @php
-         $wallet=\App\wallet::where('employeeid',Auth::id())
-                ->get();
-         $walletcr=$wallet->sum('credit');
-         $walletdr=$wallet->sum('debit');
-         $walletbalance=$walletcr-$walletdr;
-
-      @endphp
       <div class="navbar-custom-menu">
-
-        <ul class="navbar-nav nav" style="padding-right: 20px;padding-top: 10px;">
-
-        <li class="dropdown message-menu" style="padding-right: 20px; padding-left: 20px;">
-          <img src="{{asset('wallet.png')}}" style="height: 40px;width: 40px;">
-        </li>
-        <li class="dropdown message-menu">
-          <strong style="color: #fff;">Wallet</strong><p style="color: #fff;" id="walletbalance">Rs. {{$walletbalance}}</p>
-        </li>
-        </ul>
         <ul class="nav navbar-nav">
 
          
@@ -201,108 +194,38 @@
 
 
       <ul class="sidebar-menu">
-        <li class="header"><strong class="text-center">TENDER NAVIGATION</strong></li>
+        <li class="header"><strong class="text-center">HR NAVIGATION</strong></li>
       
-    
-
-           <li class="{{ Request::is('/admintender') ? 'active' : '' }} treeview">
-          <a href="/admintender">
+         @if(Auth::user()->usertype=='MD')
+           <li class="{{ Request::is('mdhome') ? 'active' : '' }} treeview">
+          <a href="/mdhome">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               
             </span>
           </a>
           </li>
-     
-
-         
-  
-       @if(Auth::user()->usertype=='TENDER' || Auth::user()->usertype=='MASTER ADMIN')
-       <li class="{{ Request::is('tm*') ? 'active' : '' }} treeview">
+ 
+       <li class="{{ Request::is('mdmain*') ? 'active' : '' }} treeview">
           <a href="#">
-            <i class="fa fa-folder"></i> <span>TENDER MAIN</span>
+            <i class="fa fa-folder"></i> <span>EMPLOYEE MANAGEMENT</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-
-            <li class="{{ Request::is('tm/createtender') ? 'active' : '' }}"><a href="/tm/createtender"><i class="fa fa-circle-o text-aqua"></i>CREATE TENDER</a></li>
-
-            <li class="{{ Request::is('tm/tenderlist') ? 'active' : '' }}"><a href="/tm/tenderlist"><i class="fa fa-circle-o text-aqua"></i>CURRENT TENDER LIST</a></li>
-             <li class="{{ Request::is('tm/viewalltenders') ? 'active' : '' }}"><a href="/tm/viewalltenders"><i class="fa fa-circle-o text-aqua"></i>VIEW ALL TENDERS</a></li>
-             <li class="{{ Request::is('tm/adminapprovedtenders') ? 'active' : '' }}"><a href="/tm/adminapprovedtenders"><i class="fa fa-circle-o text-aqua"></i>ADMIN APPROVED TENDERS</a></li>
-
-
-     <li class="{{ Request::is('tm/associatepartner') ? 'active' : '' }}"><a href="/tm/associatepartner"><i class="fa fa-circle-o text-aqua"></i>ASSOCIATE PARTNER</a></li>
-     
-               <!--       <li class="{{ Request::is('tm/approvedbutnotappliedtenders') ? 'active' : '' }}"><a href="/tm/approvedbutnotappliedtenders"><i class="fa fa-circle-o text-aqua"></i>APPROVED NOT APPLIED TENDERS</a></li> -->
+           
+           
+            <!-- <li class="{{ Request::is('hrmain/department') ? 'active' : '' }}"><a href="/hrmain/department"><i class="fa fa-circle-o text-aqua"></i>Department</a></li> -->
+             <li class="{{ Request::is('mdmain/currentemployeelist') ? 'active' : '' }}"><a href="/mdmain/currentemployeelist"><i class="fa fa-circle-o text-aqua"></i>Employee Database</a></li>
           </ul>
         </li>
-        @endif
-
-      @if(Auth::user()->usertype=='TENDER COMMITTEE'|| Auth::user()->usertype=='MASTER ADMIN')
-      <li class="{{ Request::is('tendercom*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-folder"></i> <span>TENDER COMMITTEE</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ Request::is('tendercom/tenderlistforcommitee') ? 'active' : '' }}"><a href="/tendercom/tenderlistforcommitee"><i class="fa fa-circle-o text-aqua"></i>PENDING FOR COMMITTEE</a></li>
-
-            <li class="{{ Request::is('tendercom/pendingtenderapproval') ? 'active' : '' }}"><a href="/tendercom/pendingtenderapproval"><i class="fa fa-circle-o text-aqua"></i>PENDING COMMITTEE APPROVAL</a></li>
-            <li class="{{ Request::is('tendercom/approvedcommiteetender') ? 'active' : '' }}"><a href="/tendercom/approvedcommiteetender"><i class="fa fa-circle-o text-aqua"></i>APPROVED TENDERS COMMITTEE</a></li>
-
-          </ul>
-        </li>
-        @endif
-      @if(Auth::user()->usertype=='MASTER ADMIN')
-      <li class="{{ Request::is('ata*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-folder"></i> <span>ADMIN APPROVAL</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-
-            <li class="{{ Request::is('ata/admintenderapproval') ? 'active' : '' }}"><a href="/ata/admintenderapproval"><i class="fa fa-circle-o text-aqua"></i>PENDING ADMIN APPROVAL</a></li>
-             <li class="{{ Request::is('ata/adminapprovedtenders') ? 'active' : '' }}"><a href="/ata/adminapprovedtenders"><i class="fa fa-circle-o text-aqua"></i>ADMIN APPROVED TENDERS</a></li>
-
-          </ul>
-        </li>
-
-       @endif
-
-        <li class="{{ Request::is('applied*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-folder"></i> <span>APPLIED TENDER</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ Request::is('applied/appliedtenders') ? 'active' : '' }}"><a href="/applied/appliedtenders"><i class="fa fa-circle-o text-aqua"></i>APPLIED TENDERS</a></li>
-          </ul>
-        </li>
-         <li class="{{ Request::is('notapplied*') ? 'active' : '' }} treeview">
-          <a href="#" style="font-size: 11px;">
-            <i class="fa fa-folder"></i> <span>APPROVED BUT NOT APPLIED TENDER</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ Request::is('notapplied/approvedbutnotappliedtenders') ? 'active' : '' }}"><a style="font-size: 11px;;" href="/notapplied/approvedbutnotappliedtenders"><i class="fa fa-circle-o text-aqua"></i>APPROVED BUT NOT APPLIED TENDERS</a></li>
-          </ul>
-        </li>
+   
 
 
-        
 
-       
+@endif
+
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -310,19 +233,18 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         @if(Auth::user()->usertype=='MASTER ADMIN')
-          <div class="btn-group btn-group-justified amit-btn">
+         <div class="btn-group btn-group-justified amit-btn">
             <a href="/" class="btn bg-maroon btn-lg">MAIN</a>
             <a href="/mdhome" class="btn bg-olive btn-lg">MD</a>
             <a href="/adminhr" class="btn bg-purple btn-lg">HR</a>
             <a href="/adminaccounts" class="btn bg-red btn-lg">ACCOUNTS</a>
             <a href="#" class="btn btn-success btn-lg">INVENTORY</a>
           </div> 
-          </div>   
         @endif
               
         <section class="content-header">      
             <h1 style="text-align: center;">
-               STATUS GEAR 1.0V TENDER
+               PMS-MONITORS 1.0V HR
             </h1>
             <ol class="breadcrumb">
 
@@ -406,112 +328,22 @@
 
 <script type="text/javascript">
 
-window.onpageshow = function(event) {
+  window.onpageshow = function(event) {
 if (event.persisted) {
     window.location.reload() 
 }
 };
+  $(".readonly").keydown(function(e){
+        e.preventDefault();
+    });
 
+      
 
-  $('.readonly').on('input', function(e){
-    var key = e.which || this.value.substr(-1).charCodeAt(0);
-    $(".readonly").val("");
-    alert('Manually Input Blocked Choose a date from Picker');
-  });
-
-$(document).ready(function(){
-          
-   countunreadmessage();
-
-
-     setInterval(function(){
-     countunreadmessage();
-     checkwalletbalance();
- }, 100000);
-
-       });
-
-
-       function countunreadmessage()
-       {
-           $.ajaxSetup({
-            headers:{
-                'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
-            }
-        });
-
-           $.ajax({
-               type:'POST',
-              
-               url:'{{url("/ajaxcountunreadmessage")}}',
-              
-               data: {
-                     "_token": "{{ csrf_token() }}",
-                     
-                     },
-
-               success:function(data) { 
-                     $("#countmsg").html(data);
-                     $("#countmsg111").html(data);
-               }
-               
-             });
-       }
-
-         function checkwalletbalance()
-       {
-           $.ajaxSetup({
-            headers:{
-                'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
-            }
-        });
-
-           $.ajax({
-               type:'POST',
-              
-               url:'{{url("/ajaxcheckwalletbalance")}}',
-              
-               data: {
-                     "_token": "{{ csrf_token() }}",
-                     
-                     },
-
-               success:function(data) { 
-                     $("#walletbalance").html('Rs. '+data);
-                     $("#walletbal").html(data);
-                     
-               }
-             });
-       }
 
       $('.datatable1').DataTable({
         dom: 'Bfrtip',
-        "order": [[ 0, "desc" ]],
+        //"order": [[ 0, "desc" ]],
         "iDisplayLength": 10,
-        buttons: [
-            {
-                extend: 'pdfHtml5',
-                orientation: 'landscape',
-                footer:true,
-                pageSize: 'A4',
-                title: 'REPORT',            },
-            {
-                extend: 'excelHtml5',
-                footer:true,
-                title: 'REPORT'
-            },
-            {
-                extend: 'print',
-                footer:true,
-                title: 'REPORT'
-            }
-
-       ],
-            });
-      $('.datatable2').DataTable({
-        dom: 'Bfrtip',
-        "order": [[ 0, "asc" ]],
-        "iDisplayLength": 25,
         buttons: [
             {
                 extend: 'pdfHtml5',
@@ -543,7 +375,7 @@ $(document).ready(function(){
 
 
 $(".datepicker").datepicker({
-       dateFormat: 'yy-mm-dd',
+   dateFormat: 'yy-mm-dd',
        showButtonPanel: true,
        changeYear: true,
        changeMonth: true,
@@ -564,33 +396,6 @@ $(".datepicker2").datepicker({
        minDate: 0,
        setDate: 0
        }).datepicker("setDate", "0");
-
-$(".datepicker3").datepicker({
-   dateFormat: 'yy-mm-dd',
-       showButtonPanel: true,
-       changeYear: true,
-       changeMonth: true,
-       minDate: 0
-      
-       });
-$(".datepicker4").datepicker({
-   dateFormat: 'yy-mm-dd',
-       showButtonPanel: true,
-       changeYear: true,
-       changeMonth: true,
-       minDate: -2,
-       maxDate: new Date()
-      
-       }).datepicker("setDate", "0");
-$(".datepicker5").datepicker({
-   dateFormat: 'yy-mm-dd',
-       showButtonPanel: true,
-       changeYear: true,
-       changeMonth: true,
-       minDate: -2,
-       maxDate: new Date()
-      
-       }).datepicker("setDate", "0");
 </script> 
 
 <script type="text/javascript">
@@ -602,20 +407,55 @@ var jqf = $.noConflict();
   } else 
     jqf('#result').html('<button class="btn btn-success" type="submit" disabled >RESET NOW</button>');
 });
+
   $('.datatable').DataTable({
-
-     "order": [[ 0, "desc" ]],
-     "iDisplayLength": 25
+      "iDisplayLength": 10,
+     "order": [[ 0, "desc" ]]
+  });  
+  
+  $('.datatable3').DataTable({
+      "iDisplayLength": 5,
+     "order": [[ 0, "desc" ]]
   });
-
- var datatablescroll=$('.datatablescroll').DataTable({
+  
+  $('.datatablescroll').DataTable({
 
      "order": [[ 0, "desc" ]],
-     "scrollY": 450,
+     "scrollY": 500,
      "scrollX": true,
      "iDisplayLength": 25
   });
+$('.datatablescrollexport').DataTable({
+        dom: 'Bfrtip',
+        "order": [[ 0, "desc" ]],
+        "iDisplayLength": 25,
+        "scrollY": 450,
+        "scrollX": true,
+
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                footer:true,
+                pageSize: 'A4',
+                title: 'Report',          
+            },
+            {
+                extend: 'excelHtml5',
+                footer:true,
+                title: 'Report'
+            },
+            {
+                extend: 'print',
+                footer:true,
+                title: 'Report'
+            },
+
+       ],
+            });
 </script>
+
+
 
 
   <footer class="main-footer no-print">

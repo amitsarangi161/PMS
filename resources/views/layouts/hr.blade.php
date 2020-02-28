@@ -264,6 +264,7 @@
         @if(Auth::user()->usertype=='MASTER ADMIN')
          <div class="btn-group btn-group-justified amit-btn">
             <a href="/" class="btn bg-maroon btn-lg">MAIN</a>
+            <a href="/mdhome" class="btn bg-olive btn-lg">MD</a>
             <a href="/adminhr" class="btn bg-purple btn-lg">HR</a>
             <a href="/adminaccounts" class="btn bg-red btn-lg">ACCOUNTS</a>
             <a href="#" class="btn btn-success btn-lg">INVENTORY</a>
@@ -445,6 +446,42 @@ var jqf = $.noConflict();
       "iDisplayLength": 5,
      "order": [[ 0, "desc" ]]
   });
+  
+  $('.datatablescroll').DataTable({
+
+     "order": [[ 0, "desc" ]],
+     "scrollY": 500,
+     "scrollX": true,
+     "iDisplayLength": 25
+  });
+$('.datatablescrollexport').DataTable({
+        dom: 'Bfrtip',
+        "order": [[ 0, "desc" ]],
+        "iDisplayLength": 25,
+        "scrollY": 450,
+        "scrollX": true,
+
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                footer:true,
+                pageSize: 'A4',
+                title: 'Report',          
+            },
+            {
+                extend: 'excelHtml5',
+                footer:true,
+                title: 'Report'
+            },
+            {
+                extend: 'print',
+                footer:true,
+                title: 'Report'
+            },
+
+       ],
+            });
 </script>
 
 
