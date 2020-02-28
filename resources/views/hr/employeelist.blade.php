@@ -38,6 +38,38 @@
             <td>Emp. Id</td>
             <td>Employee Name</td>
             <td>Blood Group</td>
+
+
+            <td>DOB</td>
+            <td>QUALIFICATION</td>
+            <td>FATHER NAME</td>
+            <td>MARETAL STATUS</td>
+            <td>GENDER</td>
+            <td>EXPERIENCE IN COMPANY</td>
+            <td>TOTAL EXPERIENCE</td>
+            <td>ADHAR NUMBER</td>
+            <td>PRESENT ADDRESS</td>
+            <td>PERMANENT ADDRESS</td>
+            <td>ACCOUNT HOLDER NAME</td>
+            <td>ACCOUNT NUMBER</td>
+            <td>BANK NAME</td>
+            <td>IFSC</td>
+            <td>PAN</td>
+            <td>BRANCH NAME</td>
+            <td>PF ACCOUNT</td>
+            <td>LOCATION</td>
+            <td>REPORTING TO</td>
+            <td>SKILL SETS</td>
+            <td>OFFICIAL MAIL</td>
+            <td>DEPARTMENT</td>
+            <td>CUG MOBILE NUMBER</td>
+            <td>DESIGNATION</td>
+            <td>DATE OF JOINING</td>
+            <td>DATE OF CONFORMATION</td>
+            <td>JOIN SALARY</td>
+
+
+            
             <td>Mobile No</td>
             <td>Alternate Mobile No</td>
             <td>Email</td>
@@ -52,6 +84,37 @@
             <td><button class="btn btn-success btn-sm btn-flat">{{$employeedetail->id}}</button></td>
             <td>{{$employeedetail->employeename}}</td>
             <td>{{$employeedetail->bloodgroup}}</td>
+
+            <td>{{$employeedetail->dob}}</td>
+            <td>{{$employeedetail->qualification}}</td>
+            <td>{{$employeedetail->fathername}}</td>
+            <td>{{$employeedetail->maritalstatus}}</td>
+            <td>{{$employeedetail->gender}}</td>
+            <td>{{$employeedetail->experencecomp}}</td>
+            <td>{{$employeedetail->totalyrexprnc}}</td>
+            <td>{{$employeedetail->adharno}}</td>
+            <td>{{$employeedetail->presentaddress}}</td>
+            <td>{{$employeedetail->permanentaddress}}</td>
+            <td>{{$employeedetail->accountholdername}}</td>
+            <td>{{$employeedetail->accountnumber}}</td>
+            <td>{{$employeedetail->bankname}}</td>
+            <td>{{$employeedetail->ifsc}}</td>
+            <td>{{$employeedetail->pan}}</td>
+            <td>{{$employeedetail->branch}}</td>
+            <td>{{$employeedetail->pfaccount}}</td>
+            <td>{{$employeedetail->location}}</td>
+            <td>{{$employeedetail->reportingto}}</td>
+            <td>{{$employeedetail->skillsets}}</td>
+            <td>{{$employeedetail->ofcemail}}</td>
+            <td>{{$employeedetail->department}}</td>
+            <td>{{$employeedetail->cugmob}}</td>
+            <td>{{$employeedetail->designation}}</td>
+            <td>{{$employeedetail->dateofjoining}}</td>
+            <td>{{$employeedetail->dateofconfirmation}}</td>
+            <td>{{$employeedetail->joinsalary}}</td>
+
+
+
             <td>{{$employeedetail->phone}}</td>
             <td>{{$employeedetail->alternativephonenumber}}</td>
             <td>{{$employeedetail->email}}</td>

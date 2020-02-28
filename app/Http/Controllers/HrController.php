@@ -370,7 +370,13 @@ public function importemployee(Request $request)
     return back();
 }
 public function employeelist(){
-  $employeedetails=employeedetail::all();
+  $employeedetails=employeedetail::select('employeedetails.*','employeedocuments.*','employeebankaccountsdetails.*','employeecompanydetails.*')
+              ->leftJoin('employeedocuments','employeedetails.id','=','employeedocuments.employee_id')
+              ->leftJoin('employeebankaccountsdetails','employeedetails.id','=','employeebankaccountsdetails.employee_id')
+              ->leftJoin('employeecompanydetails','employeedetails.id','=','employeecompanydetails.employee_id')
+              ->get();
+  //return $employeedetails;
+
   return view('hr.employeelist',compact('employeedetails'));
 }
 public function department(){
