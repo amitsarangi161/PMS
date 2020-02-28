@@ -31,6 +31,7 @@ class CreateEmployeedetailsTable extends Migration
             $table->string('alternativephonenumber',15)->nullable();
             $table->text('presentaddress')->nullable();
             $table->text('permanentaddress')->nullable();
+            $table->string('status',30)->default('PRESENT');
             $table->timestamps();
             $table->softDeletes();
         });

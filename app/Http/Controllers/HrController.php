@@ -275,8 +275,8 @@ public function updateemployeedetails(Request $request,$id)
       }
 
 public function employeestatus(Request $request){
-  $status=User::select('users.active')->where('employee_id',$request->empid)->first();
-  $status->active=$request->empid;
+  $status=employeedetail::find($request->id);
+  $status->status=$request->status;
   $status->save();
   return back();
 }
