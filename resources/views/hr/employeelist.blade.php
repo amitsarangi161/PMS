@@ -48,6 +48,7 @@
             <option value="PRESENT" {{ Request::get('status')=="PRESENT" ? 'selected' : '' }}>PRESENT</option>
             <option value="RESIGN" {{ Request::get('status')=="RESIGN" ? 'selected' : '' }}>RESIGN</option>
             <option value="TERMINATED" {{ Request::get('status')=="TERMINATED" ? 'selected' : '' }}>TERMINATED </option>
+            <option value="LEFT" {{ Request::get('status')=="LEFT" ? 'selected' : '' }}>LEFT </option>
             <option value="LEFT WITHOUT INFORMATION" {{ Request::get('status')=="LEFT WITHOUT INFORMATION" ? 'selected' : '' }}>LEFT WITHOUT INFORMATION</option>
         </select>
       </div>
@@ -151,8 +152,11 @@
               @if($employeedetail->status=="RESIGN")
               <small class="label status bg-yellow" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
               @elseif($employeedetail->status=="TERMINATED")
-              <small class="label status bg-red" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>@elseif($employeedetail->status=="LEFT WITHOUT INFORMATION")
+              <small class="label status bg-red" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
+              @elseif($employeedetail->status=="LEFT WITHOUT INFORMATION")
               <small class="label status bg-maroon" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
+              @elseif($employeedetail->status=="LEFT")
+              <small class="label status bg-blue" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
               @else
               <small class="label status bg-green" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
               @endif
@@ -214,6 +218,7 @@
               <option value="PRESENT">PRESENT</option>
               <option value="RESIGN">RESIGN</option>
               <option value="TERMINATED">TERMINATED </option>
+              <option value="LEFT">LEFT </option>
               <option value="LEFT WITHOUT INFORMATION">LEFT WITHOUT INFORMATION</option>
             </select>
           </div>

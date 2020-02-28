@@ -314,6 +314,7 @@ public function importemployee(Request $request)
           $employee->maritalstatus=$value['marital_status'];
           $employee->presentaddress=$value['present_address'];
           $employee->permanentaddress=$value['permanent_address'];
+          $employee->status=$value['remarks'];
           $employee->save();
           $empid=$employee->id;
           $compemployee=new employeecompanydetail();
