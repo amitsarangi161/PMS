@@ -29,6 +29,7 @@
         <thead>
           <tr class="bg-navy">
             <td>Emp. Id</td>
+            <td>EMPLOYEE CODE</td>
             <td>Employee Name</td>
             <td>Blood Group</td>
 
@@ -75,6 +76,7 @@
           @foreach($employeedetails as $key=>$employeedetail)
           <tr>
             <td><button class="btn btn-success btn-sm btn-flat">{{$employeedetail->id}}</button></td>
+            <td>{{$employeedetail->empcodeno}}</td>
             <td>{{$employeedetail->employeename}}</td>
             <td>{{$employeedetail->bloodgroup}}</td>
 
