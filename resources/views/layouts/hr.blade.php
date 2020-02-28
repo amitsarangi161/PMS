@@ -399,7 +399,7 @@ if (event.persisted) {
 $('.datatablescrollexport').DataTable({
         dom: 'Bfrtip',
         //"order": [[ 0, "desc" ]],
-        "iDisplayLength": 10,
+        "iDisplayLength": 25,
         "scrollY": 450,
         "scrollX": true,
         buttons: [
