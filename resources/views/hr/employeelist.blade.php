@@ -36,7 +36,7 @@
 @endif
       <div class="box-body table-responsive">
 
-        <table class="table table-bordered table-striped datatable1">
+        <table class="table table-bordered table-striped datatablescrollexport">
         <thead>
           <tr class="bg-navy">
             <td>Emp. Id</td>

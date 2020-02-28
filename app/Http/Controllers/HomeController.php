@@ -240,6 +240,10 @@ public function companydetails(){
       {
            return view('tender.home');
       }
+      elseif(Auth::user()->usertype=='MD')
+      {
+           return view('md.home');
+      }      
 
     $noofprojects=project::count();
     $noofclients=client::count();

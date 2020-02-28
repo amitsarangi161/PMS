@@ -295,6 +295,7 @@
         @if(Auth::user()->usertype=='MASTER ADMIN')
           <div class="btn-group btn-group-justified amit-btn">
             <a href="/" class="btn bg-maroon btn-lg">MAIN</a>
+            <a href="/mdhome" class="btn bg-olive btn-lg">MD</a>
             <a href="/adminhr" class="btn bg-purple btn-lg">HR</a>
             <a href="/adminaccounts" class="btn bg-red btn-lg">ACCOUNTS</a>
             <a href="#" class="btn btn-success btn-lg">INVENTORY</a>
