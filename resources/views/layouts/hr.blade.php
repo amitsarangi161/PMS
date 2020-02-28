@@ -373,6 +373,8 @@ if (event.persisted) {
         dom: 'Bfrtip',
         //"order": [[ 0, "desc" ]],
         "iDisplayLength": 10,
+        "scrollY": 450,
+        "scrollX": true,
         buttons: [
             {
                 extend: 'pdfHtml5',
@@ -393,13 +395,37 @@ if (event.persisted) {
 
        ],
             });
-</script>
-  <script>
+
+$('.datatablescrollexport').DataTable({
+        dom: 'Bfrtip',
+        //"order": [[ 0, "desc" ]],
+        "iDisplayLength": 10,
+        "scrollY": 450,
+        "scrollX": true,
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                footer:true,
+                pageSize: 'A4',
+                title: 'REPORT',            },
+            {
+                extend: 'excelHtml5',
+                footer:true,
+                title: 'REPORT'
+            },
+            {
+                extend: 'print',
+                footer:true,
+                title: 'REPORT'
+            }
+
+       ],
+            });
+
       $('.select2').select2({dropdownCssClass : 'bigdrop'});
       $( ".addnewrow" ).sortable();
-    </script>
 
-   <script>
 
 
 
@@ -425,9 +451,7 @@ $(".datepicker2").datepicker({
        minDate: 0,
        setDate: 0
        }).datepicker("setDate", "0");
-</script> 
 
-<script type="text/javascript">
 var jqf = $.noConflict();
 
   jqf('#password, #confirm_password').on('keyup', function () {
@@ -439,12 +463,12 @@ var jqf = $.noConflict();
 
   $('.datatable').DataTable({
       "iDisplayLength": 10,
-     "order": [[ 0, "desc" ]]
+     "order": [[ 0, "desc" ]],
   });  
   
   $('.datatable3').DataTable({
       "iDisplayLength": 5,
-     "order": [[ 0, "desc" ]]
+     "order": [[ 0, "desc" ]],
   });
   
   $('.datatablescroll').DataTable({
@@ -452,36 +476,11 @@ var jqf = $.noConflict();
      "order": [[ 0, "desc" ]],
      "scrollY": 500,
      "scrollX": true,
-     "iDisplayLength": 25
+     "iDisplayLength": 25,
   });
-$('.datatablescrollexport').DataTable({
-        dom: 'Bfrtip',
-        "order": [[ 0, "desc" ]],
-        "iDisplayLength": 25,
-        "scrollY": 450,
-        "scrollX": true,
 
-        buttons: [
-            {
-                extend: 'pdfHtml5',
-                orientation: 'landscape',
-                footer:true,
-                pageSize: 'A4',
-                title: 'Report',          
-            },
-            {
-                extend: 'excelHtml5',
-                footer:true,
-                title: 'Report'
-            },
-            {
-                extend: 'print',
-                footer:true,
-                title: 'Report'
-            },
 
-       ],
-            });
+
 </script>
 
 

@@ -34,16 +34,35 @@
      </ul>
     </div>
 @endif
-      <div class="box-body table-responsive">
 
+<div class="row">
+ <div class="col-md-8">
+  <form method="get" action="/hrmain/employeelist">
+    <div class="form-group">
+      <label  class="col-sm-3 control-label">Select A Status</label>
+      <div class="col-sm-6">
+        <select class="form-control" required="" name="status">
+            <option value="">Select A Status</option>
+            <option value="PRESENT">PRESENT</option>
+            <option value="RESIGN">RESIGN</option>
+            <option value="TERMINATED">TERMINATED </option>
+            <option value="LEFT WITHOUT INFORMATION">LEFT WITHOUT INFORMATION</option>
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <button type="submit" class="btn btn-block btn-success btn-flat">Filter</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+      <div class="box-body table-responsive">
         <table class="table table-bordered table-striped datatablescrollexport">
         <thead>
           <tr class="bg-navy">
             <td>Emp. Id</td>
             <td>Employee Name</td>
             <td>Blood Group</td>
-
-
             <td>DOB</td>
             <td>QUALIFICATION</td>
             <td>FATHER NAME</td>
@@ -71,9 +90,6 @@
             <td>DATE OF JOINING</td>
             <td>DATE OF CONFORMATION</td>
             <td>JOIN SALARY</td>
-
-
-            
             <td>Mobile No</td>
             <td>Alternate Mobile No</td>
             <td>Email</td>
@@ -116,9 +132,6 @@
             <td>{{$employeedetail->dateofjoining}}</td>
             <td>{{$employeedetail->dateofconfirmation}}</td>
             <td>{{$employeedetail->joinsalary}}</td>
-
-
-
             <td>{{$employeedetail->phone}}</td>
             <td>{{$employeedetail->alternativephonenumber}}</td>
             <td>{{$employeedetail->email}}</td>
