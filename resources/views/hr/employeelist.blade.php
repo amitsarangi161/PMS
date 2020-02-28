@@ -36,25 +36,34 @@
 @endif
 
 <div class="row">
- <div class="col-md-8">
+ <div class="col-md-12">
+  <div class="box">
+    <div class="box-header bg-gray">
   <form method="get" action="/hrmain/employeelist">
     <div class="form-group">
-      <label  class="col-sm-3 control-label">Select A Status</label>
-      <div class="col-sm-6">
+      <label  class="col-sm-2 control-label">Select A Status</label>
+      <div class="col-sm-4">
         <select class="form-control" required="" name="status">
             <option value="">Select A Status</option>
-            <option value="PRESENT">PRESENT</option>
-            <option value="RESIGN">RESIGN</option>
-            <option value="TERMINATED">TERMINATED </option>
-            <option value="LEFT WITHOUT INFORMATION">LEFT WITHOUT INFORMATION</option>
+            <option value="PRESENT" {{ Request::get('status')=="PRESENT" ? 'selected' : '' }}>PRESENT</option>
+            <option value="RESIGN" {{ Request::get('status')=="RESIGN" ? 'selected' : '' }}>RESIGN</option>
+            <option value="TERMINATED" {{ Request::get('status')=="TERMINATED" ? 'selected' : '' }}>TERMINATED </option>
+            <option value="LEFT WITHOUT INFORMATION" {{ Request::get('status')=="LEFT WITHOUT INFORMATION" ? 'selected' : '' }}>LEFT WITHOUT INFORMATION</option>
         </select>
       </div>
-      <div class="col-sm-3">
-        <button type="submit" class="btn btn-block btn-success btn-flat">Filter</button>
+      <div class="col-sm-1">
+        <button type="submit" class="btn  btn-primary">Filter</button>
       </div>
+      @if(Request::has('status'))
+      <div class="col-sm-1">
+        <a href="/hrmain/employeelist"  class="btn  btn-danger">Clear Filter</a>
+      </div>
+      @endif
     </div>
   </form>
   </div>
+</div>
+</div>
 </div>
       <div class="box-body table-responsive">
         <table class="table table-bordered table-striped datatablescrollexport">
