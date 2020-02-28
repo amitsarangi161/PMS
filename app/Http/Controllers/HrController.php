@@ -369,12 +369,15 @@ public function importemployee(Request $request)
     
     return back();
 }
-public function employeelist(){
+public function employeelist(Request $request){
   $employeedetails=employeedetail::select('employeedetails.*','employeedocuments.*','employeebankaccountsdetails.*','employeecompanydetails.*')
               ->leftJoin('employeedocuments','employeedetails.id','=','employeedocuments.employee_id')
               ->leftJoin('employeebankaccountsdetails','employeedetails.id','=','employeebankaccountsdetails.employee_id')
-              ->leftJoin('employeecompanydetails','employeedetails.id','=','employeecompanydetails.employee_id')
-              ->get();
+              ->leftJoin('employeecompanydetails','employeedetails.id','=','employeecompanydetails.employee_id');
+              if($request->has('status')){
+                $employeedetails=$employeedetails->where('status',$request->status);
+              }
+              $employeedetails=$employeedetails->get();
   //return $employeedetails;
 
   return view('hr.employeelist',compact('employeedetails'));
