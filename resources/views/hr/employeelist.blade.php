@@ -119,7 +119,16 @@
             <td>{{$employeedetail->alternativephonenumber}}</td>
             <td>{{$employeedetail->email}}</td>
             <td>{{$employeedetail->presentaddress}}</td>
-            <td><button class="btn btn-success btn-flat" onclick="employeestatus('{{$employeedetail->id}}');">ACTIVE</button></td>
+            <td>
+              @if($employeedetail->status=="RESIGN")
+              <small class="label bg-yellow" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
+              @elseif($employeedetail->status=="TERMINATED")
+              <small class="label bg-red" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>@elseif($employeedetail->status=="LEFT WITHOUT INFORMATION")
+              <small class="label bg-maroon" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
+              @else
+              <small class="label bg-green" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
+              @endif
+            </td>
             <td><a href="/editemployeedetails/{{$employeedetail->id}}" onclick="return confirm('are you sure to edit employee ??')" ><button class="btn btn-primary btn-flat">Edit</button></a></td>
           </tr>
           @endforeach
@@ -170,10 +179,10 @@
       </div>
       <div class="modal-body">
           {{ csrf_field() }}
-          <input type="text" name="empid" id="id">
+          <input type="text" name="id" id="id">
           <div class="form-group">
             <label>Change  Status</label>
-            <select class="form-control" name="active">
+            <select class="form-control" name="status">
               <option value="PRESENT">PRESENT</option>
               <option value="RESIGN">RESIGN</option>
               <option value="TERMINATED">TERMINATED </option>
@@ -196,7 +205,7 @@
   $(".alert-success").delay(5000).fadeOut(800); 
     $(".alert-danger").delay(15000).fadeOut(800);
 
-  function employeestatus(userid){
+  function employeestatus(userid,status){
     $("#employeestatus").modal('show');
     $("#id").val(userid);
   }
