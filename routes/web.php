@@ -573,7 +573,13 @@ Route::post('/updatecompanybankaccount','AccountController@updatecompanybankacco
 //-------------END PMS ACCOUNT ROUTE------------//
 
 Route::post('/importvendor','AccountController@importvendor');
+
+//-------------PMS MD ROUTE------------//
+
 Route::get('/mdhome','MdController@mdhome');
+Route::get('/mdmain/currentemployeelist','MdController@currentemployeelist');
+
+//-------------PMS END MD ROUTE------------//
 
 });
 

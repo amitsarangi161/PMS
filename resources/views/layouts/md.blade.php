@@ -196,7 +196,7 @@
       <ul class="sidebar-menu">
         <li class="header"><strong class="text-center">HR NAVIGATION</strong></li>
       
-         @if(Auth::user()->usertype=='MD')
+         @if(Auth::user()->usertype=='MD' || Auth::user()->usertype=='MASTER ADMIN')
            <li class="{{ Request::is('mdhome') ? 'active' : '' }} treeview">
           <a href="/mdhome">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -364,6 +364,34 @@ if (event.persisted) {
 
        ],
             });
+      $('.datatablescrollexport').DataTable({
+        dom: 'Bfrtip',
+        "order": [[ 0, "asc" ]],
+        "iDisplayLength": 25,
+        "scrollY": 450,
+        "scrollX": true,
+
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                footer:true,
+                pageSize: 'A4',
+                title: 'Report',          
+            },
+            {
+                extend: 'excelHtml5',
+                footer:true,
+                title: 'Report'
+            },
+            {
+                extend: 'print',
+                footer:true,
+                title: 'Report'
+            },
+
+       ],
+            });
 </script>
   <script>
       $('.select2').select2({dropdownCssClass : 'bigdrop'});
@@ -425,34 +453,7 @@ var jqf = $.noConflict();
      "scrollX": true,
      "iDisplayLength": 25
   });
-$('.datatablescrollexport').DataTable({
-        dom: 'Bfrtip',
-        "order": [[ 0, "desc" ]],
-        "iDisplayLength": 25,
-        "scrollY": 450,
-        "scrollX": true,
 
-        buttons: [
-            {
-                extend: 'pdfHtml5',
-                orientation: 'landscape',
-                footer:true,
-                pageSize: 'A4',
-                title: 'Report',          
-            },
-            {
-                extend: 'excelHtml5',
-                footer:true,
-                title: 'Report'
-            },
-            {
-                extend: 'print',
-                footer:true,
-                title: 'Report'
-            },
-
-       ],
-            });
 </script>
 
 
