@@ -223,6 +223,7 @@
             @if(Auth::user()->usertype=='MASTER ADMIN')
             <li class="{{ Request::is('dm/companydetails') ? 'active' : '' }}"><a href="/dm/companydetails"><i class="fa fa-circle-o text-aqua"></i>COMPANY SETUP</a></li>
             <li class="{{ Request::is('dm/adduser') ? 'active' : '' }}"><a href="/dm/adduser"><i class="fa fa-circle-o text-aqua"></i>ADD NEW USER</a></li>
+            <li class="{{ Request::is('dm/adddistrict') ? 'active' : '' }}"><a href="/dm/adddistrict"><i class="fa fa-circle-o text-aqua"></i>ADD DISTRICT</a></li>
              @endif
           </ul>
         </li>

@@ -58,6 +58,7 @@ use App\expenseentrydailyvehicle;
 use App\suggestion;
 use App\testimage;
 use App\companysetup;
+use App\district;
 use DataTables;
 use Excel;
 //use Barryvdh\DomPDF\Facade as PDF;
@@ -3690,6 +3691,18 @@ public function adminviewcomplaintdetails($id)
 
         return back();
   }
+  public function adddistrict()
+   {
+      $districts=district::all();
+      return view('adddistrict',compact('districts'));
+   }
+   public function savedistrict(Request $request){
+        $district=new district();
+        $district->districtname=$request->districtname;
+        $district->save();
+        Session::flash('msg','district save Successfully');
+        return back();
+   }
 
   
 }
