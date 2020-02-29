@@ -2857,7 +2857,8 @@ return $message->sid;*/
    {
         
         $clients=client::get();
-        return view('addclient',compact('clients'));
+        $districts=district::all();
+        return view('addclient',compact('clients','districts'));
    }
    public function saveclient(Request $request)
    {

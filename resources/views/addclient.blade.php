@@ -35,9 +35,10 @@
          <td><input type="text" name="clientname" class="form-control" placeholder="Enter Client Name" required=""></td>
          <td><strong>DISTICT</strong><span style="color: red"> *</span></td>
          <td>
-           <select name="district" class="form-control select2">
-             <option>aaa</option>
-             <option>bbb</option>
+           <select name="district" class="form-control select2" multiple="multiple" data-placeholder="---SELECT  DISTRICT --">
+             @foreach($districts as $district)
+             <option value="{{$district->id}}">{{$district->districtname}}</option>
+             @endforeach
            </select>
          </td>
         </tr>
