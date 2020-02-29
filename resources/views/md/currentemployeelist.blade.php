@@ -28,7 +28,7 @@
         <table class="table table-bordered table-striped datatablescrollexport">
         <thead>
           <tr class="bg-navy">
-            <td>Emp. Id</td>
+            <td>Sl. No</td>
             <td>EMPLOYEE CODE</td>
             <td>Employee Name</td>
             <td>Blood Group</td>
@@ -75,7 +75,7 @@
         <tbody>
           @foreach($employeedetails as $key=>$employeedetail)
           <tr>
-            <td><button class="btn btn-success btn-sm btn-flat">{{$employeedetail->id}}</button></td>
+            <td><button class="btn btn-success btn-sm btn-flat">{{++$key}}</button></td>
             <td>{{$employeedetail->empcodeno}}</td>
             <td>{{$employeedetail->employeename}}</td>
             <td>{{$employeedetail->bloodgroup}}</td>
