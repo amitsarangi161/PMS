@@ -2,12 +2,14 @@
 
 @section('content')
 <style type="text/css">
-  .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background-color: #3c8dbc;
+  .select2-selection__choice{
+    background-color: #3c8dbc!important;
     border-color: #367fa9;
     padding: 1px 10px;
     color: #fff;
 }
+.select2-selection__choice__remove {
+    color: #a60c0c!important;}
 </style>
 @if(Session::has('message'))
    <p class="alert alert-success text-center">{{ Session::get('message') }}</p>
@@ -40,20 +42,6 @@
         <tr>
          <td><strong>DEPARTMENT NAME</strong><span style="color: red"> *</span></td>
          <td><input type="text" name="clientname" class="form-control" placeholder="Enter Client Name" required=""></td>
-         <td><strong>DISTICT</strong><span style="color: red"> *</span></td>
-         <td>
-           <select name="district" class="form-control select2" multiple="multiple" data-placeholder="---SELECT  DISTRICT --">
-             @foreach($districts as $district)
-             <option value="{{$district->id}}">{{$district->districtname}}</option>
-             @endforeach
-           </select>
-         </td>
-        </tr>
-        <tr>
-        	<td><strong>DIVISION</strong><span style="color: red"> *</span></td>
-           <td>
-            <input type="text" name="division" class="form-control" placeholder="Enter Division Name"></td>
-           </td>
            <td><strong>CONTACT NO</strong><span style="color: red"> *</span></td>
            <td><input type="number" name="contact1" class="form-control" placeholder="Enter Contact No"></td>
         </tr>
@@ -108,7 +96,7 @@
 @if($clients)
 <div class="box">
 <div class="box-header">
-     <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importclient" onclick="importclient();"><i class="fa fa-file-excel-o"></i> Import Debitor</button>
+     <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importclient" onclick="importclient();"><i class="fa fa-file-excel-o"></i> Import Client</button>
      <a href="/Debitor Import Sample.xlsx" download="/debitorSample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
           </span>
 </div>
@@ -191,5 +179,6 @@
     function importclient(){
         alert("Do You Want To Upload Debitor Excel");
     }
+
 </script>
 @endsection

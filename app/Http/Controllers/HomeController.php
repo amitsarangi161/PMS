@@ -59,6 +59,7 @@ use App\suggestion;
 use App\testimage;
 use App\companysetup;
 use App\district;
+use App\division;
 use DataTables;
 use Excel;
 //use Barryvdh\DomPDF\Facade as PDF;
@@ -134,9 +135,7 @@ public function importclient(Request $request){
           ->count();
           if($check==0){
           $client=new client();
-          $client->clientname=$value['clientname'];
-          $client->orgname=$value['orgname'];
-   
+          $client->clientname=$value['department'];   
           $client->contact1=$value['mobile1'];
           $client->contact2=$value['mobile2'];
           $client->officecontact=$value['officeno'];
@@ -146,7 +145,6 @@ public function importclient(Request $request){
           $client->residentaddress=$value['residentaddress'];
           $client->officeaddress=$value['officeaddress'];
           $client->city=$value['city'];
-          $client->dist=$value['district'];
           $client->state=$value['state'];
           $client->country=$value['country'];
           $client->additionalinfo=$value['additionalinfo'];
@@ -3704,6 +3702,42 @@ public function adminviewcomplaintdetails($id)
         Session::flash('msg','district save Successfully');
         return back();
    }
+   public function adddivision()
+   {
+      $districts=district::all();
+      $clients=client::all();
+      $divisions=division::select('divisions.*','clients.clientname','districts.districtname')
+                ->leftJoin('clients','clients.id','=','divisions.client_id')
+                ->leftJoin('districts','districts.id','=','divisions.district_id')
+                ->get();
+      //return $divisions;
+      return view('adddivision',compact('districts','clients','divisions'));
+   }
+   public function savedivision(Request $request){
+        //return $request->all();
+    $count=count($request->divisionname);
+    for($i=0;$i<$count;$i++){
+        $division=new division();
+        $division->client_id=$request->client;
+        $division->district_id=$request->district;
+      if($request->divisionname[$i]!=''){
+        $division->divisionname=$request->divisionname[$i];
+      
+      }
+      $division->save();
+    }
+   
+
+        Session::flash('msg','division save Successfully');
+        return back();
+   }
+    public function updatedivision( Request $request){
+      $editdivision=division::find($request->divid);
+      $editdivision->divisionname=$request->divisionname;
+      $editdivision->save();
+      Session::flash('update','Division Updated Successfully');
+      return back();
+    }
 
   
 }

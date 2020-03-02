@@ -558,9 +558,11 @@ Route::post('/updateclient/{id}','HomeController@updateclient');
 Route::post('/importclient','HomeController@importclient');
 Route::post('/importvendor','HomeController@importvendor');
 Route::post('/importproject','HomeController@importproject');
-Route::get('/dm/adddistrict','HomeController@adddistrict');
+Route::get('/projects/adddistrict','HomeController@adddistrict');
 Route::post('/savedistrict','HomeController@savedistrict');
-
+Route::get('/projects/adddivision','HomeController@adddivision');
+Route::post('/savedivision','HomeController@savedivision');
+Route::post('/updatedivision','HomeController@updatedivision');
 //-------------END PMS MAIN ROUTE------------//
 
 //------------- PMS ACCOUNT ROUTE------------//

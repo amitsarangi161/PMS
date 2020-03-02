@@ -223,7 +223,6 @@
             @if(Auth::user()->usertype=='MASTER ADMIN')
             <li class="{{ Request::is('dm/companydetails') ? 'active' : '' }}"><a href="/dm/companydetails"><i class="fa fa-circle-o text-aqua"></i>COMPANY SETUP</a></li>
             <li class="{{ Request::is('dm/adduser') ? 'active' : '' }}"><a href="/dm/adduser"><i class="fa fa-circle-o text-aqua"></i>ADD NEW USER</a></li>
-            <li class="{{ Request::is('dm/adddistrict') ? 'active' : '' }}"><a href="/dm/adddistrict"><i class="fa fa-circle-o text-aqua"></i>ADD DISTRICT</a></li>
              @endif
           </ul>
         </li>
@@ -236,6 +235,8 @@
           </a>
           <ul class="treeview-menu">
             <li class="{{ Request::is('projects/addclient') ? 'active' : '' }}"><a href="/projects/addclient"><i class="fa fa-circle-o text-aqua"></i>CLIENT</a></li>
+            <li class="{{ Request::is('projects/adddistrict') ? 'active' : '' }}"><a href="/projects/adddistrict"><i class="fa fa-circle-o text-aqua"></i>DISTRICT</a></li>
+            <li class="{{ Request::is('projects/adddivision') ? 'active' : '' }}"><a href="/projects/adddivision"><i class="fa fa-circle-o text-aqua"></i>ADD DIVISION</a></li>
             <!-- <li class="{{ Request::is('projects/addproject') ? 'active' : '' }}"><a href="/projects/addproject"><i class="fa fa-circle-o text-red"></i>ADD A PROJECT</a></li>
              
              <li class="{{ Request::is('projects/viewallproject') ? 'active' : '' }}"><a href="/projects/viewallproject"><i class="fa fa-circle-o text-red"></i>VIEW ALL PROJECT</a></li> -->
@@ -452,12 +453,12 @@ if (event.persisted) {
             });
 </script>
   <script>
-      $('.select2').select2({dropdownCssClass : 'bigdrop'});
+    $('.select2').select2();
+      //$('.select2').select2({dropdownCssClass : 'bigdrop'});
       $( ".addnewrow" ).sortable();
     </script>
 
-   <script>
-
+<script>
 
 $( ".sortable1" ).sortable();
 $(".datepicker").datepicker({

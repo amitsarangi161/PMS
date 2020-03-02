@@ -47,12 +47,7 @@
         	<td><textarea name="officeaddress" class="form-control" placeholder="Enter Office address">{{$client->officeaddress}} 
             </textarea></td>
         </tr>
-        <tr>
-        	<td><strong>CITY</strong><span style="color: red"> *</span></td>
-         <td><input type="text" name="city" value="{{$client->city}}" class="form-control" placeholder="Enter city Here"></td>
-         <td><strong>DISTICT</strong><span style="color: red"> *</span></td>
-         <td><input type="text" name="dist" value="{{$client->dist}}" class="form-control" placeholder="Enter Distict Here"></td>
-        </tr>
+        
         <tr>
         	<td><strong>STATE</strong><span style="color: red"> *</span></td>
          <td><input type="text" name="state" value="{{$client->state}}" class="form-control" placeholder="Enter state Here"></td>
@@ -67,7 +62,9 @@
          <td><input type="text" name="tinno" value="{{$client->tinno}}" class="form-control" placeholder="Enter Tin Number" required=""></td>
         </tr>
         <tr>
-          
+            <td><strong>CITY</strong><span style="color: red"> *</span></td>
+         <td><input type="text" name="city" value="{{$client->city}}" class="form-control" placeholder="Enter city Here"></td>
+         
         </tr>
 
                 <tr>
