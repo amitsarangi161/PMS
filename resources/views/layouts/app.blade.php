@@ -286,6 +286,22 @@
           </ul>
         </li>
 
+        <li class="{{ Request::is('attendance*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>ATTENDANCE</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+             <li class="{{ Request::is('attendance/viewattendance') ? 'active' : '' }}"><a href="/attendance/viewattendance"><i class="fa fa-circle-o text-red"></i>VIEW ATTENDANCE</a></li>
+
+             <li class="{{ Request::is('attendance/attendancereport') ? 'active' : '' }}"><a href="/attendance/attendancereport"><i class="fa fa-circle-o text-red"></i>ATTENDANCE REPORT</a></li>
+             
+            
+          </ul>
+     </li>
+
 
     </section>
     <!-- /.sidebar -->
