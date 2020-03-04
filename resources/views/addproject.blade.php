@@ -18,7 +18,7 @@
 
 <td>FOR CLIENT<span style="color: red"> *</span></td>
 <td>
-    <select type="text" name="clientid" id="clientid" onchange="changeclientname();" class="form-control select2" required> 
+    <select type="text" name="clientid" id="clientid" onchange="changeclientname();fetchdistrict();" class="form-control select2" required> 
 		<option value="">SELECT A CLIENT</option>
 		 @foreach($clients as $key => $client) 
 		 <option value="{{$client->id}}" title="{{$client->clientname}}">{{$client->clientname}}</option>
@@ -28,10 +28,20 @@
 <td>CLIENT NAME<span></span></td>
 <td>
 
-   <input class="form-control" name="clientname" id="clientname">
+   <input class="form-control" name="clientname" id="clientname" disabled="">
     
 </td>
 
+</tr>
+<tr>
+	<td>District<span style="color: red"> *</span></td>
+	<td>
+		<select type="text" name="district" id="district"  class="form-control select2" required onchange="fetchdivision();" data-placeholder="Select a District"> 
+	</select></td>
+	<td>Division<span style="color: red"> *</span></td>
+	<td>
+		<select type="text" name="division" id="division"   class="form-control select2" required data-placeholder="Select a Division"> 
+	</td>
 </tr>
 <tr>
 	<td>PROJECT NAME<span style="color: red"> *</span></td>
@@ -69,7 +79,7 @@
 	</td>
 </tr>
 <tr>
-	<td><strong>LOA NO <span style="color: red"> *</span></strong></td>
+	<td><strong>LOA NO</strong></td>
 	<td><input type="text" class="form-control" name="loano" placeholder="Enter LOA NO" ></td>
 	<td><strong>AGREEMENT NO<span style="color: red"> *</span></strong></td>
 	<td><input type="text" class="form-control" name="agreementno" placeholder="Enter AGREEMENT NO"></td>
@@ -80,19 +90,19 @@
 		<input type="text" name="startdate" id="sdate" class="form-control datepicker getdays" readonly="" required="">
 	</td>
 
-	<td>END DATE<span style="color: red"> *</span></td>
+	<td>DATE OF COMPLETION <span style="color: red"> *</span></td>
 	<td>
 		<input type="text" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="" required="">
 	</td>
 
 </tr>
 <tr>
-	<td>Security Deposit Date<span style="color: red"> *</span></td>
+	<td>SECURITY DEPOSIT DATE<span style="color: red"> *</span></td>
 	<td>
 		<input type="text" name="securitydepositdate" id="securitydate" class="form-control datepicker getdays" required="">
 	</td>
 
-	<td>Period<span style="color: red"> * </span></td>
+	<td>PERIOD<span style="color: red"> * </span></td>
 	<td><input type="text" class="form-control" name="period" placeholder="Security Money Period" ></td>
 
 </tr>
@@ -109,83 +119,6 @@
 
 
 
-<!--     <table class="table table-striped table-bordered display">
-		<tr>
-		 <td colspan="4" class="text-center bg-primary">ACTIVITY DETAILS</td>
-		</tr>
-		
-
-	</table>
-
-
-    <table class="table table-striped table-bordered display" >
-		<thead class="bg-navy">
-		  <tr style="border:1px,solid,#000;">
-			<td>ACTIVITY</td>
-			<td>START DATE</td>
-			<td>END DATE</td>
-			<td>DURATION</td>
-			<td>ADD</td>
-		  </tr>
-		</thead>
-		<tbody class="authorslist">
-
-			<tr>
-			
-			 <td>
-			    <select type="text" name="activityid" id="activityid" class="form-control select2"> 
-					<option value="">SELECT ACTIVITY</option>
-					 @foreach($activities as $key => $activity) 
-					 <option value="{{$activity->id}}">{{$activity->activityname}}</option>
-					 @endforeach
-				</select>
-			 </td>
-			 <td> <input  id="startdate" class="form-control datepicker chng" readonly></td> 
-			 <td> <input  id="enddate" class="form-control datepicker chng"  readonly></td> 
-			 <td> <input  id="duration" class="form-control chngdate"></td> 
-			 <td><button type="button" id="addnew" class="addauthor btn btn-primary">ADD</button></td>
- 
-			 
-			</tr>
-									 
-	    </tbody>				
-	</table> -->
-
-    <!-- <table class="table table-striped table-bordered display">
-		<tr>
-		 <td colspan="4" class="text-center bg-primary">ADDED ACTIVITY</td>
-		</tr>
-		
-
-	</table>
-<table class="table table-striped table-bordered display" id="sum_table">
-	
-		<thead class="bg-navy">
-		  <tr class="titlerow">
-		    <td>ACTIVITY</td>
-			<td>START DATE</td>
-			<td>END DATE</td>
-			<td>DURATION</td>
-			<td>REMOVE</td>
-		  </tr>
-		</thead>
-		<tbody class="addnewrow sortable">
-            
-			
-									 
-	    </tbody>	
-
-	    <tfoot>
-	    	<tr></tr>
-	    	<tr>
-	    		
-	    		<td></td>
-	    		<td></td>
-	    		<td>TOTAL DAYS</td>
-	    		<td><input type="text" id="totdays" readonly></td>
-	    	</tr>
-	    </tfoot>			  
-</table> -->
 	
 
 
@@ -410,18 +343,7 @@ $(".caldate").bind("keyup change", function(e) {
                 return string;
             }       
 
-</script>
 
-
-        <script>
-           
-            
-            
-        </script>
-
-
-
-<script>
 var counter = 0;
 var gdtotal = 0;
 
@@ -578,6 +500,66 @@ function readURL(input) {
         }
     }
 
+function fetchdivision(){
+	var districtid=$("#district").val();
+		 $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
+            }
+        });
+        $.ajax({
+               type:'POST',
+              
+               url:'{{url("/ajaxfetchdivision")}}',
+              
+               data: {
+                     "_token": "{{ csrf_token() }}",
+                      districtid: districtid,
+                     },
+
+               success:function(data) { 
+               		var x='<option value="">Select Division</option>';  
+                            $.each(data,function(key,value){
+                                  
+
+                               x=x+'<option value="'+value.id+'">'+value.divisionname+'</option>';
+
+                            })
+                            $('#division').html(x);
+                }
+		});
+}
+
+function fetchdistrict(){
+	$('#division').html('');
+	var clientid=$("#clientid").val();
+	 $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
+            }
+        });
+        $.ajax({
+               type:'POST',
+              
+               url:'{{url("/ajaxfetchdistrict")}}',
+              
+               data: {
+                     "_token": "{{ csrf_token() }}",
+                      clientid: clientid,
+                     },
+
+               success:function(data) { 
+               		var district='<option value="">Select Division</option>';  
+                            $.each(data,function(key,value){
+                                  
+
+                               district=district+'<option value="'+value.district_id+'">'+value.districtname+'</option>';
+
+                            })
+                            $('#district').html(district);
+                }
+		});
+}
 </script>
 
 

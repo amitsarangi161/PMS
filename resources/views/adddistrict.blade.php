@@ -5,7 +5,10 @@
 @if(Session::has('msg'))
    <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
  @endif
-<table class="table table-responsive table-hover table-bordered table-striped">
+
+ <div class="row">
+ 	<div class="col-md-6">
+ 		<table class="table table-responsive table-hover table-bordered table-striped">
 	 <tr class="bg-navy">
 	 	<td class="text-center">ADD DISTRICT</td>
 	 </tr>
@@ -29,9 +32,10 @@
 </table>
 </form>
 </div>
-
-<div class="table-responsive">
-	<table class="table  table-hover table-bordered table-striped datatable">
+ 	</div>
+ 	<div class="col-md-6">
+ 		<div class="table-responsive">
+	<table class="table  table-hover table-bordered table-striped datatable2">
        <thead class="bg-navy">
        	   <tr>
        	   	<th>ID</th>
@@ -49,5 +53,12 @@
        </tbody>
 	</table>
 </div>
+ 	</div>
+ </div>
 
+
+
+<script type="text/javascript">
+
+</script>
 @endsection
