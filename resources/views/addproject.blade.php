@@ -1,137 +1,211 @@
 @extends('layouts.app')
 @section('content')
-    
+<style type="text/css">
+  .box{border-radius: 0px!important;}
+}
+</style>    
 @if(Session::has('msg'))
    <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
 @endif
 
-<form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="/saveproject">
- {{ csrf_field() }}
-<table class="table table-dponsive table-hover table-bordered table-striped" >
-<tr>
-<td colspan="4" class="text-center bg-navy">PROJECT DETAILS</td>
-</tr>
+<div class="box box-info box-solid">
+     <div class="box-header bg-navy with-border text-center" style="margin-bottom: 10px;">
+              <h3 class="box-title">ADD A PROJECT</h3>
+      </div>
+    <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="/saveproject">
+ 		{{ csrf_field() }}
+ 	<div class="form-horizontal">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">PROJECT DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	FOR CLIENT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <select type="text" name="clientid" id="clientid" onchange="changeclientname();fetchdistrict();" class="form-control select2" required> 
+							<option value="">SELECT A CLIENT</option>
+							 @foreach($clients as $key => $client) 
+							 <option value="{{$client->id}}" title="{{$client->clientname}}">{{$client->clientname}}</option>
+							 @endforeach
+						</select>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	CLIENT NAME
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" name="clientname" id="clientname" disabled="">
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	DISTRICT<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                    <select type="text" name="district" id="district"  class="form-control select2" required onchange="fetchdivision();" data-placeholder="Select a District"> 
+						</select>
+	                </div>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	DIVISION
+	                </label>
+	                <div class="col-sm-7">
+	                    <select type="text" name="division" id="division"   class="form-control select2" required data-placeholder="Select a Division"></select>
+	                </div>
+                 </div>
+             </div>
+             	</div>
 
+             	<div class="row">
+             		<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PROJECT NAME<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                    <input type="text" name="projectname" id="projectname" class="form-control" required="">
+	                </div>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PROJECT COST<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                    <input type="text" name="cost" id="cost"  class="form-control" required="">
+						<p style="color: red;">Don't Put comma or letter</p>
+	                </div>
+                 </div>
+             </div>
+             	</div>
 
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PRIORITY<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                   <select name="priority" class="form-control" required="">
+						<option value="NORMAL">NORMAL</option>
+						<option value="HIGH">HIGH</option>
+						<option value="MEDIUM">MEDIUM</option>
+						<option value="LOW">LOW</option>
+						</select>
+	                </div>
+                 </div>
+             	</div>
+             	<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="orderform" onchange="readURL(this);" required>
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="imgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+             	</div>
 
-<tr>
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	<strong>LOA NO</strong>
+	                </label>
+	                <div class="col-sm-7">
+	                   <input type="text" class="form-control" name="loano" placeholder="Enter LOA NO" >
+	                </div>
+                 </div>
+             	</div>
+             	<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	<strong>AGREEMENT NO<span style="color: red"> *</span></strong>
+	                </label>
+	                <div class="col-sm-7">
+	                    <input type="text" class="form-control" name="agreementno" placeholder="Enter AGREEMENT NO">
+	                </div>
+	                </div>
+                 </div>
+             	</div>
 
-<td>FOR CLIENT<span style="color: red"> *</span></td>
-<td>
-    <select type="text" name="clientid" id="clientid" onchange="changeclientname();fetchdistrict();" class="form-control select2" required> 
-		<option value="">SELECT A CLIENT</option>
-		 @foreach($clients as $key => $client) 
-		 <option value="{{$client->id}}" title="{{$client->clientname}}">{{$client->clientname}}</option>
-		 @endforeach
-	</select>
-</td>
-<td>CLIENT NAME<span></span></td>
-<td>
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	DATE OF COMMENCEMENT<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                   <input type="text" name="startdate" id="sdate" class="form-control datepicker getdays" readonly="" required="">
+	                </div>
+                 </div>
+             	</div>
+             	<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	DATE OF COMPLETION <span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                    <input type="text" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="" required="">
+	                </div>
+	                </div>
+                 </div>
+             	</div>
 
-   <input class="form-control" name="clientname" id="clientname" disabled="">
-    
-</td>
-
-</tr>
-<tr>
-	<td>District<span style="color: red"> *</span></td>
-	<td>
-		<select type="text" name="district" id="district"  class="form-control select2" required onchange="fetchdivision();" data-placeholder="Select a District"> 
-	</select></td>
-	<td>Division<span style="color: red"> *</span></td>
-	<td>
-		<select type="text" name="division" id="division"   class="form-control select2" required data-placeholder="Select a Division"> 
-	</td>
-</tr>
-<tr>
-	<td>PROJECT NAME<span style="color: red"> *</span></td>
-	<td>
-		<input type="text" name="projectname" id="projectname" class="form-control" required="">
-	</td>
-
-	<td>PROJECT COST<span style="color: red"> *</span></td>
-	<td>
-		<input type="text" name="cost" id="cost"  class="form-control" required="">
-		<p style="color: red;">Don't Put comma or letter</p>
-	</td>
-
-</tr>
-
-
-
-<tr>
-	<td>PRIORITY<span style="color: red"> *</span></td>
-	<td>
-		<select name="priority" class="form-control" required="">
-			<option value="NORMAL">NORMAL</option>
-			<option value="HIGH">HIGH</option>
-			<option value="MEDIUM">MEDIUM</option>
-			<option value="LOW">LOW</option>
-
-			
-		</select>
-	</td>
-		<td>ATTACH ORDER FORM<span style="color: red"> *</span></td>
-	<td>
-		 <input type="file"  name="orderform" onchange="readURL(this);" required>
-		 <img id="imgshow">
-		 <span style="color: red">(please upload .jpg or .pdf file)</span>
-	</td>
-</tr>
-<tr>
-	<td><strong>LOA NO</strong></td>
-	<td><input type="text" class="form-control" name="loano" placeholder="Enter LOA NO" ></td>
-	<td><strong>AGREEMENT NO<span style="color: red"> *</span></strong></td>
-	<td><input type="text" class="form-control" name="agreementno" placeholder="Enter AGREEMENT NO"></td>
-</tr>
-<tr>
-	<td>DATE OF COMMENCEMENT<span style="color: red"> *</span></td>
-	<td>
-		<input type="text" name="startdate" id="sdate" class="form-control datepicker getdays" readonly="" required="">
-	</td>
-
-	<td>DATE OF COMPLETION <span style="color: red"> *</span></td>
-	<td>
-		<input type="text" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="" required="">
-	</td>
-
-</tr>
-<tr>
-	<td>SECURITY DEPOSIT DATE<span style="color: red"> *</span></td>
-	<td>
-		<input type="text" name="securitydepositdate" id="securitydate" class="form-control datepicker getdays" required="">
-	</td>
-
-	<td>PERIOD<span style="color: red"> * </span></td>
-	<td><input type="text" class="form-control" name="period" placeholder="Security Money Period" ></td>
-
-</tr>
-
-<tr>
-
-
-	<td>TOTAL PROJECT TIME(IN DAYS)<span style="color: red"> *</span></td>
-	<td>
-	<input type="text" name="totprojectdays" id="totprojectdays" autocomplete="off" class="form-control caldate">
-	</td>
-</tr>
-
-
-
-
-	
-
-
-	
-
-<tr>
-<td colspan="4"><button class="btn btn-success" style="float: right;" onclick="return confirm('Do You Want to proceed?')" type="submit">ADD PROJECT</button><a href="/"><button class="btn btn-danger" style="float: left;" type="button" >Cancel</button></a></td>
-</tr>
-
-</table>
-</form>
-
-
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PERIOD<span style="color: red"> * </span>
+	                </label>
+	                <div class="col-sm-7">
+	                  <input type="text" class="form-control" name="period" placeholder="Security Money Period" >
+	                </div>
+                 </div>
+             	</div>
+             	<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	TOTAL PROJECT TIME(IN DAYS)<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                    <input type="text" name="totprojectdays" id="totprojectdays" autocomplete="off" class="form-control caldate">
+	                </div>
+	                </div>
+                 </div>
+             	</div>
+             	</div>
+	        	</div>
+			</div>
+		</div>
+	</div>
+	</form>
+</div>
 
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
