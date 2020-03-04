@@ -2942,18 +2942,17 @@ return $message->sid;*/
       
       $clients=client::all();
       $activities=activity::all();
-      return view('addproject',compact('clients','activities'));
+      $districts=district::all();
+      return view('addproject',compact('clients','districts'));
    }
    public function saveproject(Request $request)
    {
-
-
-    
      //return $request->all();
-
      $project=new project();
      $project->clientid=$request->clientid;
      $project->clientname=$request->clientname;
+     $project->district_id=$request->district;
+     $project->division_id=$request->division;
      $project->projectname=$request->projectname;
      $lastid=project::orderBy('id','DESC')->pluck('id')->first();
      $project->projectid='PMS'.($lastid+1);
@@ -3731,7 +3730,7 @@ public function adminviewcomplaintdetails($id)
         Session::flash('msg','division save Successfully');
         return back();
    }
-    public function updatedivision( Request $request){
+    public function updatedivision(Request $request){
       $editdivision=division::find($request->divid);
       $editdivision->divisionname=$request->divisionname;
       $editdivision->save();
@@ -3739,5 +3738,19 @@ public function adminviewcomplaintdetails($id)
       return back();
     }
 
-  
+  public function ajaxfetchdivision(Request $request){
+    $divisions=division::select('divisions.*','districts.districtname')
+            ->leftJoin('districts','divisions.district_id','=','districts.id')
+            ->where('district_id',$request->districtid)
+            ->get();
+    return response()->json($divisions);
+  }
+  public function ajaxfetchdistrict(Request $request){
+   $districts=division::select('divisions.district_id','districts.districtname')
+            ->leftJoin('districts','divisions.district_id','=','districts.id')
+            ->where('client_id',$request->clientid)
+            ->groupBy('divisions.district_id')
+            ->get();
+            return response()->json($districts);
+  }
 }

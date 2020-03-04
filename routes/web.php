@@ -134,17 +134,7 @@ Route::post('/ajaxremovemeberfromactivity','AjaxController@ajaxremovemeberfromac
 Route::post('/ajaxallusers','AjaxController@ajaxallusers');
 Route::post('/ajaxmemberaddtoactivity','AjaxController@ajaxmemberaddtoactivity');
 
-Route::get('/projects/addproject','HomeController@addproject');
-Route::post('/saveproject','HomeController@saveproject');
-Route::get('/projects/viewallproject','HomeController@viewallproject');
-Route::delete('/deleteproject/{id}','HomeController@deleteproject');
-Route::get('/editproject/{id}','HomeController@editproject');
-Route::get('/deleteprojectactivity/{id}','HomeController@deleteprojectactivity');
-Route::post('/updateproject/{id}','HomeController@updateproject');
-Route::post('/changestatus','HomeController@changestatus');
-Route::get('/useraccounts/vehicles','HomeController@vehicles');
-Route::get('/userprojects/viewprojects','HomeController@viewuserprojects');
-Route::get('userprojects/showuserprojectdetails/{id}','HomeController@showuserprojectdetails');
+
 Route::post('/upadtevehicledetails','HomeController@upadtevehicledetails');
 Route::post('/savevehicledetails','HomeController@savevehicledetails');
 Route::post('/ajaxgetamountuser1','AccountController@ajaxgetamountuser1');
@@ -563,6 +553,21 @@ Route::post('/savedistrict','HomeController@savedistrict');
 Route::get('/projects/adddivision','HomeController@adddivision');
 Route::post('/savedivision','HomeController@savedivision');
 Route::post('/updatedivision','HomeController@updatedivision');
+
+Route::get('/projects/addproject','HomeController@addproject');
+Route::post('/saveproject','HomeController@saveproject');
+Route::get('/projects/viewallproject','HomeController@viewallproject');
+Route::delete('/deleteproject/{id}','HomeController@deleteproject');
+Route::get('/editproject/{id}','HomeController@editproject');
+Route::get('/deleteprojectactivity/{id}','HomeController@deleteprojectactivity');
+Route::post('/updateproject/{id}','HomeController@updateproject');
+Route::post('/changestatus','HomeController@changestatus');
+Route::get('/useraccounts/vehicles','HomeController@vehicles');
+Route::get('/userprojects/viewprojects','HomeController@viewuserprojects');
+Route::get('userprojects/showuserprojectdetails/{id}','HomeController@showuserprojectdetails');
+Route::post('/ajaxfetchdivision','HomeController@ajaxfetchdivision');
+Route::post('/ajaxfetchdistrict','HomeController@ajaxfetchdistrict');
+
 //-------------END PMS MAIN ROUTE------------//
 
 //------------- PMS ACCOUNT ROUTE------------//

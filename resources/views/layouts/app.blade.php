@@ -445,7 +445,7 @@ if (event.persisted) {
             });
       $('.datatable2').DataTable({
         dom: 'Bfrtip',
-        "order": [[ 0, "desc" ]],
+        "order": [[ 0, "asc" ]],
         "iDisplayLength": 10,
         buttons: [
             {
