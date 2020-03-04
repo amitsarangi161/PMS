@@ -3716,14 +3716,19 @@ public function adminviewcomplaintdetails($id)
         //return $request->all();
     $count=count($request->divisionname);
     for($i=0;$i<$count;$i++){
+       $check=division::where('district_id',$request->district)
+          ->where('client_id',$request->client)
+          ->where('divisionname',$request->divisionname[$i])
+          ->count();
+
+      if($request->divisionname[$i]!='' && $check==0){
+        /*return $request->divisionname[$i];*/
         $division=new division();
         $division->client_id=$request->client;
         $division->district_id=$request->district;
-      if($request->divisionname[$i]!=''){
         $division->divisionname=$request->divisionname[$i];
-      
-      }
       $division->save();
+      }
     }
    
 
