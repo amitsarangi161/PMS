@@ -103,6 +103,7 @@ Route::post('/rejecttenderbyadmin','TenderController@rejecttenderbyadmin');
 Route::get('/ata/adminapprovedtenders','TenderController@adminapprovedtenders');
 Route::get('/tm/adminapprovedtenders','TenderController@adminapprovedtenders');
 Route::get('/viewadminapprovedtender/{id}','TenderController@viewadminapprovedtender');
+Route::get('/viewadminapprovedtender/{id}','TenderController@viewadminapprovedtender');
 /*end Tender Routes*/
 Route::get('/showuserlocation/{uid}/{date}','HomeController@userlocation');
 Route::post('/getuserlocation','HomeController@getuserlocation');

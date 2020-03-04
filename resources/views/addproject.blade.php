@@ -21,7 +21,7 @@
     <select type="text" name="clientid" id="clientid" onchange="changeclientname();" class="form-control select2" required> 
 		<option value="">SELECT A CLIENT</option>
 		 @foreach($clients as $key => $client) 
-		 <option value="{{$client->id}}" title="{{$client->clientname}}">ASDF</option>
+		 <option value="{{$client->id}}" title="{{$client->clientname}}">{{$client->clientname}}</option>
 		 @endforeach
 	</select>
 </td>
