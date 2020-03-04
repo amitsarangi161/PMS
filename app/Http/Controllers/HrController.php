@@ -56,7 +56,7 @@ public function ajaxgetdept(Request $request){
 public function saveemployeedetails(Request $request){
 $request->validate([
     'email' => 'required|unique:employeedetails|max:255',
-    'phone' => 'required|max:10|min:10',
+    //'phone' => 'required|max:10|min:10',
     'empcodeno' => 'required|unique:employeedetails|max:20',
 ]);
       $check=employeedetail::where('email',$request->email)
@@ -83,8 +83,11 @@ $request->validate([
         $employee->permanentaddress=$request->permanentaddress;
         $employee->fathername=$request->fathername;
         $employee->maritalstatus=$request->maritalstatus;
+        //return $employee;
         $employee->save();
+
         $eid=$employee->id;
+   
         $employeecompany=new employeecompanydetail();
         $employeecompany->employee_id=$eid;
         $employeecompany->department=$request->department;
@@ -110,6 +113,7 @@ $request->validate([
         $employeebankaccount->branch=$request->branch;
         $employeebankaccount->pfaccount=$request->pfaccount;
         $employeebankaccount->save();
+
         $employeedocument=new employeedocument();
         $employeedocument->employee_id=$eid;
         $rarefile = $request->file('resume');
@@ -158,6 +162,17 @@ $request->validate([
         $employeedocument->idproof = $uplogoimg;
         }
         $employeedocument->save();
+
+         $user=new User();
+          $user->employee_id=$eid;
+          $user->name=$employee->employeename;
+          $user->username=$employee->empcodeno;
+          $user->email=$employee->email;
+          $user->password=bcrypt($employee->phone);
+          $user->pass=$employee->phone;
+          $user->mobile=$employee->phone;
+          $user->usertype='USER';
+          $user->save();
 
   }
    Session::flash('message','Employee save successfully');
@@ -275,9 +290,18 @@ public function updateemployeedetails(Request $request,$id)
       }
 
 public function employeestatus(Request $request){
+  //return $request->all();
   $status=employeedetail::find($request->id);
   $status->status=$request->status;
   $status->save();
+  $active=User::select('users.*')->where('employee_id',$request->id)->first();
+  if($request->status != "PRESENT"){
+      $active->active=0;
+  }
+  else{
+      $active->active=1;
+  }
+  $active->save();
   return back();
 }
 public function registeremployee(){
@@ -356,8 +380,12 @@ public function importemployee(Request $request)
           $user->pass=$value['personal_mobile_number'];
           $user->mobile=$value['personal_mobile_number'];
           $user->usertype='USER';
+          if($employee->status=$value['remarks'] != "PRESENT"){
+              $user->active=0;
+          }
           $user->save();
           }
+          
      
           Session::flash('message', 'Employee was successfuly uploaded');
         }
