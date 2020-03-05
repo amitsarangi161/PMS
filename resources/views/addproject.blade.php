@@ -30,7 +30,7 @@
 		                  	FOR CLIENT<span style="color: red"> *</span>
 		                </label>
 		                <div class="col-sm-7">
-		                    <select type="text" name="clientid" id="clientid" onchange="changeclientname();fetchdistrict();" class="form-control select2" required> 
+		                    <select type="text" name="clientid" id="clientid" onchange="changeclientname();fetchdistrict();" class="form-control select2" > 
 							<option value="">SELECT A CLIENT</option>
 							 @foreach($clients as $key => $client) 
 							 <option value="{{$client->id}}" title="{{$client->clientname}}">{{$client->clientname}}</option>
@@ -57,7 +57,7 @@
 	                  	DISTRICT<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                    <select type="text" name="district" id="district"  class="form-control select2" required onchange="fetchdivision();" data-placeholder="Select a District"> 
+	                    <select type="text" name="district" id="district"  class="form-control select2"  onchange="fetchdivision();" data-placeholder="Select a District"> 
 						</select>
 	                </div>
                  </div>
@@ -68,7 +68,7 @@
 	                  	DIVISION
 	                </label>
 	                <div class="col-sm-7">
-	                    <select type="text" name="division" id="division"   class="form-control select2" required data-placeholder="Select a Division"></select>
+	                    <select type="text" name="division" id="division"   class="form-control select2"  data-placeholder="Select a Division"></select>
 	                </div>
                  </div>
              </div>
@@ -81,7 +81,7 @@
 	                  	PROJECT NAME<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                    <input type="text" name="projectname" id="projectname" class="form-control" required="">
+	                    <input type="text" name="projectname" id="projectname" class="form-control" ="">
 	                </div>
                  </div>
              </div>
@@ -91,7 +91,7 @@
 	                  	PROJECT COST<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                    <input type="text" name="cost" id="cost"  class="form-control" required="">
+	                    <input type="text" name="cost" id="cost"  class="form-control" ="">
 						<p style="color: red;">Don't Put comma or letter</p>
 	                </div>
                  </div>
@@ -105,7 +105,7 @@
 	                  	PRIORITY<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                   <select name="priority" class="form-control" required="">
+	                   <select name="priority" class="form-control" ="">
 						<option value="NORMAL">NORMAL</option>
 						<option value="HIGH">HIGH</option>
 						<option value="MEDIUM">MEDIUM</option>
@@ -120,7 +120,7 @@
 	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-4">
-	                    <input type="file"  name="orderform" onchange="readURL(this);" required>
+	                    <input type="file"  name="orderform" onchange="readURL(this);" >
 	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
 	                </div>
 	                <div class="col-sm-3">
@@ -161,7 +161,7 @@
 	                  	DATE OF COMMENCEMENT<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                   <input type="text" name="startdate" id="sdate" class="form-control datepicker getdays" readonly="" required="">
+	                   <input type="text" name="startdate" id="sdate" class="form-control datepicker getdays" readonly="" ="">
 	                </div>
                  </div>
              	</div>
@@ -171,23 +171,14 @@
 	                  	DATE OF COMPLETION <span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                    <input type="text" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="" required="">
+	                    <input type="text" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="" ="">
 	                </div>
 	                </div>
                  </div>
              	</div>
 
              	<div class="row">
-             	<div class="col-md-6">
-	        	 <div class="form-group">
-	                <label class=" col-sm-5">
-	                  	PERIOD<span style="color: red"> * </span>
-	                </label>
-	                <div class="col-sm-7">
-	                  <input type="text" class="form-control" name="period" placeholder="Security Money Period" >
-	                </div>
-                 </div>
-             	</div>
+             	
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
@@ -199,13 +190,348 @@
 	                </div>
                  </div>
              	</div>
+
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PAPER COST<span style="color: red"> * </span>
+
+	                </label>
+	                <div class="col-sm-7">
+	                  <input type="text" class="form-control" name="papercost" placeholder="Security Money Period" >
+	                  <b style="color: red">Non Refundable</b>
+	                </div>
+                 </div>
+             	</div>
+             	<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PAPER COST ATTACH<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="papercost" onchange="paper(this);" >
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="paperimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+             	</div>
              	</div>
 	        	</div>
 			</div>
+	<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">ISD DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	ISD DATE<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="isddate" id="isddate" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	VALID UP TO<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="isdvalidupto" id="isdvalidupto" readonly>
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+				<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	AMOUNT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" name="isdamount">
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="isdattach" onchange="isddoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="isdimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+			</div>
 		</div>
+	</div>
+	<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">EMD DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	EMD DATE<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="emddate" id="emddate" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	VALID UP TO<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="emdvalidupto" id="emdvalidupto" readonly>
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+				<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	AMOUNT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" name="emdamount">
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="emdattach" onchange="emddoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="emdimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">APS DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	APS DATE<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="apsdate" id="apsdate" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	VALID UP TO<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="apsvalidupto" id="apsvalidupto" readonly>
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+				<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	AMOUNT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" name="apsamount" id="apsdate">
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="apsattach" onchange="apsdoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="apsimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">BANK GUARANTEE DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	BG DATE<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="bgdate" id="bgdate" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	VALID UP TO<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="bgvalidupto" id="bgvalidupto" readonly>
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+				<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	AMOUNT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" name="bgamount" id="bgdate">
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="bgattach" onchange="bgdoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="bgimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">DEMAND DRAFT</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	DD DATE<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="dddate" id="dddate" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	VALID UP TO<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="ddvalidupto" id="ddvalidupto" readonly>
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+				<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	AMOUNT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" name="ddamount" id="dddate">
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="ddattach" onchange="dddoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="ddimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<button type="submit"class="btn btn-flat pull-right btn-success">Save Project</button>
+			</div>
+		</div>
+			</div>
+		</div>
+	</div>
 	</div>
 	</form>
 </div>
+
 
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -564,6 +890,108 @@ function readURL(input) {
               
             reader.onload = function (e) {
                 $('#imgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+function isddoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#isdimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+function emddoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#emdimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+    function apsdoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#apsimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+    function bgdoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#bgimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+    function paper(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#paperimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+ function dddoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#ddimgshow')
                     .attr('src', e.target.result)
                     .width(80)
                     .height(80);        
