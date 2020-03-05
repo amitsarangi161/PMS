@@ -51,12 +51,10 @@
       	 <td><strong>SELECT A SITE/PROJECT NAME *</strong></td>
       	 <td>
       	 	<select class="form-control select2" id="projectid" onchange="showclient();"  name="projectid" required="">
-
-      	 		<option value="">select a project</option>
-            <option value="">aaa</option>
-            <option value="">bbb</option>
-            
-      	 
+            <option value="">SELECT A PROJECT</option>
+               @foreach($projects as $key => $project)
+               <option value="{{$project->id}}" title="{{$project->clientname}}">{{$project->projectname}}</option>
+               @endforeach
       	 	</select>
       	 </td>
       </tr>
@@ -192,6 +190,7 @@
 	function showclient()
 	{
 		var cn=$("#projectid option:selected" ).attr("title");
+    //alert(cn);
 		$("#clientname").val(cn);
 	}
 

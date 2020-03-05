@@ -1901,7 +1901,7 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
 
         $requisitionheader=new requisitionheader();
         $requisitionheader->employeeid=Auth::id();
-         $requisitionheader->description=$request->description1;
+        $requisitionheader->description=$request->description1;
         $requisitionheader->projectid=$request->projectid;
         $requisitionheader->totalamount=$request->totalamt;
         $requisitionheader->datefrom=$request->datefrom;
@@ -1991,12 +1991,13 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
         $expenseheads=expensehead::all();
         $particulars=particular::all();
 
-        // $projects=project::select('projects.*','clients.orgname')
-        //         ->leftJoin('clients','projects.clientid','=','clients.id')
-        //         ->get();
+        $projects=project::select('projects.*','clients.clientname')
+                ->leftJoin('clients','projects.clientid','=','clients.id')
+                ->get();
+        //return $projects;
 
         // return view('applicationform',compact('users','projects','expenseheads','totalamt','bal','totalamtentry','walletbalance'));
-        return view('applicationform',compact('users','expenseheads'));
+        return view('applicationform',compact('users','expenseheads','projects'));
     }
      public function viewallexpenseentry()
      {

@@ -141,7 +141,7 @@
                  </div>
              	</div>
              	<div class="col-md-6">
-               <!--   <div class="form-group">
+                 <div class="form-group">
 	                <label class=" col-sm-5">
 	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
 	                </label>
@@ -153,7 +153,7 @@
 					 <img id="imgshow1" src="/img/orderform/{{$project->orderform}}" style="height: 70px;width: 70px;">
 					 
 					</div>
-	                </div> -->
+	                </div>
                  </div>
              	</div>
 
@@ -231,7 +231,7 @@
                  </div>
              	</div> -->
              	<div class="col-md-6">
-                 <!-- <div class="form-group">
+                 <div class="form-group">
 	                <label class=" col-sm-5">
 	                  	PAPER COST ATTACH<span style="color: red"> *</span>
 	                </label>
@@ -245,12 +245,7 @@
 					 
 					</div>
 
-	                </div> -->
-            <div class="col-md-12">
-			<div class="form-group">
-				<button type="submit"class="btn btn-flat pull-right btn-success">UPDATE Project</button>
-			</div>
-				</div>
+	                </div>
                  </div>
              	</div>
              	</div>
@@ -258,9 +253,257 @@
 	     
 
 			</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">ISD DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	ISD DATE<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input value="{{$project->isddate}}" class="form-control datepicker" name="isddate" id="isddate" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	VALID UP TO<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="isdvalidupto" value="{{$project->isdvalidupto}}" id="isdvalidupto" readonly>
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+				<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	AMOUNT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" value="{{$project->isdamount}}" name="isdamount">
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="isdattach" onchange="isddoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="isdimgshow1" src="/img/orderform/{{$project->orderform}}" style="height: 70px;width: 70px;">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">APS DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	APS DATE<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="apsdate" id="apsdate" value="{{$project->apsdate}}" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	VALID UP TO<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="apsvalidupto" value="{{$project->apsvalidupto}}" id="apsvalidupto" readonly>
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+				<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	AMOUNT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" value="{{$project->apsamount}}" name="apsamount" id="apsdate">
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="apsattach" onchange="apsdoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="apsimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">BANK GUARANTEE DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	BG DATE<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input value="{{$project->bgdate}}" class="form-control datepicker" name="bgdate" id="bgdate" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	VALID UP TO<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="bgvalidupto" value="{{$project->bgvalidupto}}" id="bgvalidupto" readonly>
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+				<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	AMOUNT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" value="{{$project->bgamount}}" name="bgamount" id="bgdate">
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="bgattach" onchange="bgdoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="bgimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">DEMAND DRAFT</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	DD DATE<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input value="{{$project->dddate}}" class="form-control datepicker" name="dddate" id="dddate" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	VALID UP TO<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input value="{{$project->ddvalidupto}}" class="form-control datepicker" name="ddvalidupto" id="ddvalidupto" readonly>
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+				<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	AMOUNT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input value="{{$project->ddamount}}" class="form-control" name="ddamount" id="dddate">
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="ddattach" onchange="dddoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="ddimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<button type="submit"class="btn btn-flat pull-right btn-success">Update Project</button>
+			</div>
+		</div>
+			</div>
+		</div>
+	</div>
+
 	</div>
 	</form>
 </div>
+
 
 
 <div id="myModal" class="modal fade" role="dialog">
