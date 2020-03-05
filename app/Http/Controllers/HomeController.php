@@ -2959,14 +2959,86 @@ return $message->sid;*/
      $project->cost=$request->cost;
      $project->startdate=$request->startdate;
      $project->enddate=$request->enddate;
-     $project->securitydepositdate=$request->securitydepositdate;
-     $project->period=$request->period;
      $project->priority=$request->priority;
      $project->loano=$request->loano;
      $project->agreementno=$request->agreementno;
+     $project->isddate=$request->isddate;
+     $project->isdvalidupto=$request->isdvalidupto;
+     $project->isdamount=$request->isdamount;
+     $project->emddate=$request->emddate;
+     $project->emdvalidupto=$request->emdvalidupto;
+     $project->emdamount=$request->emdamount;
+     $project->apsdate=$request->apsdate;
+     $project->apsamount=$request->apsamount;
+     $project->apsvalidupto=$request->apsvalidupto;
+     $project->bgdate=$request->bgdate;
+     $project->bgamount=$request->bgamount;
+     $project->bgvalidupto=$request->bgvalidupto;
+     $project->dddate=$request->dddate;
+     $project->ddamount=$request->ddamount;
+     $project->ddvalidupto=$request->ddvalidupto;
 
-     $rarefile = $request->file('orderform');
+     $rarefile = $request->file('emdattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/emdattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->emdattachment = $uplogoimg;
+        }
 
+        $rarefile = $request->file('apsattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/apsattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->apsattachment = $uplogoimg;
+        }
+
+        $rarefile = $request->file('bgattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/bgattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->bgattachment = $uplogoimg;
+        }
+
+        $rarefile = $request->file('ddattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/ddattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->ddattachment = $uplogoimg;
+        }
+
+        $rarefile = $request->file('isdattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/isdattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->isdattachment = $uplogoimg;
+        }
+
+      $rarefile = $request->file('papercost');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/papercost";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->papercostattachment = $uplogoimg;
+        }
+
+      $rarefile = $request->file('orderform');
         if($rarefile!='')
         {
              $u=time().uniqid(rand());
@@ -2975,6 +3047,7 @@ return $message->sid;*/
         $success=$rarefile->move($raupload,$uplogoimg);
         $project->orderform = $uplogoimg;
         }
+      //return$project;
      $project->save();
      Session::flash('msg','Project Saved Successfully');
      return back();
@@ -2985,22 +3058,14 @@ return $message->sid;*/
    public function viewallproject()
    {
         
-        $projects=project::select('projects.*','clients.orgname')
+        $projects=project::select('projects.*','clients.clientname')
                   ->leftJoin('clients','projects.clientid','=','clients.id')
                   ->get();
+        //return $projects;
         return view('viewallproject',compact('projects'));
    }
 
-   public function deleteproject($id)
-   {
-      
-      $project=project::find($id);
-      $project->delete();
 
-      $projectactivity=projectactivity::where('projectid',$id)->delete();
-
-      return back();
-   }
    public function editproject($id){
 
     
