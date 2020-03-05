@@ -4280,9 +4280,14 @@ public function approvedebitvoucheradmin(Request $request,$id)
       //return $data;
       $custerr=array();
         foreach($data as $kay=>$value){
-        $check=vendor::where('panno',$value['pan_no'])
+          if($value['pan_no']!='' && $value['gstin']){
+             $check=vendor::where('panno',$value['pan_no'])
                       ->orWhere('gstno',$value['gstin'])
           ->count();
+          }
+       else{
+        $check=0;
+       }
 
          if($check==0){
          $vendor=new vendor();

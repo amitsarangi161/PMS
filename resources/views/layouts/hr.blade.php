@@ -376,8 +376,29 @@ if (event.persisted) {
         e.preventDefault();
     });
 
+$(".attfromdate").datepicker({
+   dateFormat: 'yy-mm-dd',
+       showButtonPanel: true,
+       changeYear: true,
+       changeMonth: true,
+       maxDate: 0,
+       maxDate: new Date()
       
-
+       });
+$(".atttodate").datepicker({
+   dateFormat: 'yy-mm-dd',
+       showButtonPanel: true,
+       changeYear: true,
+       changeMonth: true,
+       maxDate: 0,
+       });
+$(".datepicker").datepicker({
+   dateFormat: 'yy-mm-dd',
+       showButtonPanel: true,
+       changeYear: true,
+       changeMonth: true,
+       setDate: 0
+       });
 
       $('.datatable1').DataTable({
         dom: 'Bfrtip',
@@ -439,13 +460,7 @@ $('.datatablescrollexport').DataTable({
 
 
 
-$(".datepicker").datepicker({
-   dateFormat: 'yy-mm-dd',
-       showButtonPanel: true,
-       changeYear: true,
-       changeMonth: true,
-       setDate: 0
-       });
+
 $(".datepicker1").datepicker({
    dateFormat: 'yy-mm-dd',
        showButtonPanel: true,

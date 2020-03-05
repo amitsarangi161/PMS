@@ -174,11 +174,12 @@ foreach ($all as $type) {
       ++$count;
     }
 }
+return view('hr.attendancereport',compact('users','all','totalDuration','count','name'));
            
          }
-         return $all;
-         //return compact('users','all','totalDuration','count');
-         return view('hr.attendancereport',compact('users','all','totalDuration','count','name'));
+
+return view('hr.attendancereport',compact('users'));
+         
      }
     public function viewattendance(Request $request)
     {

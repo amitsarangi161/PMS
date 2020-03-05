@@ -528,22 +528,7 @@ $(".datepicker5").datepicker({
       
        });
 
-$(".attfromdate").datepicker({
-   dateFormat: 'yy-mm-dd',
-       showButtonPanel: true,
-       changeYear: true,
-       changeMonth: true,
-       maxDate: 0,
-       maxDate: new Date()
-      
-       });
-$(".atttodate").datepicker({
-   dateFormat: 'yy-mm-dd',
-       showButtonPanel: true,
-       changeYear: true,
-       changeMonth: true,
-       maxDate: 0,
-       });
+
 
 
 </script> 
