@@ -14,11 +14,11 @@ class CreateProjectsTable extends Migration {
 	{
 		Schema::create('projects', function(Blueprint $table)
 		{
-			$table->integer('id', true);
+			$table->increments('id');
 			$table->string('clientid', 200)->nullable();
 			$table->string('clientname', 200)->nullable();
-			$table->integer('district_id', 200)->nullable();
-			$table->integer('division_id', 200)->nullable();
+			$table->string('district_id', 200)->nullable();
+			$table->string('division_id', 200)->nullable();
 			$table->string('projectname', 500)->nullable();
 			$table->string('projectid', 100)->nullable();
 			$table->date('securitydepositdate')->nullable();
