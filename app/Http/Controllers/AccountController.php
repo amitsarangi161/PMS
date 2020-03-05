@@ -4455,6 +4455,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
          $vendors=vendor::select('vendors.*','users.name')
          ->leftJoin('users','vendors.userid','=','users.id')
          ->get();
+         //return $vendors;
          return view('accounts.managevendors',compact('vendors'));
     }
 }

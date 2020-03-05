@@ -35,37 +35,38 @@
 <table class="table  table-hover table-bordered table-striped datatable">
        <thead class="bg-navy">
        	   <tr>
-       	   	<th>ID</th>
-       	   	<th>VENDOR NAME</th>
+       	   	<th>Sl. No</th>
+            <th>PARTY NAME</th>
        	   	<th>MOBILE</th>
-       	   	<th>DETAILS</th>
+            <th>EMAIL</th>
+       	   	<th>ADDRESS</th>
             <th>GSTN</th>
-            <th>PAN Number</th>
-            <th>Service Tax Number</th>
+            <th>PAN</th>
+            <th>TIN</th>
+            <th>BANK NAME</th>
+            <th>ACCOUNT NO</th>
+            <th>IFSC CODE</th>
+            <th>BRANCH NAME</th>
+            <th>AUTHOR</th>
        	   	<th>EDIT</th>
-       	   <!-- 	<th>DELETE</th> -->
        	   </tr>
        </thead>
        <tbody>
-       	@foreach($vendors as $vendor)
+       	@foreach($vendors as $key=>$vendor)
            <tr>
-           	<td>{{$vendor->id}}</td>
+           	<td>{{++$key}}</td>
            	<td>{{$vendor->vendorname}}</td>
            	<td>{{$vendor->mobile}}</td>
-           	<td>{{$vendor->details}}</td>
+           	<td>{{$vendor->email}}</td>
+            <td>{{$vendor->details}}</td>
             <td>{{$vendor->gstno}}</td>
             <td>{{$vendor->panno}}</td>
-            <td>{{$vendor->servicetaxno}}</td>
-           	<!-- <td>
-              <a href="{{ asset('/img/vendor/'.$vendor->vendoridproof )}}" target="_blank">
-              <img style="height:70px;width:95px;" alt="click to view the file" src="{{ asset('/img/vendor/'.$vendor->vendoridproof )}}">
-              </a>
-            </td> -->
-           <!-- 	<td>
-               <a href="{{ asset('/img/vendor/'.$vendor->photo )}}" target="_blank">
-              <img style="height:70px;width:95px;" alt="click to view the file" src="{{ asset('/img/vendor/'.$vendor->photo )}}">
-              </a>
-            </td> -->
+            <td>{{$vendor->tinno}}</td>
+            <td>{{$vendor->bankname}}</td>
+            <td>{{$vendor->acno}}</td>
+            <td>{{$vendor->ifsccode}}</td>
+            <td>{{$vendor->branchname}}</td>
+            <td>{{$vendor->name}}</td>
            	<td><a href="/editvendor/{{$vendor->id}}" class="btn btn-primary">EDIT</a></td>
            </tr>
        	@endforeach

@@ -116,7 +116,7 @@ width: 100%;
 		<img src="sug3.png" class="img-responsive kl" onclick="openForm()" style="cursor: pointer;">
 	</div> -->
 	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-		<a href="https://play.google.com/store/apps/details?id=com.subudhitechno.engineers.statusgear&hl=en"><img src="android.png" class="img-responsive kl" style="cursor: pointer;width: 260px;"></a>
+		<a href="https://play.google.com/store/apps/details?id=com.pms.pmsmonitors&hl=en"><img src="android.png" class="img-responsive kl" style="cursor: pointer;width: 260px;"></a>
 	</div>
 </div>
 </div>

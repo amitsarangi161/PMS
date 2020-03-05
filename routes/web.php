@@ -220,7 +220,7 @@ Route::get('/defination/vendors','AccountController@vendors');
 Route::get('/useraccounts/vendors','HomeController@vendors');
 Route::get('/viewexpenseentryuser/{id}','AccountController@viewexpenseentryuser');
 Route::post('/savevendor','AccountController@savevendor');
-Route::get('/defination/managevendors','AccountController@managevendors');
+
 Route::get('useraccounts/managevendors','HomeController@managevendors');
 Route::get('/editvendor/{id}','AccountController@editvendor');
 Route::get('/edituservendor/{id}','HomeController@editvendor');
@@ -585,7 +585,7 @@ Route::post('/updatecompanybankaccount','AccountController@updatecompanybankacco
 //-------------END PMS ACCOUNT ROUTE------------//
 
 Route::post('/importvendor','AccountController@importvendor');
-
+Route::get('/defination/managevendors','AccountController@managevendors');
 //-------------PMS MD ROUTE------------//
 
 Route::get('/mdhome','MdController@mdhome');
