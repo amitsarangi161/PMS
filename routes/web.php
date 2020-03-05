@@ -259,7 +259,7 @@ Route::post('/updateuserexpenseentry/{id}','HomeController@updateexpenseentry');
 Route::delete('/deletevendor/{id}','AccountController@deletevendor');
 Route::post('/updatesubrequisitions','HomeController@updatesubrequisitions');
 Route::get('/requisitions/applicationform','AccountController@applicationform');
-Route::get('/useraccounts/applicationform','HomeController@applicationform');
+
 Route::post('/saverequisitions','AccountController@saverequisitions');
 Route::post('/saveuserrequisitions','HomeController@saverequisitions');
 Route::get('/viewrequisitions/viewapplicationform','AccountController@viewapplicationform');
@@ -561,6 +561,7 @@ Route::post('/updatedivision','HomeController@updatedivision');
 Route::get('/projects/addproject','HomeController@addproject');
 Route::post('/saveproject','HomeController@saveproject');
 Route::get('/projects/viewallproject','HomeController@viewallproject');
+Route::delete('/deleteproject/{id}','HomeController@deleteproject');
 Route::get('/editproject/{id}','HomeController@editproject');
 Route::get('/deleteprojectactivity/{id}','HomeController@deleteprojectactivity');
 Route::post('/updateproject/{id}','HomeController@updateproject');
@@ -570,6 +571,8 @@ Route::get('/userprojects/viewprojects','HomeController@viewuserprojects');
 Route::get('userprojects/showuserprojectdetails/{id}','HomeController@showuserprojectdetails');
 Route::post('/ajaxfetchdivision','HomeController@ajaxfetchdivision');
 Route::post('/ajaxfetchdistrict','HomeController@ajaxfetchdistrict');
+
+Route::get('/useraccounts/applicationform','HomeController@applicationform');
 
 //-------------END PMS MAIN ROUTE------------//
 

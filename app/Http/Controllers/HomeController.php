@@ -3021,6 +3021,21 @@ return $message->sid;*/
      $project->priority=$request->priority;
      $project->loano=$request->loano;
      $project->agreementno=$request->agreementno;
+     $project->isddate=$request->isddate;
+     $project->isdamount=$request->isdamount;
+     $project->isdvalidupto=$request->isdvalidupto;
+     $project->emddate=$request->emddate;
+     $project->emdamount=$request->emdamount;
+     $project->emdvalidupto=$request->emdvalidupto;
+     $project->apsdate=$request->apsdate;
+     $project->apsamount=$request->apsamount;
+     $project->apsvalidupto=$request->apsvalidupto;
+     $project->bgdate=$request->bgdate;
+     $project->bgamount=$request->bgamount;
+     $project->bgvalidupto=$request->bgvalidupto;
+     $project->dddate=$request->dddate;
+     $project->ddamount=$request->ddamount;
+     $project->ddvalidupto=$request->ddvalidupto;
      $rarefile = $request->file('orderform');
 
         if($rarefile!='')
@@ -3039,6 +3054,55 @@ return $message->sid;*/
         $uplogoimg=$u.$rarefile->getClientOriginalName();
         $success=$rarefile->move($raupload,$uplogoimg);
         $project->papercostattachment = $uplogoimg;
+        }
+     $rarefile = $request->file('emdattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/emdattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->emdattachment = $uplogoimg;
+        }
+
+        $rarefile = $request->file('apsattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/apsattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->apsattachment = $uplogoimg;
+        }
+
+        $rarefile = $request->file('bgattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/bgattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->bgattachment = $uplogoimg;
+        }
+
+        $rarefile = $request->file('ddattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/ddattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->ddattachment = $uplogoimg;
+        }
+
+        $rarefile = $request->file('isdattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/isdattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->isdattachment = $uplogoimg;
         }
      $project->save();
      Session::flash('msg','Project updated Successfully');
