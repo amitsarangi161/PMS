@@ -304,7 +304,69 @@
 	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
 	                </div>
 	                <div class="col-sm-3">
-					 <img id="isdimgshow1" src="/img/orderform/{{$project->orderform}}" style="height: 70px;width: 70px;">
+					 <img id="isdimgshow1" src="/img/isdattach/{{$project->isdattachment}}" style="height: 70px;width: 70px;">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">EMD DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	EMD DATE<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="emddate" id="emddate" value="{{$project->emddate}}" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	VALID UP TO<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="emdvalidupto" value="{{$project->emddate}}" id="emdvalidupto" readonly>
+		                </div>
+	                 </div>
+	             	</div>
+				</div>
+				<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	AMOUNT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <input value="{{$project->emdamount}}" class="form-control" name="emdamount">
+		                </div>
+	                 </div>
+                 	</div>
+             		<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="emdattach" onchange="emddoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="emdimgshow1" src="/img/emdattach/{{$project->emdattachment}}" style="height: 70px;width: 70px;">
+
 					 
 					</div>
 	                </div>
@@ -365,7 +427,7 @@
 	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
 	                </div>
 	                <div class="col-sm-3">
-					 <img id="apsimgshow">
+					 <img id="apsimgshow1" src="/img/apsattach/{{$project->apsattachment}}" style="height: 70px;width: 70px;">
 					 
 					</div>
 	                </div>
@@ -425,7 +487,7 @@
 	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
 	                </div>
 	                <div class="col-sm-3">
-					 <img id="bgimgshow">
+					 <img id="bgimgshow1" src="/img/bgattach/{{$project->bgattachment}}" style="height: 70px;width: 70px;">
 					 
 					</div>
 	                </div>
@@ -485,7 +547,7 @@
 	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
 	                </div>
 	                <div class="col-sm-3">
-					 <img id="ddimgshow">
+					 <img id="ddimgshow1" src="/img/ddattach/{{$project->ddattachment}}" style="height: 70px;width: 70px;">
 					 
 					</div>
 	                </div>
@@ -913,6 +975,12 @@ function emddoc(input) {
                     .width(80)
                     .height(80);        
             };
+            reader.onload = function (e) {
+                $('#emdimgshow1')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
 
             reader.readAsDataURL(input.files[0]);
 
@@ -930,6 +998,12 @@ function emddoc(input) {
                     .width(80)
                     .height(80);        
             };
+             reader.onload = function (e) {
+                $('#apsimgshow1')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
 
             reader.readAsDataURL(input.files[0]);
 
@@ -943,6 +1017,12 @@ function emddoc(input) {
               
             reader.onload = function (e) {
                 $('#bgimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+           reader.onload = function (e) {
+                $('#bgimgshow1')
                     .attr('src', e.target.result)
                     .width(80)
                     .height(80);        
@@ -988,7 +1068,12 @@ function emddoc(input) {
                     .width(80)
                     .height(80);        
             };
-
+            reader.onload = function (e) {
+                $('#ddimgshow1')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
             reader.readAsDataURL(input.files[0]);
 
         }
