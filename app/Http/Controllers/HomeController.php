@@ -2977,6 +2977,7 @@ return $message->sid;*/
      $project->dddate=$request->dddate;
      $project->ddamount=$request->ddamount;
      $project->ddvalidupto=$request->ddvalidupto;
+     $project->papercost=$request->paperfee;
 
      $rarefile = $request->file('emdattach');
         if($rarefile!='')
@@ -3067,19 +3068,20 @@ return $message->sid;*/
 
 
    public function editproject($id){
-
-    
-
     $project=project::find($id);
+    //return $project;
     $projectactivities=projectactivity::select('projectactivities.*','activities.activityname')
                       ->where('projectactivities.projectid',$id)
                       ->leftJoin('activities','projectactivities.activityid','=','activities.id')
                       ->orderBy('projectactivities.position','ASC')
                       ->get();
     $clients=client::all();
+    $districts=district::all();
+    $divisions=division::all();
+    //return $clients;
     $activities=activity::all();
    // return $projectactivities;
-    return view('editproject',compact('project','projectactivities','clients','activities'));
+    return view('editproject',compact('project','districts','divisions','projectactivities','clients','activities'));
    }
    public function deleteprojectactivity($id)
    {
@@ -3094,6 +3096,8 @@ return $message->sid;*/
    {
      $project=project::find($id);
      $project->clientid=$request->clientid;
+     $project->district_id=$request->district_id;
+     $project->division_id=$request->division_id;
      $project->clientname=$request->clientname;
      $project->projectname=$request->projectname;
      $lastid=project::orderBy('id','DESC')->pluck('id')->first();
@@ -3101,8 +3105,6 @@ return $message->sid;*/
      $project->cost=$request->cost;
      $project->startdate=$request->startdate;
      $project->enddate=$request->enddate;
-     $project->securitydepositdate=$request->securitydepositdate;
-     $project->period=$request->period;
      $project->priority=$request->priority;
      $project->loano=$request->loano;
      $project->agreementno=$request->agreementno;
@@ -3115,6 +3117,15 @@ return $message->sid;*/
         $uplogoimg=$u.$rarefile->getClientOriginalName();
         $success=$rarefile->move($raupload,$uplogoimg);
         $project->orderform = $uplogoimg;
+        }
+    $rarefile = $request->file('papercost');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/papercost";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->papercostattachment = $uplogoimg;
         }
      $project->save();
      Session::flash('msg','Project updated Successfully');

@@ -1,217 +1,266 @@
 @extends('layouts.app')
 @section('content')
-
-<form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="/updateproject/{{$project->id}}">
- {{ csrf_field() }}
- @if(Session::has('msg'))
+<style type="text/css">
+  .box{border-radius: 0px!important;}
+}
+</style>    
+@if(Session::has('msg'))
    <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
 @endif
-<table class="table table-dponsive table-hover table-bordered table-striped" >
-<tr>
-<td colspan="4" class="text-center bg-navy">PROJECT DETAILS</td>
-</tr>
 
+<div class="box box-info box-solid">
+     <div class="box-header bg-navy with-border text-center" style="margin-bottom: 10px;">
+              <h3 class="box-title">UPDATE PROJECT</h3>
+      </div>
+    <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="/updateproject/{{$project->id}}">
+ 		{{ csrf_field() }}
+ 	<div class="form-horizontal">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">PROJECT DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	FOR CLIENT<span style="color: red"> *</span>
+		                </label>
+		                <div class="col-sm-7">
+		                    <select type="text" name="clientid" id="clientid" onchange="changeclientname();fetchdistrict();" class="form-control select2" > 
+							<option value="">SELECT A CLIENT</option>
+							 @foreach($clients as $key => $client)
+							 <option value="{{$client->id}}" title="{{$client->clientname}}" {{ ( $client->id == $project->clientid) ? 'selected' : '' }}>{{$client->clientname}}</option>
+							 @endforeach
+						</select>
+		                </div>
+	                 </div>
+                 	</div>
+             		<!-- <div class="col-md-6">
+	                 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	CLIENT NAME
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" name="clientname" id="clientname" disabled="">
+		                </div>
+	                 </div>
+	             	</div> -->
+	             <div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PROJECT COST<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                    <input type="text" name="cost" value="{{$project->cost}}" id="cost"  class="form-control">
+						<p style="color: red;">Don't Put comma or letter</p>
+	                </div>
+                 </div>
+             </div>
+				</div>
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	DISTRICT<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                    <select type="text" name="district_id" id="district"  class="form-control select2"  onchange="fetchdivision();" data-placeholder="Select a District"> 
+						<option value="">SELECT A DISTRICT</option>
+							 @foreach($districts as $key => $district)
+							 <option value="{{$district->id}}" title="{{$district->districtname}}" {{ ( $district->id == $project->district_id) ? 'selected' : '' }}>{{$district->districtname}}</option>
+							 @endforeach
+					    </select>
+	                </div>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	DIVISION
+	                </label>
+	                <div class="col-sm-7">
+	                    <select type="text" name="division_id" id="division"   class="form-control select2"  data-placeholder="Select a Division">
+	                    <option value="">SELECT A DIVISION</option>
+							 @foreach($divisions as $key => $division)
+							 <option value="{{$division->id}}" title="{{$division->divisionname}}" {{ ( $division->id == $project->division_id) ? 'selected' : '' }}>{{$division->divisionname}}</option>
+							 @endforeach
+					    </select>
+	                </div>
+                 </div>
+             </div>
+             	</div>
 
+             	<div class="row">
+             		<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PROJECT NAME<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                    <input type="text" value="{{$project->projectname}}" name="projectname" id="projectname" class="form-control">
+	                </div>
+                 </div>
+             </div>
+            <div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PAPER COST<span style="color: red"> * </span>
 
-<tr>
+	                </label>
+	                <div class="col-sm-7">
+	                  <input type="text" value="{{$project->papercost}}" class="form-control" name="paperfee" placeholder="Paper Cost" >
+	                  <b style="color: red">Non Refundable</b>
+	                </div>
+                 </div>
+             	</div>
+             	</div>
 
-<td>FOR CLIENT<span style="color: red"> *</span></td>
-<td>
-    <select type="text" name="clientid" id="clientid"  onchange="changeclientname();" class="form-control select2" required> 
-		<option value="">SELECT A CLIENT</option>
-		 @foreach($clients as $key => $client) 
-		 <option value="{{$client->id}}" title="{{$client->clientname}}" {{ ( $client->id == $project->clientid) ? 'selected' : '' }}>{{$client->orgname}}</option>
-		 @endforeach
-	</select>
-</td>
-<td>CLIENT NAME<span></span></td>
-<td>
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PRIORITY<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+				      <select name="priority" class="form-control" required="">
+						<option value="">SELECT</option>
+						<option value="NORMAL" {{ ( $project->priority == "NORMAL") ? 'selected' : '' }}>NORMAL</option>
 
-   <input class="form-control" name="clientname" value="{{$project->clientname}}" id="clientname">
-    
-</td>
+						<option value="HIGH" {{ ( $project->priority == "HIGH") ? 'selected' : '' }}>HIGH</option>
 
-</tr>
-<tr>
-	<td>PROJECT NAME<span style="color: red"> *</span></td>
-	<td>
-		<input type="text" name="projectname" value="{{$project->projectname}}" id="projectname" class="form-control" required="">
-	</td>
+						<option value="MEDIUM" {{ ( $project->priority == "MEDIUM") ? 'selected' : '' }}>MEDIUM</option>
 
-	<td>PROJECT COST<span style="color: red"> *</span></td>
-	<td>
-		<input type="text" name="cost" id="cost" value="{{$project->cost}}"  class="form-control" required="">
-	</td>
+						<option value="LOW" {{ ( $project->priority == "LOW") ? 'selected' : '' }}>LOW</option>
+						
+					</select>
+	                </div>
+                 </div>
+             	</div>
+             	<div class="col-md-6">
+               <!--   <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="orderform" onchange="readURL(this);" >
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="imgshow1" src="/img/orderform/{{$project->orderform}}" style="height: 70px;width: 70px;">
+					 
+					</div>
+	                </div> -->
+                 </div>
+             	</div>
 
-</tr>
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	<strong>LOA NO</strong>
+	                </label>
+	                <div class="col-sm-7">
+	                   <input type="text" value="{{$project->loano}}" class="form-control" name="loano" placeholder="Enter LOA NO" >
+	                </div>
+                 </div>
+             	</div>
+             	<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	<strong>AGREEMENT NO<span style="color: red"> *</span></strong>
+	                </label>
+	                <div class="col-sm-7">
+	                    <input type="text" value="{{$project->agreementno}}" class="form-control" name="agreementno" placeholder="Enter AGREEMENT NO">
+	                </div>
+	                </div>
+                 </div>
+             	</div>
 
-<tr>
-	<td><strong>LOA NO <span style="color: red"> *</span></strong></td>
-	<td><input type="text" value="{{$project->loano}}" class="form-control" name="loano" placeholder="Enter LOA NO" ></td>
-	<td><strong>AGREEMENT NO<span style="color: red"> *</span></strong></td>
-	<td><input type="text" value="{{$project->agreementno}}" class="form-control" name="agreementno" placeholder="Enter AGREEMENT NO"></td>
-</tr>
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	DATE OF COMMENCEMENT<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                   <input type="text" value="{{$project->startdate}}" name="startdate" id="sdate" class="form-control datepicker getdays" readonly="">
+	                </div>
+                 </div>
+             	</div>
+             	<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	DATE OF COMPLETION <span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                    <input type="text" value="{{$project->enddate}}" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="">
+	                </div>
+	                </div>
+                 </div>
+             	</div>
 
-<tr>
-	<td>DATE OF COMMENCEMENT<span style="color: red"> *</span></td>
-	<td>
-		<input type="text" name="startdate" value="{{$project->startdate}}" id="sdate" class="form-control datepicker getdays" readonly="" required="">
-	</td>
+             	<div class="row">
+             	
+             <!-- 	<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	TOTAL PROJECT TIME(IN DAYS)<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-7">
+	                    <input type="text" value="{{$project->totprojectdays}}" name="totprojectdays" id="totprojectdays" autocomplete="off" class="form-control caldate">
+	                </div>
+	                </div>
+                 </div> -->
+             	</div>
 
-	<td>END DATE<span style="color: red"> *</span></td>
-	<td>
-		<input type="text" name="enddate"  id="edate" value="{{$project->enddate}}" class="form-control datepicker getdays" readonly="" required="">
-	</td>
+             	<div class="row">
+             	<!-- <div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PAPER COST<span style="color: red"> * </span>
 
-</tr>
-<tr>
-	<td>PRIORITY<span style="color: red"> *</span></td>
-	<td>
-		<select name="priority" class="form-control" required="">
-			<option value="">SELECT</option>
-			<option value="NORMAL" {{ ( $project->priority == "NORMAL") ? 'selected' : '' }}>NORMAL</option>
-			<option value="HIGH" {{ ( $project->priority == "HIGH") ? 'selected' : '' }}>HIGH</option>
-			<option value="MEDIUM" {{ ( $project->priority == "MEDIUM") ? 'selected' : '' }}>MEDIUM</option>
-			<option value="LOW" {{ ( $project->priority == "LOW") ? 'selected' : '' }}>LOW</option>
-		</select>
-	</td>
-	<td>TOTAL PROJECT TIME(IN DAYS)<span style="color: red"> *</span></td>
-	<td>
-	<input type="text" name="totprojectdays" id="totprojectdays" autocomplete="off" class="form-control caldate">
-	</td>
-</tr>
-<tr>
-	<td>Security Deposit Date<span style="color: red"> *</span></td>
-	<td>
-		<input type="text" value="{{$project->securitydepositdate}}" name="securitydepositdate" id="securitydate" class="form-control datepicker getdays" required="">
-	</td>
+	                </label>
+	                <div class="col-sm-7">
+	                  <input type="text" value="{{$project->papercost}}" class="form-control" name="paperfee" placeholder="Paper Cost" >
+	                  <b style="color: red">Non Refundable</b>
+	                </div>
+                 </div>
+             	</div> -->
+             	<div class="col-md-6">
+                 <!-- <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PAPER COST ATTACH<span style="color: red"> *</span>
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="papercost" onchange="paper(this);" >
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="paperimgshow1" src="/img/papercost/{{$project->papercostattachment}}" style="height: 70px;width: 70px;">
 
-	<td>Period<span style="color: red"> *</span></td>
-	<td><input type="text" value="{{$project->period}}" class="form-control" name="period" placeholder="Security Money Period" ></td>
+					 
+					</div>
 
-</tr>
-<tr>
-	<td>ATTACH ORDER FORM<span style="color: red"> *</span></td>
-	<td>
-		 <input type="file"  name="orderform" onchange="readURL(this);">
-		 <span style="color: red">(please upload .jpg or .pdf file)</span>
-		 <br>
-         @if($project->orderform!='')
-         <img src="/img/orderform/{{$project->orderform}}" style="height: 85px;width: 85px;" id="imgshow">
-		 <a href="/img/orderform/{{$project->orderform}}" download>
-        Click Here to download order form
-         </a>
-         @else
-          No Order form attached please attach a order form
-         @endif
-	</td>
-</tr>
+	                </div> -->
+            <div class="col-md-12">
+			<div class="form-group">
+				<button type="submit"class="btn btn-flat pull-right btn-success">UPDATE Project</button>
+			</div>
+				</div>
+                 </div>
+             	</div>
+             	</div>
+	        	</div>
+	     
 
-
-
-    <!-- <table class="table table-striped table-bordered display">
-		<tr>
-		 <td colspan="4" class="text-center bg-primary">ACTIVITY DETAILS</td>
-		</tr>
-		
-
-	</table>
-
-
-    <table class="table table-striped table-bordered display" >
-	
-		<thead class="bg-navy">
-		  <tr style="border:1px,solid,#000;">
-			<td>ACTIVITY</td>
-			<td>START DATE</td>
-			<td>END DATE</td>
-			<td>DURATION</td>
-			<td>ADD</td>
-		  </tr>
-		</thead>
-		<tbody class="authorslist">
-
-			<tr>
-			
-			 <td>
-			    <select type="text" name="activityid" id="activityid" class="form-control select2" > 
-					<option value="">SELECT ACTIVITY</option>
-					 @foreach($activities as $key => $activity) 
-					 <option value="{{$activity->id}}">{{$activity->activityname}}</option>
-					 @endforeach
-				</select>
-			 </td>
-			 <td> <input  id="startdate" class="form-control datepicker chng" readonly></td> 
-			 <td> <input  id="enddate" class="form-control datepicker chng"  readonly></td> 
-			 <td> <input  id="duration" class="form-control chngdate" ></td> 
-			 <td><button type="button" id="addnew" class="addauthor btn btn-primary">ADD</button></td>
- 
-			 
-			</tr>
-									 
-	    </tbody>	
-			
-				  
-				
-	</table>
-	    <table class="table table-striped table-bordered display">
-		<tr>
-		 <td colspan="4" class="text-center bg-primary">ADDED ACTIVITY</td>
-		</tr>
-		
-
-	</table>
-<table class="table table-striped table-bordered display" id="res">
-	
-		<thead class="bg-navy">
-		  <tr>
-		    <td>ACTIVITY</td>
-			<td>START DATE</td>
-			<td>END DATE</td>
-			<td>DURATION</td>
-			<td>REMOVE</td>
-		  </tr>
-		</thead>
-		<tbody class="addnewrow sortable">
-
-			@foreach($projectactivities as $key=> $projectactivity)
-              <tr>
-              	<td>{{$projectactivity->activityname}}<input type="hidden" name="activityid[]" value="{{$projectactivity->activityid}}"></td>
-    	   <td id="st{{$key+1}}" ondblclick="startdatechange('{{$key+1}}')">{{$projectactivity->startdate}}<input type="hidden" name="activitystartdate[]" id="s{{$key+1}}" value="{{$projectactivity->startdate}}" class="calcin"/>
-    	   </td>
-    	  <td id="en{{$key+1}}" ondblclick="enddatechange('{{$key+1}}')">{{$projectactivity->enddate}}<input type="hidden" name="activityenddate[]" id="e{{$key+1}}" value="{{$projectactivity->enddate}}"/></td>
-    	  <td id="du{{$key+1}}">{{$projectactivity->duration}}<input type="hidden" name="duration[]" class="countable" value="{{$projectactivity->duration}}" class="calcin"/></td>
-    	  <td><a href="/deleteprojectactivity/{{$projectactivity->id}}" onclick="return confirm('Do you want to delete this activity?');" class="btn btn-danger">X</a></td>
-              </tr>
-
-            @endforeach
-									 
-	    </tbody>	
-
-	    <tfoot>
-	    	<tr></tr>
-	    	<tr>
-	    		
-	    		<td></td>
-	    		<td></td>
-	    		<td>TOTAL DAYS</td>
-	    		<td><input type="text" id="totdays" value="{{$projectactivities->sum('duration')}}" readonly></td>
-	    	</tr>
-	    </tfoot>			  
-</table> -->
-	
-
-
-	
-
-<tr>
-<td colspan="4"><button class="btn btn-success" style="float: left;" type="submit">UPDATE PROJECT</button><a href="/"><button class="btn btn-danger" style="float: right;" type="button" >Cancel</button></a></td>
-</tr>
-
-</table>
-</form>
-
-
+			</div>
+	</div>
+	</form>
+</div>
 
 
 <div id="myModal" class="modal fade" role="dialog">
@@ -279,32 +328,42 @@
 </div>
 
 
-
-
-
+  
 
 <script type="text/javascript">
 
-	$( document ).ready(function() {
+	$("#cost").on("keypress",function(e){
+  console.log("Entered Key is " + e.key);
+  switch (e.key)
+     {
+         case "1":
+         case "2":
+         case "3":
+         case "4":
+         case "5":
+         case "6":
+         case "7":
+         case "8":
+         case "9":
+         case "0":
+         case "Backspace":
+             return true;
+             break;
 
+         case ".":
+             if ($(this).val().indexOf(".") == -1) //Checking if it already contains decimal. You can Remove this condition if you do not want to include decimals in your input box.
+             {
+                 return true;
+             }
+             else
+             {
+                 return false;
+             }
+             break;
 
-
-var start = $("#sdate").val();
-var end = $("#edate").val();
-
-if(start!='' && end!='')
-{
-	var startDate = Date.parse(start);
-var endDate = Date.parse(end);
-
-
-var diff = new Date(endDate - startDate);
-
-var days = diff/1000/60/60/24;
-$("#totprojectdays").val(days);
-}
-
-   
+         default:
+             return false;
+     }
 });
 	
 	function changeclientname()
@@ -353,8 +412,6 @@ $("#totprojectdays").val(days);
 
 
 	});
-
-
 
 
 
@@ -416,24 +473,12 @@ $(".caldate").bind("keyup change", function(e) {
                 return string;
             }       
 
-</script>
 
-
-        <script>
-           
-            
-            
-        </script>
-
-
-
-<script>
 var counter = 0;
 var gdtotal = 0;
 
 
-var count={{$projectactivities->count()+1}};
-
+var count=0;
 jQuery('#addnew').click(function(event){
    
 	var activityid = jQuery('#activityid').val();
@@ -579,12 +624,200 @@ function readURL(input) {
                     .width(80)
                     .height(80);        
             };
+            reader.onload = function (e) {
+                $('#imgshow1')
+                    .attr('src', e.target.result)
+                    .width(70)
+                    .height(70);        
+            };
 
             reader.readAsDataURL(input.files[0]);
 
         }
     }
+function isddoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#isdimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+            reader.onload = function (e) {
+                $('#isdimgshow1')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+function emddoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#emdimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+    function apsdoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#apsimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+    function bgdoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#bgimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+    function paper(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#paperimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+            reader.onload = function (e) {
+                $('#paperimgshow1')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+ function dddoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#ddimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+
+function fetchdivision(){
+	var districtid=$("#district").val();
+		 $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
+            }
+        });
+        $.ajax({
+               type:'POST',
+              
+               url:'{{url("/ajaxfetchdivision")}}',
+              
+               data: {
+                     "_token": "{{ csrf_token() }}",
+                      districtid: districtid,
+                     },
+
+               success:function(data) { 
+               		var x='<option value="">Select Division</option>';  
+                            $.each(data,function(key,value){
+                                  
+
+                               x=x+'<option value="'+value.id+'">'+value.divisionname+'</option>';
+
+                            })
+                            $('#division').html(x);
+                }
+		});
+}
+
+function fetchdistrict(){
+	$('#division').html('');
+	var clientid=$("#clientid").val();
+	 $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
+            }
+        });
+        $.ajax({
+               type:'POST',
+              
+               url:'{{url("/ajaxfetchdistrict")}}',
+              
+               data: {
+                     "_token": "{{ csrf_token() }}",
+                      clientid: clientid,
+                     },
+
+               success:function(data) { 
+               		var district='<option value="">Select Division</option>';  
+                            $.each(data,function(key,value){
+                                  
+
+                               district=district+'<option value="'+value.district_id+'">'+value.districtname+'</option>';
+
+                            })
+                            $('#district').html(district);
+                }
+		});
+}
 </script>
 
 
+
+
+
+
 @endsection
+
+
