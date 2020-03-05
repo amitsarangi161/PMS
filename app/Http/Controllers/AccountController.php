@@ -4183,6 +4183,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
        $vendor=vendor::find($id);
        $vendor->vendorname=$request->vendorname;
        $vendor->mobile=$request->mobile;
+       $vendor->email=$request->email;
        $vendor->details=$request->details;
        $vendor->tinno=$request->tinno;
        $vendor->tanno=$request->tanno;
@@ -4229,6 +4230,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
      $vendor=new vendor();
      $vendor->vendorname=$request->vendorname;
      $vendor->mobile=$request->mobile;
+     $vendor->email=$request->email;
      $vendor->details=$request->details;
      $vendor->tinno=$request->tinno;
      $vendor->tanno=$request->tanno;
@@ -4269,7 +4271,6 @@ public function approvedebitvoucheradmin(Request $request,$id)
       return view('accounts.vendors',compact('vendors'));
    }
    public function importvendor(Request $request){
-    //return $request->all();
     $this->validate($request, [
         'select_file'  => 'required|mimes:xls,xlsx'
 
@@ -4277,32 +4278,37 @@ public function approvedebitvoucheradmin(Request $request,$id)
       $path = $request->file('select_file')->getRealPath();
       $data = Excel::selectSheetsByIndex(0)->load($path)->get();
       //return $data;
+      $custerr=array();
         foreach($data as $kay=>$value){
-        $check=vendor::where('panno',$value['pan'])
-                      ->orWhere('gstno',$value['gst'])
+        $check=vendor::where('panno',$value['pan_no'])
+                      ->orWhere('gstno',$value['gstin'])
           ->count();
+
          if($check==0){
          $vendor=new vendor();
-         $vendor->vendorname=$value['vendorname'];
-         $vendor->mobile=$value['mobile'];
-         $vendor->details=$value['vendordetails'];
+         $vendor->vendorname=$value['party_name'];
+         $vendor->mobile=$value['mob'];
+         $vendor->email=$value['email'];
+         $vendor->details=$value['address'];
          $vendor->tinno=$value['tin'];
-         $vendor->tanno=$value['tan'];
-         $vendor->servicetaxno=$value['servicetax'];
-         $vendor->panno=$value['pan'];
-         $vendor->gstno=$value['gst'];
-         $vendor->bankname=$value['bankname'];
-         $vendor->acno=$value['bankaccountno'];
-         $vendor->branchname=$value['branchname'];
-         $vendor->ifsccode=$value['ifsc'];
+         //$vendor->tanno=$value['tan'];
+         //$vendor->servicetaxno=$value['servicetax'];
+         $vendor->panno=$value['pan_no'];
+         $vendor->gstno=$value['gstin'];
+         $vendor->bankname=$value['bank_name'];
+         $vendor->acno=$value['account_no'];
+         $vendor->branchname=$value['branch_name'];
+         $vendor->ifsccode=$value['ifsc_code'];
          $vendor->save();
          Session::flash('status', 'Upload successful!');
          }
          else{
+        
+          $custerr[]=$value;
           Session::flash('error', 'duplicate vendor entry!');
          }
         }
-    
+    //return $custerr;
     return back();
 }
   public function deletedeductiondefination(Request $request,$id)

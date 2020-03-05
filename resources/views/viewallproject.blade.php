@@ -86,7 +86,7 @@
             @endphp
         <tr style="background-color: {{$rowcolor}};font-size: 12px;">
             <td>{{$project->id}}</td>
-            <td>{{$project->orgname}}</td>
+            <td>{{$project->clientname}}</td>
             <td>{{$project->clientname}}</td>
             <td><p class="b" title="{{$project->projectname}}">{{$project->projectname}}</p></td>
             <td>{{$project->startdate}}</td>

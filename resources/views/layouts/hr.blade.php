@@ -215,14 +215,24 @@
             </span>
           </a>
           <ul class="treeview-menu">
-           
-           
-            <!-- <li class="{{ Request::is('hrmain/department') ? 'active' : '' }}"><a href="/hrmain/department"><i class="fa fa-circle-o text-aqua"></i>Department</a></li> -->
              <li class="{{ Request::is('hrmain/employeelist') ? 'active' : '' }}"><a href="/hrmain/employeelist"><i class="fa fa-circle-o text-aqua"></i>Employee Database</a></li>
           </ul>
         </li>
+        <li class="{{ Request::is('attendance*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>ATTENDANCE</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+             <li class="{{ Request::is('attendance/viewattendance') ? 'active' : '' }}"><a href="/attendance/viewattendance"><i class="fa fa-circle-o text-red"></i>VIEW ATTENDANCE</a></li>
+
+             <li class="{{ Request::is('attendance/attendancereport') ? 'active' : '' }}"><a href="/attendance/attendancereport"><i class="fa fa-circle-o text-red"></i>ATTENDANCE REPORT</a></li>
+          </ul>
+     </li>
         
-              <li class="{{ Request::is('notices*') ? 'active' : '' }} treeview">
+        <li class="{{ Request::is('notices*') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-bell"></i> <span>NOTICES</span>
             <span class="pull-right-container">
@@ -371,10 +381,8 @@ if (event.persisted) {
 
       $('.datatable1').DataTable({
         dom: 'Bfrtip',
-        //"order": [[ 0, "desc" ]],
         "iDisplayLength": 10,
-        "scrollY": 450,
-        "scrollX": true,
+        
         buttons: [
             {
                 extend: 'pdfHtml5',
@@ -394,6 +402,8 @@ if (event.persisted) {
             }
 
        ],
+       "scrollY": 450,
+        
             });
 
 $('.datatablescrollexport').DataTable({

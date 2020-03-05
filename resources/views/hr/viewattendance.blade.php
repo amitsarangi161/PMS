@@ -1,11 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.hr')
 
 @section('content')
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script> 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
-
-
 <table  class="table">
   <tr class="bg-blue">
     <td class="text-center">VIEW ATTENDANCE</td>
@@ -21,14 +16,14 @@
   </form>
   
 </table>
-
-<table class="table table-responsive table-hover table-bordered table-striped datatable1">
+<div class="box-body table-responsive">
+<table class="table table-bordered table-striped datatable1">
   <thead>
   <tr class="bg-navy">
-    <th><strong>USER ID</strong></th>
-    <th><strong>NAME</strong></th>
-    <th><strong>STATUS</strong></th>
-    <th><strong>VIEW</strong></th>
+    <td>USER ID</td>
+    <td>NAME</td>
+    <td>STATUS</td>
+    <td>VIEW</td>
   </tr>
   </thead>
   <tbody>
@@ -45,10 +40,8 @@
        </tr>
      @endforeach
   </tbody>
-
-  
 </table>
-
+</div>
 
 
 @endsection

@@ -105,11 +105,7 @@ Route::get('/tm/adminapprovedtenders','TenderController@adminapprovedtenders');
 Route::get('/viewadminapprovedtender/{id}','TenderController@viewadminapprovedtender');
 Route::get('/viewadminapprovedtender/{id}','TenderController@viewadminapprovedtender');
 /*end Tender Routes*/
-Route::get('/showuserlocation/{uid}/{date}','HomeController@userlocation');
-Route::post('/getuserlocation','HomeController@getuserlocation');
-Route::post('/showattendance','HomeController@showattendance');
-Route::get('/attendance/viewattendance','HomeController@viewattendance');
-Route::get('/attendance/attendancereport','HomeController@attendancereport');
+
 
 Route::get('/home', 'HomeController@home');
 Route::get('/dm/activity','HomeController@activity')->name('activity');
@@ -469,7 +465,7 @@ Route::get('/makethisbillascrvoucher/{id}','AccountController@makethisbillascrvo
 Route::post('/saveascreditvoucher/{id}','AccountController@saveascreditvoucher');
 
 
-Route::get('/showdetaillocations/{uid}/{date}','HomeController@showdetaillocations');
+
 Route::get('engage/dailylabour','HomeController@dailylabour');
 Route::post('/savedailylabour','HomeController@savedailylabour');
 Route::get('/engage/viewallengagedlabours','HomeController@viewallengagedlabours');
@@ -533,6 +529,13 @@ Route::get('/editemployeedetails/{id}','HrController@editemployeedetails');
 Route::post('/updateemployeedetails/{id}','HrController@updateemployeedetails');
 Route::post('/ajaxgetdept','HrController@ajaxgetdept');
 Route::post('/updatedepartment','HrController@updatedepartment');
+
+Route::get('/attendance/viewattendance','HrController@viewattendance');
+Route::get('/attendance/attendancereport','HrController@attendancereport');
+Route::get('/showuserlocation/{uid}/{date}','HrController@userlocation');
+Route::post('/getuserlocation','HrController@getuserlocation');
+Route::post('/showattendance','HrController@showattendance');
+Route::get('/showdetaillocations/{uid}/{date}','HrController@showdetaillocations');
 //-------------PMS END HR ROUTE------------//
 
 
