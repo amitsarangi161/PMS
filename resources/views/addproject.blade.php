@@ -91,7 +91,7 @@
 	                  	PROJECT COST<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                    <input type="text" name="cost" id="cost"  class="form-control" ="">
+	                    <input type="text" name="cost" id="cost"  class="form-control">
 						<p style="color: red;">Don't Put comma or letter</p>
 	                </div>
                  </div>
@@ -105,7 +105,7 @@
 	                  	PRIORITY<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                   <select name="priority" class="form-control" ="">
+	                   <select name="priority" class="form-control">
 						<option value="NORMAL">NORMAL</option>
 						<option value="HIGH">HIGH</option>
 						<option value="MEDIUM">MEDIUM</option>
@@ -161,7 +161,7 @@
 	                  	DATE OF COMMENCEMENT<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                   <input type="text" name="startdate" id="sdate" class="form-control datepicker getdays" readonly="" ="">
+	                   <input type="text" name="startdate" id="sdate" class="form-control datepicker getdays" readonly="">
 	                </div>
                  </div>
              	</div>
@@ -171,7 +171,7 @@
 	                  	DATE OF COMPLETION <span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                    <input type="text" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="" ="">
+	                    <input type="text" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="">
 	                </div>
 	                </div>
                  </div>
