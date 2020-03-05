@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.hr')
+
 @section('content')
 <style type="text/css">
     

@@ -287,7 +287,7 @@
           </ul>
         </li>
 
-        <li class="{{ Request::is('attendance*') ? 'active' : '' }} treeview">
+        <!-- <li class="{{ Request::is('attendance*') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-book"></i> <span>ATTENDANCE</span>
             <span class="pull-right-container">
@@ -301,7 +301,7 @@
              
             
           </ul>
-     </li>
+     </li> -->
 
 
     </section>

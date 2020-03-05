@@ -17,9 +17,10 @@ class CreateVendorsTable extends Migration {
 			$table->integer('id', true);
 			$table->string('vendorname', 200)->nullable();
 			$table->string('mobile', 200)->nullable();
+			$table->string('email', 200)->nullable();
 			$table->string('vendoridproof', 200)->nullable();
 			$table->string('photo', 500)->nullable();
-			$table->string('details', 500)->nullable();
+			$table->string('details', 5000)->nullable();
 			$table->string('bankname', 200)->nullable();
 			$table->string('acno', 200)->nullable();
 			$table->string('tinno', 200)->nullable();

@@ -16,31 +16,32 @@
 
 	<table class="table table-responsive table-hover table-bordered table-striped">
 
-		<tr>
-	 	 <td><strong>ENTER VENDOR MOBILE NO<span style="color: red"> *</span></strong></td>
-     <!-- <td><input value="+91" id="country_code" readonly /></td> -->
-     <td></td>
-	 	 <td><input type="number" autocomplete="off" name="mobile" id="phone_number" placeholder="Enter Vendor Mobile No" class="form-control" required></td>
-	 
-
-	 	 
-	   </tr>
-
-        
-
-	    
-	    <tr>
-	 	 <td colspan="2"><strong>ENTER VENDOR NAME<span style="color: red"> *</span></strong></td>
-	 	 <td colspan="2"><input type="text" autocomplete="off" name="vendorname" placeholder="Enter Vendor Name" class="form-control"  required></td>
-	 	 
-	    </tr>
+		 <tr>
+     <td colspan="2"><strong>ENTER PARTY NAME<span style="color: red"> *</span></strong></td>
+     <td colspan="2"><input type="text" autocomplete="off" name="vendorname" placeholder="Enter Vendor Name" class="form-control"  required></td>
+     
+      </tr>
+    <tr>
+     <td><strong>ENTER VENDOR MOBILE NO<span style="color: red"> *</span></strong></td>
+    <!--  <td><input type="hidden" value="+91" id="country_code" readonly /></td> -->
+    <td></td>
+     <td><input type="number" autocomplete="off" name="mobile" id="phone_number" placeholder="Enter Vendor Mobile No" class="form-control"></td>
+     </tr>
+     <tr>
+     <td><strong>ENTER EMAIL<span style="color: red"> *</span></strong></td>
+    <td></td>
+     <td><input type="email" autocomplete="off" name="email"  placeholder="Enter Vendor Email" class="form-control"></td>
+     </tr>
+    
+     
          
     <tr>
-     	 <td colspan="2"><strong>DETAILS<span style="color: red"> *</span></strong></td>
-     	 <td colspan="2">
-     	 <textarea name="details" class="form-control" autocomplete="off"></textarea>
-     	</td>
-	 </tr>
+     <td colspan="2"><strong>ADDRESS<span style="color: red"> *</span></strong></td>
+     <td colspan="2">
+     <textarea name="details" class="form-control" autocomplete="off"></textarea>
+    </td>
+     
+      </tr>
     <tr>
         <td colspan="2"><strong>TIN NUMBER</strong></td>
         <td colspan="2"><input type="text" placeholder="Enter Tin Number" name="tinno" class="form-control"></td>

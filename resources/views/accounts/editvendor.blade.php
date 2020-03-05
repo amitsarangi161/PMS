@@ -15,24 +15,27 @@
 	{{csrf_field()}}
 
 	<table class="table table-responsive table-hover table-bordered table-striped">
-
+      <tr>
+     <td><strong>ENTER PARTY NAME<span style="color: red"> *</span></strong></td>
+     <td><input type="text" autocomplete="off" value="{{$vendor->vendorname}}" name="vendorname" placeholder="Enter Vendor Name" class="form-control"  required></td>
+     
+      </tr>
 		<tr>
 	 	 <td><strong>ENTER VENDOR MOBILE NO<span style="color: red"> *</span></strong></td>
-	 	 <td><input type="number" autocomplete="off" value="{{$vendor->mobile}}" name="mobile" placeholder="Enter Vendor Mobile No" class="form-control" readonly=""></td>
+	 	 <td><input type="number" autocomplete="off" value="{{$vendor->mobile}}" name="mobile" placeholder="Enter Vendor Mobile No" class="form-control"></td>
 	 	 
-	    </tr>
-	    <tr>
-	 	 <td><strong>ENTER VENDOR NAME<span style="color: red"> *</span></strong></td>
-	 	 <td><input type="text" autocomplete="off" value="{{$vendor->vendorname}}" name="vendorname" placeholder="Enter Vendor Name" class="form-control"  required></td>
-	 	 
-	    </tr>
+	    </tr><tr>
+
+     <td><strong>ENTER VENDOR EMAIL<span style="color: red"> *</span></strong></td>
+     <td><input type="email" autocomplete="off" value="{{$vendor->email}}" name="email" placeholder="Enter Vendor Email" class="form-control"></td>
+     
+      </tr>
          
-           <tr>
-	 	 <td><strong>DETAILS<span style="color: red"> *</span></strong></td>
+    <tr>
+	 	 <td><strong>ADDRESS<span style="color: red"> *</span></strong></td>
 	 	 <td>
 	 	 <textarea name="details" class="form-control" autocomplete="off">{{$vendor->details}}</textarea>
 	 	</td>
-	 	 
 	    </tr>
       <tr>
         <td><strong>TIN NUMBER</strong></td>

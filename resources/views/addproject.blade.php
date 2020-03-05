@@ -81,7 +81,7 @@
 	                  	PROJECT NAME<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                    <input type="text" name="projectname" id="projectname" class="form-control" ="">
+	                    <textarea name="projectname" class="form-control"></textarea>
 	                </div>
                  </div>
              </div>
@@ -207,7 +207,7 @@
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	PAPER COST ATTACH<span style="color: red"> *</span>
+	                  	PAPER COST ATTACHMENT<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="papercost" onchange="paper(this);" >

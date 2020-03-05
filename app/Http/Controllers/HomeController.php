@@ -261,67 +261,8 @@ public function companydetails(){
          return back();
      }
 
-     public function attendancereport(Request $request)
-     {
-         $users=User::where('active','1')->get();
-         if ($request->has('user') && $request->has('fromdate') && $request->has('todate')) {
-        $name=User::FindOrFail($request->user)->name;
-
-        $datefrom = Carbon::parse($request->fromdate);
-        $dateto = Carbon::parse($request->todate);
-        $totalDuration =$datefrom->diffInDays($dateto);
-        $all=array();
-        
-        for ($x = 0; $x <= $totalDuration; $x++) {
-             if ($x==0) {
-                $date=$datefrom;
-                
-             }
-             else
-             {
-               $date = $datefrom->addDays(1);
-               
-             }
-
-             
-             $p=attendance::where('userid',$request->user)
-                 ->where('created_at', '>=',$date)
-                 ->where('created_at', '<=',$date->format('Y-m-d').' 23:59:59')
-                 ->get();
-            //dd($p);
-
-              if(count($p)>0)
-              {
-                $present='PRESENT';
-              }
-              else
-              {
-                 $present='ABSENT';
-              }  
-
-           $a=array('date'=>$date->format('Y-m-d'),'status'=>$present,'total'=>count($p),'locations'=>$p,'userid'=>$request->user);
-
-             $all[]=$a;
-             
-             } 
-
-             $count = 0;
-foreach ($all as $type) {
-    if($type['status']=='PRESENT'){
-      ++$count;
-    }
-}
-           
-         }
 
 
-
-
-
-
-         //return compact('users','all','totalDuration','count');
-         return view('attendancereport',compact('users','all','totalDuration','count','name'));
-     }
      public function datatable()
      {
          return view('datatable');
@@ -624,44 +565,7 @@ foreach ($all as $type) {
          return view('dailylabour',compact('labours','projects'));
     }
 
-    public function showdetaillocations($uid,$date)
-    {
-         $addressarr=array();
-         $p=attendance::where('userid',$uid)
-                 ->where('created_at', '>=',$date.' 00:00:00')
-                 ->where('created_at', '<=',$date.' 23:59:59')
-                 ->get();
-
-       //return $p;
-          foreach ($p as $key => $value) {
-try{
-$url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='.trim($value->latitude).','.trim($value->longitude).'&key=AIzaSyAPpd5bBWsGyPvEBgmB_3-QjTQ8bP5yIW0';
-     $json = @file_get_contents($url);
-     $data=json_decode($json);
-     $status = $data->status;
-     if($status=="OK")
-     {
-       $fulladdress=$data->results[0]->formatted_address;
-     }
-     else
-     {
-       $fulladress="NOT FOUND";
-     }
-     $arr=array('userid'=>$value->userid,'latitude'=>$value->latitude,'longitude'=>$value->longitude,'deviceid'=>$value->deviceid,'battery'=>$value->battery,'address'=>$fulladdress,'created_at'=>$value->created_at,'time'=>$value->time,'mode'=>$value->mode,'status'=>$value->status,'version'=>$value->version);
-     $addressarr[]=$arr;
-     
-    }
-      catch (\Exception $e){
-        
-    }
-    }
-  
-     
-     $user=User::find($uid);
-     $name=$user->name;
-
-     return view('showdetaillocationuser',compact('addressarr','name','date'));
-    }
+    
 
 
 
@@ -1140,7 +1044,7 @@ $url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='.trim($value->
 
           return response()->json($all);
     }
-    public function viewattendance(Request $request)
+/*    public function viewattendance(Request $request)
     {
 
          $all=array();
@@ -1186,7 +1090,7 @@ $url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='.trim($value->
          }
          $dt=$request->date;
          return view('viewattendance',compact('all','dt'));
-    }
+    }*/
 
     public function paidamounts()
     {
@@ -1392,13 +1296,13 @@ if($request->has('status') && $request->status!='')
 
           return back();
      }
-    public function userlocation($uid,$date)
+/*    public function userlocation($uid,$date)
     {
 
         $user=User::find($uid);
         $uname=$user->name;
         return view('userlocations',compact('uid','date','uname'));
-    }
+    }*/
 
     public function getuserlocation(Request $request)
     {
