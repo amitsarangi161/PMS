@@ -561,7 +561,6 @@ Route::post('/updatedivision','HomeController@updatedivision');
 Route::get('/projects/addproject','HomeController@addproject');
 Route::post('/saveproject','HomeController@saveproject');
 Route::get('/projects/viewallproject','HomeController@viewallproject');
-Route::delete('/deleteproject/{id}','HomeController@deleteproject');
 Route::get('/editproject/{id}','HomeController@editproject');
 Route::get('/deleteprojectactivity/{id}','HomeController@deleteprojectactivity');
 Route::post('/updateproject/{id}','HomeController@updateproject');

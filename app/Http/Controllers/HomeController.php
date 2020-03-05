@@ -2973,16 +2973,24 @@ return $message->sid;*/
 
    public function editproject($id){
     $project=project::find($id);
+    $clientid=$project->clientid;
     //return $project;
     $projectactivities=projectactivity::select('projectactivities.*','activities.activityname')
                       ->where('projectactivities.projectid',$id)
                       ->leftJoin('activities','projectactivities.activityid','=','activities.id')
                       ->orderBy('projectactivities.position','ASC')
                       ->get();
+
     $clients=client::all();
-    $districts=district::all();
-    $divisions=division::all();
-    //return $clients;
+    $divisions=division::select('divisions.*')
+              ->where('client_id',$clientid)
+              ->get();
+    $divids=division::select('divisions.district_id')
+              ->where('client_id',$clientid)
+              ->groupBy('district_id')
+              ->get();
+    $districts=district::whereIN('id',$divids)->get();
+    //return $districts;
     $activities=activity::all();
    // return $projectactivities;
     return view('editproject',compact('project','districts','divisions','projectactivities','clients','activities'));
