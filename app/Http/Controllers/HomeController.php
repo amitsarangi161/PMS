@@ -65,7 +65,27 @@ use Excel;
 //use Barryvdh\DomPDF\Facade as PDF;
 class HomeController extends Controller
 {
-
+public function resetpassword(Request $request){
+  
+  $userid=auth()->user()->id;
+  $userpass=auth()->user()->pass;
+if($userpass==$request->currentpassword){
+$this->validate($request,[
+            'password' => 'required|string|min:6|confirmed',
+       ]);
+  $password=User::find($userid);
+  $password->password=bcrypt($request->password);
+  $password->pass=$request->password;
+  $password->save();
+  Auth::logout();
+  Session::flash('message', 'Password Reset Successfully');
+  return redirect('/login');
+}
+else{
+  Session::flash('errmessage', 'Password Not Matched');
+}
+return back();
+}
 public function importproject(Request $request){
   $this->validate($request, [
       'select_file'  => 'required|mimes:xls,xlsx'

@@ -573,7 +573,7 @@ Route::post('/ajaxfetchdivision','HomeController@ajaxfetchdivision');
 Route::post('/ajaxfetchdistrict','HomeController@ajaxfetchdistrict');
 
 Route::get('/useraccounts/applicationform','HomeController@applicationform');
-
+Route::post('/resetpassword','HomeController@resetpassword');
 //-------------END PMS MAIN ROUTE------------//
 
 //------------- PMS ACCOUNT ROUTE------------//

@@ -17,6 +17,11 @@
           <!-- images/bg-04.jpg-->
         <div class="container-login100" style="background-image: url('/front-bg1.jpg');">
             <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+                @if(Session::has('message'))
+                   <p class="alert alert-success text-center successmsg">
+                    {{ Session::get('message') }}
+                    </p>
+                @endif
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                    <!--  <span class="login100-form-title p-b-53">
@@ -96,6 +101,8 @@
 
      <script src="{{ asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
       <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-
+<script>
+    $('.successmsg').delay(3200).fadeOut(1000);
+</script>
 </body>
 </html>
