@@ -522,7 +522,7 @@
 				</div>
 		<div class="col-md-12">
 			<div class="form-group">
-				<button type="submit"class="btn btn-flat pull-right btn-success">Save Project</button>
+				<button type="submit"class="btn btn-flat pull-right btn-success" onclick="confirm('Are you want to save this project?')">Save Project</button>
 			</div>
 		</div>
 			</div>

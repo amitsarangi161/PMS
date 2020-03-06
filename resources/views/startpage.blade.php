@@ -1,7 +1,7 @@
 @extends('layouts.start')
 @section('content')
 <style type="text/css">
-	.groupsbtn{
+.groupsbtn{
 line-height: 50px;
 font-weight: bold;
 color: #fff;
@@ -11,7 +11,7 @@ font-size: 1.2em;
 border: 2px solid #fff;
 background-color: #000;
 width: 100%;
-	}
+}
 </style>
 <div class="container">
 	<div class="col-sm-10 col-sm-offset-1">

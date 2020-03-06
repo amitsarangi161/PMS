@@ -3106,7 +3106,7 @@ return $message->sid;*/
         }
      $project->save();
      Session::flash('msg','Project updated Successfully');
-     return back();
+     return redirect('/projects/viewallproject');
    }
    public function changestatus(Request $request)
    {
