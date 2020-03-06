@@ -123,7 +123,7 @@
        <td>
          <select id="payto"  class="form-control">
             <option value="SELF" selected>SELF</option>
-            <option value="TO VENDOR">TO VENDOR</option>
+            <!-- <option value="TO VENDOR">TO VENDOR</option> -->
          </select>
        </td>
 			 <td><input type="number" autocomplete="off" class="form-control" id="amount"></td> 

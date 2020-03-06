@@ -281,7 +281,7 @@
 
 
           @endphp
-        <!--  <li class="{{ Request::is('viewrequisitions*') ? 'active' : '' }} treeview">
+         <li class="{{ Request::is('viewrequisitions*') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-envelope"></i> <span>VIEW REQUISITIONS</span>
             <span class="pull-right-container">
@@ -293,20 +293,20 @@
        
           <ul class="treeview-menu">
 
-                  <li class="{{ Request::is('viewrequisitions/pendingrequisitionshod') ? 'active' : '' }}"><a href="/viewrequisitions/pendingrequisitionshod" title="PENDING REQUISITIONS(FOR HOD)" class="chngreqfont"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(FOR HOD)
+                 <!--  <li class="{{ Request::is('viewrequisitions/pendingrequisitionshod') ? 'active' : '' }}"><a href="/viewrequisitions/pendingrequisitionshod" title="PENDING REQUISITIONS(FOR HOD)" class="chngreqfont"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(FOR HOD)
              <span class="pull-right-container">
                   <span class="label label-success pull-right">{{$hodpendingreqcount}}</span>
                 </span>
-            </a></li>
+            </a></li> -->
 
 
-                <li class="{{ Request::is('viewrequisitions/pendingrequisitionsmgr') ? 'active' : '' }}"><a title="PENDING REQUISITIONS(FOR ACCOUNTS)" class="chngreqfont" href="/viewrequisitions/pendingrequisitionsmgr"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(ACCOUNTS)
+               <!--  <li class="{{ Request::is('viewrequisitions/pendingrequisitionsmgr') ? 'active' : '' }}"><a title="PENDING REQUISITIONS(FOR ACCOUNTS)" class="chngreqfont" href="/viewrequisitions/pendingrequisitionsmgr"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(ACCOUNTS)
              <span class="pull-right-container">
                   <span class="label label-success pull-right">{{$mgrpendingreqcount}}</span>
                 </span>
-            </a></li>
+            </a></li> -->
 
-            <li class="{{ Request::is('viewrequisitions/pendingrequisitions') ? 'active' : '' }}"><a title="PENDING REQUISITIONS(FOR ADMIN)" class="chngreqfont" href="/viewrequisitions/pendingrequisitions"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS(FOR ADMIN)
+            <li class="{{ Request::is('viewrequisitions/pendingrequisitions') ? 'active' : '' }}"><a  href="/viewrequisitions/pendingrequisitions"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITIONS
              <span class="pull-right-container">
                   <span class="label label-success pull-right">{{$pendingreqcount}}</span>
                 </span>
@@ -333,7 +333,51 @@
 
           </ul>
 
-        </li> -->
+        </li>
+
+        <li class="{{ Request::is('prb*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-credit-card"></i> <span>PAY REQUISITION BANK</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+             @php 
+                  $banks=\App\useraccount::select('useraccounts.*','banks.bankname')
+                        ->where('useraccounts.type','COMPANY')
+                        ->leftJoin('banks','useraccounts.bankid','=','banks.id')
+                        ->get();
+             @endphp
+
+             @if(count($banks)>0)
+             @foreach($banks as $bank)
+          <li class="{{ Request::is('prb/'.$bank->bankname.'/*') ? 'active' : '' }}"><a href="/prb/{{$bank->bankname}}/{{$bank->id}}"><i class="fa fa-circle-o text-blue"></i>{{$bank->bankname}} PENDING AMOUNTS</a></li>
+          
+
+              <li class="{{ Request::is('prb/paidamt/'.$bank->bankname.'/*') ? 'active' : '' }}"><a href="/prb/paidamt/{{$bank->bankname}}/{{$bank->id}}"><i class="fa fa-circle-o text-blue"></i>{{$bank->bankname}} PAID AMOUNTS</a></li>
+             @endforeach
+           
+            @else
+             <li class="{{ Request::is('prc/*') ? 'active' : '' }}"><a href="#"><i class="fa fa-circle-o text-blue"></i>CURRENTLY NO BANK ADDED</a></li>
+            @endif
+          </ul>
+        </li>
+        <li class="{{ Request::is('prc*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-money"></i> <span>PAY REQUISITION CASH</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ Request::is('prc/requisitioncashrequest') ? 'active' : '' }}"><a href="/prc/requisitioncashrequest"><i class="fa fa-circle-o text-blue"></i>REQUISITION CASH REQUEST</a></li>
+           
+           <li class="{{ Request::is('prc/viewpaidrequisitioncash') ? 'active' : '' }}"><a href="/prc/viewpaidrequisitioncash"><i class="fa fa-circle-o text-blue"></i>VIEW PAID REQUISITION(CASH)</a></li>
+
+          </ul>
+
+        </li>
 
 
 
@@ -357,8 +401,6 @@
 
 
 
-
-        
 
        
     </section>

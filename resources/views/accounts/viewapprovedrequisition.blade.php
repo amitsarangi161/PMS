@@ -375,7 +375,6 @@ $bal=$requisitionheader->approvalamount-$paid;
                 <select class="form-control" name="status" required="">
                    <option value="">select a status</option>
                    <option value="PENDING">PENDING</option>
-                   <option value="PENDING MGR">PENDING MGR</option>
                 </select>
               </td>
             </tr>
@@ -442,7 +441,7 @@ $bal=$requisitionheader->approvalamount-$paid;
           			<select class="form-control" name="bankid" id="reqbank">
           				<option value="">Select a Bank</option>
           				@foreach($banks as $bank)
-                          <option value="{{$bank->id}}">{{$bank->bankname}}({{$bank->forcompany}})</option>
+                          <option value="{{$bank->id}}">{{$bank->bankname}}({{$bank->branchname}})</option>
           				@endforeach
           				
           			</select>
@@ -767,9 +766,6 @@ function validateamount()
          checkwallet(s2);
       }
 }
-
-
-
 
 </script>
 
