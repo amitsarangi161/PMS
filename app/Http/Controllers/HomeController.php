@@ -1927,14 +1927,7 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
         $requisitionheader->datefrom=$request->datefrom;
         $requisitionheader->dateto=$request->dateto;
         $requisitionheader->userid=Auth::id();
-        if(Auth::user()->usertype=='ADMIN')
-        {
-           $requisitionheader->status="PENDING MGR";
-        }
-        else
-        {
-            $requisitionheader->status="PENDING HOD";
-        }
+        $requisitionheader->status="PENDING";
         $requisitionheader->save();
         $rid=$requisitionheader->id;
         $count=count($request->expenseheadid);
@@ -1957,14 +1950,14 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
            $requisition->payto=$request->payto[$i];
            $requisition->amount=$request->amount[$i];
            $requisition->requisitionheaderid=$rid;
-            $requisition->userid=Auth::id();
+           $requisition->userid=Auth::id();
            $requisition->save();
 
 
         }
            if($countvendor>0)
            {
-             $requisitionheader1=requisitionheader::find($rid);
+           $requisitionheader1=requisitionheader::find($rid);
            $requisitionheader1->status='VENDOR PENDING';
            $requisitionheader1->save();
            }

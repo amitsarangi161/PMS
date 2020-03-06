@@ -112,7 +112,7 @@
         <tbody>
           @foreach($employeedetails as $key=>$employeedetail)
           <tr>
-            <td><button class="btn btn-success btn-sm btn-flat">{{$employeedetail->id}}</button></td>
+            <td><a href="/editemployeedetails/{{$employeedetail->id}}"><button class="btn btn-success btn-sm btn-flat">{{$employeedetail->id}}</button></a></td>
             <td>{{$employeedetail->empcodeno}}</td>
             <td>{{$employeedetail->employeename}}</td>
             <td>{{$employeedetail->bloodgroup}}</td>

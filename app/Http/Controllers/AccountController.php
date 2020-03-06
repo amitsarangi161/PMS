@@ -3637,12 +3637,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
           
           $bal1=($totalamt-$totalamtentry)-$walletbalance;
             
-            
-          
-         
-
-        
-                 $banks=useraccount::select('useraccounts.*','banks.bankname')
+               $banks=useraccount::select('useraccounts.*','banks.bankname')
                         ->where('useraccounts.type','COMPANY')
                         ->leftJoin('banks','useraccounts.bankid','=','banks.id')
                         ->get();
