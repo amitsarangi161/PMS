@@ -258,13 +258,10 @@ public function ajaxgetdept(Request $request){
 }
 public function saveemployeedetails(Request $request){
 $request->validate([
-    'email' => 'required|unique:employeedetails|max:255',
-    //'phone' => 'required|max:10|min:10',
+
     'empcodeno' => 'required|unique:employeedetails|max:20',
 ]);
-      $check=employeedetail::where('email',$request->email)
-            ->orWhere('phone',$request->phone)
-            ->orWhere('empcodeno',$request->empcodeno)
+      $check=employeedetail::where('empcodeno',$request->empcodeno)
             ->count();
 
   if($check == 0)
@@ -371,8 +368,8 @@ $request->validate([
           $user->name=$employee->employeename;
           $user->username=$employee->empcodeno;
           $user->email=$employee->email;
-          $user->password=bcrypt($employee->phone);
-          $user->pass=$employee->phone;
+          $user->password=bcrypt(123456);
+          $user->pass=123456;
           $user->mobile=$employee->phone;
           $user->usertype='USER';
           $user->save();

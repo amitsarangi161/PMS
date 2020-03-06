@@ -211,7 +211,7 @@
           </li>
  
   
-
+        @if(Auth::user()->usertype=='MASTER ADMIN')
         <li class="{{ Request::is('dm*') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>DEFINE MAIN</span>
@@ -220,10 +220,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            @if(Auth::user()->usertype=='MASTER ADMIN')
+            
             <li class="{{ Request::is('dm/companydetails') ? 'active' : '' }}"><a href="/dm/companydetails"><i class="fa fa-circle-o text-aqua"></i>COMPANY SETUP</a></li>
             <li class="{{ Request::is('dm/adduser') ? 'active' : '' }}"><a href="/dm/adduser"><i class="fa fa-circle-o text-aqua"></i>ADD NEW USER</a></li>
-             @endif
+             
           </ul>
         </li>
         <li class="{{ Request::is('projects*') ? 'active' : '' }} treeview">
@@ -237,9 +237,6 @@
             <li class="{{ Request::is('projects/addclient') ? 'active' : '' }}"><a href="/projects/addclient"><i class="fa fa-circle-o text-aqua"></i>CLIENT</a></li>
             <li class="{{ Request::is('projects/adddistrict') ? 'active' : '' }}"><a href="/projects/adddistrict"><i class="fa fa-circle-o text-aqua"></i>DISTRICT</a></li>
             <li class="{{ Request::is('projects/adddivision') ? 'active' : '' }}"><a href="/projects/adddivision"><i class="fa fa-circle-o text-aqua"></i>ADD DIVISION</a></li>
-            <!-- <li class="{{ Request::is('projects/addproject') ? 'active' : '' }}"><a href="/projects/addproject"><i class="fa fa-circle-o text-red"></i>ADD A PROJECT</a></li>
-             
-             <li class="{{ Request::is('projects/viewallproject') ? 'active' : '' }}"><a href="/projects/viewallproject"><i class="fa fa-circle-o text-red"></i>VIEW ALL PROJECT</a></li> -->
           </ul>
           <ul class="treeview-menu">
             <li class="{{ Request::is('projects/addproject') ? 'active' : '' }}"><a href="/projects/addproject"><i class="fa fa-circle-o text-red"></i>ADD A PROJECT</a></li>
@@ -249,6 +246,8 @@
           </ul>
 
         </li>
+        @endif
+        @if(Auth::user()->usertype=='USER')
         <li class="{{ Request::is('useraccounts*') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-user"></i> <span>ACCOUNTS</span>
@@ -257,52 +256,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-<!--            <li class="{{ Request::is('useraccounts/labours') ? 'active' : '' }}"><a href="/useraccounts/labours"><i class="fa fa-circle-o text-aqua"></i>MANAGE LABOURS</a></li>
-
-           <li class="{{ Request::is('useraccounts/paidamounts') ? 'active' : '' }}"><a href="/useraccounts/paidamounts"><i class="fa fa-circle-o text-aqua"></i>PAID AMOUNTS</a></li>
-
-           <li class="{{ Request::is('useraccounts/vehicles') ? 'active' : '' }}"><a href="/useraccounts/vehicles"><i class="fa fa-circle-o text-aqua"></i>MANAGE VEHICLES</a></li>
-
-           <li class="{{ Request::is('useraccounts/vendors') ? 'active' : '' }}"><a href="/useraccounts/vendors"><i class="fa fa-circle-o text-aqua"></i>VENDORS</a></li>
-
-            <li class="{{ Request::is('useraccounts/managevendors') ? 'active' : '' }}"><a href="/useraccounts/managevendors"><i class="fa fa-circle-o text-aqua"></i>MANAGE ALL VENDORS</a></li>
-             
-          <li class="{{ Request::is('useraccounts/expenseentry') ? 'active' : '' }}"><a href="/useraccounts/expenseentry"><i class="fa fa-circle-o text-aqua"></i>EXPENSE ENTRY</a></li> 
-          <li class="{{ Request::is('useraccounts/viewallexpenseentry') ? 'active' : '' }}"><a href="/useraccounts/viewallexpenseentry"><i class="fa fa-circle-o text-aqua"></i>VIEW ALL EXPENSE ENTRY</a></li> -->
 
           <li class="{{ Request::is('useraccounts/applicationform') ? 'active' : '' }}"><a href="/useraccounts/applicationform"><i class="fa fa-circle-o text-aqua"></i>REQUISITION APPLY FORM</a></li>
-
-<!--           <li class="{{ Request::is('useraccounts/requisitionvendors') ? 'active' : '' }}"><a href="/useraccounts/requisitionvendors"><i class="fa fa-circle-o text-aqua"></i>REQUISITION PENDING <br>  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;VENDOR
-
-            <span class="pull-right-container">
-                  <span class="label label-success pull-right">0</span>
-            </span>
-          </a></li> -->
-
            <li class="{{ Request::is('useraccounts/viewapplicationform') ? 'active' : '' }}"><a href="/useraccounts/viewapplicationform"><i class="fa fa-circle-o text-aqua"></i>VIEW ALL REQUISITION</a></li>
-
-
-             
-        
           </ul>
         </li>
-
-        <!-- <li class="{{ Request::is('attendance*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-book"></i> <span>ATTENDANCE</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-             <li class="{{ Request::is('attendance/viewattendance') ? 'active' : '' }}"><a href="/attendance/viewattendance"><i class="fa fa-circle-o text-red"></i>VIEW ATTENDANCE</a></li>
-
-             <li class="{{ Request::is('attendance/attendancereport') ? 'active' : '' }}"><a href="/attendance/attendancereport"><i class="fa fa-circle-o text-red"></i>ATTENDANCE REPORT</a></li>
-             
-            
-          </ul>
-     </li> -->
-
+        @endif
 
     </section>
     <!-- /.sidebar -->
