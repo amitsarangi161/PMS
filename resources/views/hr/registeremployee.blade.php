@@ -41,14 +41,14 @@
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Emp. Name</label>
                   <div class="col-sm-9">
-                    <input type="text" name="employeename"class="form-control" id="inputEmail3" placeholder="Employee Name">
+                    <input type="text" name="employeename"class="form-control" id="inputEmail3" placeholder="Employee Name" required="">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Employee Code</label>
 
                   <div class="col-sm-9">
-                    <input type="text" name="empcodeno"class="form-control" placeholder="Enter Employee Code">
+                    <input type="text" name="empcodeno"class="form-control" placeholder="Enter Employee Code" required="">
                   </div>
                </div>
                 <div class="form-group">
