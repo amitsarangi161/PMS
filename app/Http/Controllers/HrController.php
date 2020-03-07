@@ -677,7 +677,7 @@ public function adddepartment(Request $request){
   {
        document::find($id)->delete();
 
-       Session::flash('msg','Document Deleted Successfully');
+       Session::flash('error','Document Deleted Successfully');
        return back();
   }
 

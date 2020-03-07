@@ -2,11 +2,11 @@
 
 @section('content')
    @if(Session::has('msg'))
-   <p class="alert alert-info text-center">{{ Session::get('msg') }}</p>
+   <p class="alert alert-success text-center successmsg">{{ Session::get('msg') }}</p>
    @endif
 
    @if ($errors->any())
-          <div class="alert alert-danger">
+          <div class="alert alert-danger errormessage">
               <ul>
                   @foreach ($errors->all() as $error)
                       <li>{{ $error }}</li>
@@ -35,7 +35,7 @@
 
           </tr>
           <tr>
-            <td>MOBILE<span style="color: red"> *</span></td>
+            <td>MOBILE</td>
             <td colspan="2"><input type="number" class="form-control" autocomplete="off" name="mobile" placeholder="ENTER MOBILE" ></td>
           </tr>
           <tr>
@@ -47,14 +47,16 @@
               <td>USER TYPE<span style="color: red"> *</span></td>
             <td colspan="2">
               <select name="usertype" class="form-control" required>
-                  <option value="">Select</option>
-                  <option value="USER" selected>USER</option>
+                  <option value="" selected>Select</option>
+                  <option value="USER">USER</option>
                   <option value="MASTER ADMIN">MASTER ADMIN</option>
                   <option value="ADMIN">ADMIN</option>
+                  <option value="HR">HR</option>
+                  <option value="MD">MD</option>
+                  <option value="USER">USER</option>
                   <option value="ACCOUNTS">ACCOUNTS</option>
                   <option value="ACCOUNTS ENTRY">ACCOUNTS ENTRY</option>
                   <option value="CASHIER">CASHIER</option>
-                  <option value="HR">HR</option>
               </select>
             </td>
           </tr>        
@@ -135,12 +137,12 @@
             <td colspan="2"><input type="text" class="form-control" autocomplete="off" id="username" name="username" placeholder="ENTER NAME" required></td>
         </tr>
           <tr>
-            <td>EMAIL<span style="color: red"> *</span></td>
-            <td colspan="2"><input type="email" class="form-control" autocomplete="off" id="email" name="email" placeholder="ENTER EMAIL ID" required></td>
+            <td>EMAIL</td>
+            <td colspan="2"><input type="email" class="form-control" autocomplete="off" id="email" name="email" placeholder="ENTER EMAIL ID"></td>
 
           </tr>
           <tr>
-            <td>MOBILE<span style="color: red"> *</span></td>
+            <td>MOBILE</td>
             <td colspan="2"><input type="number" class="form-control" autocomplete="off" id="mobile" name="mobile" placeholder="ENTER MOBILE" ></td>
           </tr>
           <tr>
@@ -153,14 +155,15 @@
               <td>USER TYPE<span style="color: red"> *</span></td>
             <td colspan="2">
               <select name="usertype" id="usertype" class="form-control"  required>
-                  <option value="">Select</option>
+                  <option value="">--Select--</option>
                   <option value="MASTER ADMIN">MASTER ADMIN</option>
-                  <option value="USER">USER</option>
                   <option value="ADMIN">ADMIN</option>
+                  <option value="HR">HR</option>
+                  <option value="MD">MD</option>
+                  <option value="USER">USER</option>
                   <option value="ACCOUNTS">ACCOUNTS</option>
                   <option value="ACCOUNTS ENTRY">ACCOUNTS ENTRY</option>
                   <option value="CASHIER">CASHIER</option>
-                  <option value="HR">HR</option>
               </select>
             </td>
           </tr>
@@ -227,7 +230,8 @@
     </div>
   </div>
 <script type="text/javascript">
-
+ $('.successmsg').delay(5000).fadeOut(1000);
+ $('.errormessage').delay(10000).fadeOut(1000);
    function callmodals(id)
    {
        $("#chid").val(id);

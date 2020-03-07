@@ -9,6 +9,10 @@
 <p class="alert {{ Session::get('alert-class', 'alert-success') }} text-center" style="font-weight: bold;text-transform: capitalize;">
 {{ Session::get('msg') }}</p>
 @endif
+@if(Session::has('error'))
+<p class="alert {{ Session::get('alert-class', 'alert-danger') }} text-center" style="font-weight: bold;text-transform: capitalize;">
+{{ Session::get('error') }}</p>
+@endif
 <table class="table table-responsive table-hover table-bordered table-striped">
 	<form action="/savedocument" method="POST" enctype="multipart/form-data">
 		{{csrf_field()}}

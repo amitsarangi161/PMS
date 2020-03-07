@@ -111,17 +111,7 @@
              <a href="/projects/adminprojectdetails/{{$project->id}}" class="btn btn-primary">VIEW DETAILS</a>
            </td>
            
-            <td><a href="/editproject/{{$project->id}}" class="btn btn-primary">EDIT</a></td>
-
-           <!--  <td>
-                <form action="/deleteproject/{{$project->id}}" method="post">
-                     {{method_field('DELETE')}}
-                     {{csrf_field()}}
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Do You Want Delete this Prject');">DELETE</button>
-                    
-                </form>
-            </td> -->
-
+            <td><a href="/projects/editproject/{{$project->id}}" class="btn btn-primary">EDIT</a></td>
         </tr>
 
         @endforeach

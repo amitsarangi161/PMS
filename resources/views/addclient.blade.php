@@ -42,7 +42,7 @@
         <tr>
          <td><strong>DEPARTMENT NAME</strong><span style="color: red"> *</span></td>
          <td><input type="text" name="clientname" class="form-control" placeholder="Enter Client Name" required=""></td>
-           <td><strong>CONTACT NO</strong><span style="color: red"> *</span></td>
+           <td><strong>CONTACT NO</strong></td>
            <td><input type="number" name="contact1" class="form-control" placeholder="Enter Contact No"></td>
         </tr>
         <tr>
@@ -54,35 +54,36 @@
           <tr>
             <td><strong>EMAIL</strong></td>
             <td><input type="email" name="email" class="form-control" placeholder="Enter Email Here"></td>
-            <td><strong>GSTN</strong></td>
-           <td><input type="text" name="gstn" class="form-control" placeholder="Enter Client GST No"></td>          
+            <td><strong>GSTN</strong><span style="color: red"> *</span></td>
+           <td><input type="text" name="gstn" class="form-control" placeholder="Enter Client GST No" required=""></td>          
         </tr>
         <tr>
-          <td><strong>PAN NO</strong></td>
-            <td><input type="text" name="panno" class="form-control" placeholder="Enter Client PAN No"></td>
-          <td><strong>TAN NUMBER</strong><span style="color: red"> *</span></td>
-         <td><input type="text" name="tanno" class="form-control" placeholder="Enter Tan Number" required=""></td>
+          <td><strong>PAN NO</strong><span style="color: red"> *</span></td>
+            <td><input type="text" name="panno" class="form-control" placeholder="Enter Client PAN No" required=""></td>
+          <td><strong>TAN NUMBER</strong></td>
+         <td><input type="text" name="tanno" class="form-control" placeholder="Enter Tan Number"></td>
         </tr>
         <tr>
-          <td><strong>TIN NUMBER</strong><span style="color: red"> *</span></td>
-         <td><input type="text" name="tinno" class="form-control" placeholder="Enter Tin Number" required=""></td>
-         <td><strong>STATE</strong><span style="color: red"> *</span></td>
-         <td><input type="text" name="state" class="form-control" placeholder="Enter state Here" required=""></td>
+          <td><strong>TIN NUMBER</strong></td>
+         <td><input type="text" name="tinno" class="form-control" placeholder="Enter Tin Number"></td>
+         <td><strong>STATE</strong></td>
+         <td><input type="text" name="state" class="form-control" placeholder="Enter state Here"></td>
+
         </tr>
         <tr>
-          <td><strong>CITY</strong><span style="color: red"> *</span></td>
-         <td><input type="text" name="city" class="form-control" placeholder="Enter city Here" required=""></td>
-         <td><strong>COUNTRY</strong><span style="color: red"> *</span></td>
-         <td><input type="text" name="country" class="form-control" placeholder="Enter Country Here" required=""></td>
+          <td><strong>CITY</strong></td>
+         <td><input type="text" name="city" class="form-control" placeholder="Enter city Here"></td>
+         <td><strong>COUNTRY</strong></td>
+         <td><input type="text" name="country" class="form-control" placeholder="Enter Country Here"></td>
         </tr>
         <tr>
           <td><strong>RESIDENT ADDRESS</strong></td>
           <td><textarea name="residentaddress" class="form-control" placeholder="Enter Resident address"></textarea></td>
-          <td><strong>OFFICE ADDRESS</strong><span style="color: red"> *</span></td>
-          <td><textarea name="officeaddress" class="form-control" placeholder="Enter Office address" required=""></textarea></td>
+          <td><strong>OFFICE ADDRESS</strong></td>
+          <td><textarea name="officeaddress" class="form-control" placeholder="Enter Office address"></textarea></td>
         </tr>
         <tr>
-        	<td><strong>ADDITIONAL INFO</strong><span style="color: red"> *</span></td>
+        	<td><strong>ADDITIONAL INFO</strong></td>
         	<td><textarea name="additionalinfo" class="form-control" placeholder="Enter Addional Info"></textarea></td>
         </tr>
                 <tr>
@@ -135,7 +136,7 @@
             <td>{{$client->gstn}}</td>
             <td>{{$client->panno}}</td>
            
-            <td><a href="/editclient/{{$client->id}}" class="btn btn-primary">EDIT</a></td>
+            <td><a href="/projects/editclient/{{$client->id}}" class="btn btn-primary">EDIT</a></td>
         </tr>
 
         @endforeach

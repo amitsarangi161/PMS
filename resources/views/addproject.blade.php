@@ -30,7 +30,7 @@
 		                  	FOR CLIENT<span style="color: red"> *</span>
 		                </label>
 		                <div class="col-sm-7">
-		                    <select type="text" name="clientid" id="clientid" onchange="changeclientname();fetchdistrict();" class="form-control select2" > 
+		                    <select type="text" name="clientid" id="clientid" onchange="changeclientname();fetchdistrict();" class="form-control select2" required=""> 
 							<option value="">SELECT A CLIENT</option>
 							 @foreach($clients as $key => $client) 
 							 <option value="{{$client->id}}" title="{{$client->clientname}}">{{$client->clientname}}</option>
@@ -57,7 +57,7 @@
 	                  	DISTRICT<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                    <select type="text" name="district" id="district"  class="form-control select2"  onchange="fetchdivision();" data-placeholder="Select a District"> 
+	                    <select type="text" name="district" id="district"  class="form-control select2"  onchange="fetchdivision();" data-placeholder="Select a District" required=""> 
 						</select>
 	                </div>
                  </div>
@@ -68,7 +68,7 @@
 	                  	DIVISION
 	                </label>
 	                <div class="col-sm-7">
-	                    <select type="text" name="division" id="division"   class="form-control select2"  data-placeholder="Select a Division"></select>
+	                    <select type="text" name="division" id="division"   class="form-control select2"  data-placeholder="Select a Division" required=""></select>
 	                </div>
                  </div>
              </div>
@@ -81,7 +81,7 @@
 	                  	PROJECT NAME<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                    <textarea name="projectname" class="form-control"></textarea>
+	                    <textarea name="projectname" class="form-control" required=""></textarea>
 	                </div>
                  </div>
              </div>
@@ -91,7 +91,7 @@
 	                  	PROJECT COST<span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
-	                    <input type="text" name="cost" id="cost"  class="form-control">
+	                    <input type="text" name="cost" id="cost"  class="form-control" required="">
 						<p style="color: red;">Don't Put comma or letter</p>
 	                </div>
                  </div>
@@ -102,10 +102,11 @@
              	<div class="col-md-6">
 	        	 <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	PRIORITY<span style="color: red"> *</span>
+	                  	PRIORITY
 	                </label>
 	                <div class="col-sm-7">
 	                   <select name="priority" class="form-control">
+	                   	<option value="" selected="">select</option>
 						<option value="NORMAL">NORMAL</option>
 						<option value="HIGH">HIGH</option>
 						<option value="MEDIUM">MEDIUM</option>
@@ -117,7 +118,7 @@
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="orderform" onchange="readURL(this);" >
@@ -145,7 +146,7 @@
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	<strong>AGREEMENT NO<span style="color: red"> *</span></strong>
+	                  	<strong>AGREEMENT NO</strong>
 	                </label>
 	                <div class="col-sm-7">
 	                    <input type="text" class="form-control" name="agreementno" placeholder="Enter AGREEMENT NO">
@@ -158,7 +159,7 @@
              	<div class="col-md-6">
 	        	 <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	DATE OF COMMENCEMENT<span style="color: red"> *</span>
+	                  	DATE OF COMMENCEMENT
 	                </label>
 	                <div class="col-sm-7">
 	                   <input type="text" name="startdate" id="sdate" class="form-control datepicker getdays" readonly="">
@@ -168,7 +169,7 @@
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	DATE OF COMPLETION <span style="color: red"> *</span>
+	                  	DATE OF COMPLETION
 	                </label>
 	                <div class="col-sm-7">
 	                    <input type="text" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="">
@@ -182,7 +183,7 @@
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	TOTAL PROJECT TIME(IN DAYS)<span style="color: red"> *</span>
+	                  	TOTAL PROJECT TIME(IN DAYS)
 	                </label>
 	                <div class="col-sm-7">
 	                    <input type="text" name="totprojectdays" id="totprojectdays" autocomplete="off" class="form-control caldate">
@@ -195,7 +196,7 @@
              	<div class="col-md-6">
 	        	 <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	PAPER COST<span style="color: red"> * </span>
+	                  	PAPER COST
 
 	                </label>
 	                <div class="col-sm-7">
@@ -207,7 +208,7 @@
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	PAPER COST ATTACHMENT<span style="color: red"> *</span>
+	                  	PAPER COST ATTACHMENT
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="papercost" onchange="paper(this);" >
@@ -235,7 +236,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	ISD DATE<span style="color: red"> *</span>
+		                  	ISD DATE
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="isddate" id="isddate" readonly>
@@ -245,7 +246,7 @@
              		<div class="col-md-6">
 	                 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	VALID UP TO<span style="color: red"> *</span>
+		                  	VALID UP TO
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="isdvalidupto" id="isdvalidupto" readonly>
@@ -257,7 +258,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	AMOUNT<span style="color: red"> *</span>
+		                  	AMOUNT
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control" name="isdamount">
@@ -267,7 +268,7 @@
              		<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="isdattach" onchange="isddoc(this);">
@@ -295,7 +296,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	EMD DATE<span style="color: red"> *</span>
+		                  	EMD DATE
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="emddate" id="emddate" readonly>
@@ -305,7 +306,7 @@
              		<div class="col-md-6">
 	                 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	VALID UP TO<span style="color: red"> *</span>
+		                  	VALID UP TO
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="emdvalidupto" id="emdvalidupto" readonly>
@@ -317,7 +318,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	AMOUNT<span style="color: red"> *</span>
+		                  	AMOUNT
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control" name="emdamount">
@@ -327,7 +328,7 @@
              		<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="emdattach" onchange="emddoc(this);">
@@ -355,7 +356,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	APS DATE<span style="color: red"> *</span>
+		                  	APS DATE
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="apsdate" id="apsdate" readonly>
@@ -365,7 +366,7 @@
              		<div class="col-md-6">
 	                 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	VALID UP TO<span style="color: red"> *</span>
+		                  	VALID UP TO
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="apsvalidupto" id="apsvalidupto" readonly>
@@ -377,7 +378,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	AMOUNT<span style="color: red"> *</span>
+		                  	AMOUNT
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control" name="apsamount" id="apsdate">
@@ -387,7 +388,7 @@
              		<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="apsattach" onchange="apsdoc(this);">
@@ -415,7 +416,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	BG DATE<span style="color: red"> *</span>
+		                  	BG DATE
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="bgdate" id="bgdate" readonly>
@@ -425,7 +426,7 @@
              		<div class="col-md-6">
 	                 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	VALID UP TO<span style="color: red"> *</span>
+		                  	VALID UP TO
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="bgvalidupto" id="bgvalidupto" readonly>
@@ -437,7 +438,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	AMOUNT<span style="color: red"> *</span>
+		                  	AMOUNT
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control" name="bgamount" id="bgdate">
@@ -447,7 +448,7 @@
              		<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="bgattach" onchange="bgdoc(this);">
@@ -475,7 +476,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	DD DATE<span style="color: red"> *</span>
+		                  	DD DATE
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="dddate" id="dddate" readonly>
@@ -485,7 +486,7 @@
              		<div class="col-md-6">
 	                 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	VALID UP TO<span style="color: red"> *</span>
+		                  	VALID UP TO
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="ddvalidupto" id="ddvalidupto" readonly>
@@ -497,7 +498,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	AMOUNT<span style="color: red"> *</span>
+		                  	AMOUNT
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control" name="ddamount" id="dddate">
@@ -507,7 +508,7 @@
              		<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="ddattach" onchange="dddoc(this);">

@@ -107,7 +107,7 @@
 	 <tr>
 	 	 <td><strong>Division Name<span style="color: red"> *</span></strong></td>
 	 	 <td>
-	 	 	<input type="text" name="divisionname" id="divisionname">
+	 	 	<input type="text" name="divisionname" id="divisionname" required="">
 	 	 </td>
 	 
 	 	
