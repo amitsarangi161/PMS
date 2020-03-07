@@ -31,11 +31,11 @@
           
         </tr>
          <tr>
-            <td><strong>GSTN</strong></td>
-           <td><input type="text" value="{{$client->gstn}}" name="gstn" class="form-control" placeholder="Enter Client GST No"></td>
+            <td><strong>GSTN <span style="color: red"> *</span></strong></td>
+           <td><input type="text" value="{{$client->gstn}}" name="gstn" class="form-control" required placeholder="Enter Client GST No"></td>
         
-            <td><strong>PAN NO</strong></td>
-            <td><input type="text" name="panno" value="{{$client->panno}}" class="form-control" placeholder="Enter Client PAN No"></td>
+            <td><strong>PAN NO <span style="color: red"> *</span></strong></td>
+            <td><input type="text" name="panno" value="{{$client->panno}}" class="form-control" required placeholder="Enter Client PAN No"></td>
           
         </tr>
         <tr>

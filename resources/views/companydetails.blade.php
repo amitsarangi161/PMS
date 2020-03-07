@@ -130,6 +130,8 @@ $value="Save Details";
         </form>
     </div>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 <script>
   $('.successmsg').delay(5000).fadeOut(1000);
 	 function readURL(input) {
@@ -148,4 +150,5 @@ $value="Save Details";
         }
     }
 </script>
+
 @endsection

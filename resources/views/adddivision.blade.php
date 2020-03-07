@@ -32,7 +32,7 @@
 	 	 </td>	
 	 </tr>
 	 <tr>
-	 	 <td><strong>Select A District<span style="color: red"> *</span></strong></td>
+	 	 <td><strong>SELECT A District<span style="color: red"> *</span></strong></td>
 	 	 <td colspan="2">
 	 	 	<select name="district" required="" class="form-control">
 	 	 		<option value="">--SELECT A DISTRICT--</option>
@@ -126,14 +126,14 @@
   </div>
 </div>
 <script type="text/javascript">
-	function adddivision(){
+function adddivision(){
 	
 		$("#division").append('<input class="form-control input-medium designation" name="divisionname[]" style="margin-top:10px;" type="text" value="">');
-	}
-	function editdivision(id,divisionname){
+}
+function editdivision(id,divisionname){
 			$("#divid").val(id);
 			$("#divisionname").val(divisionname);
 			$("#myModal").modal('show');
-	}
+}
 </script>
 @endsection
