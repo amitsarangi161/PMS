@@ -145,8 +145,7 @@
             <a href="#"  data-toggle="modal" data-target="#resetpassword" class="btn bg-navy btn-flat">
               Reset Password
             </a>
-
-          </li>
+        </li>
            
           <li class="dropdown user user-menu" style="margin-top: 5px;padding-left: 10px;padding-right: 10px;">
       

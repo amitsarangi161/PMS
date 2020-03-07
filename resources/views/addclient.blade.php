@@ -68,6 +68,7 @@
          <td><input type="text" name="tinno" class="form-control" placeholder="Enter Tin Number"></td>
          <td><strong>STATE</strong></td>
          <td><input type="text" name="state" class="form-control" placeholder="Enter state Here"></td>
+
         </tr>
         <tr>
           <td><strong>CITY</strong></td>
@@ -135,7 +136,7 @@
             <td>{{$client->gstn}}</td>
             <td>{{$client->panno}}</td>
            
-            <td><a href="/editclient/{{$client->id}}" class="btn btn-primary">EDIT</a></td>
+            <td><a href="/projects/editclient/{{$client->id}}" class="btn btn-primary">EDIT</a></td>
         </tr>
 
         @endforeach

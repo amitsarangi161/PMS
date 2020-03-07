@@ -137,9 +137,13 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
 
-         
+        <li class="dropdown user user-menu" style="margin-top: 5px;">
+            <a href="#"  data-toggle="modal" data-target="#resetpassword" class="btn bg-navy btn-flat">
+              Reset Password
+            </a>
+        </li>
            
-          <li class="dropdown user user-menu">
+        <li class="dropdown user user-menu" style="margin-top: 5px;padding-left: 10px;padding-right: 10px;">
       
             @if (Auth::guest())
           <li><a href="{{ route('login') }}">Login</a></li>
@@ -265,34 +269,39 @@
 
     </div>
 
-    <div class="modal fade " id="myModal" role="dialog">
+<div class="modal fade " id="resetpassword" role="dialog">
         <div class="modal-dialog ">
         
           <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-maroon">
 
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title"> Reset Password</h4>
-                  <form class="form-horizontal" role="form" method="POST" action="">
+                  <h4 class="modal-title text-center"> Reset Password</h4>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal" role="form" method="POST" action="/resetpassword">
                     {{ csrf_field() }}
 
                   <table class="table table-responsive table-hover table-bordered">
                     <tr>
+                    <td>CURRENT PASSWORD</td>
+                    <td><input class="form-control" id="currentpassword" type="password" name="currentpassword" placeholder="Enter Current Password" required autocomplete="off"></td>
+                    </tr>
+                    <tr>
                     <td>NEW PASSWORD</td>
-                    <td><input id="password" type="password" name="password" placeholder="Enter New Password"></td>
+                    <td><input class="form-control" id="password" type="password" name="password" placeholder="Enter New Password" required autocomplete="off"></td>
                     </tr>
                     <tr>
                     <td>CONFIRM PASSWORD</td>
-                    <td><input id="confirm_password" type="password" name="pass2" placeholder="Confirm Password"><span id='message'></span></td>
+                    <td><input class="form-control" id="confirm_password" type="password" name="password_confirmation" placeholder="Confirm Password" required autocomplete="off"><span id='message'></span></td>
                     </tr>
-                    <tr><td colspan="2">  <span id='result'><button class="btn btn-success" type="submit" disabled>RESET NOW
+                    <tr><td colspan="2">  <span id='result'><button class="btn bg-green pull-right" type="submit" disabled>RESET NOW
                     </button></span></td></tr>
                   </table>
 
                   </form>
                 </div>
-       
             </div>
         </div>
     </div>
@@ -429,11 +438,11 @@ $(".datepicker2").datepicker({
 <script type="text/javascript">
 var jqf = $.noConflict();
 
-  jqf('#password, #confirm_password').on('keyup', function () {
-  if (jqf('#password').val() == jqf('#confirm_password').val()) {
-    jqf('#result').html('<button class="btn btn-success" type="submit">RESET NOW</button>');
+  jqf('#password, #confirm_password,#currentpassword').on('keyup', function () {
+  if ((jqf('#password').val() == jqf('#confirm_password').val())&& jqf('#currentpassword').val()!='')  {
+    jqf('#result').html('<button class="btn bg-green pull-right" type="submit">RESET NOW</button>');
   } else 
-    jqf('#result').html('<button class="btn btn-success" type="submit" disabled >RESET NOW</button>');
+    jqf('#result').html('<button class="btn bg-green pull-right" hidden type="submit" disabled >RESET NOW</button>');
 });
 
   $('.datatable').DataTable({

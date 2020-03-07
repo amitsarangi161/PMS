@@ -517,15 +517,18 @@ Route::get('/vouchers/cancelleddebitvoucher','AccountController@cancelleddebitvo
 Route::post('/changedrvoucherstatus/{id}','AccountController@changedrvoucherstatus');
 
 //-------------PMS HR ROUTE------------//
+
+Route::get('/attendance/mapview','HrController@mapview');
+Route::get('/attendance/mapview/{date}','HrController@allemployeemapview');
 Route::get('/hrmain/employeelist','HrController@employeelist');
 Route::get('/hrmain/department','HrController@department');
 Route::post('/adddepartment','HrController@adddepartment');
 Route::post('/importemployee','HrController@importemployee');
-Route::get('/registeremployee','HrController@registeremployee');
+Route::get('/hrmain/registeremployee','HrController@registeremployee');
 Route::post('/employeestatus','HrController@employeestatus');
 Route::post('/saveemployeedetails','HrController@saveemployeedetails');
 
-Route::get('/editemployeedetails/{id}','HrController@editemployeedetails');
+Route::get('/hrmain/editemployeedetails/{id}','HrController@editemployeedetails');
 Route::post('/updateemployeedetails/{id}','HrController@updateemployeedetails');
 Route::post('/ajaxgetdept','HrController@ajaxgetdept');
 Route::post('/updatedepartment','HrController@updatedepartment');
@@ -534,7 +537,9 @@ Route::get('/attendance/viewattendance','HrController@viewattendance');
 Route::get('/attendance/attendancereport','HrController@attendancereport');
 Route::get('/showuserlocation/{uid}/{date}','HrController@userlocation');
 Route::post('/getuserlocation','HrController@getuserlocation');
+Route::post('/getalluserlocation','HrController@getalluserlocation');
 Route::post('/showattendance','HrController@showattendance');
+Route::post('/showallempmapview','HrController@showallempmapview');
 Route::get('/showdetaillocations/{uid}/{date}','HrController@showdetaillocations');
 //-------------PMS END HR ROUTE------------//
 
@@ -546,8 +551,7 @@ Route::get('/dm/adduser','HomeController@adduser');
 Route::post('/saveuser','HomeController@saveuser');
 Route::get('/projects/addclient','HomeController@addclient');
 Route::post('/saveclient','HomeController@saveclient');
-Route::delete('/deleteclient/{id}','HomeController@deleteclient');
-Route::get('/editclient/{id}','HomeController@editclient');
+Route::get('/projects/editclient/{id}','HomeController@editclient');
 Route::post('/updateclient/{id}','HomeController@updateclient');
 Route::post('/importclient','HomeController@importclient');
 Route::post('/importvendor','HomeController@importvendor');
@@ -561,8 +565,7 @@ Route::post('/updatedivision','HomeController@updatedivision');
 Route::get('/projects/addproject','HomeController@addproject');
 Route::post('/saveproject','HomeController@saveproject');
 Route::get('/projects/viewallproject','HomeController@viewallproject');
-Route::delete('/deleteproject/{id}','HomeController@deleteproject');
-Route::get('/editproject/{id}','HomeController@editproject');
+Route::get('/projects/editproject/{id}','HomeController@editproject');
 Route::get('/deleteprojectactivity/{id}','HomeController@deleteprojectactivity');
 Route::post('/updateproject/{id}','HomeController@updateproject');
 Route::post('/changestatus','HomeController@changestatus');
