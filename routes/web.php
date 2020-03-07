@@ -517,6 +517,9 @@ Route::get('/vouchers/cancelleddebitvoucher','AccountController@cancelleddebitvo
 Route::post('/changedrvoucherstatus/{id}','AccountController@changedrvoucherstatus');
 
 //-------------PMS HR ROUTE------------//
+
+Route::get('/attendance/mapview','HrController@mapview');
+Route::get('/attendance/mapview/{date}','HrController@allemployeemapview');
 Route::get('/hrmain/employeelist','HrController@employeelist');
 Route::get('/hrmain/department','HrController@department');
 Route::post('/adddepartment','HrController@adddepartment');
@@ -534,7 +537,9 @@ Route::get('/attendance/viewattendance','HrController@viewattendance');
 Route::get('/attendance/attendancereport','HrController@attendancereport');
 Route::get('/showuserlocation/{uid}/{date}','HrController@userlocation');
 Route::post('/getuserlocation','HrController@getuserlocation');
+Route::post('/getalluserlocation','HrController@getalluserlocation');
 Route::post('/showattendance','HrController@showattendance');
+Route::post('/showallempmapview','HrController@showallempmapview');
 Route::get('/showdetaillocations/{uid}/{date}','HrController@showdetaillocations');
 //-------------PMS END HR ROUTE------------//
 
