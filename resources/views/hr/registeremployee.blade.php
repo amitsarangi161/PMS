@@ -322,7 +322,7 @@
             </div>
           </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-12">
           <!-- Horizontal Form -->
           <div class="box box-info  box-solid">
             <div class="box-header with-border">
@@ -333,6 +333,7 @@
             <div class="form-horizontal">
               <div class="box-body">
 
+                <div class="col-md-6">
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Resume</label>
 
@@ -340,50 +341,54 @@
                     <input name="resume" onchange="readURL1(this)" type="file">
                   </div>
                   <div class="col-sm-3">
-                    <img id="imgshow1" src="#" alt="Selected Image" style="height: 70px;width: 70px;">
+                    <img id="imgshow1" src="#" alt="No Image Selected" style="height: 70px;width: 70px;">
                   </div>
                 </div>
-
+              </div>
+                <div class="col-md-6">
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Offer Letter</label>
                   <div class="col-sm-6">
                     <input name="offerletter" onchange="readURL2(this)" type="file">
                   </div>
                   <div class="col-sm-3">
-                    <img id="imgshow2" src="#" alt="Selected Image" style="height: 70px;width: 70px;">
+                    <img id="imgshow2" src="#" alt="No Image Selected" style="height: 70px;width: 70px;">
                   </div>
                 </div>
-
+              </div>
+                <div class="col-md-6">
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Joining Letter</label>
                   <div class="col-sm-6">
                     <input name="joiningletter" onchange="readURL3(this)" type="file">
                   </div>
                   <div class="col-sm-3">
-                    <img id="imgshow3" src="#" alt="Selected Image" style="height: 70px;width: 70px;">
+                    <img id="imgshow3" src="#" alt="No Image Selected" style="height: 70px;width: 70px;">
                   </div>
                 </div>
-
+              </div>
+                <div class="col-md-6">
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">Agreement Paper</label>
                   <div class="col-sm-6">
                     <input name="agreementpaper" onchange="readURL4(this)" type="file">
                   </div>
                   <div class="col-sm-3">
-                    <img id="imgshow4" src="#" alt="Selected Image" style="height: 70px;width: 70px;">
+                    <img id="imgshow4" src="#" alt="No Image Selected" style="height: 70px;width: 70px;">
                   </div>
                 </div>
-
+              </div>
+                <div class="col-md-6">
                 <div class="form-group">
                   <label for="inputEmail3" class=" col-sm-3">ID Proof</label>
                   <div class="col-sm-6">
                     <input name="idproof" onchange="readURL5(this)" type="file">
                   </div>
                   <div class="col-sm-3">
-                    <img id="imgshow5" src="#" alt="Selected Image" style="height: 70px;width: 70px;">
+                    <img id="imgshow5" src="#" alt="No Image Selected" style="height: 70px;width: 70px;">
                   </div>
                 </div>
-
+              </div>
 
               
 

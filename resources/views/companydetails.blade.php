@@ -40,7 +40,7 @@ $value="Save Details";
 
 @endphp
 @if(Session::has('message'))
-<p class="alert alert-success text-center">{{ Session::get('message') }}</p>
+<p class="alert alert-success text-center successmsg">{{ Session::get('message') }}</p>
 @endif
 @if(count($errors) > 0)
     <div class="alert alert-danger">
@@ -62,56 +62,56 @@ $value="Save Details";
             	{{csrf_field()}}
               <div class="box-body">
                 <div class="form-group col-md-6">
-                  <label>Company Name</label>
+                  <label>Company Name <span style="color: red"> *</span></label>
                   <input type="text" class="form-control" palceholder="Comapny Name" required="" value="{{$name}}"name="name">
                 </div>
                 <div class="form-group col-md-6">
                   <label>Website</label>
-                  <input type="text" class="form-control" palceholder="Website link" required="" value="{{$websitelink}}"name="website">
+                  <input type="text" class="form-control" palceholder="Website link"  value="{{$websitelink}}"name="website">
                 </div>
                 <div class="form-group col-md-6">
-                  <label>Mobile No</label>
+                  <label>Mobile No <span style="color: red"> *</span></label>
                   <input type="text" class="form-control" palceholder="mobile number" required="" value="{{$mobile}}"name="mobile">
                 </div>
                 <div class="form-group col-md-6">
                   <label>Phone No</label>
-                  <input type="text" class="form-control" palceholder="phone number" required="" value="{{$phone}}"name="phone">
+                  <input type="text" class="form-control" palceholder="phone number"  value="{{$phone}}"name="phone">
                 </div>
                 <div class="form-group col-md-6">
-                  <label>Email</label>
+                  <label>Email <span style="color: red"> *</span></label>
                   <input type="email" class="form-control" palceholder="enter your email" required="" value="{{$email}}"name="email">
                 </div>
                 <div class="form-group col-md-6">
                   <label>Fax No</label>
-                  <input type="text" class="form-control" palceholder="fax number" required="" value="{{$fax}}"name="fax">
+                  <input type="text" class="form-control" palceholder="fax number"  value="{{$fax}}"name="fax">
                 </div>
                 <div class="form-group col-md-6">
                   <label>Pan</label>
-                  <input type="text" class="form-control" palceholder="pan number" required="" value="{{$pan}}"name="pan">
+                  <input type="text" class="form-control" palceholder="pan number"  value="{{$pan}}"name="pan">
                 </div>
                 <div class="form-group col-md-6">
                   <label>TIN No</label>
-                  <input type="text" class="form-control" palceholder="tin number" required="" value="{{$tinno}}"name="tinno">
+                  <input type="text" class="form-control" palceholder="tin number"  value="{{$tinno}}"name="tinno">
                 </div>
                 <div class="form-group col-md-6">
                   <label>TAN No</label>
-                  <input type="text" class="form-control" palceholder="tan number" required="" value="{{$tanno}}"name="tanno">
+                  <input type="text" class="form-control" palceholder="tan number"  value="{{$tanno}}"name="tanno">
                 </div>
                 <div class="form-group col-md-6">
                   <label>SERVICE TAX No</label>
-                  <input type="text" class="form-control" palceholder="servicetax number" required="" value="{{$servicetaxno}}"name="servicetaxno">
+                  <input type="text" class="form-control" palceholder="servicetax number"  value="{{$servicetaxno}}"name="servicetaxno">
                 </div>
                 <div class="form-group col-md-6">
                   <label>EXCISE No</label>
-                  <input type="text" class="form-control" palceholder="excise number" required="" value="{{$exciseno}}"name="exciseno">
+                  <input type="text" class="form-control" palceholder="excise number"  value="{{$exciseno}}"name="exciseno">
                 </div>
                 <div class="form-group col-md-6">
-                  <label>GST No</label>
+                  <label>GST No <span style="color: red"> *</span></label>
                   <input type="text" class="form-control" palceholder="gst number" required="" value="{{$gst}}"name="gst">
                 </div>
                 <div class="form-group col-md-6">
-                  <label>Address</label>
-                  <textarea class="form-control" name="address" placeholder="Address" rows="3">{{$address}}</textarea>
+                  <label>Address <span style="color: red"> *</span></label>
+                  <textarea class="form-control" name="address" placeholder="Address" rows="3" required>{{$address}}</textarea>
                 </div>
                 <div class="form-group col-md-4">
                   <label>Logo</label>
@@ -131,6 +131,7 @@ $value="Save Details";
     </div>
 </div>
 <script>
+  $('.successmsg').delay(5000).fadeOut(1000);
 	 function readURL(input) {
     
 
@@ -146,6 +147,5 @@ $value="Save Details";
 
         }
     }
- $(".alert-success").delay(5000).fadeOut(800); 
 </script>
 @endsection

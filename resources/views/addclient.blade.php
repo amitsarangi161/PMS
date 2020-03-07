@@ -64,8 +64,8 @@
          <td><input type="text" name="tanno" class="form-control" placeholder="Enter Tan Number" required=""></td>
         </tr>
         <tr>
-          <td><strong>TIN NUMBER</strong><span style="color: red"> *</span></td>
-         <td><input type="text" name="tinno" class="form-control" placeholder="Enter Tin Number" required=""></td>
+          <td><strong>TIN NUMBER</strong></td>
+         <td><input type="text" name="tinno" class="form-control" placeholder="Enter Tin Number" ></td>
          <td><strong>STATE</strong><span style="color: red"> *</span></td>
          <td><input type="text" name="state" class="form-control" placeholder="Enter state Here" required=""></td>
         </tr>
@@ -82,7 +82,7 @@
           <td><textarea name="officeaddress" class="form-control" placeholder="Enter Office address" required=""></textarea></td>
         </tr>
         <tr>
-        	<td><strong>ADDITIONAL INFO</strong><span style="color: red"> *</span></td>
+        	<td><strong>ADDITIONAL INFO</strong></td>
         	<td><textarea name="additionalinfo" class="form-control" placeholder="Enter Addional Info"></textarea></td>
         </tr>
                 <tr>
@@ -135,7 +135,7 @@
             <td>{{$client->gstn}}</td>
             <td>{{$client->panno}}</td>
            
-            <td><a href="/editclient/{{$client->id}}" class="btn btn-primary">EDIT</a></td>
+            <td><a href="/projects/editclient/{{$client->id}}" class="btn btn-primary">EDIT</a></td>
         </tr>
 
         @endforeach

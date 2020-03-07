@@ -9,7 +9,7 @@
   <div class="box-header">
     <div class="row">
         <p>
-          <a href="/registeremployee" class="btn btn-success btn-flat margin"><i class="fa fa-plus"></i> Add New Employee
+          <a href="/hrmain/registeremployee" class="btn btn-success btn-flat margin"><i class="fa fa-plus"></i> Add New Employee
           </a>
             <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importemployee" onclick="importemployee();"><i class="fa fa-file-excel-o"></i> Import Employee Database</button>
                 <a href="/Employee Import Sample.xlsx" download="/Employee Import Sample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
@@ -112,7 +112,7 @@
         <tbody>
           @foreach($employeedetails as $key=>$employeedetail)
           <tr>
-            <td><a href="/editemployeedetails/{{$employeedetail->id}}"><button class="btn btn-success btn-sm btn-flat">{{$employeedetail->id}}</button></a></td>
+            <td><a href="/hrmain/editemployeedetails/{{$employeedetail->id}}"><button class="btn btn-success btn-sm btn-flat">{{$employeedetail->id}}</button></a></td>
             <td>{{$employeedetail->empcodeno}}</td>
             <td>{{$employeedetail->employeename}}</td>
             <td>{{$employeedetail->bloodgroup}}</td>
@@ -150,15 +150,15 @@
             <td>{{$employeedetail->presentaddress}}</td>
             <td>
               @if($employeedetail->status=="RESIGN")
-              <small class="label status bg-yellow" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
+              <small class="label status bg-yellow" onclick="employeestatus('{{$employeedetail->id}}','{{$employeedetail->status}}','{{$employeedetail->employeename}}');">{{$employeedetail->status}}</small>
               @elseif($employeedetail->status=="TERMINATED")
-              <small class="label status bg-red" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
+              <small class="label status bg-red" onclick="employeestatus('{{$employeedetail->id}}','{{$employeedetail->status}}','{{$employeedetail->employeename}}');">{{$employeedetail->status}}</small>
               @elseif($employeedetail->status=="LEFT WITHOUT INFORMATION")
-              <small class="label status bg-maroon" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
+              <small class="label status bg-maroon" onclick="employeestatus('{{$employeedetail->id}}','{{$employeedetail->status}}','{{$employeedetail->employeename}}');">{{$employeedetail->status}}</small>
               @elseif($employeedetail->status=="LEFT")
-              <small class="label status bg-blue" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
+              <small class="label status bg-blue" onclick="employeestatus('{{$employeedetail->id}}','{{$employeedetail->status}}','{{$employeedetail->employeename}}');">{{$employeedetail->status}}</small>
               @else
-              <small class="label status bg-green" onclick="employeestatus('{{$employeedetail->id}}','$employeedetail->status');">{{$employeedetail->status}}</small>
+              <small class="label status bg-green" onclick="employeestatus('{{$employeedetail->id}}','{{$employeedetail->status}}','{{$employeedetail->employeename}}');">{{$employeedetail->status}}</small>
               @endif
             </td>
             <td><a href="/editemployeedetails/{{$employeedetail->id}}" onclick="return confirm('are you sure to edit employee ??')" ><button class="btn btn-primary btn-flat">Edit</button></a></td>
@@ -213,8 +213,12 @@
           {{ csrf_field() }}
           <input type="hidden" name="id" id="id">
           <div class="form-group">
+            <label>Employee Name</label>
+            <input type="text" id="empname" class="form-control" disabled="">
+          </div>
+          <div class="form-group">
             <label>Change  Status</label>
-            <select class="form-control" name="status">
+            <select class="form-control" name="status" id="status">
               <option value="PRESENT">PRESENT</option>
               <option value="RESIGN">RESIGN</option>
               <option value="TERMINATED">TERMINATED </option>
@@ -238,9 +242,12 @@
   $(".alert-success").delay(5000).fadeOut(800); 
     $(".alert-danger").delay(15000).fadeOut(800);
 
-  function employeestatus(userid,status){
-    $("#employeestatus").modal('show');
+  function employeestatus(userid,status,empname){
     $("#id").val(userid);
+    $("#empname").val(empname);
+    $('#status option[value="'+status+'"]').prop("selected", "selected");
+    $("#employeestatus").modal('show');
   }
+
 </script>
 @endsection
