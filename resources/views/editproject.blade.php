@@ -143,7 +143,7 @@
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="orderform" onchange="readURL(this);" >
@@ -171,7 +171,7 @@
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	<strong>AGREEMENT NO<span style="color: red"> *</span></strong>
+	                  	<strong>AGREEMENT NO</strong>
 	                </label>
 	                <div class="col-sm-7">
 	                    <input type="text" value="{{$project->agreementno}}" class="form-control" name="agreementno" placeholder="Enter AGREEMENT NO">
@@ -184,7 +184,7 @@
              	<div class="col-md-6">
 	        	 <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	DATE OF COMMENCEMENT<span style="color: red"> *</span>
+	                  	DATE OF COMMENCEMENT
 	                </label>
 	                <div class="col-sm-7">
 	                   <input type="text" value="{{$project->startdate}}" name="startdate" id="sdate" class="form-control datepicker getdays" readonly="">
@@ -194,7 +194,7 @@
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	DATE OF COMPLETION <span style="color: red"> *</span>
+	                  	DATE OF COMPLETION 
 	                </label>
 	                <div class="col-sm-7">
 	                    <input type="text" value="{{$project->enddate}}" name="enddate"  id="edate" class="form-control datepicker getdays" readonly="">
@@ -208,7 +208,7 @@
              <!-- 	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	TOTAL PROJECT TIME(IN DAYS)<span style="color: red"> *</span>
+	                  	TOTAL PROJECT TIME(IN DAYS)
 	                </label>
 	                <div class="col-sm-7">
 	                    <input type="text" value="{{$project->totprojectdays}}" name="totprojectdays" id="totprojectdays" autocomplete="off" class="form-control caldate">
@@ -233,7 +233,7 @@
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	PAPER COST ATTACH<span style="color: red"> *</span>
+	                  	PAPER COST ATTACH
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="papercost" onchange="paper(this);" >
@@ -265,7 +265,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	ISD DATE<span style="color: red"> *</span>
+		                  	ISD DATE
 		                </label>
 		                <div class="col-sm-7">
 		                    <input value="{{$project->isddate}}" class="form-control datepicker" name="isddate" id="isddate" readonly>
@@ -275,7 +275,7 @@
              		<div class="col-md-6">
 	                 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	VALID UP TO<span style="color: red"> *</span>
+		                  	VALID UP TO
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="isdvalidupto" value="{{$project->isdvalidupto}}" id="isdvalidupto" readonly>
@@ -287,7 +287,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	AMOUNT<span style="color: red"> *</span>
+		                  	AMOUNT
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control" value="{{$project->isdamount}}" name="isdamount">
@@ -297,7 +297,7 @@
              		<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="isdattach" onchange="isddoc(this);">
@@ -326,7 +326,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	EMD DATE<span style="color: red"> *</span>
+		                  	EMD DATE
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="emddate" id="emddate" value="{{$project->emddate}}" readonly>
@@ -336,7 +336,7 @@
              		<div class="col-md-6">
 	                 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	VALID UP TO<span style="color: red"> *</span>
+		                  	VALID UP TO
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="emdvalidupto" value="{{$project->emddate}}" id="emdvalidupto" readonly>
@@ -348,7 +348,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	AMOUNT<span style="color: red"> *</span>
+		                  	AMOUNT
 		                </label>
 		                <div class="col-sm-7">
 		                    <input value="{{$project->emdamount}}" class="form-control" name="emdamount">
@@ -358,7 +358,7 @@
              		<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="emdattach" onchange="emddoc(this);">
@@ -388,7 +388,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	APS DATE<span style="color: red"> *</span>
+		                  	APS DATE
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="apsdate" id="apsdate" value="{{$project->apsdate}}" readonly>
@@ -398,7 +398,7 @@
              		<div class="col-md-6">
 	                 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	VALID UP TO<span style="color: red"> *</span>
+		                  	VALID UP TO
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="apsvalidupto" value="{{$project->apsvalidupto}}" id="apsvalidupto" readonly>
@@ -410,7 +410,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	AMOUNT<span style="color: red"> *</span>
+		                  	AMOUNT
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control" value="{{$project->apsamount}}" name="apsamount" id="apsdate">
@@ -420,7 +420,7 @@
              		<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="apsattach" onchange="apsdoc(this);">
@@ -448,7 +448,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	BG DATE<span style="color: red"> *</span>
+		                  	BG DATE
 		                </label>
 		                <div class="col-sm-7">
 		                    <input value="{{$project->bgdate}}" class="form-control datepicker" name="bgdate" id="bgdate" readonly>
@@ -458,7 +458,7 @@
              		<div class="col-md-6">
 	                 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	VALID UP TO<span style="color: red"> *</span>
+		                  	VALID UP TO
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control datepicker" name="bgvalidupto" value="{{$project->bgvalidupto}}" id="bgvalidupto" readonly>
@@ -470,7 +470,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	AMOUNT<span style="color: red"> *</span>
+		                  	AMOUNT
 		                </label>
 		                <div class="col-sm-7">
 		                    <input class="form-control" value="{{$project->bgamount}}" name="bgamount" id="bgdate">
@@ -480,7 +480,7 @@
              		<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="bgattach" onchange="bgdoc(this);">
@@ -508,7 +508,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	DD DATE<span style="color: red"> *</span>
+		                  	DD DATE
 		                </label>
 		                <div class="col-sm-7">
 		                    <input value="{{$project->dddate}}" class="form-control datepicker" name="dddate" id="dddate" readonly>
@@ -518,7 +518,7 @@
              		<div class="col-md-6">
 	                 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	VALID UP TO<span style="color: red"> *</span>
+		                  	VALID UP TO
 		                </label>
 		                <div class="col-sm-7">
 		                    <input value="{{$project->ddvalidupto}}" class="form-control datepicker" name="ddvalidupto" id="ddvalidupto" readonly>
@@ -530,7 +530,7 @@
 	        		<div class="col-md-6">
 		        	 <div class="form-group">
 		                <label class="col-sm-5">
-		                  	AMOUNT<span style="color: red"> *</span>
+		                  	AMOUNT
 		                </label>
 		                <div class="col-sm-7">
 		                    <input value="{{$project->ddamount}}" class="form-control" name="ddamount" id="dddate">
@@ -540,7 +540,7 @@
              		<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	ATTACH ORDER FORM<span style="color: red"> *</span>
+	                  	ATTACH ORDER FORM
 	                </label>
 	                <div class="col-sm-4">
 	                    <input type="file"  name="ddattach" onchange="dddoc(this);">

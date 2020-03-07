@@ -35,7 +35,7 @@
 
           </tr>
           <tr>
-            <td>MOBILE<span style="color: red"> *</span></td>
+            <td>MOBILE</td>
             <td colspan="2"><input type="number" class="form-control" autocomplete="off" name="mobile" placeholder="ENTER MOBILE" ></td>
           </tr>
           <tr>
@@ -47,8 +47,8 @@
               <td>USER TYPE<span style="color: red"> *</span></td>
             <td colspan="2">
               <select name="usertype" class="form-control" required>
-                  <option value="">Select</option>
-                  <option value="USER" selected>USER</option>
+                  <option value="" selected>Select</option>
+                  <option value="USER">USER</option>
                   <option value="MASTER ADMIN">MASTER ADMIN</option>
                   <option value="ADMIN">ADMIN</option>
                   <option value="ACCOUNTS">ACCOUNTS</option>
@@ -135,12 +135,12 @@
             <td colspan="2"><input type="text" class="form-control" autocomplete="off" id="username" name="username" placeholder="ENTER NAME" required></td>
         </tr>
           <tr>
-            <td>EMAIL<span style="color: red"> *</span></td>
-            <td colspan="2"><input type="email" class="form-control" autocomplete="off" id="email" name="email" placeholder="ENTER EMAIL ID" required></td>
+            <td>EMAIL</td>
+            <td colspan="2"><input type="email" class="form-control" autocomplete="off" id="email" name="email" placeholder="ENTER EMAIL ID"></td>
 
           </tr>
           <tr>
-            <td>MOBILE<span style="color: red"> *</span></td>
+            <td>MOBILE</td>
             <td colspan="2"><input type="number" class="form-control" autocomplete="off" id="mobile" name="mobile" placeholder="ENTER MOBILE" ></td>
           </tr>
           <tr>
