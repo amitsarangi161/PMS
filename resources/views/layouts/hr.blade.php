@@ -229,6 +229,8 @@
              <li class="{{ Request::is('attendance/viewattendance') ? 'active' : '' }}"><a href="/attendance/viewattendance"><i class="fa fa-circle-o text-red"></i>VIEW ATTENDANCE</a></li>
 
              <li class="{{ Request::is('attendance/attendancereport') ? 'active' : '' }}"><a href="/attendance/attendancereport"><i class="fa fa-circle-o text-red"></i>ATTENDANCE REPORT</a></li>
+
+             <li class="{{ Request::is('attendance/mapview') ? 'active' : '' }}"><a href="/attendance/mapview"><i class="fa fa-circle-o text-red"></i>MAP VIEW</a></li>
           </ul>
      </li>
         

@@ -27,6 +27,35 @@ use Excel;
 class HrController extends Controller
 {
   //-------------PMS HR ------------//
+
+    public function getalluserlocation(Request $request)
+    {
+       
+ $sub = attendance::orderBy('created_at','DESC');
+$userlocations = DB::table(DB::raw("({$sub->toSql()}) as sub"))
+    ->select('sub.*','users.name')
+    ->where('sub.created_at', '>=',$request->date.' 00:00:00')
+    ->where('sub.created_at', '<=',$request->date.' 23:59:00')
+    ->leftJoin('users','sub.userid','=','users.id')
+    ->groupBy('sub.userid')
+    ->get();
+         
+         return response()->json($userlocations);
+    }
+public function allemployeemapview($date)
+{
+    return view('hr.allempmapview',compact('date'));
+}
+public function showallempmapview(Request $request)
+{
+      $date=$request->date;
+      return redirect('/attendance/mapview/'.$date);
+     
+}
+public function mapview()
+{
+       return view('hr.mapview');
+}
 public function showdetaillocations($uid,$date)
     {
          $addressarr=array();

@@ -1336,6 +1336,7 @@ if($request->has('status') && $request->status!='')
          
          return response()->json($userlocations);
     }
+
     public function projectwisepaymentreports()
     {
         $projectwisepaymentreports=array();
