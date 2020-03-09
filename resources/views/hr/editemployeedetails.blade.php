@@ -7,6 +7,7 @@ if($editemployeedocument){
   $agreementpaper=$editemployeedocument->agreementpaper;
   $idproof=$editemployeedocument->idproof;
   $resume=$editemployeedocument->resume;
+  $resignation=$editemployeedocument->resignation;
   
 }
 else{
@@ -15,6 +16,7 @@ else{
   $agreementpaper='';
   $idproof='';
   $resume='';
+  $resignation='';
 }
 @endphp
 
@@ -382,7 +384,7 @@ else{
                     <input name="resignation" onchange="readURL6(this);" type="file">
                   </div>
                   <div class="col-sm-3">
-                  <img id="imgshow6" src="/image/resignation/{{$idproof}}" style="height: 70px;width: 70px;">
+                  <img id="imgshow6" src="/image/resignation/{{$resignation}}" style="height: 70px;width: 70px;">
                   </div>
                 </div>
 
