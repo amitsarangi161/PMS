@@ -47,8 +47,12 @@
         <tr class="bg-navy" style="font-size: 10px;">
             <th>ID</th>
             <th>FOR CLIENT</th>
-            <th>CLIENT NAME</th>
+            <th>DISTRICT</th>
+            <th>DIVISION</th>
+            <th>LOA NO</th>
+            <th>AGREEMENT NO</th>
             <th>PROJECT NAME</th>
+            <th>PAPER COST</th>
             <th>DATE OF COMMENCEMENT</th>
             <th>END DATE</th>
             <th>ESTIMATED COST</th>
@@ -75,7 +79,7 @@
                elseif($diff<=5 && $project->status!='COMPLETED')
                {
                 $txtcolor='label bg-red';
-                $rowcolor='#f9191999';
+                $rowcolor='#f0844399';
                }
                else
                {
@@ -86,7 +90,6 @@
             @endphp
         <tr style="background-color: {{$rowcolor}};font-size: 12px;">
             <td>{{$project->id}}</td>
-            <td>{{$project->clientname}}</td>
             <td>{{$project->clientname}}</td>
             <td><p class="b" title="{{$project->projectname}}">{{$project->projectname}}</p></td>
             <td>{{$project->startdate}}</td>
