@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @section('content')
+<style type="text/css">
+  .select2-selection__choice {
 
+    background-color: #134b86!important;
+    border: 1px solid #134b86!important;
+    border-radius: 2px!important;
+
+}
+</style>
  <section class="content">
 
       <div class="row">
@@ -270,35 +278,56 @@
                     PROJECT DETAILS
                   </div>
                   <div class="panel-body">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                      </div>
-                    </div>
+                    
                   </div>
-
-
                </div>
               </div>
+
               <div class="tab-pane" id="assignproject">
-                The European languages are members of the same family. Their separate existence is a myth.
-                For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                new common language would be desirable: one could refuse to pay expensive translators. To
-                achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                words. If several languages coalesce, the grammar of the resulting language is more simple
-                and regular than that of the individual languages.
+                <form class="form-horizontal" method="post" action="/assignuserforproject">
+                  {{ csrf_field() }}
+                    <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    ASSIGN PROJECT TO USER
+                  </div>
+                  <div class="panel-body">
+                    
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                <label  class="col-sm-4 control-label">Project Name</label>
+
+                              <div class="col-sm-8">
+                                <input type="hidden"  class="form-control" value="{{$project->id}}" name="project_id">
+                                <input type="text"  class="form-control" value="{{$project->projectname}}" disabled="">
+                              </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                <label  class="col-sm-4 control-label">Select  User</label>
+
+                              <div class="col-sm-8">
+                                <select name="employee_id" required="" class="form-control select2" style="width: 100%;"  multiple="multiple" data-placeholder="Select User">
+                                @foreach($users as $user)
+                                  <option value="{{$user->employee_id}}">{{$user->name}}</option>
+                                @endforeach
+                                </select>
+                              </div>
+                              </div>
+                              <button type="submit" class="btn btn-success btn-flat pull-right">Assign Usre</button>                              
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+               </div>
+               </form>
+                  </div>
               </div>
             </div>
           </div>
-        </div>
+        
 </div>
 <script type="text/javascript">
    

@@ -541,6 +541,8 @@ Route::post('/getalluserlocation','HrController@getalluserlocation');
 Route::post('/showattendance','HrController@showattendance');
 Route::post('/showallempmapview','HrController@showallempmapview');
 Route::get('/showdetaillocations/{uid}/{date}','HrController@showdetaillocations');
+
+
 //-------------PMS END HR ROUTE------------//
 
 
@@ -577,6 +579,8 @@ Route::post('/ajaxfetchdistrict','HomeController@ajaxfetchdistrict');
 
 Route::get('/useraccounts/applicationform','HomeController@applicationform');
 Route::post('/resetpassword','HomeController@resetpassword');
+
+Route::post('/assignuserforproject','HomeController@assignuserforproject');
 //-------------END PMS MAIN ROUTE------------//
 
 //------------- PMS ACCOUNT ROUTE------------//

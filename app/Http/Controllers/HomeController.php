@@ -60,6 +60,7 @@ use App\testimage;
 use App\companysetup;
 use App\district;
 use App\division;
+use App\assignuser;
 use DataTables;
 use Excel;
 //use Barryvdh\DomPDF\Facade as PDF;
@@ -2975,6 +2976,15 @@ return $message->sid;*/
    
    }
 
+   public function assignuserforproject(Request $request)
+   {
+    $assignuser=new assignuser();
+    $assignuser->project_id=$request->project_id;
+    $assignuser->employee_id=$request->employee_id;
+    $assignuser->save();
+    return back();
+
+   }
    public function viewallproject()
    {
         
@@ -3342,7 +3352,7 @@ return $message->sid;*/
 
    public function adminprojectdetails($id)
    {
-
+    $users=User::all();
     $project=project::select('projects.*','clients.orgname')
                  ->leftJoin('clients','projects.clientid','=','clients.id')
                  ->where('projects.id',$id)
@@ -3352,7 +3362,7 @@ return $message->sid;*/
                      ->where('projectid',$id)
                      ->orderBy('projectactivities.position','ASC')
                      ->get();
-    return view('adminprojectdetails',compact('project','activities'));
+    return view('adminprojectdetails',compact('project','activities','users'));
    }
 
 
