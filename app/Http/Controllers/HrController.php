@@ -31,16 +31,15 @@ class HrController extends Controller
     public function getalluserlocation(Request $request)
     {
        
- $sub = attendance::orderBy('created_at','DESC');
-$userlocations = DB::table(DB::raw("({$sub->toSql()}) as sub"))
-    ->select('sub.*','users.name')
-    ->where('sub.created_at', '>=',$request->date.' 00:00:00')
-    ->where('sub.created_at', '<=',$request->date.' 23:59:00')
-    ->leftJoin('users','sub.userid','=','users.id')
-    ->groupBy('sub.userid')
+$userlocations = attendance::select(DB::raw('*, max(attendances.created_at) as created_at'))
+     ->where('attendances.created_at', '>=',$request->date.' 00:00:00')
+    ->where('attendances.created_at', '<=',$request->date.' 23:59:00')
+    ->leftJoin('users','attendances.userid','=','users.id')
+    ->orderBy('attendances.created_at', 'desc')
+    ->groupBy('attendances.userid')
     ->get();
          
-         return response()->json($userlocations);
+    return response()->json($userlocations);
     }
 public function allemployeemapview($date)
 {
@@ -84,7 +83,8 @@ $url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='.trim($value->
      
     }
       catch (\Exception $e){
-        
+                 $arr=array('userid'=>$value->userid,'latitude'=>$value->latitude,'longitude'=>$value->longitude,'deviceid'=>$value->deviceid,'battery'=>$value->battery,'address'=>'','created_at'=>$value->created_at,'time'=>$value->time,'mode'=>$value->mode,'status'=>$value->status,'version'=>$value->version);
+          $addressarr[]=$arr; 
     }
     }
   
