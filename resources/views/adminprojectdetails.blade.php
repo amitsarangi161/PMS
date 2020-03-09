@@ -255,7 +255,51 @@
   </div>
 </div>
 
+<div class="row">
+          <div class="col-md-12">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs text-center">
+              <li class="active"><a href="#projectdetails" data-toggle="tab"><i class="fa fa-th"></i> Project Details</a></li>
+              <li><a href="#assignproject" data-toggle="tab">
+                <i class="fa fa-users" ></i> Assign Project</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="projectdetails">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    PROJECT DETAILS
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
 
+
+               </div>
+              </div>
+              <div class="tab-pane" id="assignproject">
+                The European languages are members of the same family. Their separate existence is a myth.
+                For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+                in their grammar, their pronunciation and their most common words. Everyone realizes why a
+                new common language would be desirable: one could refuse to pay expensive translators. To
+                achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+                words. If several languages coalesce, the grammar of the resulting language is more simple
+                and regular than that of the individual languages.
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
 <script type="text/javascript">
    
    function openverifymodal(id) {

@@ -408,6 +408,7 @@ $(".datepicker").datepicker({
        showButtonPanel: true,
        changeYear: true,
        changeMonth: true,
+       yearRange: "-100:+0",
        setDate: 0
        });
 
