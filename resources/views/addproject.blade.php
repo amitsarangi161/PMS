@@ -65,7 +65,7 @@
              <div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	DIVISION
+	                  	DIVISION <span style="color: red"> *</span>
 	                </label>
 	                <div class="col-sm-7">
 	                    <select type="text" name="division" id="division"   class="form-control select2"  data-placeholder="Select a Division" required=""></select>

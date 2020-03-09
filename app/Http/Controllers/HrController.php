@@ -513,6 +513,15 @@ public function updateemployeedetails(Request $request,$id)
         $success=$rarefile->move($raupload,$uplogoimg);
         $employeedocument->idproof = $uplogoimg;
         }
+        $rarefile = $request->file('resignation');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/resignation";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->resignation = $uplogoimg;
+        }
         $employeedocument->save();
         Session::flash('message','Updated Employee successfully');
         return redirect('hrmain/employeelist');

@@ -21,6 +21,7 @@ class CreateEmployeedocumentsTable extends Migration
             $table->string('joiningletter',1000)->nullable();
             $table->string('agreementpaper',1000)->nullable();
             $table->string('idproof',1000)->nullable();
+            $table->string('resignation',1000)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

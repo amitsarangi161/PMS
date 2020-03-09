@@ -161,7 +161,7 @@
               <small class="label status bg-green" onclick="employeestatus('{{$employeedetail->id}}','{{$employeedetail->status}}','{{$employeedetail->employeename}}');">{{$employeedetail->status}}</small>
               @endif
             </td>
-            <td><a href="/editemployeedetails/{{$employeedetail->id}}" onclick="return confirm('are you sure to edit employee ??')" ><button class="btn btn-primary btn-flat">Edit</button></a></td>
+            <td><a href="/hrmain/editemployeedetails/{{$employeedetail->id}}" onclick="return confirm('are you sure to edit employee ??')" ><button class="btn btn-primary btn-flat">Edit</button></a></td>
           </tr>
           @endforeach
         </tbody>
