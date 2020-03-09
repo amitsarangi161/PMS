@@ -200,7 +200,7 @@
 
 	                </label>
 	                <div class="col-sm-7">
-	                  <input type="text" class="form-control" name="paperfee" placeholder="Security Money Period" >
+	                  <input type="text" class="form-control" name="papercost" placeholder="Security Money Period" >
 	                  <b style="color: red">Non Refundable</b>
 	                </div>
                  </div>

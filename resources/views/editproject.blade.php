@@ -112,7 +112,7 @@
 
 	                </label>
 	                <div class="col-sm-7">
-	                  <input type="text" value="{{$project->papercost}}" class="form-control" name="paperfee" placeholder="Paper Cost" >
+	                  <input type="text" value="{{$project->papercost}}" class="form-control" name="papercost" placeholder="Paper Cost" >
 	                  <b style="color: red">Non Refundable</b>
 	                </div>
                  </div>
@@ -123,10 +123,10 @@
              	<div class="col-md-6">
 	        	 <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	PRIORITY<span style="color: red"> *</span>
+	                  	PRIORITY
 	                </label>
 	                <div class="col-sm-7">
-				      <select name="priority" class="form-control" required="">
+				      <select name="priority" class="form-control">
 						<option value="">SELECT</option>
 						<option value="NORMAL" {{ ( $project->priority == "NORMAL") ? 'selected' : '' }}>NORMAL</option>
 

@@ -38,7 +38,7 @@
               </ul>
 
               <a href="#" class="btn btn-primary btn-block"><b>{{$project->status}}</b></a>
-              <a href="/editproject/{{$project->id}}" target="_blank" class="btn btn-info btn-block"><b>EDIT</b></a>
+              <a href="/projects/editproject/{{$project->id}}" target="_blank" class="btn btn-info btn-block"><b>EDIT</b></a>
             </div>
             <!-- /.box-body -->
           </div>
@@ -272,17 +272,186 @@
                   <div class="panel-body">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <label for="exampleInputEmail1">CLIENT NAME</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->clientname}}" placeholder="Enter email">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <label for="exampleInputEmail1">DISTRICT NAME</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->districtname}}" placeholder="Enter email">
                       </div>
                     </div>
                   </div>
+                  <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">DIVISION NAME</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->divisionname}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">PROJECT NAME</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->projectname}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">PROJECT COST</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->cost}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">PRIORITY</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->priority}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">PAPER COST</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->papercost}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">LOA NUMBER</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->loano}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">AGREEMENT NUMBER</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->agreementno}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">DATE OF COMMENCEMENT </label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->startdate}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                   <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">DATE OF COMPLETION</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->enddate}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">ISD DATE </label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->isddate}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                   <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">ISD VALID UPTO</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->isdvalidupto}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">ISD AMOUNT</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->isdamount}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                    <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">EMD DATE</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->emddate}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">EMD VALID UPTO </label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->emdvalidupto}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">EMD AMOUNT</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->emdamount}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">APS DATE</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->apsdate}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">APS VALID UPTO</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->apsvalidupto}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">APS AMOUNT</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->apsamount}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">BG DATE</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->bgdate}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">BG VALID UPTO</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->bgvalidupto}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">BG AMOUNT</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->bgamount}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">DD DATE</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->dddate}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">DD VALID UPTO</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->ddvalidupto}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">DD AMOUNT</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"value="{{$project->ddamount}}" placeholder="Enter email">
+                      </div>
+                    </div>
+                  </div>
+
 
 
                </div>
