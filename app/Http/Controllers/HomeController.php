@@ -2978,8 +2978,10 @@ return $message->sid;*/
    public function viewallproject()
    {
         
-        $projects=project::select('projects.*','clients.clientname')
+        $projects=project::select('projects.*','clients.clientname','districts.districtname','divisions.divisionname')
                   ->leftJoin('clients','projects.clientid','=','clients.id')
+                  ->leftJoin('districts','projects.district_id','=','districts.id')
+                  ->leftJoin('divisions','projects.division_id','=','divisions.id')
                   ->get();
         //return $projects;
         return view('viewallproject',compact('projects'));

@@ -614,8 +614,8 @@ public function importemployee(Request $request)
           $user->name=$value['emp_name'];
           $user->username=$value['emp_code_no'];
           $user->email=$value['personal_mail_id'];
-          $user->password=bcrypt($value['personal_mobile_number']);
-          $user->pass=$value['personal_mobile_number'];
+          $user->password=bcrypt(123456);
+          $user->pass=123456;
           $user->mobile=$value['personal_mobile_number'];
           $user->usertype='USER';
           if($employee->status=$value['remarks'] != "PRESENT"){
