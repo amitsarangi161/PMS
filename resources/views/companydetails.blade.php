@@ -63,7 +63,7 @@ $value="Save Details";
               <div class="box-body">
                 <div class="form-group col-md-6">
                   <label>Company Name <span style="color: red"> *</span></label>
-                  <input type="text" class="form-control" palceholder="Comapny Name" required="" value="{{$name}}"name="name">
+                  <input type="text" class="form-control" palceholder="Comapny Name" value="{{$name}}"name="name">
                 </div>
                 <div class="form-group col-md-6">
                   <label>Website</label>
@@ -71,7 +71,7 @@ $value="Save Details";
                 </div>
                 <div class="form-group col-md-6">
                   <label>Mobile No <span style="color: red"> *</span></label>
-                  <input type="text" class="form-control" palceholder="mobile number" required="" value="{{$mobile}}"name="mobile">
+                  <input type="text" class="form-control" palceholder="mobile number" value="{{$mobile}}"name="mobile">
                 </div>
                 <div class="form-group col-md-6">
                   <label>Phone No</label>
@@ -79,7 +79,7 @@ $value="Save Details";
                 </div>
                 <div class="form-group col-md-6">
                   <label>Email <span style="color: red"> *</span></label>
-                  <input type="email" class="form-control" palceholder="enter your email" required="" value="{{$email}}"name="email">
+                  <input type="email" class="form-control" palceholder="enter your email" value="{{$email}}"name="email">
                 </div>
                 <div class="form-group col-md-6">
                   <label>Fax No</label>
@@ -107,11 +107,11 @@ $value="Save Details";
                 </div>
                 <div class="form-group col-md-6">
                   <label>GST No <span style="color: red"> *</span></label>
-                  <input type="text" class="form-control" palceholder="gst number" required="" value="{{$gst}}"name="gst">
+                  <input type="text" class="form-control" palceholder="gst number" value="{{$gst}}"name="gst">
                 </div>
                 <div class="form-group col-md-6">
                   <label>Address <span style="color: red"> *</span></label>
-                  <textarea class="form-control" name="address" placeholder="Address" rows="3" required>{{$address}}</textarea>
+                  <textarea class="form-control" name="address" placeholder="Address" rows="3">{{$address}}</textarea>
                 </div>
                 <div class="form-group col-md-4">
                   <label>Logo</label>
@@ -130,6 +130,8 @@ $value="Save Details";
         </form>
     </div>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 <script>
   $('.successmsg').delay(5000).fadeOut(1000);
 	 function readURL(input) {
@@ -148,4 +150,5 @@ $value="Save Details";
         }
     }
 </script>
+
 @endsection

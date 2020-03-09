@@ -7,6 +7,7 @@ if($editemployeedocument){
   $agreementpaper=$editemployeedocument->agreementpaper;
   $idproof=$editemployeedocument->idproof;
   $resume=$editemployeedocument->resume;
+  $resignation=$editemployeedocument->resignation;
   
 }
 else{
@@ -15,6 +16,7 @@ else{
   $agreementpaper='';
   $idproof='';
   $resume='';
+  $resignation='';
 }
 @endphp
 
@@ -33,44 +35,44 @@ else{
               <div class="box-body">
                 <div class="form-horizontal">
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Emp. Name</label>
+                  <label  class=" col-sm-3">Emp. Name</label>
                   <div class="col-sm-9">
                     <input type="text" name="employeename"class="form-control" id="inputEmail3" placeholder="Employee Name" value="{{$editemployeedetail->employeename}}">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Employee Code</label>
+                  <label  class=" col-sm-3">Employee Code</label>
                   <div class="col-sm-9">
                     <input type="text" name="empcodeno"class="form-control" id="inputEmail3" placeholder="Employee Code" value="{{$editemployeedetail->empcodeno}}">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Qualification</label>
+                  <label  class=" col-sm-3">Qualification</label>
                   <div class="col-sm-9">
                     <input type="text" name="qualification"class="form-control" id="inputEmail3" value="{{$editemployeedetail->qualification}}" placeholder="Qualification Name">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Experence In Company</label>
+                  <label  class=" col-sm-3">Experence In Company</label>
                   <div class="col-sm-9">
                     <input type="text" name="experencecomp"class="form-control" id="inputEmail3" value="{{$editemployeedetail->experencecomp}}" placeholder="Experence In Which Company">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">DOB</label>
+                  <label  class=" col-sm-3">DOB</label>
 
                   <div class="col-sm-9">
                     <input type="text" name="dob" class="form-control datepicker" value="{{$editemployeedetail->dob}}" placeholder="Date of Birth">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Email</label>
+                  <label  class=" col-sm-3">Email</label>
                   <div class="col-sm-9">
                     <input type="email" name="email"class="form-control" id="inputEmail3" value="{{$editemployeedetail->email}}" placeholder="Email">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Gender</label>
+                  <label  class=" col-sm-3">Gender</label>
 
                   <div class="col-sm-9">
                    <label class="radio-inline">
@@ -86,14 +88,14 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Personal Mobile No.</label>
+                  <label  class=" col-sm-3">Personal Mobile No.</label>
 
                   <div class="col-sm-9">
                     <input type="text" name="phone"class="form-control" id="inputEmail3" value="{{$editemployeedetail->phone}}" placeholder="Phone Number">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Alternative No.</label>
+                  <label  class=" col-sm-3">Alternative No.</label>
 
                   <div class="col-sm-9">
                     <input type="text" name="alternativephonenumber"class="form-control" id="inputEmail3" value="{{$editemployeedetail->alternativephonenumber}}" placeholder="Alternative Phone Number">
@@ -101,7 +103,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Adhar No.</label>
+                  <label  class=" col-sm-3">Adhar No.</label>
 
                   <div class="col-sm-9">
                     <input type="text" name="adharno"class="form-control" id="inputEmail3" value="{{$editemployeedetail->adharno}}" placeholder="Adhar Number">
@@ -109,7 +111,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Blood Group</label>
+                  <label  class=" col-sm-3">Blood Group</label>
 
                   <div class="col-sm-9">
                     <input type="text" name="bloodgroup"class="form-control" id="inputEmail3" value="{{$editemployeedetail->bloodgroup}}" placeholder="Blood Group">
@@ -117,7 +119,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">
+                  <label  class=" col-sm-3">
                   Father's Name</label>
 
                   <div class="col-sm-9">
@@ -125,7 +127,7 @@ else{
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">
+                  <label  class=" col-sm-3">
                   Marital Status</label>
 
                   <div class="col-sm-9">
@@ -134,7 +136,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Present Address</label>
+                  <label  class=" col-sm-3">Present Address</label>
 
                   <div class="col-sm-9">
                     <textarea class="form-control" id="presentaddress" name="presentaddress" autocomplete="off" type="text" placeholder="Present Address" rows="5">{{$editemployeedetail->presentaddress}}</textarea>
@@ -142,7 +144,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Permanent Address</label>
+                  <label  class=" col-sm-3">Permanent Address</label>
 
                   <div class="col-sm-9">
                     <textarea class="form-control" id="permanentaddress" name="permanentaddress" autocomplete="off" type="text"  placeholder="Permanent Address" rows="5">{{$editemployeedetail->permanentaddress}}</textarea>
@@ -170,35 +172,35 @@ else{
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Designation</label>
+                  <label  class=" col-sm-3">Designation</label>
 
                   <div class="col-sm-9">
                     <input type="text" name="designation"class="form-control" value="{{$editcompanydetail->designation}}" placeholder="Date of Confirmation">
                   </div>
                 </div>
                <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Date of joining</label>
+                  <label  class=" col-sm-3">Date of joining</label>
 
                   <div class="col-sm-9">
                     <input type="text" name="dateofjoining"class="form-control datepicker" value="{{$editcompanydetail->dateofjoining}}" placeholder="Date of Joining">
                   </div>
                </div>
                <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Date of Confirmation</label>
+                  <label  class=" col-sm-3">Date of Confirmation</label>
 
                   <div class="col-sm-9">
                     <input type="text" name="dateofconfirmation"class="form-control datepicker" value="{{$editcompanydetail->dateofconfirmation}}" placeholder="Date of Confirmation">
                   </div>
                </div>
                <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Joining Salary</label>
+                  <label  class=" col-sm-3">Joining Salary</label>
 
                   <div class="col-sm-9">
                     <input type="text" name="joinsalary"class="form-control" value="{{$editcompanydetail->joinsalary}}" placeholder="Joining Salary">
                   </div>
                </div>
                <div class="form-group">
-                  <label for="inputEmail3" class=" col-sm-3">Total Year Experience</label>
+                  <label  class=" col-sm-3">Total Year Experience</label>
 
                   <div class="col-sm-9">
                     <input type="text" name="totalyrexprnc"class="form-control" value="{{$editcompanydetail->totalyrexprnc}}" placeholder="Joining Salary">
@@ -256,7 +258,7 @@ else{
                             <div class="box-body">
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3">Ac. Name</label>
+                  <label  class="col-sm-3">Ac. Name</label>
 
                   <div class="col-sm-9">
                     <input type="text" value="{{$editemployeebankaccount->accountholdername}}" name="accountholdername"class="form-control" id="inputEmail3" placeholder="Account Holder Name">
@@ -264,7 +266,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3">Salary Ac. No.</label>
+                  <label  class="col-sm-3">Salary Ac. No.</label>
 
                   <div class="col-sm-9">
                     <input type="text" value="{{$editemployeebankaccount->accountnumber}}" name="accountnumber"class="form-control" id="inputEmail3" placeholder="Account Number">
@@ -272,7 +274,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3">Bank Name</label>
+                  <label  class="col-sm-3">Bank Name</label>
 
                   <div class="col-sm-9">
                     <input type="text" value="{{$editemployeebankaccount->bankname}}" name="bankname"class="form-control" id="inputEmail3" placeholder="Bank Name">
@@ -280,7 +282,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3">Ifsc</label>
+                  <label  class="col-sm-3">Ifsc</label>
 
                   <div class="col-sm-9">
                     <input type="text" value="{{$editemployeebankaccount->ifsc}}" name="ifsc"class="form-control" id="inputEmail3" placeholder="Ifsc Number">
@@ -288,7 +290,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3">Pan No.</label>
+                  <label  class="col-sm-3">Pan No.</label>
 
                   <div class="col-sm-9">
                     <input type="text" value="{{$editemployeebankaccount->pan}}" name="pan"class="form-control" id="inputEmail3" placeholder="Pan Number">
@@ -296,14 +298,14 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3">Branch</label>
+                  <label  class="col-sm-3">Branch</label>
 
                   <div class="col-sm-9">
                     <input type="text" value="{{$editemployeebankaccount->branch}}" name="branch"class="form-control" id="inputEmail3" placeholder="Branch">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3">PF Account</label>
+                  <label  class="col-sm-3">PF Account</label>
 
                   <div class="col-sm-9">
                     <input type="text" value="{{$editemployeebankaccount->pfaccount}}" name="pfaccount"class="form-control" id="inputEmail3" placeholder="PF Number">
@@ -327,7 +329,7 @@ else{
               <div class="box-body">
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2">Resume</label>
+                  <label  class="col-sm-2">Resume</label>
 
                   <div class="col-sm-6">
                     <input name="resume" onchange="readURL1(this);" type="file">
@@ -338,7 +340,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2">Offer Letter</label>
+                  <label  class="col-sm-2">Offer Letter</label>
                   <div class="col-sm-6">
                     <input name="offerletter" onchange="readURL2(this);" type="file">
                   </div>
@@ -348,7 +350,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2">Joining Letter</label>
+                  <label  class="col-sm-2">Joining Letter</label>
                   <div class="col-sm-6">
                     <input name="joiningletter" onchange="readURL3(this);" type="file">
                   </div>
@@ -358,7 +360,7 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2">Agreement Paper</label>
+                  <label  class="col-sm-2">Agreement Paper</label>
                   <div class="col-sm-6">
                     <input name="agreementpaper" onchange="readURL4(this);" type="file">
                   </div>
@@ -368,12 +370,21 @@ else{
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2">ID Proof</label>
+                  <label  class="col-sm-2">ID Proof</label>
                   <div class="col-sm-6">
                     <input name="idproof" onchange="readURL5(this);" type="file">
                   </div>
                   <div class="col-sm-3">
                   <img id="imgshow5" src="/image/idproof/{{$idproof}}" style="height: 70px;width: 70px;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label  class="col-sm-2">Resignation Letter</label>
+                  <div class="col-sm-6">
+                    <input name="resignation" onchange="readURL6(this);" type="file">
+                  </div>
+                  <div class="col-sm-3">
+                  <img id="imgshow6" src="/image/resignation/{{$resignation}}" style="height: 70px;width: 70px;">
                   </div>
                 </div>
 
@@ -471,6 +482,23 @@ else{
               
             reader.onload = function (e) {
                 $('#imgshow5')
+                    .attr('src', e.target.result)
+                    .width(70)
+                    .height(70);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+    function readURL6(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#imgshow6')
                     .attr('src', e.target.result)
                     .width(70)
                     .height(70);        

@@ -513,6 +513,15 @@ public function updateemployeedetails(Request $request,$id)
         $success=$rarefile->move($raupload,$uplogoimg);
         $employeedocument->idproof = $uplogoimg;
         }
+        $rarefile = $request->file('resignation');
+        if($rarefile!='')
+        {
+        $u=time().uniqid(rand());
+        $raupload ="image/resignation";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $employeedocument->resignation = $uplogoimg;
+        }
         $employeedocument->save();
         Session::flash('message','Updated Employee successfully');
         return redirect('hrmain/employeelist');
@@ -605,8 +614,8 @@ public function importemployee(Request $request)
           $user->name=$value['emp_name'];
           $user->username=$value['emp_code_no'];
           $user->email=$value['personal_mail_id'];
-          $user->password=bcrypt($value['personal_mobile_number']);
-          $user->pass=$value['personal_mobile_number'];
+          $user->password=bcrypt(123456);
+          $user->pass=123456;
           $user->mobile=$value['personal_mobile_number'];
           $user->usertype='USER';
           if($employee->status=$value['remarks'] != "PRESENT"){

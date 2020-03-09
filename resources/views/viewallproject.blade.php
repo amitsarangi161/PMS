@@ -13,6 +13,9 @@
 @if(Session::has('message'))
 <p class="alert alert-success">{{ Session::get('message') }}</p>
 @endif
+@if(Session::has('msg'))
+<p class="alert alert-success">{{ Session::get('msg') }}</p>
+@endif
 @if(Session::has('error'))
 <p class="alert alert-danger">{{ Session::get('error') }}</p>
 @endif
@@ -31,7 +34,7 @@
   <div class="box-header">
     <div class="row">
         <p>
-          <a href="/projects/addproject" class="btn btn-success btn-flat margin"><i class="fa fa-plus"></i> Add Project
+          <a href="/projects/addproject" class="btn btn-success btn-flat margin"><i class="fa fa-plus"></i> Add New Project
           </a>
             <span class="pull-right"><button type="submit" class="btn bg-navy btn-flat margin" data-toggle="modal" data-target="#importproject" onclick="importproject();"><i class="fa fa-file-excel-o"></i> Import Project</button>
                 <a href="/Project Import Sample.xlsx" download="/Project Import Sample.xlsx" class="btn bg-orange btn-flat margin"><i class="fa fa-download"></i> Sample</a>
@@ -42,19 +45,38 @@
   </div>
 <div class="box-body">
     <div style="overflow-x:auto;">
-<table class="table table-responsive table-hover table-bordered table-striped datatable">
+<table class="table table-responsive table-hover table-bordered table-striped datatablescrollexport">
     <thead>
         <tr class="bg-navy" style="font-size: 10px;">
             <th>ID</th>
             <th>FOR CLIENT</th>
-            <th>CLIENT NAME</th>
+            <th>DISTRICT</th>
+            <th>DIVISION</th>
+            <th>LOA NO</th>
+            <th>AGREEMENT NO</th>
             <th>PROJECT NAME</th>
+            <th>PAPER COST</th>
             <th>DATE OF COMMENCEMENT</th>
             <th>END DATE</th>
+           
             <th>ESTIMATED COST</th>
             <th>PRIORITY</th>
+            <th>ISE DATE</th>
+            <th>ISE VALID UPTO</th>
+            <th>ISE AMOUNT</th>
+            <th>EMD DATE</th>
+            <th>EMD VALID UPTO</th>
+            <th>EMD AMOUNT</th>
+            <th>APS DATE</th>
+            <th>APS VALID UPTO</th>
+            <th>APS AMOUNT</th>
+            <th>BG DATE</th>
+            <th>BG VALID UPTO</th>
+            <th>BG AMOUNT</th>
+            <th>DD DATE</th>
+            <th>DD VALID UPTO</th>
+            <th>DD AMOUNT</th>
             <th>STATUS</th>
-            <th>DAY REMAIN FROM TODAY</th>
             <th>VIEW</th>
             <th>EDIT</th>
             <!-- <th>DELETE</th> -->
@@ -62,55 +84,46 @@
     </thead>
     <tbody>
         @foreach($projects as $project)
-           @php
-               $date = Carbon\Carbon::parse($project->enddate. '11:59:59');
-               $now = Carbon\Carbon::now();
-
-               $diff = $date->diffInDays($now);
-               if($project->status=='COMPLETED')
-               {
-               	   $txtcolor='label bg-green';
-                $rowcolor='#0cd50c';
-               }
-               elseif($diff<=5 && $project->status!='COMPLETED')
-               {
-                $txtcolor='label bg-red';
-                $rowcolor='#f9191999';
-               }
-               else
-               {
-               	  $txtcolor='label bg-blue';
-               	  $rowcolor='#fff';
-               }
-
-            @endphp
-        <tr style="background-color: {{$rowcolor}};font-size: 12px;">
+         
+        <tr>
             <td>{{$project->id}}</td>
             <td>{{$project->clientname}}</td>
-            <td>{{$project->clientname}}</td>
-            <td><p class="b" title="{{$project->projectname}}">{{$project->projectname}}</p></td>
+            <td>{{$project->districtname}}</td>
+            <td>{{$project->divisionname}}</td>
+            <td>{{$project->loano}}</td>
+            <td>{{$project->agreementno}}</td>
+             <td><p class="b" title="{{$project->projectname}}">{{$project->projectname}}</p></td>
+            <td>{{$project->papercost}}</td>
             <td>{{$project->startdate}}</td>
             <td>{{$project->enddate}}</td>
+            
             <td>{{$project->cost}}</td>
             <td>{{$project->priority}}</td>
-            @if($project->status!='COMPLETED')
+           
+             
+            <td>{{$project->isddate}}</td>
+            <td>{{$project->isdvalidupto}}</td>
+            <td>{{$project->isdamount}}</td>
+            <td>{{$project->emddate}}</td>
+            <td>{{$project->emdvalidupto}}</td>
+            <td>{{$project->emdamount}}</td>
+            <td>{{$project->apsdate}}</td>
+            <td>{{$project->apsvalidupto}}</td>
+            <td>{{$project->apsamount}}</td>
+            <td>{{$project->bgdate}}</td>
+            <td>{{$project->bgvalidupto}}</td>
+            <td>{{$project->bgamount}}</td>
+            <td>{{$project->dddate}}</td>
+            <td>{{$project->ddvalidupto}}</td>
+            <td>{{$project->ddamount}}</td>
+             @if($project->status!='COMPLETED')
             <td><span class="label label-success" ondblclick="changestatus('{{$project->id}}','{{$project->projectname}}');" title="Double click to change the status">{{$project->status}}</span></td>
             @else
             <td><span class="label label-danger" ondblclick="changestatus('{{$project->id}}','{{$project->projectname}}');" title="Double click to change the status">{{$project->status}}</span></td>
-
             @endif
-
-             @if($date<$now)
-            <td><small class="{{$txtcolor}}">-{{$diff}}</small></td>
-            @else
-              <td><small class="{{$txtcolor}}">{{$diff}}</small></td>
-
-            @endif
-
             <td>
-             <a href="/projects/adminprojectdetails/{{$project->id}}" class="btn btn-primary">VIEW DETAILS</a>
+            <a href="/projects/adminprojectdetails/{{$project->id}}" class="btn btn-primary">VIEW DETAILS</a>
            </td>
-           
             <td><a href="/projects/editproject/{{$project->id}}" class="btn btn-primary">EDIT</a></td>
         </tr>
 
