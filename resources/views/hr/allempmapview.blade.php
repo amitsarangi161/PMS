@@ -242,13 +242,12 @@ var bindInfoWindow = function(marker, map, infowindow, html) {
   } 
 
 
-var timeout = setInterval(reloadmap, 3000); 
+var timeout = setInterval(reloadmap, 10000); 
 
 function reloadmap () {
- /*     for(i=0; i<markers.length; i++){
+   for(i=0; i<markers.length; i++){
         markers[i].setMap(null);
     }
-    console.log(markers)*/
    
   fetchPlaces();
 }

@@ -60,11 +60,42 @@ use App\testimage;
 use App\companysetup;
 use App\district;
 use App\division;
+use App\assignuser;
 use DataTables;
 use Excel;
 //use Barryvdh\DomPDF\Facade as PDF;
 class HomeController extends Controller
 {
+public function ajaxremoveassignuser(Request $request){
+  $assignuser=assignuser::find($request->id);
+  $assignuser->delete();
+  return response()->json('USER REMOVE');
+}
+public function ajaxassignuserlist(Request $request){
+  $users=assignuser::select('assignusers.*','projects.projectname','users.name')
+  ->where('project_id',$request->projectid)
+  ->leftJoin('projects','assignusers.project_id','=','projects.id')
+  ->leftJoin('users','assignusers.employee_id','=','users.employee_id')
+  ->get();
+  return response()->json($users);
+}
+public function ajaxassignprojecttouser(Request $request){
+  $count=count($request->empid);
+for($i=0;$i<$count;$i++){
+  
+    $check=assignuser::where('employee_id',$request->empid[$i])
+        ->where('project_id',$request->projectid)
+        ->count();
+  if($check==0 && $request->empid[$i]!=''){
+    $assignuser=new assignuser();
+    $assignuser->project_id=$request->projectid;
+    $assignuser->employee_id=$request->empid[$i];
+    $assignuser->save();
+    }
+}
+ return response()->json(1);
+}
+
 public function resetpassword(Request $request){
   
   $userid=auth()->user()->id;
@@ -2975,6 +3006,15 @@ return $message->sid;*/
    
    }
 
+/*   public function assignuserforproject(Request $request)
+   {
+    $assignuser=new assignuser();
+    $assignuser->project_id=$request->project_id;
+    $assignuser->employee_id=$request->employee_id;
+    $assignuser->save();
+    return back();
+
+   }*/
    public function viewallproject()
    {
         
@@ -3343,7 +3383,7 @@ return $message->sid;*/
 
    public function adminprojectdetails($id)
    {
-
+    $users=User::all();
     $project=project::select('projects.*','clients.orgname','clients.clientname','districts.districtname','divisions.divisionname')
                  ->leftJoin('clients','projects.clientid','=','clients.id')
                  ->leftJoin('districts','projects.district_id','=','districts.id')
@@ -3356,7 +3396,7 @@ return $message->sid;*/
                      ->where('projectid',$id)
                      ->orderBy('projectactivities.position','ASC')
                      ->get();
-    return view('adminprojectdetails',compact('project','activities'));
+    return view('adminprojectdetails',compact('project','activities','users'));
    }
 
 
@@ -3800,7 +3840,7 @@ public function adminviewcomplaintdetails($id)
         $division->client_id=$request->client;
         $division->district_id=$request->district;
         $division->divisionname=$request->divisionname[$i];
-      $division->save();
+        $division->save();
       }
     }
    
