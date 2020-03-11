@@ -461,7 +461,7 @@
                     </div>
                   </div>
                </div>
-              </div>
+              
 
               <div class="tab-pane" id="assignproject">
                 <form class="form-horizontal" method="post" action="/assignuserforproject">
@@ -504,6 +504,7 @@
                </div>
                </form>
                   </div>
+              </div>
               </div>
             </div>
           </div>
