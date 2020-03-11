@@ -2752,17 +2752,6 @@ return $message->sid;*/
        $user->password= bcrypt($request->userpassword);
        $user->pass=$request->userpassword;
        $user->save();
-        $email=$user->email;
-        $uname=$user->username;
-        $password=$user->pass;
-        $name=$user->name;
-       $mail= Mail::send('mail.mail', compact('email','uname','password','name'), function($message) use($email) {
-     $message->to($email, 'Primary Client');
-     $message->cc("info@stepltest.com",'Primary Client');
-     $message->subject('Registration Confirmation');
-         $message->from('subudhitechnoengineers@gmail.com','Subudhi Technoengineers');
-        
-      });
     Session::flash('msg','User Added Successfully');
          return back();
    }
