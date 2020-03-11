@@ -75,7 +75,7 @@ public function ajaxassignuserlist(Request $request){
   $users=assignuser::select('assignusers.*','projects.projectname','users.name')
   ->where('project_id',$request->projectid)
   ->leftJoin('projects','assignusers.project_id','=','projects.id')
-  ->leftJoin('users','assignusers.employee_id','=','users.employee_id')
+  ->leftJoin('users','assignusers.employee_id','=','users.id')
   ->get();
   return response()->json($users);
 }
@@ -3014,6 +3014,22 @@ return $message->sid;*/
                   ->get();
         //return $projects;
         return view('viewallproject',compact('projects'));
+   }
+   public function viewallassigneduserprojects()
+   {
+        $ids=assignuser::select('assignusers.project_id')
+              ->where('employee_id',Auth::id())
+              ->get();
+        //return $ids;
+        $projects=project::select('projects.*','clients.clientname','districts.districtname','divisions.divisionname')
+                  ->leftJoin('clients','projects.clientid','=','clients.id')
+                  ->leftJoin('districts','projects.district_id','=','districts.id')
+                  ->leftJoin('divisions','projects.division_id','=','divisions.id')
+                  ->whereIN('projects.id',$ids)
+                  ->paginate(10);
+        //return $projects;
+        
+        return view('viewallassigneduserprojects',compact('projects'));
    }
 
 

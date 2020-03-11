@@ -249,6 +249,21 @@
         </li>
         @endif
         @if(Auth::user()->usertype=='USER')
+        <li class="{{ Request::is('userprojects*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i> <span>MY PROJECTS</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ Request::is('userprojects/viewallassigneduserprojects') ? 'active' : '' }}"><a href="/userprojects/viewallassigneduserprojects"><i class="fa fa-circle-o text-red"></i>VIEW USER ASSIGNED PROJECTS
+              
+            </a></li>
+             
+        
+          </ul>
+        </li>
         <li class="{{ Request::is('useraccounts*') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-user"></i> <span>ACCOUNTS</span>
