@@ -557,6 +557,8 @@ public function importemployee(Request $request)
       //return $data;
       if($data->count()>0){
         foreach($data as $kay=>$value){
+          if($value['emp_code_no']!= ''){
+            
           $check=employeedetail::where('empcodeno',$value['emp_code_no'])
           ->count();
           //return $check;
@@ -618,8 +620,10 @@ public function importemployee(Request $request)
           $user->pass=123456;
           $user->mobile=$value['personal_mobile_number'];
           $user->usertype='USER';
-          if($employee->status=$value['remarks'] != "PRESENT"){
+          if($employee->status=$value['remarks'] != ""){
               $user->active=0;
+          }else{
+            $user->active=1;
           }
           $user->save();
           }
@@ -630,6 +634,7 @@ public function importemployee(Request $request)
         else{
       Session::flash('error', 'Duplicate Entery');
     }
+  }
       }
       
       }

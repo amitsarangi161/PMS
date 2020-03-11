@@ -4275,16 +4275,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
       //return $data;
       $custerr=array();
         foreach($data as $kay=>$value){
-          if($value['pan_no']!='' && $value['gstin']){
-             $check=vendor::where('panno',$value['pan_no'])
-                      ->orWhere('gstno',$value['gstin'])
-          ->count();
-          }
-       else{
-        $check=0;
-       }
-
-         if($check==0){
+        if($value['party_name']!=''){
          $vendor=new vendor();
          $vendor->vendorname=$value['party_name'];
          $vendor->mobile=$value['mob'];
@@ -4301,12 +4292,10 @@ public function approvedebitvoucheradmin(Request $request,$id)
          $vendor->ifsccode=$value['ifsc_code'];
          $vendor->save();
          Session::flash('status', 'Upload successful!');
-         }
-         else{
+
+        }
+         
         
-          $custerr[]=$value;
-          Session::flash('error', 'duplicate vendor entry!');
-         }
         }
     //return $custerr;
     return back();

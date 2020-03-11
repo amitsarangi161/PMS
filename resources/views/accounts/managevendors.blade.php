@@ -32,7 +32,7 @@
   </div>
 <div class="box-body">
 <div class="table-responsive">
-<table class="table  table-hover table-bordered table-striped datatable">
+<table class="table  table-hover table-bordered table-striped datatable1">
        <thead class="bg-navy">
        	   <tr>
        	   	<th>Sl. No</th>

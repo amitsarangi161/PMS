@@ -174,7 +174,7 @@
       </div>
       <div class="modal-body">
           {{ csrf_field() }}
-          <input type="text" name="id" id="id">
+          <input type="hidden" name="id" id="id">
           <div class="form-group">
             <label>Change  Status</label>
             <select class="form-control" name="status">
