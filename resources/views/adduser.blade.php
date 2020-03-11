@@ -70,7 +70,7 @@
 <div class="box">
 <div class="box-body">
   <div style="overflow-x:auto;">
-<table class="table table-responsive table-hover table-bordered table-striped datatable" width="100%">
+<table class="table table-responsive table-hover table-bordered table-striped datatable1" width="100%">
     <thead>
         <tr class="bg-navy" style="font-size: 10px;">
             <th>ID</th>

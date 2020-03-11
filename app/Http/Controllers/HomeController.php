@@ -2957,6 +2957,22 @@ return $message->sid;*/
         //return $projects;
         return view('viewallproject',compact('projects'));
    }
+   public function viewallassigneduserprojects()
+   {
+        $ids=assignuser::select('assignusers.project_id')
+              ->where('employee_id',Auth::id())
+              ->get();
+        //return $ids;
+        $projects=project::select('projects.*','clients.clientname','districts.districtname','divisions.divisionname')
+                  ->leftJoin('clients','projects.clientid','=','clients.id')
+                  ->leftJoin('districts','projects.district_id','=','districts.id')
+                  ->leftJoin('divisions','projects.division_id','=','divisions.id')
+                  ->whereIN('projects.id',$ids)
+                  ->paginate(10);
+        //return $projects;
+        
+        return view('viewallassigneduserprojects',compact('projects'));
+   }
 
 
    public function editproject($id){

@@ -54,12 +54,12 @@
           <tr>
             <td><strong>EMAIL</strong></td>
             <td><input type="email" name="email" class="form-control" placeholder="Enter Email Here"></td>
-            <td><strong>GSTN</strong><span style="color: red"> *</span></td>
-           <td><input type="text" name="gstn" class="form-control" placeholder="Enter Client GST No" required=""></td>          
+            <td><strong>GSTN</strong></td>
+           <td><input type="text" name="gstn" class="form-control" placeholder="Enter Client GST No"></td>          
         </tr>
         <tr>
-          <td><strong>PAN NO</strong><span style="color: red"> *</span></td>
-            <td><input type="text" name="panno" class="form-control" placeholder="Enter Client PAN No" required=""></td>
+          <td><strong>PAN NO</strong></td>
+            <td><input type="text" name="panno" class="form-control" placeholder="Enter Client PAN No"></td>
           <td><strong>TAN NUMBER</strong></td>
          <td><input type="text" name="tanno" class="form-control" placeholder="Enter Tan Number"></td>
         </tr>
