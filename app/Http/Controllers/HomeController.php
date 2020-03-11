@@ -2897,7 +2897,7 @@ return $message->sid;*/
      $project->dddate=$request->dddate;
      $project->ddamount=$request->ddamount;
      $project->ddvalidupto=$request->ddvalidupto;
-     $project->papercost=$request->paperfee;
+     $project->papercost=$request->papercost;
 
      $rarefile = $request->file('emdattach');
         if($rarefile!='')
@@ -2971,7 +2971,7 @@ return $message->sid;*/
       //return$project;
      $project->save();
      Session::flash('msg','Project Saved Successfully');
-     return back();
+     return redirect('/projects/viewallproject');
      
    
    }
@@ -3062,6 +3062,7 @@ return $message->sid;*/
      $project->dddate=$request->dddate;
      $project->ddamount=$request->ddamount;
      $project->ddvalidupto=$request->ddvalidupto;
+     $project->papercost=$request->papercost;
      $rarefile = $request->file('orderform');
 
         if($rarefile!='')
@@ -3353,10 +3354,13 @@ return $message->sid;*/
    public function adminprojectdetails($id)
    {
     $users=User::all();
-    $project=project::select('projects.*','clients.orgname')
+    $project=project::select('projects.*','clients.orgname','clients.clientname','districts.districtname','divisions.divisionname')
                  ->leftJoin('clients','projects.clientid','=','clients.id')
+                 ->leftJoin('districts','projects.district_id','=','districts.id')
+                 ->leftJoin('divisions','projects.division_id','=','divisions.id')
                  ->where('projects.id',$id)
                  ->first();
+    //return $project;
         $activities=projectactivity::select('projectactivities.*','activities.activityname','activities.id as acid')
                     ->leftJoin('activities','projectactivities.activityid','=','activities.id')
                      ->where('projectid',$id)
