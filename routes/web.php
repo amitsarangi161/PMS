@@ -581,6 +581,9 @@ Route::get('/useraccounts/applicationform','HomeController@applicationform');
 Route::post('/resetpassword','HomeController@resetpassword');
 
 Route::post('/assignuserforproject','HomeController@assignuserforproject');
+Route::post('/ajaxassignprojecttouser','HomeController@ajaxassignprojecttouser');
+Route::post('/ajaxassignuserlist','HomeController@ajaxassignuserlist');
+Route::post('/ajaxremoveassignuser','HomeController@ajaxremoveassignuser');
 //-------------END PMS MAIN ROUTE------------//
 
 //------------- PMS ACCOUNT ROUTE------------//
