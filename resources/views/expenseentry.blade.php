@@ -26,9 +26,9 @@
 @endif
 
 <table class="table table-responsive table-hover table-bordered table-striped">
-	<tr class="bg-navy">
-		 <td class="text-center">EXPENSE ENTRY</td>
-	</tr>
+  <tr class="bg-navy">
+     <td class="text-center">EXPENSE ENTRY</td>
+  </tr>
 
 </table>
 <div class="well" style="font-size: 20px;background-color: violet;">
@@ -71,33 +71,33 @@
 </div>
 
 <form action="/saveuserexpenseentry" method="post" enctype="multipart/form-data">
-	{{csrf_field()}}
+  {{csrf_field()}}
 <div class="table-responsive">
-	<table class="table table-responsive table-hover">
+  <table class="table table-responsive table-hover">
    <!--    <tr>
-      	 <td>SELECT EMPLOYEE</td>
-      	 <td>
-      	 	<select class="form-control select2" name="employeeid" required="">
-      	 		<option value="">Select a User</option>
-      	 		@foreach($users as $user)
+         <td>SELECT EMPLOYEE</td>
+         <td>
+          <select class="form-control select2" name="employeeid" required="">
+            <option value="">Select a User</option>
+            @foreach($users as $user)
                <option value="{{$user->id}}">{{$user->name}}</option>
 
-      	 		@endforeach
-      	 		
-      	 	</select>
-      	 </td>
+            @endforeach
+            
+          </select>
+         </td>
       </tr> -->
 
   
 
       <tr>
-      	 <td><strong>SELECT A SITE/PROJECT NAME *</strong></td>
-      	 <td>
-      	 	<select class="form-control select2 calc" id="projectid" onchange="showclient();"  name="projectid" required="">
+         <td><strong>SELECT A SITE/PROJECT NAME *</strong></td>
+         <td>
+          <select class="form-control select2 calc" id="projectid" onchange="showrequistion();"  name="projectid" required="">
 
-      	 		<option value="">select a project</option>
+            <option value="">select a project</option>
 
-      	 	@foreach($projects as $project)
+          @foreach($projects as $project)
 
               @if($project->projectname!='')
              <option value="{{$project->proid}}" title="{{$project->orgname}}">{{$project->projectname}}</option>
@@ -107,34 +107,35 @@
              @endif
 
                  
-      	 	@endforeach 
-      	 	</select>
-      	 </td>
+          @endforeach 
+          </select>
+         </td>
       </tr>
 
 
 
       <tr>
-      	<td><strong>CLIENT NAME *</strong></td>
-      	<td>
-      		<input type="text" class="form-control" name="clientname" id="clientname" readonly="">
-      	</td>
+        <td><strong>SELECT A REQUISITION <span style="color:red;">*</span></strong></td>
+        <td>
+          <select class="form-control select2 calc" id="requistionno" onchange="showclient();"  name="projectid" required="">
+          </select>
+        </td>
       </tr>
     
 
        <tr>
-      	<td><strong>EXPENSE HEAD *</strong></td>
-      	<td>
-      		<select class="form-control select2 calc" name="expenseheadid" onchange="getparticulars();" id="expenseheadid" required="">
-      			<option value="">Select a Expense Head</option>
+        <td><strong>EXPENSE HEAD *</strong></td>
+        <td>
+          <select class="form-control select2 calc" name="expenseheadid" onchange="getparticulars();" id="expenseheadid" required="">
+            <option value="">Select a Expense Head</option>
 
-      			@foreach($expenseheads as $expensehead)
+            @foreach($expenseheads as $expensehead)
                  <option value="{{$expensehead->id}}">{{$expensehead->expenseheadname}}</option>
 
-      			@endforeach
-      			
-      		</select>
-      	</td>
+            @endforeach
+            
+          </select>
+        </td>
       </tr>
       <tr>
         <td><strong>SELECT A TYPE OF PAYMENT *</strong></td>
@@ -172,12 +173,12 @@
         </td>
       </tr>
       <tr>
-      	<td><strong>PARTICULARS</strong></td>
-      	<td>
-      		<select class="form-control select2" name="particularid" id="particularid">
-      			
-      		</select>
-      	</td>
+        <td><strong>PARTICULARS</strong></td>
+        <td>
+          <select class="form-control select2" name="particularid" id="particularid">
+            
+          </select>
+        </td>
       </tr>
      
         <tr>
@@ -257,11 +258,11 @@
         <td colspan="2" style="text-align: center;font-size: 30px;"> <p id="errormsg" style="color: red;"></p></td>
       </tr>
       <tr>
-      	<td colspan="2" style="text-align: right;"><button type="submit" class="btn btn-success btn-lg" id="subbutton" onclick="return confirm('Do You Want to Proceed?');">SAVE</button></td>
+        <td colspan="2" style="text-align: right;"><button type="submit" class="btn btn-success btn-lg" id="subbutton" onclick="return confirm('Do You Want to Proceed?');">SAVE</button></td>
        
       </tr>
 
-	</table>
+  </table>
 </div>
 </form>
 
@@ -276,8 +277,44 @@ $('#fromdate').change(function(){
 });
 
 
+function showrequistion()
+  {
+    var projectid=$("#projectid" ).val();
+if (projectid!='') {
+  
+  $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
+            }
+        });
 
+  $.ajax({
+           type:'POST',
+          
+           url:'{{url("/ajaxgetuserallrequistion")}}',
+          
+           data: {
+                 "_token": "{{ csrf_token() }}",
+                
+                  projectid:projectid,
+                 },
 
+           success:function(data) { 
+            
+
+            $("#expensetable").hide();
+                var y="<option value=''>Select A Requistion</option>";
+                           $.each(data,function(key,value){
+
+                            var x='<option value="'+value.id+'">Req#'+value.id+' || Rs.'+value.approvalamount+'('+value.created_at+')</option>';
+                             y=y+x;
+                           });
+                           $("#requistionno").html(y);
+
+           }
+      });
+  }
+}
 function fetchdataaccordingly()
 {
      var fromdate=$("#fromdate").val();
@@ -456,19 +493,22 @@ $('#todate').change(function(){
         }
     }
 
-	function showclient()
-	{
-		    var cn=$("#projectid option:selected" ).attr("title");
-		    $("#clientname").val(cn);
+  function showclient()
+  {
+        /*var cn=$("#projectid option:selected" ).attr("title");
+        alert (cn);
+        $("#clientname").val(cn);*/
          var pid=$("#projectid").val();
-        ajaxfetchallamount(pid);
+         var reqid=$("#requistionno").val();
+        ajaxfetchallamount(pid,reqid);
         fetchdataaccordingly();
 
-	}
+  }
 
 
-   function ajaxfetchallamount(pid)
+   function ajaxfetchallamount(pid,reqid)
    { 
+
            $.ajaxSetup({
             headers:{
                 'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
@@ -485,7 +525,8 @@ $('#todate').change(function(){
                data: {
                      "_token": "{{ csrf_token() }}",
                     
-                      projectid:pid
+                      projectid:pid,
+                      reqid:reqid,
 
                      },
 
@@ -517,9 +558,9 @@ $('#todate').change(function(){
                 }
               });
    }
-	function getparticulars()
-	{
-		var expenseheadid=$("#expenseheadid").val();
+  function getparticulars()
+  {
+    var expenseheadid=$("#expenseheadid").val();
 
  $.ajaxSetup({
             headers:{
@@ -545,9 +586,9 @@ $('#todate').change(function(){
                             var y="<option value=''>NONE</option>";
                            $.each(data,function(key,value){
 
-                           	var x='<option value="'+value.id+'">'+value.particularname+'</option>';
+                            var x='<option value="'+value.id+'">'+value.particularname+'</option>';
                              y=y+x;
-                           	
+                            
 
                            });
                            $("#particularid").html(y);
@@ -559,7 +600,7 @@ $('#todate').change(function(){
               });
 
 
-	}
+  }
 
 
 
@@ -623,5 +664,7 @@ $("#amount").on('change input', function(){
       }
      
 });
+
+
 </script>
 @endsection

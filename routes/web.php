@@ -230,7 +230,7 @@ Route::post('/updatelabour','HomeController@updatelabour');
 Route::get('/mobile','MobileController@mobile');
 Route::post('/savelabour','HomeController@savelabour');
 Route::get('/expense/expenseentry','AccountController@expenseentry');
-Route::get('/useraccounts/expenseentry','HomeController@expenseentry');
+
 Route::post('/ajaxgetamountuser','AccountController@ajaxgetamountuser');
 Route::post('/ajaxgetparticulars','AjaxController@ajaxgetparticulars');
 Route::post('/saveexpenseentry','AccountController@saveexpenseentry');
@@ -586,6 +586,9 @@ Route::post('/assignuserforproject','HomeController@assignuserforproject');
 Route::post('/ajaxassignprojecttouser','HomeController@ajaxassignprojecttouser');
 Route::post('/ajaxassignuserlist','HomeController@ajaxassignuserlist');
 Route::post('/ajaxremoveassignuser','HomeController@ajaxremoveassignuser');
+
+Route::get('/useraccounts/expenseentry','HomeController@expenseentry');
+Route::post('/ajaxgetuserallrequistion','HomeController@ajaxgetuserallrequistion');
 //-------------END PMS MAIN ROUTE------------//
 
 //------------- PMS ACCOUNT ROUTE------------//
