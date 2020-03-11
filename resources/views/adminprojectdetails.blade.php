@@ -238,7 +238,7 @@
                               <div class="col-sm-8">
                                 <select name="employee_id" required="" class="form-control select2" style="width: 100%;"  multiple="multiple" data-placeholder="Select User" id="empid">
                                 @foreach($users as $user)
-                                  <option value="{{$user->employee_id}}">{{$user->name}}</option>
+                                  <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
                                 </select>
                               </div>

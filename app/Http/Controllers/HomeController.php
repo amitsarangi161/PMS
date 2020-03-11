@@ -75,7 +75,7 @@ public function ajaxassignuserlist(Request $request){
   $users=assignuser::select('assignusers.*','projects.projectname','users.name')
   ->where('project_id',$request->projectid)
   ->leftJoin('projects','assignusers.project_id','=','projects.id')
-  ->leftJoin('users','assignusers.employee_id','=','users.employee_id')
+  ->leftJoin('users','assignusers.employee_id','=','users.id')
   ->get();
   return response()->json($users);
 }
@@ -2338,65 +2338,7 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
        
 
      }
-      public function expenseentry()
-     {
-         
-          $requisition=requisitionheader::select('requisitions.*','requisitionheaders.employeeid','requisitionpayments.amount as paidamt')
-                      ->leftJoin('requisitionpayments','requisitionpayments.rid','=','requisitionheaders.id')
-                       ->leftJoin('requisitions','requisitions.requisitionheaderid','=','requisitionheaders.id')
-                       ->where('requisitionpayments.paymentstatus','PAID')
-                       ->where('requisitionpayments.paymenttype','!=','WALLET')
-                      ->where('requisitionheaders.employeeid',Auth::id())
-                      ->groupBy('requisitionpayments.id')
-                      ->get();
-         
-          $totalamt=$requisition->sum('paidamt');
-        
-        $entries=expenseentry::where('employeeid',Auth::id())
-                ->where('towallet','!=','YES')
-                ->get();
 
-                 $wallet=wallet::where('employeeid',Auth::id())
-                ->get();
-         $walletcr=$wallet->sum('credit');
-         $walletdr=$wallet->sum('debit');
-         $walletbalance=$walletcr-$walletdr;
-          $totalamtentry=$entries->sum('approvalamount');
-          $bal=($totalamt-$totalamtentry)-$walletbalance;
-
-          $all=array('totalamt'=>$totalamt,'totalexpense'=>$totalamtentry,'balance'=>$bal);
-        
-
-        $projects=requisitionpayment::select('requisitionpayments.*','projects.projectname','clients.orgname','projects.id as proid')
-                          ->where('requisitionpayments.paymentstatus','PAID')
-                          ->leftJoin('requisitionheaders','requisitionpayments.rid','=','requisitionheaders.id')
-                          ->leftJoin('projects','requisitionheaders.projectid','=','projects.id')
-                          ->leftJoin('clients','projects.clientid','=','clients.id')
-                          ->where('requisitionheaders.employeeid',Auth::id())
-                          ->groupBy('requisitionheaders.projectid')
-                          ->get();
-        $vehicles=vehicle::where('userid',Auth::id())->get();
-        $labours=labour::where('userid',Auth::id())->get();
-
-      /*  $projects=project::select('projects.*','clients.orgname')
-                ->leftJoin('clients','projects.clientid','=','clients.id')
-                ->get();*/
-        $users=User::all();
-        $expenseheads=expensehead::all();
-        $vendors=vendor::all();
-        $expenseentries=expenseentry::select('expenseentries.*','u1.name as for','u2.name as by','projects.projectname','clients.clientname','expenseheads.expenseheadname','particulars.particularname','vendors.vendorname')
-                      ->leftJoin('users as u1','expenseentries.employeeid','=','u1.id')
-                      ->leftJoin('users as u2','expenseentries.userid','=','u2.id')
-                      ->leftJoin('projects','expenseentries.projectid','=','projects.id')
-                      ->leftJoin('clients','projects.clientid','=','clients.id')
-                      ->leftJoin('expenseheads','expenseentries.expenseheadid','=','expenseheads.id')
-                      ->leftJoin('particulars','expenseentries.particularid','=','particulars.id')
-                      ->leftJoin('vendors','expenseentries.vendorid','=','vendors.id')
-                      ->where('expenseentries.employeeid',Auth::id())
-                      ->groupBy('expenseentries.id')
-                      ->get();
-        return view('expenseentry',compact('users','projects','expenseheads','expenseentries','vendors','vehicles','labours','totalamtentry','bal','walletbalance','totalamt'));
-     }
 
     public function updatevendor(Request $request,$id)
    {
@@ -3860,4 +3802,76 @@ public function adminviewcomplaintdetails($id)
             ->get();
             return response()->json($districts);
   }
+
+      public function expenseentry()
+     {
+         
+          $requisition=requisitionheader::select('requisitions.*','requisitionheaders.employeeid','requisitionpayments.amount as paidamt')
+                      ->leftJoin('requisitionpayments','requisitionpayments.rid','=','requisitionheaders.id')
+                       ->leftJoin('requisitions','requisitions.requisitionheaderid','=','requisitionheaders.id')
+                       ->where('requisitionpayments.paymentstatus','PAID')
+                       ->where('requisitionpayments.paymenttype','!=','WALLET')
+                      ->where('requisitionheaders.employeeid',Auth::id())
+                      ->groupBy('requisitionpayments.id')
+                      ->get();
+          $totalamt=$requisition->sum('paidamt');
+        
+        $entries=expenseentry::where('employeeid',Auth::id())
+                ->where('towallet','!=','YES')
+                ->get();
+
+                 $wallet=wallet::where('employeeid',Auth::id())
+                ->get();
+         $walletcr=$wallet->sum('credit');
+         $walletdr=$wallet->sum('debit');
+         $walletbalance=$walletcr-$walletdr;
+          $totalamtentry=$entries->sum('approvalamount');
+          $bal=($totalamt-$totalamtentry)-$walletbalance;
+
+          $all=array('totalamt'=>$totalamt,'totalexpense'=>$totalamtentry,'balance'=>$bal);
+        
+
+        $projects=requisitionpayment::select('requisitionpayments.*','projects.projectname','clients.orgname','projects.id as proid')
+                          ->where('requisitionpayments.paymentstatus','PAID')
+                          ->leftJoin('requisitionheaders','requisitionpayments.rid','=','requisitionheaders.id')
+                          ->leftJoin('projects','requisitionheaders.projectid','=','projects.id')
+                          ->leftJoin('clients','projects.clientid','=','clients.id')
+                          ->where('requisitionheaders.employeeid',Auth::id())
+                          ->groupBy('requisitionheaders.projectid')
+                          ->get();
+        $vehicles=vehicle::where('userid',Auth::id())->get();
+        $labours=labour::where('userid',Auth::id())->get();
+
+      /*  $projects=project::select('projects.*','clients.orgname')
+                ->leftJoin('clients','projects.clientid','=','clients.id')
+                ->get();*/
+        $users=User::all();
+        $expenseheads=expensehead::all();
+        $vendors=vendor::all();
+        $expenseentries=expenseentry::select('expenseentries.*','u1.name as for','u2.name as by','projects.projectname','clients.clientname','expenseheads.expenseheadname','particulars.particularname','vendors.vendorname')
+                      ->leftJoin('users as u1','expenseentries.employeeid','=','u1.id')
+                      ->leftJoin('users as u2','expenseentries.userid','=','u2.id')
+                      ->leftJoin('projects','expenseentries.projectid','=','projects.id')
+                      ->leftJoin('clients','projects.clientid','=','clients.id')
+                      ->leftJoin('expenseheads','expenseentries.expenseheadid','=','expenseheads.id')
+                      ->leftJoin('particulars','expenseentries.particularid','=','particulars.id')
+                      ->leftJoin('vendors','expenseentries.vendorid','=','vendors.id')
+                      ->where('expenseentries.employeeid',Auth::id())
+                      ->groupBy('expenseentries.id')
+                      ->get();
+        return view('expenseentry',compact('users','projects','expenseheads','expenseentries','vendors','vehicles','labours','totalamtentry','bal','walletbalance','totalamt','requisition'));
+     }
+
+
+public function ajaxgetuserallrequistion(Request $request){
+$empid=Auth::id();
+$projectid=$request->projectid;
+
+$requisition=requisitionheader::select('requisitionheaders.*')
+            ->where('projectid',$projectid)
+            ->where('employeeid',$empid)
+            ->get();
+    return response()->json($requisition);
+}
+
 }
