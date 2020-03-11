@@ -383,6 +383,64 @@
 
         </li>
 
+         @php
+              $counthodpendingexp=\App\expenseentry::where('status','HOD PENDING')->count();
+              $countpendingexp=\App\expenseentry::where('status','PENDING')->count();
+              $countapprovedexp=\App\expenseentry::where('status','APPROVED')->count();
+              $countcancelledexp=\App\expenseentry::where('status','CANCELLED')->count();
+              $countwalletpaidexp=\App\expenseentry::where('status','WALLET PAID')->count();
+              $countallexp=\App\expenseentry::count();
+              
+          @endphp
+
+        <li class="{{ Request::is('expense*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-dollar"></i> <span>EXPENSES ENTRY</span>
+
+            <span class="pull-right-container">
+
+              <i class="fa fa-angle-left pull-right"></i><span class="label label-warning pull-right">{{$countpendingexp+$counthodpendingexp}}</span>
+            </span>
+
+          </a>
+          <ul class="treeview-menu">
+
+            <li class="{{ Request::is('expense/pendingexpenseentry') ? 'active' : '' }}"><a href="/expense/pendingexpenseentry"><i class="fa fa-circle-o text-red"></i>PENDING EXPENSE ENTRY
+
+              <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$countpendingexp}}</span>
+                </span>
+            </a></li>
+            <li class="{{ Request::is('expense/approvedexpenseentry') ? 'active' : '' }}"><a href="/expense/approvedexpenseentry"><i class="fa fa-circle-o text-red"></i>APPROVED EXPENSE ENTRY
+
+             <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$countapprovedexp}}</span>
+                </span>
+            </a></li>
+
+            <li class="{{ Request::is('expense/cancelledexpenseentry') ? 'active' : '' }}"><a href="/expense/cancelledexpenseentry"><i class="fa fa-circle-o text-red"></i>CANCELLED EXPENSE ENTRY
+              <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$countcancelledexp}}</span>
+                </span>
+            </a></li>
+
+            <li class="{{ Request::is('expense/walletpaidexpenseentry') ? 'active' : '' }}"><a href="/expense/walletpaidexpenseentry"><i class="fa fa-circle-o text-red"></i>WALLET PAID EXPENSE ENTRY
+              <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$countwalletpaidexp}}</span>
+                </span>
+            </a></li>
+
+            <li class="{{ Request::is('expense/viewallexpenseentry') ? 'active' : '' }}"><a href="/expense/viewallexpenseentry"><i class="fa fa-circle-o text-red"></i>ALL EXPENSE ENTRY
+                <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$countallexp}}</span>
+                </span>
+
+            </a></li>
+
+
+          </ul>
+        </li>
+
 
 
 

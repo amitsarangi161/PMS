@@ -260,6 +260,8 @@
 
           <li class="{{ Request::is('useraccounts/applicationform') ? 'active' : '' }}"><a href="/useraccounts/applicationform"><i class="fa fa-circle-o text-aqua"></i>REQUISITION APPLY FORM</a></li>
            <li class="{{ Request::is('useraccounts/viewapplicationform') ? 'active' : '' }}"><a href="/useraccounts/viewapplicationform"><i class="fa fa-circle-o text-aqua"></i>VIEW ALL REQUISITION</a></li>
+           <li class="{{ Request::is('useraccounts/expenseentry') ? 'active' : '' }}"><a href="/useraccounts/expenseentry"><i class="fa fa-circle-o text-aqua"></i>EXPENSE ENTRY</a></li> 
+          <li class="{{ Request::is('useraccounts/viewallexpenseentry') ? 'active' : '' }}"><a href="/useraccounts/viewallexpenseentry"><i class="fa fa-circle-o text-aqua"></i>VIEW ALL EXPENSE ENTRY</a></li>
           </ul>
         </li>
         @endif
