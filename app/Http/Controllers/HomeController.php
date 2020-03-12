@@ -2190,6 +2190,7 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
                   $expenseentry=new expenseentry();
                   $expenseentry->employeeid=Auth::id();
                   $expenseentry->projectid=$request->projectid;
+                  $expenseentry->requistion_id=$request->requistion_id;
                   $expenseentry->expenseheadid=$request->expenseheadid;
                   $expenseentry->particularid=$request->particularid;
                   $expenseentry->vendorid=$request->vendorid;
