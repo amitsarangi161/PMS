@@ -181,10 +181,7 @@ public function importclient(Request $request){
       $data = Excel::selectSheetsByIndex(0)->load($path)->get();
 
         foreach($data as $kay=>$value){
-        $check=client::where('panno',$value['panno'])
-                      ->orWhere('gstn',$value['panno'])
-          ->count();
-          if($check==0){
+          if($value['department']!=''){
           $client=new client();
           $client->clientname=$value['department'];   
           $client->contact1=$value['mobile1'];
@@ -203,12 +200,8 @@ public function importclient(Request $request){
           $client->tanno=$value['tanno'];
           $client->save();
           Session::flash('status', 'Task was successful!');
+         }
           }
-          else{
-            Session::flash('error', 'duplicate client entry!');
-          }
-        }
-    
     return back();
 }
 public function companysetup(Request $request){
