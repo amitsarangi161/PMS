@@ -2303,7 +2303,7 @@ public function no_to_words($no)
         $entries=expenseentry::where('employeeid',Auth::id())
                 ->where('projectid',$request->projectid)
                 ->where('expenseheadid',$request->expenseheadid)
-                ->where('requisitionheaderid',$request->requistionid)
+                ->where('requistion_id',$request->requistionid)
                 ->get();
           $totalamtentry=$entries->sum('approvalamount');
           $bal=$totalamt-$totalamtentry;
