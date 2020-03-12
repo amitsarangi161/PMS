@@ -180,12 +180,7 @@
           </select>
         </td>
       </tr>
-     
-<<<<<<< .mine
-       <!--  <tr>
-=======
-<!--         <tr>
->>>>>>> .theirs
+       <!-- <tr>
           <td><strong>VENDOR </strong></td>
           <td>
             <select class="form-control select2" name="vendorid">
@@ -200,11 +195,9 @@
       <tr id="singledate">
 
         <td><strong>DATE OF EXPENSE *</strong></td>
-        @if(Auth::user()->id=='47'|| Auth::user()->id=='54')
+        
         <td><input type="text" name="date" id="date" class="form-control datepicker1 readonly" autocomplete="off" placeholder="Date Of Expense" required=""></td>
-        @else
-        <td><input type="text" name="date" id="date" class="form-control datepicker5 readonly" autocomplete="off" placeholder="Date Of Expense" required=""></td>
-        @endif
+        
       </tr>
 
       <tbody id="doubledate" style="display: none;">
