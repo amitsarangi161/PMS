@@ -2171,7 +2171,6 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
       public function saveexpenseentry(Request $request)
      {
 
-        
         if($request->bala1<0)
         {
              Session::flash('msg','Balance amount cant be negetive');
@@ -2180,11 +2179,11 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
         else
         {
 
-           if($request->type=='OTHERS')
-           {
+
                $checkprvs=expenseentry::where('userid',Auth::id())
                         ->where('expenseheadid',$request->expenseheadid)
                         ->where('projectid',$request->projectid)
+                        ->where('requistion_id',$request->requistion_id)
                         ->where('date',$request->date)
                         ->where('status','!=','CANCELLED')
                         ->count();
@@ -2204,8 +2203,6 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
                   $expenseentry->amount=$request->amount;
                   $expenseentry->approvalamount=$request->amount;
                   $expenseentry->description=$request->description;
-                  /*$expenseentry->fromdate=$request->fromdate;
-                  $expenseentry->todate=$request->todate;*/
                   if (Auth::user()->usertype=='ADMIN') {
                      $expenseentry->status="PENDING";
                   }
@@ -2226,89 +2223,7 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
                }
 
 
-           }
-          elseif ($request->type=='LABOUR PAYMENT') {
-               if (sizeof($request->dailylabour)>0) {
-                       $expenseentry=new expenseentry();
-                  $expenseentry->employeeid=Auth::id();
-                  $expenseentry->projectid=$request->projectid;
-                  $expenseentry->expenseheadid=$request->expenseheadid;
-                  $expenseentry->particularid=$request->particularid;
-                  $expenseentry->vendorid=$request->vendorid;
-                  $expenseentry->amount=$request->amount;
-                  $expenseentry->approvalamount=$request->amount;
-                  $expenseentry->description=$request->description;
-                  $expenseentry->fromdate=$request->fromdate;
-                  $expenseentry->todate=$request->todate;
-                 /* $expenseentry->date=$request->date;*/
-                  if (Auth::user()->usertype=='ADMIN') {
-                     $expenseentry->status="PENDING";
-                  }
-                  $expenseentry->version="NEW";
-                  $expenseentry->type=$request->type;
-                  $expenseentry->towallet=$request->towallet;
-                  $expenseentry->userid=Auth::id();
-                  $expenseentry->save();
-                  $eid=$expenseentry->id;
-                  for ($i=0; $i < sizeof($request->dailylabour); $i++) { 
-                     $expenseentrydailylabour=new expenseentrydailylabour();
-                     $expenseentrydailylabour->expenseid=$eid;
-                     $expenseentrydailylabour->dailylabourid=$request->dailylabour[$i];
-                     $expenseentrydailylabour->save();
-
-                  }
-
-               }
-               else
-               {
-                   Session::flash('No LABOUR Selected');
-                   return back();
-               }
-
-           
-          }
-           else{
-               if (sizeof($request->dailyvehicles)>0) {
-                       $expenseentry=new expenseentry();
-                  $expenseentry->employeeid=Auth::id();
-                  $expenseentry->projectid=$request->projectid;
-                  $expenseentry->expenseheadid=$request->expenseheadid;
-                  $expenseentry->particularid=$request->particularid;
-                  $expenseentry->vendorid=$request->vendorid;
-                  $expenseentry->amount=$request->amount;
-                  $expenseentry->approvalamount=$request->amount;
-                  $expenseentry->description=$request->description;
-                  $expenseentry->fromdate=$request->fromdate;
-                  $expenseentry->todate=$request->todate;
-                 /* $expenseentry->date=$request->date;*/
-                  if (Auth::user()->usertype=='ADMIN') {
-                     $expenseentry->status="PENDING";
-                  }
-                  $expenseentry->version="NEW";
-                  $expenseentry->type=$request->type;
-                  $expenseentry->towallet=$request->towallet;
-                  $expenseentry->userid=Auth::id();
-                  $expenseentry->save();
-                  $eid=$expenseentry->id;
-                  for ($i=0; $i < sizeof($request->dailyvehicles); $i++) { 
-                     $expenseentrydailyvehicle=new expenseentrydailyvehicle();
-                     $expenseentrydailyvehicle->expenseid=$eid;
-                     $expenseentrydailyvehicle->dailyvehicleid=$request->dailyvehicles[$i];
-                     $expenseentrydailyvehicle->save();
-                     
-                  }
-
-               }
-               else
-               {
-                   Session::flash('No Vehicle Selected');
-                   return back();
-               }
-
-           
-          }
-
-   
+             
          $expid=$expenseentry->id;
 
          $towalletchk=$expenseentry->towallet;

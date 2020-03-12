@@ -117,7 +117,7 @@
       <tr>
         <td><strong>SELECT A REQUISITION <span style="color:red;">*</span></strong></td>
         <td>
-          <select class="form-control select2 calc" id="requistionno" onchange="showclient();"  name="projectid" required="">
+          <select class="form-control select2 calc" id="requistionno" onchange="showclient();"  name="requistion_id" required="">
           </select>
         </td>
       </tr>
@@ -137,7 +137,7 @@
           </select>
         </td>
       </tr>
-      <tr>
+<!--       <tr>
         <td><strong>SELECT A TYPE OF PAYMENT *</strong></td>
         <td>
           
@@ -150,7 +150,7 @@
            <input type="radio" name="type" value="VEHICLE PAYMENT"> VEHICLE PAYMENT 
         </td>
 
-      </tr>
+      </tr> -->
 
 
       <tr>
@@ -181,7 +181,7 @@
         </td>
       </tr>
      
-        <tr>
+<!--         <tr>
           <td><strong>VENDOR </strong></td>
           <td>
             <select class="form-control select2" name="vendorid">
@@ -191,7 +191,7 @@
               @endforeach              
             </select>
           </td>
-        </tr>
+        </tr> -->
  
       <tr id="singledate">
 
@@ -609,7 +609,7 @@ $('#todate').change(function(){
 $( ".calc" ).change(function() {
      var pid=$("#projectid").val();
      var eid=$("#expenseheadid").val();
- 
+     var reqid=$("#requistionno").val();
      if(pid!='' && eid!='')
      {
              $.ajaxSetup({
@@ -629,7 +629,8 @@ $( ".calc" ).change(function() {
                      "_token": "{{ csrf_token() }}",
                     
                       projectid:pid,
-                      expenseheadid:eid
+                      expenseheadid:eid,
+                      requistionid:reqid,
 
                      },
 

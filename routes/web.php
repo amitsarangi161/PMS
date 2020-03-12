@@ -232,7 +232,7 @@ Route::post('/savelabour','HomeController@savelabour');
 Route::get('/expense/expenseentry','AccountController@expenseentry');
 
 Route::post('/ajaxgetamountuser','AccountController@ajaxgetamountuser');
-Route::post('/ajaxgetparticulars','AjaxController@ajaxgetparticulars');
+
 Route::post('/saveexpenseentry','AccountController@saveexpenseentry');
 Route::post('/saveuserexpenseentry','HomeController@saveexpenseentry');
 Route::get('/expense/viewallexpenseentry','AccountController@viewallexpenseentry');
@@ -589,6 +589,7 @@ Route::post('/ajaxremoveassignuser','HomeController@ajaxremoveassignuser');
 
 Route::get('/useraccounts/expenseentry','HomeController@expenseentry');
 Route::post('/ajaxgetuserallrequistion','HomeController@ajaxgetuserallrequistion');
+Route::post('/ajaxgetparticulars','AjaxController@ajaxgetparticulars');
 //-------------END PMS MAIN ROUTE------------//
 
 //------------- PMS ACCOUNT ROUTE------------//
