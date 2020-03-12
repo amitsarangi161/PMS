@@ -2292,14 +2292,18 @@ public function no_to_words($no)
                       ->where('requisitionheaders.projectid',$request->projectid)
                       ->where('requisitionheaders.employeeid',Auth::id())
                       ->where('requisitions.expenseheadid',$request->expenseheadid)
+
                       ->where('requisitions.requisitionheaderid',$request->requistionid)
+
                       ->groupBy('requisitions.id')
                       ->get();
+                      
           $totalamt=$requisition->sum('approvedamount');
         
         $entries=expenseentry::where('employeeid',Auth::id())
                 ->where('projectid',$request->projectid)
                 ->where('expenseheadid',$request->expenseheadid)
+                ->where('requisitionheaderid',$request->requistionid)
                 ->get();
           $totalamtentry=$entries->sum('approvalamount');
           $bal=$totalamt-$totalamtentry;
