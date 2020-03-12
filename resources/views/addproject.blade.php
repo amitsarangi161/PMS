@@ -88,10 +88,10 @@
              <div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	PROJECT COST<span style="color: red"> *</span>
+	                  	PROJECT COST
 	                </label>
 	                <div class="col-sm-7">
-	                    <input type="text" name="cost" id="cost"  class="form-control" required="">
+	                    <input type="text" name="cost" id="cost"  class="form-control">
 						<p style="color: red;">Don't Put comma or letter</p>
 	                </div>
                  </div>
