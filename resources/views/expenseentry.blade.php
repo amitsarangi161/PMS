@@ -300,7 +300,7 @@ if (projectid!='') {
             
 
             $("#expensetable").hide();
-                var y="<option value=''>Select A Requistion</option>";
+                var y="<option value=''>select a requistion</option>";
                            $.each(data,function(key,value){
 
                             var x='<option value="'+value.id+'">Req#'+value.id+' || Rs.'+value.approvalamount+'('+value.created_at+')</option>';

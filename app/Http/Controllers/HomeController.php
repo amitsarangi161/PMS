@@ -3791,8 +3791,11 @@ $empid=Auth::id();
 $projectid=$request->projectid;
 
 $requisition=requisitionheader::select('requisitionheaders.*')
+            ->leftJoin('requisitionpayments','requisitionpayments.rid','=','requisitionheaders.id')
             ->where('projectid',$projectid)
             ->where('employeeid',$empid)
+            ->where('requisitionpayments.paymentstatus','PAID')
+            ->where('status','COMPLETED')
             ->get();
     return response()->json($requisition);
 }
