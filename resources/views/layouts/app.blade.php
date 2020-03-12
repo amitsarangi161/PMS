@@ -272,6 +272,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            
+          <li class="{{ Request::is('useraccounts/paidamounts') ? 'active' : '' }}"><a href="/useraccounts/paidamounts"><i class="fa fa-circle-o text-aqua"></i>PAID AMOUNTS</a></li>
           <li class="{{ Request::is('useraccounts/paidamounts') ? 'active' : '' }}"><a href="/useraccounts/paidamounts"><i class="fa fa-circle-o text-aqua"></i>PAID AMOUNTS</a></li>
           <li class="{{ Request::is('useraccounts/applicationform') ? 'active' : '' }}"><a href="/useraccounts/applicationform"><i class="fa fa-circle-o text-aqua"></i>REQUISITION APPLY FORM</a></li>
            <li class="{{ Request::is('useraccounts/viewapplicationform') ? 'active' : '' }}"><a href="/useraccounts/viewapplicationform"><i class="fa fa-circle-o text-aqua"></i>VIEW ALL REQUISITION</a></li>

@@ -24,7 +24,7 @@ class CreateExpenseentriesTable extends Migration {
 			$table->string('userid', 200)->nullable();
 			$table->string('vendorid', 200)->nullable();
 			$table->string('uploadedfile', 200)->nullable();
-			$table->string('status', 200)->nullable()->default('HOD PENDING');
+			$table->string('status', 200)->nullable()->default('PENDING');
 			$table->string('approvalamount', 200)->nullable()->default('0');
 			$table->string('approvedby', 200)->nullable();
 			$table->string('remarks', 200)->nullable();
@@ -37,6 +37,7 @@ class CreateExpenseentriesTable extends Migration {
 			$table->string('towallet', 200)->default('NO');
 			$table->string('version', 200)->default('OLD');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 
