@@ -2197,9 +2197,7 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
                   $expenseentry->amount=$request->amount;
                   $expenseentry->approvalamount=$request->amount;
                   $expenseentry->description=$request->description;
-                  if (Auth::user()->usertype=='ADMIN') {
-                     $expenseentry->status="PENDING";
-                  }
+                  $expenseentry->status="PENDING";
                   $expenseentry->date=$request->date;
                   $expenseentry->version="NEW";
                   $expenseentry->type=$request->type;
