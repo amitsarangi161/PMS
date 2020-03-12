@@ -181,7 +181,7 @@
         </td>
       </tr>
      
-        <tr>
+       <!--  <tr>
           <td><strong>VENDOR </strong></td>
           <td>
             <select class="form-control select2" name="vendorid">
@@ -191,7 +191,7 @@
               @endforeach              
             </select>
           </td>
-        </tr>
+        </tr> -->
  
       <tr id="singledate">
 
