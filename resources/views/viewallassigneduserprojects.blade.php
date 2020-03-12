@@ -7,7 +7,7 @@
     <div style="overflow-x:auto;">
 <table class="table table-responsive table-hover table-bordered table-striped">
     <thead>
-        <tr class="bg-navy" style="font-size: 10px;">
+        <tr class="bg-navy">
             <th>ID</th>
             <th>FOR CLIENT</th>
             <th>DISTRICT</th>

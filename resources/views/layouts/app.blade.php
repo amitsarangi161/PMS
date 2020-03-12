@@ -257,7 +257,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ Request::is('userprojects/viewallassigneduserprojects') ? 'active' : '' }}"><a href="/userprojects/viewallassigneduserprojects"><i class="fa fa-circle-o text-red"></i>VIEW USER ASSIGNED PROJECTS
+            <li class="{{ Request::is('userprojects/viewallassigneduserprojects') ? 'active' : '' }}"><a href="/userprojects/viewallassigneduserprojects"><i class="fa fa-circle-o text-red"></i>VIEW ASSIGNED PROJECTS
               
             </a></li>
              

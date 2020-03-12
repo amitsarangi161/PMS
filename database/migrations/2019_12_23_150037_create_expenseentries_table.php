@@ -17,6 +17,7 @@ class CreateExpenseentriesTable extends Migration {
 			$table->integer('id', true);
 			$table->string('employeeid', 200)->nullable();
 			$table->string('projectid', 200)->nullable();
+			$table->string('requistion_id', 30)->nullable();
 			$table->string('expenseheadid', 200)->nullable();
 			$table->string('particularid', 200)->nullable();
 			$table->string('amount', 200)->nullable();

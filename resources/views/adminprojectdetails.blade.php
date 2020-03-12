@@ -31,7 +31,7 @@
                   
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">CLIENT NAME</label>
+                        <label>CLIENT NAME</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" value="{{$project->clientname}}" placeholder="Enter email">
                       </div>
                     </div>
