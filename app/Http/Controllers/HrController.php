@@ -578,7 +578,13 @@ public function importemployee(Request $request)
           $employee->maritalstatus=$value['marital_status'];
           $employee->presentaddress=$value['present_address'];
           $employee->permanentaddress=$value['permanent_address'];
-          $employee->status=$value['remarks'];
+          if($value['remarks']!=''){
+            $employee->status=$value['remarks'];
+          }
+          else{
+            $employee->status='PRESENT';
+          }
+
           $employee->save();
           $empid=$employee->id;
           $compemployee=new employeecompanydetail();

@@ -14,6 +14,37 @@
 
 }
 </style>
+<div class="row">
+ <div class="col-md-12">
+  <div class="box">
+    <div class="box-header bg-gray">
+  <form method="get" action="/useraccounts/viewallexpenseentry">
+    <div class="form-group">
+      <label  class="col-sm-2 control-label">Select A Status</label>
+      <div class="col-sm-4">
+        <select class="form-control" required="" name="status">
+            <option value="">Select A Status</option>
+            <option value="APPROVED" {{ Request::get('status')=="APPROVED" ? 'selected' : '' }}>APPROVED</option>
+            <option value="PENDING" {{ Request::get('status')=="PENDING" ? 'selected' : '' }}>PENDING</option>
+            <option value="PARTIALLY APPROVED" {{ Request::get('status')=="PARTIALLY APPROVED" ? 'selected' : '' }}>PARTIALLY APPROVED </option>
+            <option value="CANCELLED" {{ Request::get('status')=="CANCELLED" ? 'selected' : '' }}>CANCELLED </option>
+        </select>
+      </div>
+      <div class="col-sm-1">
+        <button type="submit" class="btn  btn-primary">Filter</button>
+      </div>
+      @if(Request::has('status'))
+      <div class="col-sm-1">
+        <a href="/useraccounts/viewallexpenseentry"  class="btn  btn-danger">Clear Filter</a>
+      </div>
+      @endif
+    </div>
+  </form>
+  </div>
+</div>
+</div>
+</div>
+
 <div style="overflow-x:auto;">
 <table class="table table-responsive table-hover table-bordered table-striped datatable1">
 	<thead>
@@ -41,7 +72,14 @@
 	<tbody>
     @foreach($expenseentries as $expenseentry)
 		<tr style="font-size: 12px;">
+       @if($expenseentry->status=='CANCELLED')
+        <td><a href="/viewuserexpenseentrydetails/{{$expenseentry->id}}" class="btn bg-red">{{$expenseentry->id}}</a></td>
+        @elseif($expenseentry->status=='PARTIALLY APPROVED')
+        <td><a href="/viewuserexpenseentrydetails/{{$expenseentry->id}}" class="btn bg-orange">{{$expenseentry->id}}</a></td>@elseif($expenseentry->status=='APPROVED')
+        <td><a href="/viewuserexpenseentrydetails/{{$expenseentry->id}}" class="btn bg-green">{{$expenseentry->id}}</a></td>
+        @else
         <td><a href="/viewuserexpenseentrydetails/{{$expenseentry->id}}" class="btn btn-primary">{{$expenseentry->id}}</a></td>
+         @endif
         <td>{{$expenseentry->for}}</td>
         @if($expenseentry->projectname!='')
         <td><p class="b" title="{{$expenseentry->projectname}}">{{$expenseentry->projectname}}</p></td>

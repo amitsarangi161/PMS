@@ -2037,7 +2037,7 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
         // return view('applicationform',compact('users','projects','expenseheads','totalamt','bal','totalamtentry','walletbalance'));
         return view('applicationform',compact('users','expenseheads','projects'));
     }
-     public function viewallexpenseentry()
+     public function viewallexpenseentry(Request $request)
      {
        $expenseentries=expenseentry::select('expenseentries.*','u1.name as for','u2.name as by','projects.projectname','clients.clientname','expenseheads.expenseheadname','particulars.particularname','vendors.vendorname','u3.name as approvedbyname')
                       ->leftJoin('users as u1','expenseentries.employeeid','=','u1.id')
@@ -2049,8 +2049,13 @@ if($request->has('expenseheadname') && $request->expenseheadname!='')
                       ->leftJoin('particulars','expenseentries.particularid','=','particulars.id')
                        ->leftJoin('vendors','expenseentries.vendorid','=','vendors.id')
                        ->where('expenseentries.employeeid',Auth::id())
-                      ->groupBy('expenseentries.id')
-                      ->get();
+                      ->groupBy('expenseentries.id');
+                      //->get();
+        if($request->has('status')){
+                $expenseentries=$expenseentries->where('expenseentries.status',$request->status);
+              }
+          $expenseentries=$expenseentries->get();
+
          $expenseentries1=expenseentry::select('expenseentries.*','u1.name as for','u2.name as by','projects.projectname','clients.clientname','expenseheads.expenseheadname','particulars.particularname','vendors.vendorname','u3.name as approvedbyname')
                       ->leftJoin('users as u1','expenseentries.employeeid','=','u1.id')
                       ->leftJoin('users as u2','expenseentries.userid','=','u2.id')
