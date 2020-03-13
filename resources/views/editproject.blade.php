@@ -56,7 +56,6 @@
 	                </label>
 	                <div class="col-sm-7">
 	                    <input type="text" name="cost" value="{{$project->cost}}" id="cost"  class="form-control">
-						<p style="color: red;">Don't Put comma or letter</p>
 	                </div>
                  </div>
              </div>
@@ -123,20 +122,10 @@
              	<div class="col-md-6">
 	        	 <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	PRIORITY
+	                  	EMAIL
 	                </label>
 	                <div class="col-sm-7">
-				      <select name="priority" class="form-control">
-						<option value="">SELECT</option>
-						<option value="NORMAL" {{ ( $project->priority == "NORMAL") ? 'selected' : '' }}>NORMAL</option>
-
-						<option value="HIGH" {{ ( $project->priority == "HIGH") ? 'selected' : '' }}>HIGH</option>
-
-						<option value="MEDIUM" {{ ( $project->priority == "MEDIUM") ? 'selected' : '' }}>MEDIUM</option>
-
-						<option value="LOW" {{ ( $project->priority == "LOW") ? 'selected' : '' }}>LOW</option>
-						
-					</select>
+	                   <input type="email" value="{{$project->email}}" name="email" class="form-control">
 	                </div>
                  </div>
              	</div>
@@ -218,25 +207,13 @@
              	</div>
 
              	<div class="row">
-             	<!-- <div class="col-md-6">
-	        	 <div class="form-group">
-	                <label class=" col-sm-5">
-	                  	PAPER COST<span style="color: red"> * </span>
-
-	                </label>
-	                <div class="col-sm-7">
-	                  <input type="text" value="{{$project->papercost}}" class="form-control" name="paperfee" placeholder="Paper Cost" >
-	                  <b style="color: red">Non Refundable</b>
-	                </div>
-                 </div>
-             	</div> -->
              	<div class="col-md-6">
                  <div class="form-group">
 	                <label class=" col-sm-5">
 	                  	PAPER COST ATTACH
 	                </label>
 	                <div class="col-sm-4">
-	                    <input type="file"  name="papercost" onchange="paper(this);" >
+	                    <input type="file"  name="papercostattach" onchange="paper(this);" >
 	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
 	                </div>
 	                <div class="col-sm-3">
@@ -247,12 +224,105 @@
 
 	                </div>
                  </div>
+                 <div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	MOM ATTACH
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="momattach" onchange="mom(this);" >
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="momimgshow1" src="/img/momattach/{{$project->momattach}}" style="height: 70px;width: 70px;">
+
+					 
+					</div>
+
+	                </div>
+                 </div>
+             	</div>
+             	<div class="row">
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PRIORITY
+	                </label>
+	                <div class="col-sm-7">
+				      <select name="priority" class="form-control">
+						<option value="">SELECT</option>
+						<option value="NORMAL" {{ ( $project->priority == "NORMAL") ? 'selected' : '' }}>NORMAL</option>
+
+						<option value="HIGH" {{ ( $project->priority == "HIGH") ? 'selected' : '' }}>HIGH</option>
+
+						<option value="MEDIUM" {{ ( $project->priority == "MEDIUM") ? 'selected' : '' }}>MEDIUM</option>
+
+						<option value="LOW" {{ ( $project->priority == "LOW") ? 'selected' : '' }}>LOW</option>
+						
+					</select>
+	                </div>
+                 </div>
+             	</div>
              	</div>
              	</div>
 	        	</div>
 	     
 
 			</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">PO DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	PO DATE
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" value="{{$project->poddate}}" name="poddate" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+                 	<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	PO NUMBER
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" value="{{$project->ponumber}}" name="ponumber">
+		                </div>
+	                 </div>
+                 	</div>
+             		
+				</div>
+				<div class="row">
+					 <div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="podattach" onchange="po(this);" >
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="poimgshow1" src="/img/podattach/{{$project->podattach}}" style="height: 70px;width: 70px;">
+
+					 
+					</div>
+
+	                </div>
+                 </div>
+				</div>
+			</div>
+		</div>
+	</div>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-info  box-solid">
@@ -1046,6 +1116,54 @@ function emddoc(input) {
             };
             reader.onload = function (e) {
                 $('#paperimgshow1')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+    function mom(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#momimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+            reader.onload = function (e) {
+                $('#momimgshow1')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+    function po(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#poimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+            reader.onload = function (e) {
+                $('#poimgshow1')
                     .attr('src', e.target.result)
                     .width(80)
                     .height(80);        

@@ -2927,7 +2927,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
 
        public function cashierviewdetailsonlinepayment($id)
        {
-            $requisitionpayments=requisitionpayment::select('requisitionpayments.*','users.name','users.id as uid','banks.bankname','useraccounts.acno')
+            $requisitionpayments=requisitionpayment::select('requisitionpayments.*','users.name','users.id as uid','banks.bankname','useraccounts.acno','useraccounts.ifsccode')
              ->leftJoin('requisitionheaders','requisitionpayments.rid','=','requisitionheaders.id')
              ->leftJoin('users','requisitionheaders.employeeid','=','users.id')
              ->leftJoin('useraccounts','requisitionpayments.bankid','=','useraccounts.id')
@@ -2941,7 +2941,9 @@ public function approvedebitvoucheradmin(Request $request,$id)
                         ->where('useraccounts.type','COMPANY')
                         ->leftJoin('banks','useraccounts.bankid','=','banks.id')
                         ->get();
-//return $requisitionpayments;
+
+        return $requisitionpayments;
+
            $userbankaccount=useraccount::select('useraccounts.*','banks.bankname','users.name')
            ->leftJoin('banks','useraccounts.bankid','=','banks.id')
            ->leftJoin('users','useraccounts.user','=','users.id')

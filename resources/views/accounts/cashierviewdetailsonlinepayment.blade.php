@@ -76,6 +76,16 @@
     <td><strong>{{$requisitionpayments->dateofpayment}}</strong></td>
 	</tr>
   <tr>
+    <td><strong>BANK NAME</strong></td>
+    <td>{{$requisitionpayments->bankname}}</td>
+    <td><strong>IFSC</strong></td>
+    <td>{{$requisitionpayments->ifsccode}}</td>
+  </tr>
+  <tr>
+    <td><strong>ACCOUNT NUMBER</strong></td>
+    <td>{{$requisitionpayments->acno}}</td>
+  </tr>
+  <tr>
     <td><strong>EDIT(DATE OF PAYMENT AND TRANSACTIONID)</strong></td>
     <td><button class="btn btn-success" onclick="openedit();">EDIT</button></td>
   </tr>
