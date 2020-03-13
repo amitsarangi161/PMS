@@ -2913,37 +2913,41 @@ public function approvedebitvoucheradmin(Request $request,$id)
     /*CAHSIER SECTION*/
 
 
-      public function cashierpaidrequsitionamt($bankname,$id)
+      public function cashierpaidrequsitionamt()
       {
            $requisitionpayments=requisitionpayment::select('requisitionpayments.*','users.name')
              ->leftJoin('requisitionheaders','requisitionpayments.rid','=','requisitionheaders.id')
              ->leftJoin('users','requisitionheaders.employeeid','=','users.id')
-             ->where('requisitionpayments.bankid',$id)
              ->where('paymenttype','!=','CASH')
              ->where('requisitionpayments.paymentstatus','PAID')
              ->get();
-           return view('accounts.cashierpaidrequsitionamt',compact('bankname','requisitionpayments'));
+             //return $requisitionpayments;
+           return view('accounts.cashierpaidrequsitionamt',compact('requisitionpayments'));
       }
 
-       public function cashierviewdetailsonlinepayment($bankname,$id)
+       public function cashierviewdetailsonlinepayment($id)
        {
-            $requisitionpayments=requisitionpayment::select('requisitionpayments.*','users.name','users.id as uid')
+            $requisitionpayments=requisitionpayment::select('requisitionpayments.*','users.name','users.id as uid','banks.bankname','useraccounts.acno')
              ->leftJoin('requisitionheaders','requisitionpayments.rid','=','requisitionheaders.id')
              ->leftJoin('users','requisitionheaders.employeeid','=','users.id')
+             ->leftJoin('useraccounts','requisitionpayments.bankid','=','useraccounts.id')
+             ->leftJoin('banks','useraccounts.bankid','=','banks.id')
              ->where('requisitionpayments.id',$id)
              ->first();
              $uid=$requisitionpayments->uid;
              $rid=$requisitionpayments->rid;
 
-
-
+             $banks=useraccount::select('useraccounts.*','banks.bankname')
+                        ->where('useraccounts.type','COMPANY')
+                        ->leftJoin('banks','useraccounts.bankid','=','banks.id')
+                        ->get();
+return $requisitionpayments;
            $userbankaccount=useraccount::select('useraccounts.*','banks.bankname','users.name')
            ->leftJoin('banks','useraccounts.bankid','=','banks.id')
            ->leftJoin('users','useraccounts.user','=','users.id')
            ->where('useraccounts.user',$uid)
            ->first();
-
-            return view('accounts.cashierviewdetailsonlinepayment',compact('requisitionpayments','userbankaccount','bankname'));
+            return view('accounts.cashierviewdetailsonlinepayment',compact('requisitionpayments','userbankaccount','banks'));
        }
        public function viewpaidrequisitioncash()
        {
@@ -2986,10 +2990,11 @@ public function approvedebitvoucheradmin(Request $request,$id)
              ->get();
           return view('accounts.requisitioncashrequest',compact('requisitionpayments'));
       }
-    public function cashierpaidrequsitiononline(Request $request,$bankname,$id)
+    public function cashierpaidrequsitiononline(Request $request,$id)
     {
-        $requisitionpayment=requisitionpayment::find($request->pid);
+        $requisitionpayment=requisitionpayment::find($id);
         $requisitionpayment->paymentstatus="PAID";
+        $requisitionpayment->bankid=$request->bank;
         $requisitionpayment->transactionid=$request->transactionid;
         $requisitionpayment->dateofpayment=$request->dateofpayment;
         $requisitionpayment->save();
@@ -3008,20 +3013,20 @@ public function approvedebitvoucheradmin(Request $request,$id)
 
 
 
-        return redirect('/prb/'.$bankname.'/'.$id);
+        return redirect('/prb/requisitiononlinepending');
     }
-     public function viewallbankrequisitionpayment($bankname,$id)
+     public function viewallbankrequisitionpayment()
      {
            
 
              $requisitionpayments=requisitionpayment::select('requisitionpayments.*','users.name')
              ->leftJoin('requisitionheaders','requisitionpayments.rid','=','requisitionheaders.id')
              ->leftJoin('users','requisitionheaders.employeeid','=','users.id')
-            ->where('requisitionpayments.bankid',$id)
              ->where('requisitionpayments.paymentstatus','PENDING')
+             ->where('requisitionpayments.paymenttype','ONLINE PAYMENT')
              ->get();
 
-            return view('accounts.viewallbankrequisitionpayment',compact('bankname','requisitionpayments'));
+            return view('accounts.viewallbankrequisitionpayment',compact('requisitionpayments'));
      }
 
      /*ACCOUNT SECTON*/

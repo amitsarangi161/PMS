@@ -313,7 +313,7 @@ Route::get('/dvpay/pendingdrpayment/view/{id}','AccountController@viewpendingdr'
 Route::get('/dvpay/pendingdrpayment','AccountController@pendingdrpayment');
 Route::get('/dvpay/paiddramount','AccountController@paiddramount');
 
-Route::get('/viewapprovedrequisition/{id}','AccountController@viewapprovedrequisition');
+
 Route::post('/changependingstatus/{id}','AccountController@changependingstatus');
 Route::post('/changependingstatustocancel/{id}','AccountController@changependingstatustocancel');
 Route::post('/changeapprovalamt','AccountController@changeapprovalamt');
@@ -346,17 +346,17 @@ Route::get('/banks/userbankaccount','AccountController@userbankaccount');
 Route::get('banks/viewalluserbankaccount','AccountController@viewalluserbankaccount');
 Route::post('/updateuserbankaccount','AccountController@updateuserbankaccount');
 
-Route::post('/cashierpaidrequsitiononline/{bankname}/{id}','AccountController@cashierpaidrequsitiononline');
+
 Route::post('/requisitionpaytovendor/{id}','AccountController@requisitionpaytovendor');
-Route::get('/prb/{bankname}/{id}','AccountController@viewallbankrequisitionpayment');
+
 Route::get('/prc/requisitioncashrequest','AccountController@requisitioncashrequest');
 Route::post('/cashierpaidrequsitioncash','AccountController@cashierpaidrequsitioncash');
 
 Route::get('/prc/viewpaidrequisitioncash','AccountController@viewpaidrequisitioncash');
-Route::get('/cashierviewdetailsonlinepayment/{bankname}/{id}','AccountController@cashierviewdetailsonlinepayment');
+
 Route::get('/reports/projectwisepaymentreports','HomeController@projectwisepaymentreports');
 Route::post('/cashierpaidrequsitiononlineupdate/{id}','AccountController@cashierpaidrequsitiononlineupdate');
-Route::get('/prb/paidamt/{bankname}/{id}','AccountController@cashierpaidrequsitionamt');
+
 Route::get('/viewexpenseentrydetails/{id}','AccountController@viewexpenseentrydetails');
 Route::get('/viewpendingexpenseentrydetails/{id}','AccountController@viewpendingexpenseentrydetails');
 
@@ -605,6 +605,11 @@ Route::post('/updatecompanybankaccount','AccountController@updatecompanybankacco
 
 Route::post('/importvendor','AccountController@importvendor');
 Route::get('/defination/managevendors','AccountController@managevendors');
+Route::get('prb/requisitiononlinepending','AccountController@viewallbankrequisitionpayment');
+Route::get('prb/requisitiononlinepaid','AccountController@cashierpaidrequsitionamt');
+Route::get('/cashierviewdetailsonlinepayment/{id}','AccountController@cashierviewdetailsonlinepayment');
+Route::get('/viewapprovedrequisition/{id}','AccountController@viewapprovedrequisition');
+Route::post('/cashierpaidrequsitiononline/{id}','AccountController@cashierpaidrequsitiononline');
 //-------------PMS MD ROUTE------------//
 
 Route::get('/mdhome','MdController@mdhome');

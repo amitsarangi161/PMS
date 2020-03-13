@@ -347,24 +347,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-             @php 
-                  $banks=\App\useraccount::select('useraccounts.*','banks.bankname')
-                        ->where('useraccounts.type','COMPANY')
-                        ->leftJoin('banks','useraccounts.bankid','=','banks.id')
-                        ->get();
-             @endphp
-
-             @if(count($banks)>0)
-             @foreach($banks as $bank)
-          <li class="{{ Request::is('prb/'.$bank->bankname.'/*') ? 'active' : '' }}"><a href="/prb/{{$bank->bankname}}/{{$bank->id}}"><i class="fa fa-circle-o text-blue"></i>{{$bank->bankname}} PENDING AMOUNTS</a></li>
-          
-
-              <li class="{{ Request::is('prb/paidamt/'.$bank->bankname.'/*') ? 'active' : '' }}"><a href="/prb/paidamt/{{$bank->bankname}}/{{$bank->id}}"><i class="fa fa-circle-o text-blue"></i>{{$bank->bankname}} PAID AMOUNTS</a></li>
-             @endforeach
+              <li class="{{ Request::is('prb/requisitiononlinepending') ? 'active' : '' }}"><a href="/prb/requisitiononlinepending"><i class="fa fa-circle-o text-blue"></i>PENDING REQUISITION BANK</a></li>
            
-            @else
-             <li class="{{ Request::is('prc/*') ? 'active' : '' }}"><a href="#"><i class="fa fa-circle-o text-blue"></i>CURRENTLY NO BANK ADDED</a></li>
-            @endif
+           <li class="{{ Request::is('prb/requisitiononlinepaid') ? 'active' : '' }}"><a href="/prb/requisitiononlinepaid"><i class="fa fa-circle-o text-blue"></i>PAID REQUISITION BANK</a></li>
           </ul>
         </li>
         <li class="{{ Request::is('prc*') ? 'active' : '' }} treeview">

@@ -61,8 +61,6 @@
 		<td>{{ $requisitionpayments->paymentstatus}}</td>
 	</tr>
 	<tr>
-		<td><strong>FROM BANK</strong></td>
-		<td>{{$bankname}}</td>
 		<td><strong>CREATED_AT</strong></td>
 		<td>{{$requisitionpayments->created_at}}</td>
 	</tr>
@@ -148,14 +146,25 @@
         <h4 class="modal-title" style="text-align: center;"><strong>TRANCTION DETAILS</strong></h4>
       </div>
       <div class="modal-body">
-      	<form action="/cashierpaidrequsitiononline/{{$bankname}}/{{$requisitionpayments->bankid}}" method="post">
+      	<form action="/cashierpaidrequsitiononline/{{$requisitionpayments->id}}" method="post">
       		{{csrf_field()}}
       	<table class="table">
       		<input type="hidden" name="pid" id="pid">
       		<tr>
-      			<td><strong>TRANACTION ID</strong></td>
-      			<td><input type="text" placeholder="Enter Trancaction Id" class="form-control" name="transactionid" required=""></td>
+      			<td><strong>BANK NAME</strong></td>
+      			<td>
+            <select class="form-control select2" name="bank" required="" style="width: 100%;">
+              <option value="">Choose a bank</option>
+              @foreach($banks as $bank)
+              <option value="{{$bank->id}}">{{$bank->bankname}}|| {{$bank->branchname}}({{$bank->acno}})</option>
+              @endforeach
+            </select>   
+            </td>
       		</tr>
+          <tr>
+            <td><strong>TRANACTION ID</strong></td>
+            <td><input type="text" placeholder="Enter Trancaction Id" class="form-control" name="transactionid" required=""></td>
+          </tr>
             <tr>
             <td><strong>DATE OF PAYMENT</strong></td>
             <td><input type="text" placeholder="Date of Payment" class="form-control datepicker1" name="dateofpayment" autocomplete="off" readonly="" required=""></td>

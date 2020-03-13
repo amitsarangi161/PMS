@@ -435,7 +435,7 @@ $bal=$requisitionheader->approvalamount-$paid;
           			</select>
           		</td>
           	</tr>
-          	<tr style="display: none;" id="showbank">
+          	<!-- <tr style="display: none;" id="showbank">
           		<td><strong>SELECT BANK</strong></td>
           		<td>
           			<select class="form-control" name="bankid" id="reqbank">
@@ -446,7 +446,7 @@ $bal=$requisitionheader->approvalamount-$paid;
           				
           			</select>
           		</td>
-          	</tr>
+          	</tr> -->
           	<tr>
           		<td><strong>AMOUNT</strong></td>
           		<td>

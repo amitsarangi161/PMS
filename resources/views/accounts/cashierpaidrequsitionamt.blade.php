@@ -3,7 +3,7 @@
 
 <table class="table">
 	<tr class="bg-blue">
-		<td class="text-center">REQUISITION PAID AMOUNT FROM BANK <strong>{{$bankname}}</strong></td>
+		<td class="text-center">REQUISITION PAID AMOUNT FROM BANK</td>
 	</tr>
 	 
 </table>
@@ -40,7 +40,7 @@
            	  <td>{{$requisitionpayment->paymentstatus}}</td>
            	  <td>{{$requisitionpayment->dateofpayment}}</td>
            	  <!-- <td><button type="button" class="btn btn-primary" onclick="payonline('{{$requisitionpayment->id}}');">PAID</button></td> -->
-              <td><a href="/cashierviewdetailsonlinepayment/{{$bankname}}/{{$requisitionpayment->id}}" class="btn btn-primary">VIEW</a></td>
+              <td><a href="/cashierviewdetailsonlinepayment/{{$requisitionpayment->id}}" class="btn btn-primary">VIEW</a></td>
            </tr>
 
      	@endforeach
