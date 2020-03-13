@@ -92,7 +92,6 @@
 	                </label>
 	                <div class="col-sm-7">
 	                    <input type="text" name="cost" id="cost"  class="form-control">
-						<p style="color: red;">Don't Put comma or letter</p>
 	                </div>
                  </div>
              </div>
@@ -102,16 +101,11 @@
              	<div class="col-md-6">
 	        	 <div class="form-group">
 	                <label class=" col-sm-5">
-	                  	PRIORITY
+	                  	EMAIL
+
 	                </label>
 	                <div class="col-sm-7">
-	                   <select name="priority" class="form-control">
-	                   	<option value="" selected="">select</option>
-						<option value="NORMAL">NORMAL</option>
-						<option value="HIGH">HIGH</option>
-						<option value="MEDIUM">MEDIUM</option>
-						<option value="LOW">LOW</option>
-						</select>
+	                  <input type="text" class="form-control" name="email" placeholder="Enter Email" >
 	                </div>
                  </div>
              	</div>
@@ -200,7 +194,7 @@
 
 	                </label>
 	                <div class="col-sm-7">
-	                  <input type="text" class="form-control" name="papercost" placeholder="Security Money Period" >
+	                  <input type="text" class="form-control" name="papercost" placeholder="Paper Cost" >
 	                  <b style="color: red">Non Refundable</b>
 	                </div>
                  </div>
@@ -211,7 +205,7 @@
 	                  	PAPER COST ATTACHMENT
 	                </label>
 	                <div class="col-sm-4">
-	                    <input type="file"  name="papercost" onchange="paper(this);" >
+	                    <input type="file"  name="papercostattach" onchange="paper(this);" >
 	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
 	                </div>
 	                <div class="col-sm-3">
@@ -221,9 +215,95 @@
 	                </div>
                  </div>
              	</div>
+             	<div class="row">
+             	<div class="col-md-6">
+                 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	MOM ATTACHMENT
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="momattach" onchange="mom(this);" >
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="momimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+             	<div class="col-md-6">
+	        	 <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	PRIORITY
+	                </label>
+	                <div class="col-sm-7">
+	                   <select name="priority" class="form-control">
+	                   	<option value="" selected="">select</option>
+						<option value="NORMAL">NORMAL</option>
+						<option value="HIGH">HIGH</option>
+						<option value="MEDIUM">MEDIUM</option>
+						<option value="LOW">LOW</option>
+						</select>
+	                </div>
+                 </div>
+             	</div>
+             	
+             	</div>
              	</div>
 	        	</div>
 			</div>
+
+ 	<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info  box-solid">
+	            	<div class="box-header with-border">
+	              		<h3 class="box-title">PO DETAILS</h3>
+	            	</div>
+	        	</div>
+	        	<div class="box-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	PO DATE
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control datepicker" name="poddate" readonly>
+		                </div>
+	                 </div>
+                 	</div>
+                 	<div class="col-md-6">
+		        	 <div class="form-group">
+		                <label class="col-sm-5">
+		                  	PO NUMBER
+		                </label>
+		                <div class="col-sm-7">
+		                    <input class="form-control" name="ponumber">
+		                </div>
+	                 </div>
+                 	</div>
+             		
+				</div>
+				<div class="row">
+             		<div class="col-md-6">
+                    <div class="form-group">
+	                <label class=" col-sm-5">
+	                  	ATTACH ORDER FORM
+	                </label>
+	                <div class="col-sm-4">
+	                    <input type="file"  name="podattach" onchange="podoc(this);">
+	                    <span style="color: red">(please upload .jpg or .pdf file)</span>
+	                </div>
+	                <div class="col-sm-3">
+					 <img id="poimgshow">
+					 
+					</div>
+	                </div>
+                 </div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="row">
 			<div class="col-md-12">
 				<div class="box box-info  box-solid">
@@ -984,6 +1064,43 @@ function emddoc(input) {
             reader.readAsDataURL(input.files[0]);
 
         }
+        
+    }
+    function mom(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#momimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+        
+    }
+    function podoc(input) {
+        
+
+       if (input.files && input.files[0]) {
+            var reader = new FileReader();
+              
+            reader.onload = function (e) {
+                $('#poimgshow')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(80);        
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+        
     }
  function dddoc(input) {
         

@@ -50,6 +50,7 @@
         <tr class="bg-navy" style="font-size: 10px;">
             <th>ID</th>
             <th>FOR CLIENT</th>
+            <th>EMAIL</th>
             <th>DISTRICT</th>
             <th>DIVISION</th>
             <th>LOA NO</th>
@@ -61,6 +62,8 @@
            
             <th>ESTIMATED COST</th>
             <th>PRIORITY</th>
+            <th>PO DATE</th>
+            <th>PO NUMBER</th>
             <th>ISE DATE</th>
             <th>ISE VALID UPTO</th>
             <th>ISE AMOUNT</th>
@@ -88,6 +91,7 @@
         <tr>
             <td>{{$project->id}}</td>
             <td>{{$project->clientname}}</td>
+            <td>{{$project->email}}</td>
             <td>{{$project->districtname}}</td>
             <td>{{$project->divisionname}}</td>
             <td>{{$project->loano}}</td>
@@ -99,6 +103,8 @@
             
             <td>{{$project->cost}}</td>
             <td>{{$project->priority}}</td>
+            <td>{{$project->poddate}}</td>
+            <td>{{$project->ponumber}}</td>
            
              
             <td>{{$project->isddate}}</td>

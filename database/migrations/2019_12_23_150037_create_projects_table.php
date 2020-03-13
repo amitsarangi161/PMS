@@ -29,6 +29,11 @@ class CreateProjectsTable extends Migration {
 			$table->string('orderform', 500)->nullable();
 			$table->string('loano', 300)->nullable();
 			$table->string('agreementno', 300)->nullable();
+			$table->string('email', 100)->nullable();
+			$table->string('momattach', 500)->nullable();
+			$table->date('poddate')->nullable();
+			$table->string('ponumber', 100)->nullable();
+			$table->string('podattach', 100)->nullable();
 			$table->date('isddate')->nullable();
 			$table->string('isdamount', 100)->nullable();
 			$table->string('isdvalidupto', 100)->nullable();

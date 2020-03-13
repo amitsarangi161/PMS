@@ -2771,6 +2771,9 @@ return $message->sid;*/
      $project->ddamount=$request->ddamount;
      $project->ddvalidupto=$request->ddvalidupto;
      $project->papercost=$request->papercost;
+     $project->email=$request->email;
+     $project->poddate=$request->poddate;
+     $project->ponumber=$request->ponumber;
 
      $rarefile = $request->file('emdattach');
         if($rarefile!='')
@@ -2822,7 +2825,7 @@ return $message->sid;*/
         $project->isdattachment = $uplogoimg;
         }
 
-      $rarefile = $request->file('papercost');
+      $rarefile = $request->file('papercostattach');
         if($rarefile!='')
         {
           $u=time().uniqid(rand());
@@ -2830,6 +2833,24 @@ return $message->sid;*/
         $uplogoimg=$u.$rarefile->getClientOriginalName();
         $success=$rarefile->move($raupload,$uplogoimg);
         $project->papercostattachment = $uplogoimg;
+        }
+      $rarefile = $request->file('momattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/momattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->momattach = $uplogoimg;
+        }
+      $rarefile = $request->file('podattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/podattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->podattach = $uplogoimg;
         }
 
       $rarefile = $request->file('orderform');
@@ -2889,6 +2910,7 @@ return $message->sid;*/
 
    public function editproject($id){
     $project=project::find($id);
+    //return $project;
     $clientid=$project->clientid;
     //return $project;
     $projectactivities=projectactivity::select('projectactivities.*','activities.activityname')
@@ -2922,6 +2944,7 @@ return $message->sid;*/
 
    public function updateproject(Request $request,$id)
    {
+    //return $request->all();
      $project=project::find($id);
      $project->clientid=$request->clientid;
      $project->district_id=$request->district_id;
@@ -2952,6 +2975,9 @@ return $message->sid;*/
      $project->ddamount=$request->ddamount;
      $project->ddvalidupto=$request->ddvalidupto;
      $project->papercost=$request->papercost;
+     $project->email=$request->email;
+     $project->poddate=$request->poddate;
+     $project->ponumber=$request->ponumber;
      $rarefile = $request->file('orderform');
 
         if($rarefile!='')
@@ -2962,7 +2988,7 @@ return $message->sid;*/
         $success=$rarefile->move($raupload,$uplogoimg);
         $project->orderform = $uplogoimg;
         }
-    $rarefile = $request->file('papercost');
+    $rarefile = $request->file('papercostattach');
         if($rarefile!='')
         {
           $u=time().uniqid(rand());
@@ -3019,6 +3045,24 @@ return $message->sid;*/
         $uplogoimg=$u.$rarefile->getClientOriginalName();
         $success=$rarefile->move($raupload,$uplogoimg);
         $project->isdattachment = $uplogoimg;
+        }
+        $rarefile = $request->file('momattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/momattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->momattach = $uplogoimg;
+        }
+      $rarefile = $request->file('podattach');
+        if($rarefile!='')
+        {
+          $u=time().uniqid(rand());
+        $raupload ="img/podattach";
+        $uplogoimg=$u.$rarefile->getClientOriginalName();
+        $success=$rarefile->move($raupload,$uplogoimg);
+        $project->podattach = $uplogoimg;
         }
      $project->save();
      Session::flash('msg','Project updated Successfully');
