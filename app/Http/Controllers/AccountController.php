@@ -2942,7 +2942,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
                         ->leftJoin('banks','useraccounts.bankid','=','banks.id')
                         ->get();
 
-        return $requisitionpayments;
+        //return $requisitionpayments;
 
            $userbankaccount=useraccount::select('useraccounts.*','banks.bankname','users.name')
            ->leftJoin('banks','useraccounts.bankid','=','banks.id')

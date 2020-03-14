@@ -128,10 +128,8 @@
         <td>
           <select class="form-control select2 calc" name="expenseheadid" onchange="getparticulars();" id="expenseheadid" required="">
             <option value="">Select a Expense Head</option>
-
             @foreach($expenseheads as $expensehead)
-                 <option value="{{$expensehead->id}}">{{$expensehead->expenseheadname}}</option>
-
+                <option value="{{$expensehead->id}}">{{$expensehead->expenseheadname}}</option>
             @endforeach
             
           </select>
@@ -297,8 +295,8 @@ if (projectid!='') {
                  },
 
            success:function(data) { 
-            
 
+            //$("#expenseheadid").val('');
             $("#expensetable").hide();
                 var y="<option value=''>select a requistion</option>";
                            $.each(data,function(key,value){

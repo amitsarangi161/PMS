@@ -28,7 +28,7 @@ class HrController extends Controller
 {
   //-------------PMS HR ------------//
 
-    public function getalluserlocation(Request $request)
+/*    public function getalluserlocation(Request $request)
     {
        
 $userlocations = attendance::select(DB::raw('*, max(attendances.created_at) as created_at'))
@@ -40,7 +40,34 @@ $userlocations = attendance::select(DB::raw('*, max(attendances.created_at) as c
     ->get();
          
     return response()->json($userlocations);
+    }*/
+
+    public function getalluserlocation(Request $request)
+    {
+       
+$sub = attendance::select('attendances.*','users.id as user_id','users.name')
+    
+    ->leftJoin('users','attendances.userid','=','users.id')
+    
+    ->orderBy('attendances.time', 'desc');
+    
+    
+    $userlocations = DB::table(DB::raw("({$sub->toSql()}) as sub"))
+    ->where('sub.created_at', '>=',$request->date.' 00:00:00')
+    ->where('sub.created_at', '<=',$request->date.' 23:59:00')
+    ->get()
+    ->unique('user_id')
+    ->toArray();
+    
+    
+    $userlocations=array_values($userlocations);
+    
+  //  ->unique('users.id');
+
+    return response()->json($userlocations);
     }
+
+
 public function allemployeemapview($date)
 {
     return view('hr.allempmapview',compact('date'));
