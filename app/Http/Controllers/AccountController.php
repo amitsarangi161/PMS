@@ -2941,7 +2941,9 @@ public function approvedebitvoucheradmin(Request $request,$id)
                         ->where('useraccounts.type','COMPANY')
                         ->leftJoin('banks','useraccounts.bankid','=','banks.id')
                         ->get();
+
         //return $requisitionpayments;
+
            $userbankaccount=useraccount::select('useraccounts.*','banks.bankname','users.name')
            ->leftJoin('banks','useraccounts.bankid','=','banks.id')
            ->leftJoin('users','useraccounts.user','=','users.id')
