@@ -604,12 +604,28 @@ Route::post('/updatecompanybankaccount','AccountController@updatecompanybankacco
 
 Route::post('/importvendor','AccountController@importvendor');
 Route::get('/defination/managevendors','AccountController@managevendors');
+
 //-------------PMS MD ROUTE------------//
 
 Route::get('/mdhome','MdController@mdhome');
 Route::get('/mdmain/currentemployeelist','MdController@currentemployeelist');
 
 //-------------PMS END MD ROUTE------------//
+
+//-------------PMS INVENTORY ROUTE------------//
+
+Route::get('/admininventory','InventoryController@admininventory');
+Route::get('/inventorymain/productcatagory','InventoryController@productcatagory');
+Route::post('/savecatagory','InventoryController@savecatagory');
+Route::post('/updatecatagory','InventoryController@updatecatagory');
+
+Route::get('/inventorymain/products','InventoryController@products');
+Route::post('/saveproduct','InventoryController@saveproduct');
+Route::post('/updateproduct','InventoryController@updateproduct');
+//-------------PMS END INVENTORY ROUTE------------//
+
+
+
 
 });
 

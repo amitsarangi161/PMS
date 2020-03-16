@@ -242,16 +242,10 @@ return view('hr.attendancereport',compact('users'));
 
          $all=array();
          if ($request->has('date')) {
-             if (Auth::user()->usertype=='MASTER ADMIN') {
+             if (Auth::user()->usertype=='MASTER ADMIN' || Auth::user()->usertype=='HR'  ) {
              $users=User::all();
          }
-         else
-         {
-             $auth=Auth::id();
-                 $myusers=userunderhod::select('userunderhods.userid')->where('hodid',$auth)->get();
-             $users=User::whereIn('id',$myusers)
-                       ->get();
-         }
+         
           
            
           foreach ($users as $key => $user) {

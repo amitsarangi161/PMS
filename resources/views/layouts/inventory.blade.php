@@ -198,77 +198,35 @@
 
 
       <ul class="sidebar-menu">
-        <li class="header"><strong class="text-center">HR NAVIGATION</strong></li>
+        <li class="header"><strong class="text-center">INVENTORY NAVIGATION</strong></li>
       
     
- @if(Auth::user()->usertype=='MASTER ADMIN' ||Auth::user()->usertype=='HR')
-           <li class="{{ Request::is('adminhr') ? 'active' : '' }} treeview">
-          <a href="/adminhr">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              
-            </span>
-          </a>
-          </li>
+ @if(Auth::user()->usertype=='MASTER ADMIN' ||Auth::user()->usertype=='INVENTORY')
+        <li class="{{ Request::is('inventorymain') ? 'active' : '' }} treeview">
+        <a href="/adminhr">
+          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          <span class="pull-right-container">
+            
+          </span>
+        </a>
+        </li>
  
-       <li class="{{ Request::is('hrmain*') ? 'active' : '' }} treeview">
+       <li class="{{ Request::is('inventorymain*') ? 'active' : '' }} treeview">
           <a href="#">
-            <i class="fa fa-folder"></i> <span>EMPLOYEE MANAGEMENT</span>
+            <i class="fa fa-folder"></i> <span>PRODUCT MASTER</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-             <li class="{{ Request::is('hrmain/employeelist') ? 'active' : '' }}"><a href="/hrmain/employeelist"><i class="fa fa-circle-o text-aqua"></i>Employee Database</a></li>
+             <li class="{{ Request::is('inventorymain/productcatagory') ? 'active' : '' }}"><a href="/inventorymain/productcatagory"><i class="fa fa-circle-o text-aqua"></i>Product Catagory</a></li>
+          </ul>
+          <ul class="treeview-menu">
+             <li class="{{ Request::is('inventorymain/products') ? 'active' : '' }}"><a href="/inventorymain/products"><i class="fa fa-circle-o text-aqua"></i>Products</a></li>
           </ul>
         </li>
-        <li class="{{ Request::is('attendance*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-book"></i> <span>ATTENDANCE</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-             <li class="{{ Request::is('attendance/viewattendance') ? 'active' : '' }}"><a href="/attendance/viewattendance"><i class="fa fa-circle-o text-red"></i>VIEW ATTENDANCE</a></li>
-
-             <li class="{{ Request::is('attendance/attendancereport') ? 'active' : '' }}"><a href="/attendance/attendancereport"><i class="fa fa-circle-o text-red"></i>ATTENDANCE REPORT</a></li>
-
-             <li class="{{ Request::is('attendance/mapview') ? 'active' : '' }}"><a href="/attendance/mapview"><i class="fa fa-circle-o text-red"></i>MAP VIEW</a></li>
-          </ul>
-     </li>
+      
         
-        <li class="{{ Request::is('notices*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-bell"></i> <span>NOTICES</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-             <li class="{{ Request::is('notices/createnotice') ? 'active' : '' }}"><a href="/notices/createnotice"><i class="fa fa-circle-o text-red"></i>CREATE A NOTICE</a></li>
-             <li class="{{ Request::is('notices/viewallnotice') ? 'active' : '' }}"><a href="/notices/viewallnotice"><i class="fa fa-circle-o text-red"></i>VIEW ALL NOTICE</a></li>
-             
-            
-          </ul>
-      </li>
-      <li class="{{ Request::is('documents*') ? 'active' : '' }} treeview">
-          <a href="#">
-            <i class="fa fa-book"></i> <span>DOCUMENTS</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-             <li class="{{ Request::is('documents/adddocuments') ? 'active' : '' }}"><a href="/documents/adddocuments"><i class="fa fa-circle-o text-red"></i>ADD DOCUMENTS</a></li>
-            
-             
-            
-          </ul>
-      </li>
-
-
-
 @endif
 
     </section>

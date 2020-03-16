@@ -242,7 +242,7 @@
             <a href="/mdhome" class="btn bg-olive btn-lg">MD</a>
             <a href="/adminhr" class="btn bg-purple btn-lg">HR</a>
             <a href="/adminaccounts" class="btn bg-red btn-lg">ACCOUNTS</a>
-            <a href="#" class="btn btn-success btn-lg">INVENTORY</a>
+            <a href="/admininventory" class="btn btn-success btn-lg">INVENTORY</a>
           </div> 
         @endif
               
