@@ -28,20 +28,6 @@ class HrController extends Controller
 {
   //-------------PMS HR ------------//
 
-/*    public function getalluserlocation(Request $request)
-    {
-       
-$userlocations = attendance::select(DB::raw('*, max(attendances.created_at) as created_at'))
-     ->where('attendances.created_at', '>=',$request->date.' 00:00:00')
-    ->where('attendances.created_at', '<=',$request->date.' 23:59:00')
-    ->leftJoin('users','attendances.userid','=','users.id')
-    ->orderBy('attendances.created_at', 'desc')
-    ->groupBy('attendances.userid')
-    ->get();
-         
-    return response()->json($userlocations);
-    }*/
-
     public function getalluserlocation(Request $request)
     {
        

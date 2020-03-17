@@ -296,7 +296,6 @@ if (projectid!='') {
 
            success:function(data) { 
 
-            //$("#expenseheadid").val('');
             $("#expensetable").hide();
                 var y="<option value=''>select a requistion</option>";
                            $.each(data,function(key,value){
@@ -305,7 +304,7 @@ if (projectid!='') {
                              y=y+x;
                            });
                            $("#requistionno").html(y);
-
+                //$("#expenseheadid").select2('data', {});;
            }
       });
   }
