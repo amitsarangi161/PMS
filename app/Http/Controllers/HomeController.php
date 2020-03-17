@@ -286,7 +286,11 @@ public function companydetails(){
       elseif(Auth::user()->usertype=='MD')
       {
            return view('md.home');
-      }      
+      }   
+      elseif(Auth::user()->usertype=='INVENTORY')
+      {
+           return view('inventory.home');
+      }    
 
     $noofprojects=project::count();
     $noofclients=client::count();
