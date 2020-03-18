@@ -368,15 +368,14 @@
 
         </li>
 
-         @php
-              $counthodpendingexp=\App\expenseentry::where('status','HOD PENDING')->count();
-              $countpendingexp=\App\expenseentry::where('status','PENDING')->count();
-              $countapprovedexp=\App\expenseentry::where('status','APPROVED')->count();
-              $countcancelledexp=\App\expenseentry::where('status','CANCELLED')->count();
-              $countwalletpaidexp=\App\expenseentry::where('status','WALLET PAID')->count();
-              $countallexp=\App\expenseentry::count();
-              
-          @endphp
+ @php
+    $counthodpendingexp=\App\expenseentry::where('status','HOD PENDING')->count();
+    $countpendingexp=\App\expenseentry::where('status','PENDING')->count();
+    $countapprovedexp=\App\expenseentry::where('status','APPROVED')->count();
+    $countcancelledexp=\App\expenseentry::where('status','CANCELLED')->count();
+    $countwalletpaidexp=\App\expenseentry::where('status','WALLET PAID')->count();
+    $countallexp=\App\expenseentry::count();
+  @endphp
 
         <li class="{{ Request::is('expense*') ? 'active' : '' }} treeview">
           <a href="#">
