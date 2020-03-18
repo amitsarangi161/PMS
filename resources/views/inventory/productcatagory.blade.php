@@ -23,7 +23,7 @@
 	 	</td>
 	 	
 	 </tr>
-	 <tr>
+	<!--  <tr>
 	 	<td><strong>Catagory Image<span style="color: red"> *</span></strong></td>
 	 	<td>
 	 		<input type="file" class="form-control" placeholder="catagory image" name="catagoryimage" required onchange="readURL2(this);">
@@ -33,7 +33,7 @@
 	 		<img id="imgshow2" src="#" alt="No Image Selected" style="height: 70px;width: 70px;">
 	 	</td>
 	 	
-	 </tr>
+	 </tr> -->
 	 <tr>
 	 	<td colspan="2" style="text-align: right;"><button type="submit" class="btn btn-success">ADD CATAGORY</button></td>
 	 </tr>
@@ -89,14 +89,14 @@
 	 	</td>
 	 	
 	 </tr>
-	 <tr>
+	 <!-- <tr>
 			<td><strong>Catagory Image</strong></td>
 			<td>
 				<input type="file" class="form-control" name="catagoryimage" onchange="readURL1(this)">
                  <img id="imgshow1" src="#" alt="Selected Image" style="height: 100px;width: 100px;">
 			</td>
 
-		</tr>
+	</tr> -->
 	 <tr>
 	 	<td colspan="2" style="text-align: right;"><button type="submit" class="btn btn-success">UPDATE CATAGORY</button></td>
 	 </tr>
