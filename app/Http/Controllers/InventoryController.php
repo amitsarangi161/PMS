@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use App\productcatagory;
 use App\product;
+use App\stockentry;
 
 class InventoryController extends Controller
 {
@@ -85,5 +86,39 @@ class InventoryController extends Controller
 
 
     }
+    public function stockentry()
+   {  
+   	  $products=product::all();
+   	  $stocks=stockentry::select('stockentries.*','products.productname')
+                       ->leftJoin('products','stockentries.product_id','=','products.id')
+                       ->get();
+   	  //return $stocks;
+      return view('inventory.stockentry',compact('products','stocks'));
+   }
+   public function savestock(Request $request)
+  {
+  	$stock=new stockentry();
+     $stock->product_id=$request->product_id;
+     $stock->date=$request->date;
+     $stock->unitrate=$request->unitrate;
+     $stock->quantity=$request->quantity;
+     $stock->save();
+     Session::flash('msg','Sctock added successfully');
+     return back();
+  }
+  public function updatestock(Request $request)
+    {
+        $stock =stockentry::find($request->pid);
+         $stock->product_id=$request->product_id;
+	     $stock->date=$request->date;
+	     $stock->unitrate=$request->unitrate;
+	     $stock->quantity=$request->quantity;
+	     $stock->save();
+     Session::flash('msg','Sctock updated successfully');
+     return back();
+
+
+    }
+
 
 }

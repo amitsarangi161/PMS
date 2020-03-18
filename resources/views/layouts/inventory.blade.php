@@ -224,6 +224,9 @@
           <ul class="treeview-menu">
              <li class="{{ Request::is('inventorymain/products') ? 'active' : '' }}"><a href="/inventorymain/products"><i class="fa fa-circle-o text-aqua"></i>Products</a></li>
           </ul>
+          <ul class="treeview-menu">
+             <li class="{{ Request::is('inventorymain/stockentry') ? 'active' : '' }}"><a href="/inventorymain/stockentry"><i class="fa fa-circle-o text-aqua"></i>Stock Entry</a></li>
+          </ul>
         </li>
       
         
