@@ -26,7 +26,11 @@
 	 <tr>
 	 	<td><strong>Catagory Image<span style="color: red"> *</span></strong></td>
 	 	<td>
-	 		<input type="file" class="form-control" placeholder="catagory image" name="catagoryimage" required>
+	 		<input type="file" class="form-control" placeholder="catagory image" name="catagoryimage" required onchange="readURL2(this);">
+
+	 	</td>
+	 	<td>
+	 		<img id="imgshow2" src="#" alt="No Image Selected" style="height: 70px;width: 70px;">
 	 	</td>
 	 	
 	 </tr>
@@ -43,7 +47,6 @@
        	   <tr>
        	   	<th>ID</th>
        	   	<th>CATAGORY NAME</th>
-       	   	<th>CATAGORY IMAGE</th>
        	   	<th>EDIT</th>
        	   <!-- 	<th>DELETE</th> -->
        	   </tr>
@@ -54,7 +57,6 @@
        	<tr>
        		<td>{{$catagorie->id}}</td>
        		<td>{{$catagorie->catagoryname}}</td>
-       		<td><img src="{{asset('img/catagoryimage/'.$catagorie->catagoryimage)}}" alt="click to View" style="height: 70px;width: 100px;"></td>
        		<td>
        			<button type="button" class="btn btn-primary" onclick="editcatagory('{{$catagorie->id}}','{{$catagorie->catagoryname}}','{{$catagorie->catagoryimage}}')">EDIT</button>
        		</td>
@@ -126,6 +128,17 @@
 
         reader.onload = function (e) {
             $('#imgshow1').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+function readURL2(input) {
+    	if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imgshow2').attr('src', e.target.result);
         }
 
         reader.readAsDataURL(input.files[0]);
