@@ -269,6 +269,73 @@
 
           </ul>
         </li> -->
+      @php
+        $countpendingdrmgr=\App\debitvoucherheader::where('status','PENDING')->count();
+        $countpendingdradmin=\App\debitvoucherheader::where('status','MGR APPROVED')->count();
+        $countapproveddrvoucher=\App\debitvoucherheader::where('status','ADMIN APPROVED')
+        ->count();
+        $countcompleteddrvoucher=\App\debitvoucherheader::where('status','COMPLETED')
+        ->count();
+        $countcancelleddrvoucher=\App\debitvoucherheader::where('status','CANCELLED')
+        ->count();
+        $alldr=\App\debitvoucherheader::where('id','>','0')
+        ->count();
+      @endphp
+
+        <li class="{{ Request::is('vouchers*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-rupee"></i> <span>DEBIT VOUCHER</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+                <span class="label label-warning pull-right">{{$countpendingdrmgr+$countpendingdradmin}}</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ Request::is('vouchers/debitvoucher') ? 'active' : '' }}"><a href="/vouchers/debitvoucher"><i class="fa fa-circle-o text-red"></i>DEBIT VOUCHER</a></li>
+          @if(Auth::user()->usertype=='MASTER ADMIN' ||Auth::user()->usertype=='ACCOUNTS' || Auth::user()->usertype=='CASHIER')
+            <li class="{{ Request::is('vouchers/pendingdebitvouchermgr') ? 'active' : '' }}"><a href="/vouchers/pendingdebitvouchermgr" title="PENDING DR VOUCHER(MGR)" class="chngdrfont"><i class="fa fa-circle-o text-red"></i>PENDING DR VOUCHER(MGR)
+            <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$countpendingdrmgr}}</span>
+            </span>
+
+            </a></li>
+
+            <li class="{{ Request::is('vouchers/pendingdebitvoucheradmin') ? 'active' : '' }}"><a href="/vouchers/pendingdebitvoucheradmin" class="chngdrfont" title="PENDING DR VOUCHER(ADMIN)"><i class="fa fa-circle-o text-red"></i>PENDING DR VOUCHER(ADMIN)
+             <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$countpendingdradmin}}</span>
+            </span>
+            </a></li>
+
+             <li class="{{ Request::is('vouchers/approveddebitvoucher') ? 'active' : '' }}"><a href="/vouchers/approveddebitvoucher"><i class="fa fa-circle-o text-red"></i>APPROVED DR VOUCHER 
+              <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$countapproveddrvoucher}}</span>
+            </span>
+             </a></li>
+               <li class="{{ Request::is('vouchers/completeddebitvoucher') ? 'active' : '' }}"><a href="/vouchers/completeddebitvoucher"><i class="fa fa-circle-o text-red"></i>COMPLETED DR VOUCHER 
+              <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$countcompleteddrvoucher}}</span>
+            </span>
+             </a></li>
+               <li class="{{ Request::is('vouchers/cancelleddebitvoucher') ? 'active' : '' }}"><a href="/vouchers/cancelleddebitvoucher"><i class="fa fa-circle-o text-red"></i>CANCELLED DR VOUCHER 
+              <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$countcancelleddrvoucher}}</span>
+            </span>
+             </a></li>
+
+          @endif
+            <li class="{{ Request::is('vouchers/viewalldebitvoucher') ? 'active' : '' }}"><a href="/vouchers/viewalldebitvoucher"><i class="fa fa-circle-o text-red"></i>ALL DEBIT VOUCHERS
+              <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$alldr}}</span>
+            </span>
+
+            </a></li>
+           
+
+          </ul>
+        </li>
+
+
+
         @php
           $mgrpendingreqcount=\App\requisitionheader::where('status','PENDING MGR')
                           ->count();
@@ -282,8 +349,6 @@
                           ->count();
           $cancelledreqcount=\App\requisitionheader::where('status','CANCELLED')
                           ->count();
-
-
           @endphp
          <li class="{{ Request::is('viewrequisitions*') ? 'active' : '' }} treeview">
           <a href="#">

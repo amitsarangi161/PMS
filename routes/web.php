@@ -16,7 +16,7 @@ Route::get('/testimage','HomeController@testimage');
 Route::post('/registerrequest','HomeController@registerrequest');
 Route::post('/account/kit','AjaxController@accountkitverify');
 Route::post('/ajaxsavesuggestion','AjaxController@savesuggestion');
-Route::post('/ajaxcheckbill','AccountController@ajaxcheckbill');
+
 Route::post('/ajaxsearchtenderno','AjaxController@ajaxsearchtenderno');
 
 Route::get('gettenderlist','TenderController@gettenderlist')->name('gettenderlist');
@@ -380,7 +380,7 @@ Route::post('/ajaxchangeseenstatus','AjaxController@ajaxchangeseenstatus');
 Route::post('/ajaxcomposemessage','AjaxController@ajaxcomposemessage');
 Route::post('/ajaxcountunreadmessage','AjaxController@ajaxcountunreadmessage');
 Route::get('/onlineusers','HomeController@onlineusers');
-Route::get('/vouchers/debitvoucher','AccountController@debitvoucher');
+
 Route::get('/defination/units','AccountController@units');
 Route::post('/saveunits','AccountController@saveunits');
 
@@ -389,7 +389,7 @@ Route::post('/updateunits','AccountController@updateunits');
 Route::post('/savetodo','HomeController@savetodo');
 Route::get('/deletemytodo/{id}','HomeController@deletemytodo');
 Route::post('/updatetodo','HomeController@updatetodo');
-Route::post('/savedebitvouchers','AccountController@savedebitvouchers');
+
 
 Route::get('/adminhr','HrController@home');
 Route::get('/hrmain/registerrequest','HrController@registerrequest');
@@ -610,6 +610,10 @@ Route::get('prb/requisitiononlinepaid','AccountController@cashierpaidrequsitiona
 Route::get('/cashierviewdetailsonlinepayment/{id}','AccountController@cashierviewdetailsonlinepayment');
 Route::get('/viewapprovedrequisition/{id}','AccountController@viewapprovedrequisition');
 Route::post('/cashierpaidrequsitiononline/{id}','AccountController@cashierpaidrequsitiononline');
+
+Route::get('/vouchers/debitvoucher','AccountController@debitvoucher');
+Route::post('/ajaxcheckbill','AccountController@ajaxcheckbill');
+Route::post('/savedebitvouchers','AccountController@savedebitvouchers');
 //-------------PMS MD ROUTE------------//
 
 Route::get('/mdhome','MdController@mdhome');

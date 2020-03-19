@@ -130,9 +130,10 @@
 	</tr>
 	 <tr>
     
-		   <td><strong>GROSS AMOUNT</strong></td>
-		<td><input type="text" class="form-control" id="grossamt" autocomplete="off" readonly=""></td>
-		<td></td>
+		<td><strong>TOTAL AMOUNT</strong></td>
+		<td><input type="text" class="form-control" id="ttlamt" autocomplete="off" readonly=""></td>
+		<td><strong>GROSS AMOUNT</strong></td>
+    <td><input type="text" class="form-control" id="grossamt" autocomplete="off" readonly=""></td>
 		<td><button type="button" id="addnew" class="addauthor btn btn-primary">ADD</button></td>
 
 		
@@ -161,7 +162,8 @@
 			
 			<td>IGST Rate</td>
 			<td>IGST Cost</td>
-			<td>AMOUNT</td>
+			<td>TOTAL AMOUNT</td>
+      <td>GROSS AMOUNT</td>
     		<th>REMOVE</th>
            </tr>
     	</thead>
@@ -178,14 +180,7 @@
     </table>
 
 	<table class="table">
-	    	<tr>
-	    		<td width="50%"><strong>Total MRP</strong></td>
-	    		<td width="50%"><input type="text" id="tmrp" name="tmrp" class="form-control" readonly="" required=""></td>
-	    	</tr>
-	    	<tr>
-	    		<td width="50%"><strong>Total Discount</strong></td>
-	    		<td width="50%"><input type="text" class="form-control" id="tdiscount" name="tdiscount" readonly=""></td>
-	    	</tr>
+	    	
 	    	<tr>
 	    		<td width="50%"><strong>Total Price</strong></td>
 	    		<td width="50%"><input type="text" class="form-control" id="tprice" name="tprice" readonly="" required=""></td>
@@ -215,20 +210,6 @@
 	    		<td width="50%"><input type="text" class="form-control" id="totalamt" name="totalamt" readonly="" required=""></td>
 	    	 </tr>
 
-	    	<!--  <tr>
-	    		<td width="50%"><strong>IT Deduction(in %)</strong></td>
-	    		<td width="50%"><input type="text" class="form-control dedcalc" id="itdeduction" name="itdeduction"  value="0"></td>
-
-	    	 </tr>
-	    	  <tr>
-	    		<td width="50%"><strong>Other Deduction(in %)</strong></td>
-	    		<td width="50%"><input type="text" class="form-control dedcalc" id="otherdeduction" name="otherdeduction" value="0"></td>
-	    		
-	    	 </tr>
-	    	  <tr>
-	    		<td width="50%"><strong>Final Price</strong></td>
-	    		<td width="50%"><input type="text" class="form-control" id="finalamount" name="finalamount" readonly="" required=""></td> -->
-	    		
 	    	 </tr>
 	    	 <tr>
 	    	 	<td width="50%"><strong>Attach a invoice copy</strong></td>
@@ -408,6 +389,9 @@
    var gross=Number.parseFloat((parseFloat(gqty)*parseFloat(calprice))+parseFloat(calsgstcost)+parseFloat(calcgstcost)+parseFloat(caligstcost)).toFixed(2);
    $("#grossamt").val(gross);
 
+   var tamnt=Number.parseFloat((parseFloat(gqty)*parseFloat(calprice))).toFixed(2);
+   $("#ttlamt").val(tamnt);
+
   
 });
 
@@ -431,6 +415,7 @@ jQuery('#addnew').click(function(event){
 	var igstrate1=jQuery('#igstrate').val();
 	var igstcost1=jQuery('#igstcost').val();
 	var grossamt1=jQuery('#grossamt').val();
+  var ttlamt1=jQuery('#ttlamt').val();
 
    
 	if(itemname1!='' && unit!='' && qty1!='' && mrp1!='' && discount1!='' && grossamt1 !='')
@@ -453,7 +438,8 @@ jQuery('#addnew').click(function(event){
           '<td>'+igstrate1+'<input type="hidden" name="igstrate[]" value="'+igstrate1+'"/></td>'+
           '<td>'+igstcost1+'<input type="hidden" name="igstcost[]" class="igstcountable" value="'+igstcost1+'"/></td>'+
 
-    	  '<td>'+grossamt1+'<input type="hidden" name="grossamt[]" class="countable" value="'+grossamt1+'"/></td>'+
+    	  '<td>'+ttlamt1+'<input type="hidden" name="ttlamt[]" class="ttlamtcountable" value="'+ttlamt1+'"/></td>'+
+        '<td>'+grossamt1+'<input type="hidden" name="grossamt[]" class="countable" value="'+grossamt1+'"/></td>'+
 
     	  '<td><button type="button" class="btn btn-danger remove_field" id="'+counter+'">X</button></td></tr>');
     jQuery('.addnewrow').append(newRow);
@@ -472,7 +458,8 @@ jQuery('#addnew').click(function(event){
 }); 
 
 
-jQuery(".addnewrow").on("click",".remove_field", function(e){ //user click on remove text
+jQuery(".addnewrow").on("click",".remove_field", function(e){ 
+//user click on remove text
 e.preventDefault();
 jQuery(this).parent('td').parent('tr').remove(); counter--;
 	
@@ -515,9 +502,11 @@ function sumofduration()
        discountcountable=discountcountable + parseFloat($(element).val());
         //discountcountable =Number.parseFloat( discountcountable + parseFloat($(element).val())).toFixed(2);
     });
-    $('.pricecountable').each(function (index, element) {
+    /*$('.pricecountable').each(function (index, element) {
         pricecountable=pricecountable + parseFloat($(element).val());
-        //pricecountable = Number.parseFloat(pricecountable + parseFloat($(element).val())).toFixed(2);
+    });*/
+    $('.ttlamtcountable').each(function (index, element) {
+        pricecountable=pricecountable + parseFloat($(element).val());
     });
     $('.sgstcountable').each(function (index, element) {
         sgstcountable=sgstcountable + parseFloat($(element).val());
