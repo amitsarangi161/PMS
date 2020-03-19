@@ -631,6 +631,10 @@ Route::post('/updatecatagory','InventoryController@updatecatagory');
 Route::get('/inventorymain/products','InventoryController@products');
 Route::post('/saveproduct','InventoryController@saveproduct');
 Route::post('/updateproduct','InventoryController@updateproduct');
+
+Route::get('/inventorymain/stockentry','InventoryController@stockentry');
+Route::post('/savestock','InventoryController@savestock');
+Route::post('/updatestock','InventoryController@updatestock');
 //-------------PMS END INVENTORY ROUTE------------//
 
 });
