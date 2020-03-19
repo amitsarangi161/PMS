@@ -334,8 +334,42 @@
           </ul>
         </li>
 
+                @if(Auth::user()->usertype=='MASTER ADMIN' ||Auth::user()->usertype=='ACCOUNTS' || Auth::user()->usertype=='CASHIER')
+         @php
 
+               $pendingdrcount=\App\debitvoucherpayment::where('paymentstatus','PENDING')
+                                                       ->count();
+                 $paiddrcount=\App\debitvoucherpayment::where('paymentstatus','PAID')
+                                                       ->count();
+           @endphp
 
+          <li class="{{ Request::is('dvpay*') ? 'active' : '' }} treeview">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>DEBIT VOUCHER PAYMENT</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+              <span class="label label-warning pull-right">{{$pendingdrcount}}</span>
+                </span>
+          </a>
+          <ul class="treeview-menu">
+           <li class="{{ Request::is('dvpay/pendingdrpayment') ? 'active' : '' }}"><a href="/dvpay/pendingdrpayment"><i class="fa fa-circle-o text-aqua"></i>PENDING DR  PAYMENT
+
+            <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$pendingdrcount}}</span>
+                </span>
+           </a></li>
+            
+             <li class="{{ Request::is('dvpay/paiddramount') ? 'active' : '' }}"><a href="/dvpay/paiddramount"><i class="fa fa-circle-o text-red"></i>PAID DR PAYMENTS
+               <span class="pull-right-container">
+                  <span class="label label-success pull-right">{{$paiddrcount}}</span>
+                </span>
+             </a></li>
+
+           
+
+          </ul>
+        </li>
+@endif
         @php
           $mgrpendingreqcount=\App\requisitionheader::where('status','PENDING MGR')
                           ->count();
