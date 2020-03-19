@@ -43,7 +43,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>0<sup style="font-size: 20px"></sup></h3>
+              <h3>{{$completedprojects}}<sup style="font-size: 20px"></sup></h3>
 
               <p>Completed Project</p>
             </div>

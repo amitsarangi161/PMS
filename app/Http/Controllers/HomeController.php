@@ -293,9 +293,10 @@ public function companydetails(){
       }    
 
     $noofprojects=project::count();
+    $completedprojects=project::where('status','COMPLETED')->count();
     $noofclients=client::count();
     $noofusers=user::count();
-      return view('home',compact('noofprojects','noofclients','noofusers','todos'));
+      return view('home',compact('noofprojects','noofclients','noofusers','todos','completedprojects'));
        
 
   }

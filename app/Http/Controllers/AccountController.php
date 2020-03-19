@@ -2368,7 +2368,6 @@ public function approvedebitvoucheradmin(Request $request,$id)
                         ->where('headerid',$id)
                         ->get();
 
-
           return view('accounts.viewpendinfdebitvouchermgr',compact('debitvoucherheader','debitvouchers','vendor'));
      }
 
@@ -2657,7 +2656,7 @@ public function approvedebitvoucheradmin(Request $request,$id)
 
          if($chk==0)
          {
-              $debitvoucherheader=new debitvoucherheader();
+         $debitvoucherheader=new debitvoucherheader();
          $debitvoucherheader->vendorid=$request->vendorid;
          $debitvoucherheader->billdate=$request->billdate;
          $debitvoucherheader->billno=$request->billno;

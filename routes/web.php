@@ -404,7 +404,7 @@ Route::get('vouchers/viewalldebitvoucher','AccountController@viewalldebitvoucher
 Route::get('/viewapproveddebitvoucher/{id}','AccountController@viewapproveddebitvoucher');
 Route::get('/vouchers/approveddebitvoucher','AccountController@approveddebitvoucher');
 Route::get('/vouchers/pendingdebitvouchermgr','AccountController@pendingdebitvouchermgr');
-Route::get('/viewpendinfdebitvouchermgr/{id}','AccountController@viewpendinfdebitvouchermgr');
+
 
 Route::get('/viewpendinfdebitvoucheradmin/{id}','AccountController@viewpendinfdebitvoucheradmin');
 
@@ -614,6 +614,7 @@ Route::post('/cashierpaidrequsitiononline/{id}','AccountController@cashierpaidre
 Route::get('/vouchers/debitvoucher','AccountController@debitvoucher');
 Route::post('/ajaxcheckbill','AccountController@ajaxcheckbill');
 Route::post('/savedebitvouchers','AccountController@savedebitvouchers');
+Route::get('/viewpendinfdebitvouchermgr/{id}','AccountController@viewpendinfdebitvouchermgr');
 //-------------PMS MD ROUTE------------//
 
 Route::get('/mdhome','MdController@mdhome');

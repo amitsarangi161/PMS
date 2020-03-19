@@ -12,22 +12,22 @@
 <div class="well">
 	<table class="table">
 		<tr>
-			<td width="10%"><strong>ID :</strong></td>
-			<td width="40%">#{{$debitvoucherheader->id}}</td>
-			<td width="10%"><strong>VENDOR :</strong></td>
-			<td width="40%"><button type="button" class="btn btn-success" onclick="openvendordetails('{{$vendor->vendorid}}','{{$vendor->vendorname}}','{{$vendor->mobile}}','{{$vendor->bankname}}','{{$vendor->acno}}','{{$vendor->branchname}}','{{$vendor->ifsccode}}','{{trim(preg_replace('/\s+/', ' ',$vendor->details))}}','{{$vendor->photo}}','{{$vendor->vendoridproof}}')">{{$debitvoucherheader->vendorname}}</button></td>
+			<td width="20%"><strong>ID :</strong></td>
+			<td width="30%">#{{$debitvoucherheader->id}}</td>
+			<td width="20%"><strong>VENDOR :</strong></td>
+			<td width="30%"><button type="button" class="btn btn-success" onclick="openvendordetails('{{$vendor->vendorid}}','{{$vendor->vendorname}}','{{$vendor->mobile}}','{{$vendor->bankname}}','{{$vendor->acno}}','{{$vendor->branchname}}','{{$vendor->ifsccode}}','{{trim(preg_replace('/\s+/', ' ',$vendor->details))}}','{{$vendor->photo}}','{{$vendor->vendoridproof}}')">{{$debitvoucherheader->vendorname}}</button></td>
 		</tr>
 		<tr>
-			<td width="10%"><strong>BILL DATE :</strong></td>
-			<td width="40%">{{$debitvoucherheader->billdate}}</td>
-			<td width="10%"><strong>BILL NO :</strong></td>
-			<td width="40%">{{$debitvoucherheader->billno}}</td>
+			<td width="20%"><strong>BILL DATE :</strong></td>
+			<td width="30%">{{$debitvoucherheader->billdate}}</td>
+			<td width="20%"><strong>BILL NO :</strong></td>
+			<td width="30%">{{$debitvoucherheader->billno}}</td>
 		</tr>
 		<tr>
-			<td width="10%"><strong>CREATED AT  :</strong></td>
-			<td width="40%">{{$debitvoucherheader->created_at}}</td>
-			<td width="10%"><strong>STATUS :</strong></td>
-			<td width="40%"><span class="label label-warning">{{$debitvoucherheader->status}}</span></td>
+			<td width="20%"><strong>CREATED AT  :</strong></td>
+			<td width="30%">{{$debitvoucherheader->created_at}}</td>
+			<td width="20%"><strong>STATUS :</strong></td>
+			<td width="30%"><span class="label label-warning">{{$debitvoucherheader->status}}</span></td>
 		</tr>
 
 		
@@ -93,11 +93,15 @@
 <table class="table">
 	    	<tr>
 	    		<td width="50%"><strong>Total MRP</strong></td>
-	    		<td width="50%"><input type="text" id="tmrp" value="{{$debitvoucherheader->tmrp}}" name="tmrp" id="tmrp" class="form-control" readonly="" required=""></td>
+	    		<td width="50%"><input type="text" id="tmrp" value="{{$debitvoucherheader->tprice}}" name="tmrp" id="tmrp" class="form-control" readonly="" required=""></td>
 	    	</tr>
 	    	<tr>
 	    		<td width="50%"><strong>Total Discount</strong></td>
+	    		@if($debitvoucherheader->tdiscount=='')
+	    		<td width="50%"><input type="text" value="0.00" class="form-control" id="tdiscount" name="tdiscount" readonly=""></td>
+	    		@else
 	    		<td width="50%"><input type="text" value="{{$debitvoucherheader->tdiscount}}" class="form-control" id="tdiscount" name="tdiscount" readonly=""></td>
+	    		@endif
 	    	</tr>
 	    	<tr>
 	    		<td width="50%"><strong>Total Price</strong></td>
