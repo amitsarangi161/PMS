@@ -402,15 +402,10 @@ Route::get('/hrviewallmytodo','HrController@userviewallmytodo');
 Route::get('/deleterequest/{id}','HomeController@deleterequest');
 Route::get('vouchers/viewalldebitvoucher','AccountController@viewalldebitvoucher');
 Route::get('/viewapproveddebitvoucher/{id}','AccountController@viewapproveddebitvoucher');
-Route::get('/vouchers/approveddebitvoucher','AccountController@approveddebitvoucher');
-Route::get('/vouchers/pendingdebitvouchermgr','AccountController@pendingdebitvouchermgr');
 
 
-Route::get('/viewpendinfdebitvoucheradmin/{id}','AccountController@viewpendinfdebitvoucheradmin');
 
-Route::post('/approvedebitvouchermgr/{id}','AccountController@approvedebitvouchermgr');
-Route::post('/approvedebitvoucheradmin/{id}','AccountController@approvedebitvoucheradmin');
-Route::get('/vouchers/pendingdebitvoucheradmin','AccountController@pendingdebitvoucheradmin');
+
 
 Route::get('/tour/pendingtourapplications','HomeController@pendingtourapplications');
 Route::post('/approvetour','HomeController@approvetour');
@@ -601,8 +596,6 @@ Route::get('/banks/companybankaccount','AccountController@companybankaccount');
 Route::post('/savecompanybankaccount','AccountController@savecompanybankaccount');
 Route::post('/updatecompanybankaccount','AccountController@updatecompanybankaccount');
 
-//-------------END PMS ACCOUNT ROUTE------------//
-
 Route::post('/importvendor','AccountController@importvendor');
 Route::get('/defination/managevendors','AccountController@managevendors');
 Route::get('prb/requisitiononlinepending','AccountController@viewallbankrequisitionpayment');
@@ -615,6 +608,16 @@ Route::get('/vouchers/debitvoucher','AccountController@debitvoucher');
 Route::post('/ajaxcheckbill','AccountController@ajaxcheckbill');
 Route::post('/savedebitvouchers','AccountController@savedebitvouchers');
 Route::get('/viewpendinfdebitvouchermgr/{id}','AccountController@viewpendinfdebitvouchermgr');
+Route::get('/vouchers/approveddebitvoucher','AccountController@approveddebitvoucher');
+Route::get('/vouchers/pendingdebitvouchermgr','AccountController@pendingdebitvouchermgr');
+Route::get('/viewpendinfdebitvoucheradmin/{id}','AccountController@viewpendinfdebitvoucheradmin');
+
+Route::post('/approvedebitvouchermgr/{id}','AccountController@approvedebitvouchermgr');
+Route::post('/approvedebitvoucheradmin/{id}','AccountController@approvedebitvoucheradmin');
+Route::get('/vouchers/pendingdebitvoucheradmin','AccountController@pendingdebitvoucheradmin');
+
+//-------------END PMS ACCOUNT ROUTE------------//
+
 //-------------PMS MD ROUTE------------//
 
 Route::get('/mdhome','MdController@mdhome');
