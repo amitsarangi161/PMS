@@ -49,13 +49,14 @@
     <thead>
         <tr class="bg-navy" style="font-size: 10px;">
             <th>ID</th>
+            <th>PROJECT NAME</th>
             <th>FOR CLIENT</th>
             <th>EMAIL</th>
             <th>DISTRICT</th>
             <th>DIVISION</th>
             <th>LOA NO</th>
             <th>AGREEMENT NO</th>
-            <th>PROJECT NAME</th>
+            
             <th>PAPER COST</th>
             <th>DATE OF COMMENCEMENT</th>
             <th>END DATE</th>
@@ -90,13 +91,14 @@
          
         <tr>
             <td>{{$project->id}}</td>
+            <td><p class="b" title="{{$project->projectname}}">{{$project->projectname}}</p></td>
             <td>{{$project->clientname}}</td>
             <td>{{$project->email}}</td>
             <td>{{$project->districtname}}</td>
             <td>{{$project->divisionname}}</td>
             <td>{{$project->loano}}</td>
             <td>{{$project->agreementno}}</td>
-             <td><p class="b" title="{{$project->projectname}}">{{$project->projectname}}</p></td>
+             
             <td>{{$project->papercost}}</td>
             <td>{{$project->startdate}}</td>
             <td>{{$project->enddate}}</td>

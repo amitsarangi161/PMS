@@ -625,6 +625,7 @@ Route::get('/mdmain/currentemployeelist','MdController@currentemployeelist');
 //-------------PMS INVENTORY ROUTE------------//
 
 Route::get('/admininventory','InventoryController@admininventory');
+
 Route::get('/inventorymain/productcatagory','InventoryController@productcatagory');
 Route::post('/savecatagory','InventoryController@savecatagory');
 Route::post('/updatecatagory','InventoryController@updatecatagory');

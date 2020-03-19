@@ -202,8 +202,8 @@
       
     
  @if(Auth::user()->usertype=='MASTER ADMIN' ||Auth::user()->usertype=='INVENTORY')
-        <li class="{{ Request::is('inventorymain') ? 'active' : '' }} treeview">
-        <a href="/adminhr">
+        <li class="{{ Request::is('admininventory') ? 'active' : '' }} treeview">
+        <a href="/admininventory">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           <span class="pull-right-container">
             
