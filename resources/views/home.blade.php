@@ -167,8 +167,6 @@
             <div class="info-box-content">
               <span class="info-box-text">PENDING TOUR APPROVAL</span>
               <span class="info-box-number">0</span>
-
-                
             </div>
        
           </div>
