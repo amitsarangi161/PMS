@@ -5,6 +5,9 @@
 @if(Session::has('msg'))
    <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
  @endif
+ @if(Session::has('duplicateitem'))
+   <p class="alert alert-danger text-center">{{ Session::get('duplicateitem') }}</p>
+ @endif
 <table class="table table-responsive table-hover table-bordered table-striped">
 	 <tr class="bg-navy">
 	 	<td class="text-center">PRODUCTS</td>
@@ -20,7 +23,7 @@
 	 	<td><strong>Choose Product Catagory<span style="color: red"> *</span></strong></td>
 	 	<td>
 	 		<select name="productcatagory_id" class="form-control">
-	 	 		<option>Select a catagory</option>
+	 	 		<option value=''>Select a catagory</option>
 	 	 		@foreach($productcatagories as $productcatagory)
 	 	 		<option value="{{$productcatagory->id}}">{{$productcatagory->catagoryname}}</option>
 	 	 		@endforeach
@@ -134,7 +137,8 @@
   </div>
 </div>
 
-	<script type="text/javascript">
+<script type="text/javascript">
+	$('.alert').delay(10000).fadeOut(1000);
 		function editcatagory(id,productname,productdescription,productcatagory_id) {
 
 			$("#pid").val(id);
@@ -154,9 +158,9 @@
         }
 
         reader.readAsDataURL(input.files[0]);
-    }
-}
-	</script>
+    	}	
+	}
+</script>
 
 
 

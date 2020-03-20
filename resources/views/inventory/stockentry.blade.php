@@ -5,6 +5,9 @@
 @if(Session::has('msg'))
    <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
  @endif
+ @if(Session::has('duplicateitem'))
+   <p class="alert alert-danger text-center">{{ Session::get('duplicateitem') }}</p>
+ @endif
 <table class="table table-responsive table-hover table-bordered table-striped">
 	 <tr class="bg-navy">
 	 	<td class="text-center">STOCK ENTRY</td>
@@ -17,10 +20,10 @@
 
 	<table class="table table-responsive table-hover table-bordered table-striped">
 	 <tr>
-	 	<td><strong>Choose a Product<span style="color: red"> *</span></strong></td>
-	 	<td>
-	 		<select name="product_id" class="form-control">
-	 	 		<option>Select a catagory</option>
+	 	<td width="20%"><strong>Choose a Product<span style="color: red"> *</span></strong></td>
+	 	<td width="80%">
+	 		<select name="product_id" class="form-control select2" style="width:100%;" required="">
+	 	 		<option value="">Select a catagory</option>
 	 	 		@foreach($products as $product)
 	 	 		<option value="{{$product->id}}">{{$product->productname}}</option>
 	 	 		@endforeach
@@ -28,23 +31,23 @@
 	 	</td>
 	 </tr>
 	 <tr>
-	 	<td><strong>Date<span style="color: red"> *</span></strong></td>
-	 	<td>
-	 		<input type="text" name="date" class="form-control datepicker" placeholder="Date">
+	 	<td width="20%"><strong>Date<span style="color: red"> *</span></strong></td>
+	 	<td width="80%">
+	 		<input type="text" name="date" class="form-control datepicker" placeholder="Date" readonly="" required="">
 	 	</td>
 	 	
 	 </tr>
 	 <tr>
-	 	<td><strong>Unit Price<span style="color: red"> *</span></strong></td>
-	 	<td>
-	 		<input type="text" class="form-control" placeholder="Unit Price" name="unitrate">
+	 	<td width="20%"><strong>Unit Price<span style="color: red"> *</span></strong></td>
+	 	<td width="80%">
+	 		<input type="text" class="form-control" placeholder="Unit Price" name="unitrate" required="">
 	 	</td>
 	 	
 	 </tr>
 	 <tr>
-	 	<td><strong>Quantity<span style="color: red"> *</span></strong></td>
-	 	<td>
-	 		<input type="text" class="form-control" placeholder="Enter quantity" name="quantity">
+	 	<td width="20%"><strong>Quantity<span style="color: red"> *</span></strong></td>
+	 	<td width="80%">
+	 		<input type="text" class="form-control" placeholder="Enter quantity" name="quantity" required="">
 	 	</td>
 	 	
 	 </tr>
@@ -153,6 +156,7 @@
 </div>
 
 	<script type="text/javascript">
+$('.alert').delay(10000).fadeOut(1000);
 		function editstock(id,date,unitrate,quantity,product_id) {
 			$("#pid").val(id);
 			$("#date").val(date);

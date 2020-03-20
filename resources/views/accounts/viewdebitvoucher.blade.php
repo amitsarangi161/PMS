@@ -10,24 +10,24 @@
 </table>
 
 <div class="well">
-  <table class="table">
+  <table class="table table-bordered">
     <tr>
-      <td width="10%"><strong>ID :</strong></td>
-      <td width="40%">#{{$debitvoucherheader->id}}</td>
-      <td width="10%"><strong>VENDOR :</strong></td>
-      <td width="40%"><button type="button" class="btn btn-success" onclick="openvendordetails('{{$vendor->vendorid}}','{{$vendor->vendorname}}','{{$vendor->mobile}}','{{$vendor->bankname}}','{{$vendor->acno}}','{{$vendor->branchname}}','{{$vendor->ifsccode}}','{{trim(preg_replace('/\s+/', ' ',$vendor->details))}}','{{$vendor->photo}}','{{$vendor->vendoridproof}}')">{{$debitvoucherheader->vendorname}}</button></td>
+      <td width="15%"><strong>ID :</strong></td>
+      <td width="35%">#{{$debitvoucherheader->id}}</td>
+      <td width="15%"><strong>VENDOR :</strong></td>
+      <td width="35%"><button type="button" class="btn btn-success" onclick="openvendordetails('{{$vendor->id}}','{{$vendor->vendorname}}','{{$vendor->mobile}}','{{$vendor->bankname}}','{{$vendor->acno}}','{{$vendor->branchname}}','{{$vendor->ifsccode}}','{{trim(preg_replace('/\s+/', ' ',$vendor->details))}}','{{$vendor->photo}}','{{$vendor->vendoridproof}}')">{{$debitvoucherheader->vendorname}}</button></td>
     </tr>
     <tr>
-      <td width="10%"><strong>BILL DATE :</strong></td>
-      <td width="40%">{{$debitvoucherheader->billdate}}</td>
-      <td width="10%"><strong>BILL NO :</strong></td>
-      <td width="40%">{{$debitvoucherheader->billno}}</td>
+      <td width="15%"><strong>BILL DATE :</strong></td>
+      <td width="35%">{{$debitvoucherheader->billdate}}</td>
+      <td width="15%"><strong>BILL NO :</strong></td>
+      <td width="35%">{{$debitvoucherheader->billno}}</td>
     </tr>
     <tr>
-      <td width="10%"><strong>CREATED AT  :</strong></td>
-      <td width="40%">{{$debitvoucherheader->created_at}}</td>
-      <td width="10%"><strong>STATUS :</strong></td>
-      <td width="40%"><span class="label label-warning">{{$debitvoucherheader->status}}</span></td>
+      <td width="15%"><strong>CREATED AT :</strong></td>
+      <td width="35%">{{$debitvoucherheader->created_at}}</td>
+      <td width="15%"><strong>STATUS :</strong></td>
+      <td width="35%"><span class="label label-warning">{{$debitvoucherheader->status}}</span></td>
     </tr>
 
     
@@ -42,8 +42,8 @@
 </table>
 <table class="table table-responsive table-hover table-bordered table-striped">
   <thead>
-      <tr class="bg-navy">
-          <td>Item Name</td>
+    <tr class="bg-navy">
+      <td>Item Name</td>
       <td>Units</td>
       <td>Qty</td>
       <td>MRP</td>
@@ -56,9 +56,7 @@
       <td>IGST Rate</td>
       <td>IGST Cost</td>
       <td>AMOUNT</td>
-        
-           </tr>
-
+    </tr>
   </thead>
   <tbody>
     @foreach($debitvouchers as $debitvoucher)
@@ -91,13 +89,13 @@
 
   {{csrf_field()}}
 <table class="table">
-        <tr>
+<!--         <tr>
           <td width="25%"><strong>Total MRP</strong></td>
           <td width="25%"><input type="text" id="tmrp" value="{{$debitvoucherheader->tmrp}}" name="tmrp" class="form-control" readonly="" required=""></td>
         
           <td width="25%"><strong>Total Discount</strong></td>
           <td width="25%"><input type="text" value="{{$debitvoucherheader->tdiscount}}" class="form-control" id="tdiscount" name="tdiscount" readonly=""></td>
-        </tr>
+        </tr> -->
         <tr>
           <td width="25%"><strong>Total Price</strong></td>
           <td width="25%"><input type="text" value="{{$debitvoucherheader->tprice}}" class="form-control" id="tprice" name="tprice" readonly="" required=""></td>
@@ -128,7 +126,7 @@
           <td width="25%"><strong>Attach a invoice copy</strong></td>
           <td>
            <a href="{{asset('img/debitvoucher/'.$debitvoucherheader->invoicecopy)}}" target="_blank">
-              <img style="height:200px;width:200px;" src="{{asset('img/debitvoucher/'.$debitvoucherheader->invoicecopy)}}" alt="click to view" id="imgshow">
+              <!-- <img style="height:120px;width:120px;" src="{{asset('img/debitvoucher/'.$debitvoucherheader->invoicecopy)}}" alt="click to view" id="imgshow"> -->
             </a>
               <a href="{{asset('img/debitvoucher/'.$debitvoucherheader->invoicecopy)}}" class="btn btn-primary btn-sm" download>
                <span class="glyphicon glyphicon-download-alt"></span> Download
@@ -215,7 +213,7 @@
         <h4 class="modal-title text-center"><strong>VENDOR DETAILS</strong></h4>
       </div>
       <div class="modal-body">
-        <table class="table">
+        <table class="table table-bordered table-striped">
           <tr>
             <td><strong>VENDOR ID#</strong></td>
             <td><strong id="vendorid1"></strong></td>
@@ -241,12 +239,12 @@
             <td><strong id="details1"></strong></td>
             
           </tr>
-          <tr>
+         <!--  <tr>
             <td><strong>PHOTO</strong></td>
             <td id="photo1"></td>
             <td><strong>ID PROOF</strong></td>
             <td id="idproof1"></td>
-          </tr>
+          </tr> -->
           
         </table>
       </div>
@@ -260,23 +258,20 @@
 <script type="text/javascript">
     function openvendordetails(vendorid,vendorname,mobile,bankname,acno,branchname,ifsccode,details,photo,vendoridproof)
    {
+     $("#vendorid1").html(vendorid);
+     $("#vendorname1").html(vendorname);
+     $("#vendormobile1").html(mobile);
+     $("#bankname1").html(bankname);
+     $("#acno1").html(acno);
 
-        
+     $("#branchname1").html(branchname);
+     $("#ifsccode1").html(ifsccode);
+     $("#details1").html(details);
+     $("#photo1").html('<a href="/img/vendor/'+photo+'" target="_blank"><img src="/img/vendor/'+photo+'" style="height:70px;width:95px;" alt="click to view"></a>');
 
-             $("#vendorid1").html(vendorid);
-             $("#vendorname1").html(vendorname);
-             $("#vendormobile1").html(mobile);
-             $("#bankname1").html(bankname);
-             $("#acno1").html(acno);
+     $("#idproof1").html('<a href="/img/vendor/'+vendoridproof+'" target="_blank"><img src="/img/vendor/'+vendoridproof+'" style="height:70px;width:95px;" alt="click to view"></a>');
 
-             $("#branchname1").html(branchname);
-             $("#ifsccode1").html(ifsccode);
-             $("#details1").html(details);
-             $("#photo1").html('<a href="/img/vendor/'+photo+'" target="_blank"><img src="/img/vendor/'+photo+'" style="height:70px;width:95px;" alt="click to view"></a>');
-
-             $("#idproof1").html('<a href="/img/vendor/'+vendoridproof+'" target="_blank"><img src="/img/vendor/'+vendoridproof+'" style="height:70px;width:95px;" alt="click to view"></a>');
-
-             $("#vendormodal").modal('show');
+     $("#vendormodal").modal('show');
    }
 </script>
 <!-- <script type="text/javascript">

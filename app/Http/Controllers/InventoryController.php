@@ -23,9 +23,10 @@ class InventoryController extends Controller
    }
    public function savecatagory(Request $request)
   {
-  	 //return $request->all();
-     $catagory=new productcatagory();
-     $catagory->catagoryname=$request->catagoryname;
+    $check=productcatagory::where('catagoryname',$request->catagoryname)->count();
+    if($check==0){
+      $catagory=new productcatagory();
+      $catagory->catagoryname=$request->catagoryname;
       $rarefile = $request->file('catagoryimage');    
         if($rarefile!=''){
         $raupload = public_path() .'/img/catagoryimage/';
@@ -35,11 +36,18 @@ class InventoryController extends Controller
         }
         $catagory->save();
         Session::flash('msg','catagory added successfully');
-        return back();
+    }
+    else{
+      Session::flash('duplicateitem','This item already present edit it');
+    }
+     
+    return back();
 
   }
   public function updatecatagory(Request $request)
     {
+      $check=productcatagory::where('catagoryname',$request->catagoryname)->count();
+      if($check==0){
         $catagory =productcatagory::find($request->pid);
         $catagory->catagoryname=$request->catagoryname;
       	$rarefile = $request->file('catagoryimage');    
@@ -51,8 +59,11 @@ class InventoryController extends Controller
         }
         $catagory->save();
         Session::flash('msg','catagory Updated successfully');
-        return back();
-
+      }
+      else{
+        Session::flash('duplicateitem','This item already present edit it');
+      }
+  return back();
 
     }
     public function products()
@@ -66,22 +77,36 @@ class InventoryController extends Controller
    }
    public function saveproduct(Request $request)
   {
-  	$product=new product();
+    $check=product::where('productcatagory_id',$request->productcatagory_id)
+          ->where('productname',$request->productname)->count();
+    if($check==0){
+     $product=new product();
      $product->productcatagory_id=$request->productcatagory_id;
      $product->productname=$request->productname;
      $product->productdescription=$request->productdescription;
      $product->save();
      Session::flash('msg','Product added successfully');
-     return back();
+    }
+  	else{
+     Session::flash('duplicateitem','This item already present edit it');
+    }
+  return back();
   }
   public function updateproduct(Request $request)
     {
+      $check=product::where('productcatagory_id',$request->productcatagory_id)
+          ->where('productname',$request->productname)->count();
+    if($check==0){
         $product =product::find($request->pid);
         $product->productcatagory_id=$request->productcatagory_id;
 	     $product->productname=$request->productname;
 	     $product->productdescription=$request->productdescription;
 	     $product->save();
 	     Session::flash('msg','Product updated successfully');
+     }
+     else{
+     Session::flash('duplicateitem','This item already present edit it');
+    }
         return back();
 
 
@@ -97,17 +122,26 @@ class InventoryController extends Controller
    }
    public function savestock(Request $request)
   {
-  	$stock=new stockentry();
+    $chk=stockentry::where('product_id',$request->product_id)->count();
+    if($chk==0){
+     $stock=new stockentry();
      $stock->product_id=$request->product_id;
      $stock->date=$request->date;
      $stock->unitrate=$request->unitrate;
      $stock->quantity=$request->quantity;
      $stock->save();
      Session::flash('msg','Sctock added successfully');
-     return back();
+    }
+  	else{
+      Session::flash('duplicateitem','This item already present edit it');
+    }
+    return back();
   }
   public function updatestock(Request $request)
     {
+       $check=product::where('productcatagory_id',$request->productcatagory_id)
+          ->where('productname',$request->productname)->count();
+    if($check==0){
         $stock =stockentry::find($request->pid);
          $stock->product_id=$request->product_id;
 	     $stock->date=$request->date;
@@ -115,9 +149,11 @@ class InventoryController extends Controller
 	     $stock->quantity=$request->quantity;
 	     $stock->save();
      Session::flash('msg','Sctock updated successfully');
+   }
+   else{
+      Session::flash('duplicateitem','This item already present edit it');
+    }
      return back();
-
-
     }
 
 

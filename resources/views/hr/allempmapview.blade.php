@@ -242,7 +242,7 @@ var bindInfoWindow = function(marker, map, infowindow, html) {
   } 
 
 
-var timeout = setInterval(reloadmap, 10000); 
+var timeout = setInterval(reloadmap, 300000); 
 
 function reloadmap () {
    for(i=0; i<markers.length; i++){

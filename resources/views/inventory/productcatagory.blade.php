@@ -4,6 +4,9 @@
 @if(Session::has('msg'))
    <p class="alert alert-success text-center">{{ Session::get('msg') }}</p>
  @endif
+ @if(Session::has('duplicateitem'))
+   <p class="alert alert-danger text-center">{{ Session::get('duplicateitem') }}</p>
+ @endif
 <table class="table table-responsive table-hover table-bordered table-striped">
 	 <tr class="bg-navy">
 	 	<td class="text-center">PRODUCT CATAGORY</td>
@@ -112,6 +115,8 @@
 </div>
 
 	<script type="text/javascript">
+$('.alert').delay(10000).fadeOut(1000);
+    
 		function editcatagory(id,catagoryname,catagoryimage) {
 
 			$("#pid").val(id);
