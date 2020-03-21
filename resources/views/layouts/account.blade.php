@@ -287,7 +287,7 @@
             <i class="fa fa-rupee"></i> <span>DEBIT VOUCHER</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
-                <span class="label label-warning pull-right">{{$countpendingdrmgr+$countpendingdradmin}}</span>
+                <span class="label label-warning pull-right">{{$countpendingdrmgr+$countpendingdradmin+$countapproveddrvoucher}}</span>
             </span>
           </a>
           <ul class="treeview-menu">
