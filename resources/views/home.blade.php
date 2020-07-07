@@ -273,7 +273,6 @@
         <h4 class="modal-title">ADD TODO</h4>
       </div>
       <div class="modal-body">
-      
           {{csrf_field()}}
         <table class="table">
           <tr>
@@ -335,27 +334,14 @@
               <p style="color: red;">*click for change the time</p>
             </td>
           </tr>
-         
-            
-                            
-           
-          
         </table>
         </form>
         
 </div>
 <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button class="btn btn-success btn-lg" type="submit">UPDATE</button>
-
-      </div>
-
-
-
-
-
-
- 
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  <button class="btn btn-success btn-lg" type="submit">UPDATE</button>
+</div>
 
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap-timepicker.js') }}"></script>
 
@@ -403,8 +389,6 @@
                      "_token": "{{ csrf_token() }}",
                       status: sta,
                       tid:value
-                      
-
                      },
 
                success:function(data) { 
